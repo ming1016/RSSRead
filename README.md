@@ -1,4 +1,7 @@
-##在App Store上已上架，应用名“已阅”  
+#RSSRead
+RSSRead是一个iOS设备上的RSS/Atom阅读器。
+
+##在App Store上已上架，应用中文名叫“已阅”  
 <https://itunes.apple.com/us/app/yi-yue-rss-li-xian-xin-wen-yue-du/id850246364?ls=1&mt=8>  
 
 ##已有功能  
@@ -18,7 +21,18 @@
 ##Licensing
 * [Apache License, Version 2.0.](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-##联系
+##参与进来
+想参与进来吗？太好了，即使你不是开发者也有你能够贡献的
+
+* #####本地化
+* English
+* Japanese
+* Simplified Chinese
+
+* #####写代码
+具有iOS开发经验，可以通过下面的联系方式申请加入，或者加入qq开发群参与讨论，群号：191430246
+
+##联系我
 * twitter：<https://twitter.com/ming1016>  
 * qq：36270359  
 * email：ming1016@gmail.com  
