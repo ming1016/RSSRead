@@ -1,10 +1,28 @@
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
 
-RSSRead.xcworkspace/contents.xcworkspacedata
-
-RSSRead.xcworkspace/xcshareddata/RSSRead.xccheckout
-
-RSSRead.xcworkspace/xcuserdata/hldm723.xcuserdatad/UserInterfaceState.xcuserstate
-
-RSSRead.xcworkspace/xcuserdata/hldm723.xcuserdatad/WorkspaceSettings.xcsettings
-
-RSSRead.xcworkspace/xcuserdata/hldm723.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+#
+# Pods/
+Pods/
+RSSRead.xcworkspace/
