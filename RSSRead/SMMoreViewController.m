@@ -10,7 +10,7 @@
 #import "SMUIKitHelper.h"
 #import "SMMoreCell.h"
 #import "SMRSSListViewController.h"
-
+#import "SMAboutViewController.h"
 
 @interface SMMoreViewController ()
 @property(nonatomic,strong)NSArray *optionArr;
@@ -53,10 +53,10 @@
                        @"cn":@"收藏",
                        @"en":@"fav"
                        },
-//                   @{
-//                       @"cn": @"设置",
-//                       @"en":@"setting"
-//                       },
+                   @{
+                       @"cn": @"关于",
+                       @"en":@"about"
+                       },
                    
                    ];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -120,6 +120,11 @@
         SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
         rsslistVC.isFav = YES;
         [self.navigationController pushViewController:rsslistVC animated:YES];
+    }
+    if ([aOption[@"en"]isEqualToString:@"about"]) {
+        //关于
+        SMAboutViewController *aboutVC = [[SMAboutViewController alloc]initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:aboutVC animated:YES];
     }
     if ([aOption[@"en"]isEqualToString:@"setting"]) {
         //设置

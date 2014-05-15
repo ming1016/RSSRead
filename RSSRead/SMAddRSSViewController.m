@@ -55,7 +55,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, 30+40, 276, 52)];
+    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, 30, 276, 52)];
     _tfValue.backgroundColor = [UIColor whiteColor];
     _tfValue.layer.borderWidth = 2;
     _tfValue.layer.borderColor = (__bridge CGColorRef)([UIColor grayColor]);
@@ -138,7 +138,6 @@
     } else {
         NSLog(@"failed by item");
     }
-    
 }
 
 -(void)feedParserDidFinish:(MWFeedParser *)parser {
