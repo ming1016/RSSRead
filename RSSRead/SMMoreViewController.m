@@ -97,6 +97,8 @@
     if (cell == nil) {
         cell = [[SMMoreCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
+        cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
     }
     if (_optionArr.count > 0) {
         NSDictionary *aOption = _optionArr[indexPath.row];

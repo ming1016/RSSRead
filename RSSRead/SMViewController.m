@@ -81,87 +81,6 @@
     _managedObjectContext = _appDelegate.managedObjectContext;
     
     [self loadTabelViewFromCoreData];
-    
-//    //测试AFNetworking
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-//
-//    //激活
-//    NSDictionary *par = @{
-//                          @"mac": @"kd3.32.3",
-//                          @"imei": @"dskafdksa",
-//                          @"bluetooth_addr":@"kdkd2.2.22",
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@active",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error %@",error);
-//    }];
-    
-//    NSString *token = @"233232daddasf";
-    //修改资料
-
-//    NSDictionary *par = @{
-//                          @"name": @"小灰灰",
-//                          @"gender":@"1",
-//                          @"age":@"33",
-//                          @"height":@"175",
-//                          @"weight":@"120",
-//                          @"job":@"猎人",
-//                          @"description":@"来自北方的狼",
-//                          @"token":token
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@profile",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-    
-    //读取主播列表
-//    NSDictionary *par = @{
-//                          @"gender": @"1",
-//                          @"page_index":@"1",
-//                          @"page_size":@"20",
-//                          @"sort_by":@"1"
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@getpresenter",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-    
-    //发送留言
-//    NSDictionary *par = @{
-//                          @"uid": @"11",
-//                          @"content":@"这个是消息",
-//                          @"token":token
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@sendmessage",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-    
-    //列出留言
-//    NSDictionary *par = @{
-//                          @"uid": @"11",
-//                          @"page_size":@"20",
-//                          @"page_index":@"1",
-//                          @"token":token
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@getmessagewithpresenter",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -316,7 +235,6 @@
         [rssModel deleteSubscrib:aSubscribe.url];
         [_allSurscribes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
     }
 }
 
