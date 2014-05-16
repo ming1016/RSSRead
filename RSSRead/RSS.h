@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
+@class MWFeedItem;
 @interface RSS : NSManagedObject
 
 @property (nonatomic, retain) NSString * author;

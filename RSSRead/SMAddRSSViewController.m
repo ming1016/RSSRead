@@ -94,7 +94,7 @@
     [_tfValue resignFirstResponder];
     if (_tfValue.text != nil) {
         //
-        NSString *tfString = [NSString string];
+        NSString *tfString =nil;
         if ([[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
             //
             NSLog(@"show it %@",[_tfValue.text substringToIndex:7]);
@@ -132,45 +132,75 @@
 }
 
 -(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-    if (item.title) {
-        [_parsedItems addObject:item];
-//        NSLog(@"title:%@ author:%@ sum:%@ content:%@",item.title,item.author,item.summary,item.content);
-    } else {
-        NSLog(@"failed by item");
-    }
-}
-
--(void)feedParserDidFinish:(MWFeedParser *)parser {
-    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
-    getModel.entityName = @"Subscribes";
-    getModel.predicate = [NSPredicate predicateWithFormat:@"url=%@",[_feedInfo.url absoluteString]];
-    NSArray *fetchedRecords = [_appDelegate getFetchedRecords:getModel];
-    NSError *error;
-    if (fetchedRecords.count == 0) {
-        _subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:_managedObjectContext];
-        _subscribe.title = _feedInfo.title ? _feedInfo.title : @"未命名";
-        _subscribe.summary = _feedInfo.summary ? _feedInfo.summary : @"无描述";
-        _subscribe.link = _feedInfo.link ? _feedInfo.link : @"无连接";
-        _subscribe.url = [_feedInfo.url absoluteString] ? [_feedInfo.url absoluteString] : @"无连接";
-        _subscribe.createDate = [NSDate date];
-        _subscribe.total = [NSNumber numberWithInteger:_parsedItems.count];
-        
-        
-        if (_subscribe.title) {
-            [_managedObjectContext save:&error];
-            [_smAddRSSViewControllerDelegate addedRSS:_subscribe];
-        }
-    } else {
-        //已存在订阅的情况
-    }
+//    if (item.title) {
+//        [_parsedItems addObject:item];
+////        NSLog(@"title:%@ author:%@ sum:%@ content:%@",item.title,item.author,item.summary,item.content);
+//    } else {
+//        NSLog(@"failed by item");
+//    }
+    
+//    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+//    getModel.entityName = @"Subscribes";
+//    getModel.predicate = [NSPredicate predicateWithFormat:@"url=%@",[_feedInfo.url absoluteString]];
+//    NSArray *fetchedRecords = [_appDelegate getFetchedRecords:getModel];
+//    NSError *error;
+//    if (fetchedRecords.count == 0) {
+//        _subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:_managedObjectContext];
+//        _subscribe.title = _feedInfo.title ? _feedInfo.title : @"未命名";
+//        _subscribe.summary = _feedInfo.summary ? _feedInfo.summary : @"无描述";
+//        _subscribe.link = _feedInfo.link ? _feedInfo.link : @"无连接";
+//        _subscribe.url = [_feedInfo.url absoluteString] ? [_feedInfo.url absoluteString] : @"无连接";
+//        _subscribe.createDate = [NSDate date];
+//        _subscribe.total = [NSNumber numberWithInteger:_parsedItems.count];
+//        
+//        
+//        if (_subscribe.title) {
+//            [_managedObjectContext save:&error];
+//            [_smAddRSSViewControllerDelegate addedRSS:_subscribe];
+//        }
+//    } else {
+//        //已存在订阅的情况
+//    }
     
     SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-    [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
+    [rssModel insertRSSFeedItem:item withFeedUrlStr:parser.url.absoluteString];
     
     _lbSending.hidden = YES;
     NSLog(@"finished");
     [self doBack];
 }
+
+//-(void)feedParserDidFinish:(MWFeedParser *)parser {
+//    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+//    getModel.entityName = @"Subscribes";
+//    getModel.predicate = [NSPredicate predicateWithFormat:@"url=%@",[_feedInfo.url absoluteString]];
+//    NSArray *fetchedRecords = [_appDelegate getFetchedRecords:getModel];
+//    NSError *error;
+//    if (fetchedRecords.count == 0) {
+//        _subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:_managedObjectContext];
+//        _subscribe.title = _feedInfo.title ? _feedInfo.title : @"未命名";
+//        _subscribe.summary = _feedInfo.summary ? _feedInfo.summary : @"无描述";
+//        _subscribe.link = _feedInfo.link ? _feedInfo.link : @"无连接";
+//        _subscribe.url = [_feedInfo.url absoluteString] ? [_feedInfo.url absoluteString] : @"无连接";
+//        _subscribe.createDate = [NSDate date];
+//        _subscribe.total = [NSNumber numberWithInteger:_parsedItems.count];
+//        
+//        
+//        if (_subscribe.title) {
+//            [_managedObjectContext save:&error];
+//            [_smAddRSSViewControllerDelegate addedRSS:_subscribe];
+//        }
+//    } else {
+//        //已存在订阅的情况
+//    }
+//    
+//    SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+//    [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
+//    
+//    _lbSending.hidden = YES;
+//    NSLog(@"finished");
+//    [self doBack];
+//}
 
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
     [_lbSending setText:@"链接无效，请尝试其它链接"];

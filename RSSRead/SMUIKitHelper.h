@@ -28,6 +28,7 @@
 #define LIST_LIGHT_COLOR @"#999999"
 #define LIST_YELLOW_COLOR @"#CD8500"
 
+#define APP_DELEGATE ((SMAppDelegate *)([[UIApplication sharedApplication] delegate]))
 
 #define SERVER_URL @"http://starming.sinaapp.com/index.php?v=dateapi&m="
 
@@ -45,4 +46,6 @@
 
 +(UIColor *)colorWithHexString:(NSString *)stringToConvert;
 +(UIColor *)colorWithHexString:(NSString *)stringToConvert withAlpha:(CGFloat)alpha;
++ (dispatch_queue_t)getGlobalDispatchQueue;
++ (dispatch_queue_t)getMainQueue;
 @end

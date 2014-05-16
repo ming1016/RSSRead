@@ -15,7 +15,7 @@
     NSManagedObjectContext *_managedObjectContext;
     SMGetFetchedRecordsModel *_getModel;
     NSArray *_fetchedRecorders;
-    RSS *_rss;
+//    RSS *_rss;
     
 }
 
@@ -153,36 +153,44 @@
     [self recountSubscribeUnRead:url];
 }
 
+-(void)insertRSSFeedItems:(NSArray *)items ofFeedUrlStr:(NSString *)feedUrlStr
+{
+    [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self insertRSSFeedItem:obj withFeedUrlStr:feedUrlStr];
+    }];
+}
 
 
--(void)insertRSS:(NSArray *)items withFeedInfo:(MWFeedInfo *)feedInfo{
+-(void)insertRSSFeedItem:(MWFeedItem *)item withFeedUrlStr:(NSString *)feedUrlStr{
     _getModel.entityName = @"RSS";
     NSError *error;
-    for (MWFeedItem *item in items) {
+//    for (MWFeedItem *item in items) {
         _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",item.identifier];
         _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
         if (_fetchedRecorders.count == 0) {
-            _rss = [NSEntityDescription insertNewObjectForEntityForName:@"RSS" inManagedObjectContext:_managedObjectContext];
-            _rss.author = item.author ? item.author : @"未知作者";
-            _rss.content = item.content ? item.content : @"无内容";
-            _rss.createDate = [NSDate date];
-            _rss.date = item.date;
-            _rss.identifier = item.identifier;
-            _rss.isFav = @0;
-            _rss.isRead = @0;
-            _rss.link = item.link ? item.link : @"无连接";
-            _rss.subscribeUrl = [feedInfo.url absoluteString];
-            _rss.summary = item.summary ? item.summary : @"无描述";
-            _rss.title = item.title ? item.title : @"无标题";
-            _rss.updated = item.updated;
-            if (_rss.title) {
+            RSS *rss = [NSEntityDescription insertNewObjectForEntityForName:@"RSS" inManagedObjectContext:_managedObjectContext];
+            rss.author = item.author ? item.author : @"未知作者";
+            rss.content = item.content ? item.content : @"无内容";
+            rss.createDate = [NSDate date];
+            rss.date = item.date;
+            rss.identifier = item.identifier;
+            rss.isFav = @0;
+            rss.isRead = @0;
+            rss.link = item.link ? item.link : @"无连接";
+            rss.subscribeUrl = feedUrlStr;
+            rss.summary = item.summary ? item.summary : @"无描述";
+            rss.title = item.title ? item.title : @"无标题";
+            rss.updated = item.updated;
+//            if (rss.title) {
                 [_managedObjectContext save:&error];
-            }
+//            }
         }
-    }
-    [self recountSubscribeUnRead:[feedInfo.url absoluteString]];
+//    }
+    [self recountSubscribeUnRead:feedUrlStr];
     
-    [_smRSSModelDelegate rssInserted];
+    if([(NSObject *)_smRSSModelDelegate respondsToSelector:@selector(rssInserted)]){
+        [_smRSSModelDelegate rssInserted];
+    }
 }
 
 -(void)recountSubscribeUnRead:(NSString *)url {

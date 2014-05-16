@@ -8,7 +8,6 @@
 
 #import "RSS.h"
 
-
 @implementation RSS
 
 @dynamic author;
@@ -23,5 +22,4 @@
 @dynamic title;
 @dynamic updated;
 @dynamic isRead;
-
 @end

@@ -91,4 +91,11 @@
                            alpha:alpha];
 }
 
++ (dispatch_queue_t)getGlobalDispatchQueue{
+    return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+}
+
++ (dispatch_queue_t)getMainQueue{
+    return dispatch_get_main_queue();
+}
 @end

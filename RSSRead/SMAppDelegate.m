@@ -10,10 +10,12 @@
 #import "SMUIKitHelper.h"
 #import "SMViewController.h"
 #import "APService.h"
+#import "SMFeedParserWrapper.h"
 
-@implementation SMAppDelegate {
-    SMViewController *_smViewController;
-}
+@implementation SMAppDelegate
+//{
+//    SMViewController *_smViewController;
+//}
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -28,15 +30,15 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber =0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+        
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 //    [[UINavigationBar appearance] setBarTintColor:[SMUIKitHelper colorWithHexString:@"#333333"]];
 //    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
 //    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0]}];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backgroundNavbar"] forBarMetrics:UIBarMetricsDefault];
-    _smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:_smViewController];
+    SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
+    UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     self.window.rootViewController = rootViewNav;
 //    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -164,19 +166,99 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
+
 #pragma mark - background mode
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    SMViewController *smVC = (SMViewController *)navigationController.topViewController;
-    [smVC fetchWithCompletionHandler:completionHandler];
-    //显示未读数
+    
+    //你有30秒的时间来在这里从网络获取数据
+    
+    
+//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//    SMViewController *smVC = (SMViewController *)navigationController.topViewController;
+//    [smVC fetchWithCompletionHandler:completionHandler];
+
+    //取
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
-    getModel.entityName = @"RSS";
-    getModel.predicate = [NSPredicate predicateWithFormat:@"isRead=0"];
-    NSArray *allRss = [self getFetchedRecords:getModel];
-    NSInteger allRssCount = allRss.count;
-    [UIApplication sharedApplication].applicationIconBadgeNumber = allRssCount;
+    getModel.entityName = @"Subscribes";
+    NSArray *allSubscribes = [APP_DELEGATE getFetchedRecords:getModel];
+    
+    //
+//    NSDictionary *udd = [[NSUserDefaults standardUserDefaults]dictionaryForKey:@"userConfig"];
+//    NSUInteger subListNum = 0;
+//    if (udd[@"fetchSubscribeNumInBackground"]) {
+//        subListNum = [udd[@"fetchSubscribeNumInBackground"]integerValue];
+//        if (subListNum >= allSubscribes.count) {
+//            subListNum = 0;
+//        }
+//    }
+//    NSMutableDictionary *mudd = [NSMutableDictionary dictionaryWithDictionary:udd];
+//    mudd[@"fetchSubscribeNumInBackground"] = [NSNumber numberWithInteger:subListNum + 1];
+//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+//    [ud setObject:mudd forKey:@"userConfig"];
+//    [ud synchronize];
+//    
+//    Subscribes *subscribe = allSubscribes[subListNum];
+    //    _fetchRSSUrl = subscribe.url;
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    [allSubscribes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        dispatch_group_enter(group);
+        dispatch_async([SMUIKitHelper getGlobalDispatchQueue], ^{
+            //解析rss
+            NSURL *feedUrl = [NSURL URLWithString:((Subscribes *)obj).url];
+            
+            SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
+            parserWrapper.timeoutInterval = 20.0;
+            [parserWrapper parseUrl:feedUrl completion:^(NSArray *items) {
+                SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+                [rssModel insertRSSFeedItems:items ofFeedUrlStr:feedUrl.absoluteString];
+                dispatch_group_leave(group);
+            }];
+            
+//            MWFeedParser *feedParser = [[MWFeedParser alloc]initWithFeedURL:feedUrl];
+//            feedParser.delegate = (id<MWFeedParserDelegate>)self;
+//            feedParser.feedParseType = ParseTypeFull;
+//            feedParser.connectionType = ConnectionTypeSynchronously;//采用同步方式发送请求
+//            [feedParser parse];
+        });
+    }];
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        completionHandler(UIBackgroundFetchResultNewData);
+        //显示未读数
+        SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+        getModel.entityName = @"RSS";
+        getModel.predicate = [NSPredicate predicateWithFormat:@"isRead=0"];
+        NSArray *allRss = [self getFetchedRecords:getModel];
+        NSInteger allRssCount = allRss.count;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = allRssCount;
+    });
 }
+
+#pragma mark - MWFeedParser Delegate
+//-(void)feedParserDidStart:(MWFeedParser *)parser {
+//    
+//}
+
+//-(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
+//    _feedInfo = info;
+//}
+//
+
+//-(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
+//    //并发执行，采用队列
+//    [[NSOperationQueue currentQueue] addOperationWithBlock:^{
+//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+//        [rssModel insertRSSFeedItem:item withFeedUrlStr:parser.url.absoluteString];
+//    }];
+//}
+
+//-(void)feedParserDidFinish:(MWFeedParser *)parser {
+//    if (_parsedItems && [_parsedItems count]) {
+//        rssModel.smRSSModelDelegate = self;
+//    }
+//}
 
 #pragma mark - push
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

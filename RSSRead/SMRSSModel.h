@@ -19,11 +19,17 @@
 @interface SMRSSModel : NSObject
 -(void)unFavRSS:(RSS *)rss;
 -(void)favRSS:(RSS *)rss;
--(void)insertRSS:(NSArray *)items withFeedInfo:(MWFeedInfo *)feedInfo;
+-(void)insertRSSFeedItem:(MWFeedItem *)item withFeedUrlStr:(NSString *)feedUrlStr;
+//-(void)insertRSSFeedItem:(MWFeedItem *)item withFeedInfo:(MWFeedInfo *)info;
+-(void)insertRSSFeedItems:(NSArray *)items ofFeedUrlStr:(NSString *)feedUrlStr;
+
 -(void)markAsRead:(RSS *)rss;
 -(void)markAllAsRead:(NSString *)url;
 -(void)deleteSubscrib:(NSString *)url;
 -(void)deleteAllRSS:(NSString *)url;
 -(void)deleteReadRSS:(NSString *)url;
+
+-(void)recountSubscribeUnRead:(NSString *)url;
+
 @property(nonatomic,assign)id<SMRSSModelDelegate>smRSSModelDelegate;
 @end

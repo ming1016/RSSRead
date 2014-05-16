@@ -22,10 +22,10 @@
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
-@property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
-@property(nonatomic,strong)NSArray *fetchedRSSArray;
-@property(nonatomic,strong)MWFeedParser *feedParser;
-@property(nonatomic,strong)NSString *fetchRSSUrl;
+@property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
+//@property(nonatomic,strong)NSArray *fetchedRSSArray;
+//@property(nonatomic,strong)MWFeedParser *feedParser;
+//@property(nonatomic,strong)NSString *fetchRSSUrl;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)NSDateFormatter *dateFormatter;
 @property(nonatomic,strong)RSS *rss;
@@ -33,9 +33,9 @@
 
 @property(nonatomic,strong)UITableView *tbView;
 @property(nonatomic,strong)NSMutableArray *allSurscribes;
-@property(nonatomic,strong)SMAppDelegate *appDelegate;
-@property(nonatomic,strong)SMRSSListViewController *rssListVC;
-@property(nonatomic,strong)SMGetFetchedRecordsModel *getModel;
+//@property(nonatomic,weak)SMAppDelegate *appDelegate;
+//@property(nonatomic,strong)SMRSSListViewController *rssListVC;
+//@property(nonatomic,strong)SMGetFetchedRecordsModel *getModel;
 
 @end
 
@@ -72,15 +72,17 @@
     [self.view addSubview:_tbView];
     
     //初始化
-    _rssListVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
+//    _rssListVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
     _parsedItems = [NSMutableArray array];
-    _getModel = [[SMGetFetchedRecordsModel alloc]init];
+//    _getModel = [[SMGetFetchedRecordsModel alloc]init];
+    
+    _allSurscribes = [NSMutableArray array];
     
     //测试Core Data
-    _appDelegate = [UIApplication sharedApplication].delegate;
-    _managedObjectContext = _appDelegate.managedObjectContext;
+//    _appDelegate = [UIApplication sharedApplication].delegate;
+    _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
-    [self loadTabelViewFromCoreData];
+//    [self loadTabelViewFromCoreData];
     
 //    //测试AFNetworking
 //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -161,22 +163,25 @@
 //        NSLog(@"Error%@",error);
 //    }];
 
+    [self getAllSubscribeSources];
     
+    [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self loadTabelViewFromCoreData];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self getAllSubscribeSources];
 }
 
--(void)loadTabelViewFromCoreData {
+-(void)getAllSubscribeSources {
     //查看所有的订阅源
-    _getModel.entityName = @"Subscribes";
-    _getModel.sortName = @"total";
-    _allSurscribes = [NSMutableArray arrayWithArray:[_appDelegate getFetchedRecords:_getModel]];
-    if (_allSurscribes && [_allSurscribes count]) {
-        
-    } else {
+    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc] init];
+    getModel.entityName = @"Subscribes";
+    getModel.sortName = @"total";
+    [_allSurscribes removeAllObjects];
+    [_allSurscribes addObjectsFromArray:[APP_DELEGATE getFetchedRecords:getModel]];
+    
+    if (![_allSurscribes count]){
         NSArray *recommends = @[
                                @{
                                    @"title": @"cnBeta.COM业界资讯",
@@ -239,23 +244,47 @@
                                    @"url":@"http://www.hexieshe.com/feed/"
                                    }
                                ];
-        NSError *error;
+        
         for (NSDictionary *aDict in recommends) {
-            //
-            Subscribes *subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:_managedObjectContext];
+            NSError *error;
+            Subscribes *subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:APP_DELEGATE.managedObjectContext];
             subscribe.title = aDict[@"title"];
             subscribe.summary = aDict[@"summary"];
             subscribe.link = aDict[@"link"];
             subscribe.url = aDict[@"url"];
             subscribe.createDate = [NSDate date];
             subscribe.total = @0;
-            [_managedObjectContext save:&error];
+            [APP_DELEGATE.managedObjectContext save:&error];
+            if(!error){
+                [_allSurscribes addObject:subscribe];
+            }else{
+                NSLog(@"save subscribe data error");
+            }
         }
     }
     [_tbView reloadData];
 //    for (Subscribes *rssSc in _allSurscribes) {
 //        NSLog(@"title:%@ link:%@ summary:%@ url:%@ count:%d",rssSc.title,rssSc.link,rssSc.summary,rssSc.url,[rssSc.total intValue]);
 //    }
+}
+
+- (void)fetchRss{
+    [_allSurscribes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        Subscribes *subscribe = (Subscribes *)obj;
+        SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
+        
+        [parserWrapper parseUrl:[NSURL URLWithString:subscribe.url] completion:^(NSArray *items) {
+            if(items && items.count){
+                SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+                rssModel.smRSSModelDelegate = self;
+                [rssModel insertRSSFeedItems:items ofFeedUrlStr:subscribe.url];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                });
+        }
+        }];
+    }];
 }
 
 -(void)seeMore {
@@ -298,10 +327,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Subscribes *aSub = _allSurscribes[indexPath.row];
-    _rssListVC.subscribeUrl = aSub.url;
-    [_rssListVC setSubscribeTitle:aSub.title];
-    _rssListVC.isNewVC = YES;
-    [self.navigationController pushViewController:_rssListVC animated:YES];
+    SMRSSListViewController * rssListVC = [SMRSSListViewController new];
+    rssListVC.subscribeUrl = aSub.url;
+    [rssListVC setSubscribeTitle:aSub.title];
+    rssListVC.isNewVC = YES;
+    [self.navigationController pushViewController:rssListVC animated:YES];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -320,76 +350,76 @@
     }
 }
 
-#pragma mark - MWFeedParser Delegate
--(void)feedParserDidStart:(MWFeedParser *)parser {
-    
-}
-
--(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
-    _feedInfo = info;
-}
-
--(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-    if (item.title) {
-        [_parsedItems addObject:item];
-    }
-}
-
--(void)feedParserDidFinish:(MWFeedParser *)parser {
-    if (_parsedItems && [_parsedItems count]) {
-        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-        rssModel.smRSSModelDelegate = self;
-        [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
-    }
-}
+//#pragma mark - MWFeedParser Delegate
+//-(void)feedParserDidStart:(MWFeedParser *)parser {
+//    
+//}
+//
+//-(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
+//    _feedInfo = info;
+//}
+//
+//-(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
+//    if (item.title) {
+//        [_parsedItems addObject:item];
+//    }
+//}
+//
+//-(void)feedParserDidFinish:(MWFeedParser *)parser {
+//    if (_parsedItems && [_parsedItems count]) {
+//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+//        rssModel.smRSSModelDelegate = self;
+//        [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
+//    }
+//}
 
 #pragma mark - moreDelegate
 -(void)addSubscribeToMainViewController:(Subscribes *)subscribe {
-    [self loadTabelViewFromCoreData];
+    [self getAllSubscribeSources];
 }
 
 #pragma mark - SMRSSModelDelegate
--(void)rssInserted {
-    [self loadTabelViewFromCoreData];
-}
+//-(void)rssInserted {
+//    [self loadTabelViewFromCoreData];
+//}
 
-#pragma mark - background mode
--(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler {
-    [self updateRSSimmedately];
-}
-
--(void)updateRSSimmedately {
-    //取
-    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
-    getModel.entityName = @"Subscribes";
-    NSArray *allSubscribes = [_appDelegate getFetchedRecords:getModel];
-    
-    //
-    NSDictionary *udd = [[NSUserDefaults standardUserDefaults]dictionaryForKey:@"userConfig"];
-    NSUInteger subListNum = 0;
-    if (udd[@"fetchSubscribeNumInBackground"]) {
-        subListNum = [udd[@"fetchSubscribeNumInBackground"]integerValue];
-        if (subListNum >= allSubscribes.count) {
-            subListNum = 0;
-        }
-    }
-    NSMutableDictionary *mudd = [NSMutableDictionary dictionaryWithDictionary:udd];
-    mudd[@"fetchSubscribeNumInBackground"] = [NSNumber numberWithInteger:subListNum + 1];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:mudd forKey:@"userConfig"];
-    [ud synchronize];
-    
-    Subscribes *subscribe = allSubscribes[subListNum];
-    _fetchRSSUrl = subscribe.url;
-    
-    //解析rss
-    NSURL *feedUrl = [NSURL URLWithString:_fetchRSSUrl];
-    _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedUrl];
-    _feedParser.delegate = self;
-    _feedParser.feedParseType = ParseTypeFull;
-    _feedParser.connectionType = ConnectionTypeAsynchronously;
-    [_feedParser parse];
-}
+//#pragma mark - background mode
+//-(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler {
+//    [self updateRSSimmedately];
+//}
+//
+//-(void)updateRSSimmedately {
+//    //取
+//    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+//    getModel.entityName = @"Subscribes";
+//    NSArray *allSubscribes = [APP_DELEGATE getFetchedRecords:getModel];
+//    
+//    //
+//    NSDictionary *udd = [[NSUserDefaults standardUserDefaults]dictionaryForKey:@"userConfig"];
+//    NSUInteger subListNum = 0;
+//    if (udd[@"fetchSubscribeNumInBackground"]) {
+//        subListNum = [udd[@"fetchSubscribeNumInBackground"]integerValue];
+//        if (subListNum >= allSubscribes.count) {
+//            subListNum = 0;
+//        }
+//    }
+//    NSMutableDictionary *mudd = [NSMutableDictionary dictionaryWithDictionary:udd];
+//    mudd[@"fetchSubscribeNumInBackground"] = [NSNumber numberWithInteger:subListNum + 1];
+//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+//    [ud setObject:mudd forKey:@"userConfig"];
+//    [ud synchronize];
+//    
+//    Subscribes *subscribe = allSubscribes[subListNum];
+////    _fetchRSSUrl = subscribe.url;
+//    
+//    //解析rss
+//    NSURL *feedUrl = [NSURL URLWithString:subscribe.url];
+//    MWFeedParser *feedParser = [[MWFeedParser alloc]initWithFeedURL:feedUrl];
+//    feedParser.delegate = self;
+//    feedParser.feedParseType = ParseTypeFull;
+//    feedParser.connectionType = ConnectionTypeAsynchronously;
+//    [feedParser parse];
+//}
 
 
 @end

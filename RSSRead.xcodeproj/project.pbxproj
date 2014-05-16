@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
+		1F29A87F192519460074AD8B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F29A87E192519460074AD8B /* SMFeedParserWrapper.m */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D284A48118E50C2F004B5D2D /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47E18E50C2F004B5D2D /* icon-58.png */; };
 		D284A48218E50C2F004B5D2D /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47F18E50C2F004B5D2D /* icon-80.png */; };
@@ -75,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		1E0D56B220E943798F3345C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F29A87D192519460074AD8B /* SMFeedParserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedParserWrapper.h; sourceTree = "<group>"; };
+		1F29A87E192519460074AD8B /* SMFeedParserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedParserWrapper.m; sourceTree = "<group>"; };
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 		D2E8FBDF18C46B5A005E8F2E = {
 			isa = PBXGroup;
 			children = (
+				1F29A87D192519460074AD8B /* SMFeedParserWrapper.h */,
+				1F29A87E192519460074AD8B /* SMFeedParserWrapper.m */,
 				D2E8FBF118C46B5A005E8F2E /* RSSRead */,
 				D2E8FC1018C46B5A005E8F2E /* RSSReadTests */,
 				D2E8FBEA18C46B5A005E8F2E /* Frameworks */,
@@ -518,6 +523,7 @@
 			files = (
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
+				1F29A87F192519460074AD8B /* SMFeedParserWrapper.m in Sources */,
 				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,
 				D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */,
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,

@@ -15,13 +15,13 @@
 #import "RSS.h"
 
 @interface SMRSSListViewController ()
-@property(nonatomic,strong)SMAppDelegate *appDelegate;
+//@property(nonatomic,strong)SMAppDelegate *appDelegate;
 @property(nonatomic,strong)NSMutableArray *rssArray;
-@property(nonatomic,strong)SMDetailViewController *detailVC;
-@property(nonatomic,strong)SMRSSModel *rssModel;
-@property(nonatomic,strong)MWFeedParser *feedParser;
-@property(nonatomic,strong)MWFeedInfo *feedInfo;
-@property(nonatomic,strong)NSMutableArray *parsedItems;
+//@property(nonatomic,strong)SMDetailViewController *detailVC;
+//@property(nonatomic,strong)SMRSSModel *rssModel;
+//@property(nonatomic,strong)MWFeedParser *feedParser;
+//@property(nonatomic,strong)MWFeedInfo *feedInfo;
+//@property(nonatomic,strong)NSMutableArray *parsedItems;
 @end
 
 @implementation SMRSSListViewController {
@@ -54,6 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _rssArray = [NSMutableArray array];
+
     if (_isFav) {
         self.title = @"收藏列表";
     } else {
@@ -62,11 +64,11 @@
         self.title = @"列表";
     }
     //初始化
-    _parsedItems = [NSMutableArray array];
+//    _parsedItems = [NSMutableArray array];
     
-    _appDelegate = [UIApplication sharedApplication].delegate;
-    _detailVC = [[SMDetailViewController alloc]initWithNibName:nil bundle:nil];
-    _detailVC.delegate = self;
+//    _appDelegate = [UIApplication sharedApplication].delegate;
+//    _detailVC = [[SMDetailViewController alloc]initWithNibName:nil bundle:nil];
+//    _detailVC.delegate = self;
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -74,47 +76,71 @@
     _refreshControl = [[UIRefreshControl alloc]init];
     [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = _refreshControl;
+        
+//    _rssModel = [[SMRSSModel alloc]init];
     
-    [self loadTableViewFromCoreData];
-    
-    _rssModel = [[SMRSSModel alloc]init];
 }
 
 
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (_isNewVC == YES) {
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-        _isNewVC = NO;
+//    if (_isNewVC == YES) {
+//        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+//        _isNewVC = NO;
         [self loadTableViewFromCoreData];
-    }
+//    }
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
+//-(void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//}
 
 -(void)loadTableViewFromCoreData {
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"RSS";
     getModel.sortName = @"date";
     if (_isFav) {
-        //
         getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
-    } else {
-        getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
     }
     
-    NSArray *fetchedRecords = [_appDelegate getFetchedRecords:getModel];
-    _rssArray = [NSMutableArray arrayWithArray:fetchedRecords];
+    getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
+    
+    
+    NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
+    [_rssArray removeAllObjects];
+    [_rssArray addObjectsFromArray:fetchedRecords];
+    
+    //首次点击进入页面时进行一次拉取数据
     if (!_isFav && _rssArray.count == 0) {
-        //
-        _feedParser = [[MWFeedParser alloc]initWithFeedURL:[NSURL URLWithString:_subscribeUrl]];
-        _feedParser.delegate = self;
-        _feedParser.feedParseType = ParseTypeFull;
-        _feedParser.connectionType = ConnectionTypeSynchronously;
-        [_feedParser parse];
+        SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
+        [parserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] completion:^(NSArray *items) {
+            if(items && items.count){
+                SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+                rssModel.smRSSModelDelegate = self;
+                for(MWFeedItem *item in items){
+                    [rssModel insertRSSFeedItem:item withFeedUrlStr:_subscribeUrl];
+                    
+                    RSS *rss = [[RSS alloc] init];
+                    rss.author = item.author ? item.author : @"未知作者";
+                    rss.content = item.content ? item.content : @"无内容";
+                    rss.createDate = [NSDate date];
+                    rss.date = item.date;
+                    rss.identifier = item.identifier;
+                    rss.isFav = @0;
+                    rss.isRead = @0;
+                    rss.link = item.link ? item.link : @"无连接";
+                    rss.subscribeUrl = _subscribeUrl;
+                    rss.summary = item.summary ? item.summary : @"无描述";
+                    rss.title = item.title ? item.title : @"无标题";
+                    rss.updated = item.updated;
+                    
+                    [_rssArray addObject:rss];
+                }
+                
+                [self.tableView reloadData];
+            }
+        }];
     }
     
     [self.tableView reloadData];
@@ -123,16 +149,23 @@
 -(void)refreshView:(UIRefreshControl *)refresh {
 //    refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"更新中..."];
     [_refreshControl beginRefreshing];
-    _feedParser = [[MWFeedParser alloc]initWithFeedURL:[NSURL URLWithString:_subscribeUrl]];
-    _feedParser.delegate = self;
-    _feedParser.feedParseType = ParseTypeFull;
-    _feedParser.connectionType = ConnectionTypeAsynchronously;
-    [_feedParser parse];
+    SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
     
+    __weak SMRSSListViewController *weakSelf = self;
+    [parserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] completion:^(NSArray *items) {
+        if(items && items.count){
+            SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+            rssModel.smRSSModelDelegate = self;
+            [rssModel insertRSSFeedItems:items ofFeedUrlStr:_subscribeUrl];
+        }
+        [weakSelf.refreshControl endRefreshing];
+        [weakSelf loadTableViewFromCoreData];
+    }];
 }
 
 -(void)clearAllRSS {
-    [_rssModel markAllAsRead:_subscribeUrl];
+    SMRSSModel *model = [[SMRSSModel alloc] init];
+    [model markAllAsRead:_subscribeUrl];
     [self doBack];
 }
 
@@ -142,34 +175,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - MWFeedParser Delegate
--(void)feedParserDidStart:(MWFeedParser *)parser {
-    
-}
+//#pragma mark - MWFeedParser Delegate
+//-(void)feedParserDidStart:(MWFeedParser *)parser {
+//    
+//}
+//
+//-(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
+//    _feedInfo = info;
+//}
+//
+//-(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
+//    if (item.title) {
+//        [_parsedItems addObject:item];
+//    }
+//}
+//
+//-(void)feedParserDidFinish:(MWFeedParser *)parser {
+//    if (_parsedItems && [_parsedItems count]) {
+//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+//        rssModel.smRSSModelDelegate = self;
+//        [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
+//    }
+//    [_refreshControl endRefreshing];
+//}
 
--(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
-    _feedInfo = info;
-}
-
--(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-    if (item.title) {
-        [_parsedItems addObject:item];
-    }
-}
-
--(void)feedParserDidFinish:(MWFeedParser *)parser {
-    if (_parsedItems && [_parsedItems count]) {
-        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-        rssModel.smRSSModelDelegate = self;
-        [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
-    }
-    [_refreshControl endRefreshing];
-}
-
-#pragma mark - rssModelDelegate
--(void)rssInserted {
-    [self loadTableViewFromCoreData];
-}
+//#pragma mark - rssModelDelegate
+//-(void)rssInserted {
+//    [self loadTableViewFromCoreData];
+//}
 
 
 #pragma mark - SMDetailDelegate
@@ -208,22 +241,24 @@
         cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
     }
     
-    if (_rssArray.count > 0) {
+//    if (_rssArray.count > 0) {
         [cell setSubscribeTitle:_subscribeTitle];
         [cell setRss:_rssArray[indexPath.row]];
         
-    }
+//    }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RSS *rss = [_rssArray objectAtIndex:indexPath.row];
-    [_detailVC setRss:rss];
     
-    [self.navigationController pushViewController:_detailVC animated:YES];
+    SMDetailViewController *detailVC = [SMDetailViewController new];
+    [detailVC setRss:rss];
+    [self.navigationController pushViewController:detailVC animated:YES];
     
-    [_rssModel markAsRead:rss];
+    SMRSSModel *rssModel = [SMRSSModel new];
+    [rssModel markAsRead:rss];
     [self loadTableViewFromCoreData];
 }
 

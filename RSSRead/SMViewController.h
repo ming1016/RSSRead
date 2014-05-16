@@ -11,6 +11,5 @@
 #import "SMRSSModel.h"
 
 @interface SMViewController : UIViewController<SMMoreViewControllerDelegate,UITableViewDelegate,UITableViewDataSource,MWFeedParserDelegate,SMRSSModelDelegate>
-
--(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler;
+//-(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler;
 @end
