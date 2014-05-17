@@ -32,14 +32,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)loadView {
-    [super loadView];
-    UISwipeGestureRecognizer *recognizer;
-    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
-    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [[self view]addGestureRecognizer:recognizer];
-    recognizer = nil;
-}
+//-(void)loadView {
+//    [super loadView];
+//    UISwipeGestureRecognizer *recognizer;
+//    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
+//    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+//    [[self view]addGestureRecognizer:recognizer];
+//    recognizer = nil;
+//}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
