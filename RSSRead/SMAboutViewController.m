@@ -9,7 +9,7 @@
 #import "SMAboutViewController.h"
 
 @interface SMAboutViewController ()
-
+@property(nonatomic,strong)UIWebView *webView;
 @end
 
 @implementation SMAboutViewController
@@ -23,10 +23,32 @@
     return self;
 }
 
+-(void)loadView {
+    [super loadView];
+    
+    CGRect rect = self.view.bounds;
+    rect.size.height = rect.size.height - 64;
+    rect.size.width = rect.size.width;
+    _webView = [[UIWebView alloc]initWithFrame:rect];
+    [_webView setBackgroundColor:[UIColor whiteColor]];
+    _webView.scalesPageToFit = NO;
+    _webView.scrollView.directionalLockEnabled = YES;
+    _webView.scrollView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:_webView];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSString *filePath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"about.html"];
+    NSError *err = nil;
+    NSString *htmlStr = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+    [_webView loadHTMLString:htmlStr baseURL:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"关于";
 }
 
 - (void)didReceiveMemoryWarning

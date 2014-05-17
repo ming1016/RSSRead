@@ -346,7 +346,6 @@
         [rssModel deleteSubscrib:aSubscribe.url];
         [_allSurscribes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
     }
 }
 

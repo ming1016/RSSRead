@@ -19,7 +19,6 @@
 #define QM_TABLEVIEW_SHOWS_VERTICAL_SCROLL_INDICATOR YES
 #define QM_TABLEVIEW_ROWHEIGHT 56
 
-//#define COLOR_BACKGROUND @"#eeede7"
 #define COLOR_BACKGROUND @"#FFFFFF"
 
 #define LIST_BIG_FONT 15
@@ -30,7 +29,7 @@
 
 #define APP_DELEGATE ((SMAppDelegate *)([[UIApplication sharedApplication] delegate]))
 
-#define SERVER_URL @"http://starming.sinaapp.com/index.php?v=dateapi&m="
+#define SERVER_URL @""
 
 @interface SMUIKitHelper : NSObject
 //label

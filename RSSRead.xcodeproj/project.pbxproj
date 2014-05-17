@@ -24,6 +24,7 @@
 		D284A49618E511EC004B5D2D /* lanch-1536x2048.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A49018E511EC004B5D2D /* lanch-1536x2048.png */; };
 		D284A49718E511EC004B5D2D /* lanch-2048x1536.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A49118E511EC004B5D2D /* lanch-2048x1536.png */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
+		D2A2A6B819248C81009BDB38 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D2A2A6B719248C81009BDB38 /* about.html */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
 		D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62418DFDC4A00C3080C /* RSS.m */; };
@@ -96,6 +97,7 @@
 		D284A49118E511EC004B5D2D /* lanch-2048x1536.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-2048x1536.png"; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
+		D2A2A6B719248C81009BDB38 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCell.h; sourceTree = "<group>"; };
 		D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCell.m; sourceTree = "<group>"; };
 		D2DDA05D18DC25E1005394E4 /* SMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailViewController.h; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				D2DDA05D18DC25E1005394E4 /* SMDetailViewController.h */,
 				D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */,
 				D2FB786818E3C4BB007BD413 /* js.html */,
+				D2A2A6B719248C81009BDB38 /* about.html */,
 			);
 			name = RSSList;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
 				D284A49518E511EC004B5D2D /* lanch-1024x768.png in Resources */,
 				D284A48918E50D33004B5D2D /* icon-40.png in Resources */,
+				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D284A48118E50C2F004B5D2D /* icon-58.png in Resources */,
 				D284A49418E511EC004B5D2D /* lanch-768x1024.png in Resources */,
 			);
