@@ -96,68 +96,10 @@
     if (_allSurscribes && [_allSurscribes count]) {
         
     } else {
-        NSArray *recommends = @[
-                               @{
-                                   @"title": @"cnBeta.COM业界资讯",
-                                   @"link":@"http://www.cnbeta.com",
-                                   @"summary":@"cnBeta.COM - 简明IT新闻,网友媒体与言论平台",
-                                   @"url":@"http://cnbeta.feedsportal.com/c/34306/f/624776/index.rss",
-                                   },
-                               @{
-                                   @"title": @"dApps开发者",
-                                   @"link":@"http://www.dapps.net",
-                                   @"summary":@"为手机应用APP开发、手机游戏开发,移动互联网、云计算、HTML5等开发者提供专业的资讯！",
-                                   @"url":@"http://www.dapps.net/feed",
-                                   },
-                               @{
-                                   @"title": @"Engadget 中国版",
-                                   @"link":@"http://cn.engadget.com",
-                                   @"summary":@"Engadget 中国版",
-                                   @"url":@"http://cn.engadget.com/rss.xml",
-                                   },
-                               @{
-                                   @"title": @"果壳网",
-                                   @"link":@"http://guokr.com",
-                                   @"summary":@"科技有意思",
-                                   @"url":@"http://www.guokr.com/rss/",
-                                   },
-                               @{
-                                   @"title": @"Solidot",
-                                   @"link":@"http://www.solidot.org",
-                                   @"summary":@"奇客的资讯，重要的东西",
-                                   @"url":@"http://feeds2.feedburner.com/solidot",
-                                   },
-                               @{
-                                   @"title": @"V2EX",
-                                   @"link":@"http://www.v2ex.com/",
-                                   @"summary":@"创意工作者们的社区",
-                                   @"url":@"http://v2ex.com/index.xml",
-                                   },
-                               @{
-                                   @"title": @"虎嗅网",
-                                   @"link":@"http://www.huxiu.com",
-                                   @"summary":@"",
-                                   @"url":@"http://fulltextrssfeed.com/www.huxiu.com/rss/0.xml",
-                                   },
-                               @{
-                                   @"title":@"爱范儿 · Beats of Bits",
-                                   @"link":@"http://www.ifanr.com",
-                                   @"summary":@"发现创新价值的科技媒体",
-                                   @"url":@"http://fulltextrssfeed.com/www.ifanr.com",
-                                   },
-                               @{
-                                   @"title": @"Abduzeedo Design Inspiration",
-                                   @"link":@"http://abduzeedo.com",
-                                   @"summary":@"Design Inspiration & Tutorials",
-                                   @"url":@"http://abduzeedo.com/rss.xml",
-                                   },
-                               @{
-                                   @"title":@"和邪社",
-                                   @"link":@"http://www.hexieshe.com/",
-                                   @"summary":@"你的ACG生活 文不在长.内涵则明 图不在色.意淫则灵",
-                                   @"url":@"http://www.hexieshe.com/feed/"
-                                   }
-                               ];
+        //从plist文件中读取推荐源
+        NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"RecommendFeedList" ofType:@"plist"];
+        NSArray *recommends = [[NSArray alloc]initWithContentsOfFile:plistPath];
+        
         NSError *error;
         for (NSDictionary *aDict in recommends) {
             //

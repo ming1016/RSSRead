@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
+		BB30B3431927679600C1CC7F /* RecommendFeedList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB30B3421927679600C1CC7F /* RecommendFeedList.plist */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D284A48118E50C2F004B5D2D /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47E18E50C2F004B5D2D /* icon-58.png */; };
 		D284A48218E50C2F004B5D2D /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47F18E50C2F004B5D2D /* icon-80.png */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		1E0D56B220E943798F3345C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BB30B3421927679600C1CC7F /* RecommendFeedList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RecommendFeedList.plist; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D284A47E18E50C2F004B5D2D /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58.png"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				D2E8FBF718C46B5A005E8F2E /* main.m */,
 				D2E8FBF918C46B5A005E8F2E /* RSSRead-Prefix.pch */,
 				D2EFE4BC191782CB009F4266 /* PushConfig.plist */,
+				BB30B3421927679600C1CC7F /* RecommendFeedList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			files = (
 				D284A48318E50C2F004B5D2D /* icon-120.png in Resources */,
 				D2F75F6618D97EC600ED44A3 /* news.png in Resources */,
+				BB30B3431927679600C1CC7F /* RecommendFeedList.plist in Resources */,
 				D284A49718E511EC004B5D2D /* lanch-2048x1536.png in Resources */,
 				D284A48818E50D33004B5D2D /* icon-29.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,

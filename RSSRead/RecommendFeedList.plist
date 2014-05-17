@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>cnBeta.COM业界资讯</string>
+		<key>link</key>
+		<string>http://www.cnbeta.com</string>
+		<key>summary</key>
+		<string>cnBeta.COM - 简明IT新闻,网友媒体与言论平台</string>
+		<key>url</key>
+		<string>http://cnbeta.feedsportal.com/c/34306/f/624776/index.rss</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>dApps开发者</string>
+		<key>link</key>
+		<string>http://www.dapps.net</string>
+		<key>summary</key>
+		<string>为手机应用APP开发、手机游戏开发,移动互联网、云计算、HTML5等开发者提供专业的资讯！</string>
+		<key>url</key>
+		<string>http://www.dapps.net/feed</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Engadget 中国版</string>
+		<key>link</key>
+		<string>http://cn.engadget.com</string>
+		<key>summary</key>
+		<string>Engadget 中国版</string>
+		<key>url</key>
+		<string>http://cn.engadget.com/rss.xml</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>果壳网</string>
+		<key>link</key>
+		<string>http://guokr.com</string>
+		<key>summary</key>
+		<string>科技有意思</string>
+		<key>url</key>
+		<string>http://www.guokr.com/rss/</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Solidot</string>
+		<key>link</key>
+		<string>http://www.solidot.org</string>
+		<key>summary</key>
+		<string>奇客的资讯，重要的东西</string>
+		<key>url</key>
+		<string>http://feeds2.feedburner.com/solidot</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>V2EX</string>
+		<key>link</key>
+		<string>http://www.v2ex.com/</string>
+		<key>summary</key>
+		<string>创意工作者们的社区</string>
+		<key>url</key>
+		<string>http://v2ex.com/index.xml</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>虎嗅网</string>
+		<key>link</key>
+		<string>http://www.huxiu.com</string>
+		<key>summary</key>
+		<string>虎嗅网</string>
+		<key>url</key>
+		<string>http://fulltextrssfeed.com/www.huxiu.com/rss/0.xml</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>爱范儿 · Beats of Bits</string>
+		<key>link</key>
+		<string>http://www.ifanr.com</string>
+		<key>summary</key>
+		<string>发现创新价值的科技媒体</string>
+		<key>url</key>
+		<string>http://fulltextrssfeed.com/www.ifanr.com</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Abduzeedo Design Inspiration</string>
+		<key>link</key>
+		<string>http://abduzeedo.com</string>
+		<key>summary</key>
+		<string>Design Inspiration &amp; Tutorials</string>
+		<key>url</key>
+		<string>http://abduzeedo.com/rss.xml</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>和邪社</string>
+		<key>link</key>
+		<string>http://www.hexieshe.com/</string>
+		<key>summary</key>
+		<string>你的ACG生活 文不在长.内涵则明 图不在色.意淫则灵</string>
+		<key>url</key>
+		<string>http://www.hexieshe.com/feed/</string>
+	</dict>
+</array>
+</plist>
