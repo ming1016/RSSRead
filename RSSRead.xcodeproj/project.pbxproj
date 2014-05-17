@@ -27,6 +27,7 @@
 		D2A2A6B819248C81009BDB38 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D2A2A6B719248C81009BDB38 /* about.html */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
+		D2E078BD19278D9000ABF6EB /* RecommendFeedList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */; };
 		D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62418DFDC4A00C3080C /* RSS.m */; };
 		D2E5D62818DFDC4A00C3080C /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62718DFDC4A00C3080C /* Subscribes.m */; };
 		D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62A18E01BF300C3080C /* SMRSSModel.m */; };
@@ -102,6 +103,7 @@
 		D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCell.m; sourceTree = "<group>"; };
 		D2DDA05D18DC25E1005394E4 /* SMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailViewController.h; sourceTree = "<group>"; };
 		D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailViewController.m; sourceTree = "<group>"; };
+		D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RecommendFeedList.plist; sourceTree = "<group>"; };
 		D2E5D62318DFDC4A00C3080C /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
 		D2E5D62418DFDC4A00C3080C /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
 		D2E5D62618DFDC4A00C3080C /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				D2E8FBF718C46B5A005E8F2E /* main.m */,
 				D2E8FBF918C46B5A005E8F2E /* RSSRead-Prefix.pch */,
 				D2EFE4BC191782CB009F4266 /* PushConfig.plist */,
+				D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D284A48318E50C2F004B5D2D /* icon-120.png in Resources */,
+				D2E078BD19278D9000ABF6EB /* RecommendFeedList.plist in Resources */,
 				D2F75F6618D97EC600ED44A3 /* news.png in Resources */,
 				D284A49718E511EC004B5D2D /* lanch-2048x1536.png in Resources */,
 				D284A48818E50D33004B5D2D /* icon-29.png in Resources */,
