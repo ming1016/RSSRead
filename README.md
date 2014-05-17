@@ -22,6 +22,8 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * 文章页面排版优化
 * 关联Twitter内容和Weibo内容
 * feedly等rss服务的接口处理
+* 可设置夜间模式
+* UI设计优化
 
 ##参与进来
 想参与进来吗？太好了，即使你不是开发者也有你能够贡献的，你可以做
@@ -38,7 +40,8 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * 具有iOS开发经验即可，或者加入qq开发群参与讨论，群号：191430246
 
 ##联系我
-* twitter：<https://twitter.com/ming1016>  
+* twitter：<https://twitter.com/ming1016>
+* 微博：<http://weibo.com/allstarming>
 * qq：36270359  
 * email：ming1016@gmail.com  
 

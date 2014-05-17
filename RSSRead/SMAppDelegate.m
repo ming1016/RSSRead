@@ -30,17 +30,12 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber =0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//    [[UINavigationBar appearance] setBarTintColor:[SMUIKitHelper colorWithHexString:@"#333333"]];
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    
     [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
-//    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0]}];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backgroundNavbar"] forBarMetrics:UIBarMetricsDefault];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     self.window.rootViewController = rootViewNav;
-//    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     //通知
@@ -82,8 +77,6 @@
 }
 
 // Core Data
-
-
 -(NSArray *)getFetchedRecords:(SMGetFetchedRecordsModel *)getModel {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:getModel.entityName inManagedObjectContext:_managedObjectContext];
@@ -131,7 +124,6 @@
     return _managedObjectContext;
 }
 
-//2
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
@@ -140,7 +132,6 @@
     return _managedObjectModel;
 }
 
-//3
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
@@ -171,34 +162,12 @@
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     //你有30秒的时间来在这里从网络获取数据
-    
-    
-//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//    SMViewController *smVC = (SMViewController *)navigationController.topViewController;
-//    [smVC fetchWithCompletionHandler:completionHandler];
 
     //取
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"Subscribes";
     NSArray *allSubscribes = [APP_DELEGATE getFetchedRecords:getModel];
     
-    //
-//    NSDictionary *udd = [[NSUserDefaults standardUserDefaults]dictionaryForKey:@"userConfig"];
-//    NSUInteger subListNum = 0;
-//    if (udd[@"fetchSubscribeNumInBackground"]) {
-//        subListNum = [udd[@"fetchSubscribeNumInBackground"]integerValue];
-//        if (subListNum >= allSubscribes.count) {
-//            subListNum = 0;
-//        }
-//    }
-//    NSMutableDictionary *mudd = [NSMutableDictionary dictionaryWithDictionary:udd];
-//    mudd[@"fetchSubscribeNumInBackground"] = [NSNumber numberWithInteger:subListNum + 1];
-//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//    [ud setObject:mudd forKey:@"userConfig"];
-//    [ud synchronize];
-//    
-//    Subscribes *subscribe = allSubscribes[subListNum];
-    //    _fetchRSSUrl = subscribe.url;
     
     dispatch_group_t group = dispatch_group_create();
     
@@ -236,29 +205,6 @@
     });
 }
 
-#pragma mark - MWFeedParser Delegate
-//-(void)feedParserDidStart:(MWFeedParser *)parser {
-//    
-//}
-
-//-(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
-//    _feedInfo = info;
-//}
-//
-
-//-(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-//    //并发执行，采用队列
-//    [[NSOperationQueue currentQueue] addOperationWithBlock:^{
-//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-//        [rssModel insertRSSFeedItem:item withFeedUrlStr:parser.url.absoluteString];
-//    }];
-//}
-
-//-(void)feedParserDidFinish:(MWFeedParser *)parser {
-//    if (_parsedItems && [_parsedItems count]) {
-//        rssModel.smRSSModelDelegate = self;
-//    }
-//}
 
 #pragma mark - push
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

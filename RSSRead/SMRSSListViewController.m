@@ -15,13 +15,7 @@
 #import "RSS.h"
 
 @interface SMRSSListViewController ()
-//@property(nonatomic,strong)SMAppDelegate *appDelegate;
 @property(nonatomic,strong)NSMutableArray *rssArray;
-//@property(nonatomic,strong)SMDetailViewController *detailVC;
-//@property(nonatomic,strong)SMRSSModel *rssModel;
-//@property(nonatomic,strong)MWFeedParser *feedParser;
-//@property(nonatomic,strong)MWFeedInfo *feedInfo;
-//@property(nonatomic,strong)NSMutableArray *parsedItems;
 @end
 
 @implementation SMRSSListViewController {
@@ -31,15 +25,6 @@
 -(void)doBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-//-(void)loadView {
-//    [super loadView];
-//    UISwipeGestureRecognizer *recognizer;
-//    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
-//    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-//    [[self view]addGestureRecognizer:recognizer];
-//    recognizer = nil;
-//}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -64,11 +49,6 @@
         self.title = @"列表";
     }
     //初始化
-//    _parsedItems = [NSMutableArray array];
-    
-//    _appDelegate = [UIApplication sharedApplication].delegate;
-//    _detailVC = [[SMDetailViewController alloc]initWithNibName:nil bundle:nil];
-//    _detailVC.delegate = self;
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -76,8 +56,6 @@
     _refreshControl = [[UIRefreshControl alloc]init];
     [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = _refreshControl;
-        
-//    _rssModel = [[SMRSSModel alloc]init];
     
 }
 
@@ -85,16 +63,9 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    if (_isNewVC == YES) {
-//        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-//        _isNewVC = NO;
-        [self loadTableViewFromCoreData];
-//    }
+    [self loadTableViewFromCoreData];
 }
 
-//-(void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//}
 
 -(void)loadTableViewFromCoreData {
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
@@ -147,7 +118,6 @@
 }
 
 -(void)refreshView:(UIRefreshControl *)refresh {
-//    refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"更新中..."];
     [_refreshControl beginRefreshing];
     SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
     
@@ -174,36 +144,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//#pragma mark - MWFeedParser Delegate
-//-(void)feedParserDidStart:(MWFeedParser *)parser {
-//    
-//}
-//
-//-(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
-//    _feedInfo = info;
-//}
-//
-//-(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-//    if (item.title) {
-//        [_parsedItems addObject:item];
-//    }
-//}
-//
-//-(void)feedParserDidFinish:(MWFeedParser *)parser {
-//    if (_parsedItems && [_parsedItems count]) {
-//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-//        rssModel.smRSSModelDelegate = self;
-//        [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
-//    }
-//    [_refreshControl endRefreshing];
-//}
-
-//#pragma mark - rssModelDelegate
-//-(void)rssInserted {
-//    [self loadTableViewFromCoreData];
-//}
-
 
 #pragma mark - SMDetailDelegate
 -(void)unFav {

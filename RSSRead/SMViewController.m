@@ -23,9 +23,6 @@
 @interface SMViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
-//@property(nonatomic,strong)NSArray *fetchedRSSArray;
-//@property(nonatomic,strong)MWFeedParser *feedParser;
-//@property(nonatomic,strong)NSString *fetchRSSUrl;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)NSDateFormatter *dateFormatter;
 @property(nonatomic,strong)RSS *rss;
@@ -33,9 +30,7 @@
 
 @property(nonatomic,strong)UITableView *tbView;
 @property(nonatomic,strong)NSMutableArray *allSurscribes;
-//@property(nonatomic,weak)SMAppDelegate *appDelegate;
-//@property(nonatomic,strong)SMRSSListViewController *rssListVC;
-//@property(nonatomic,strong)SMGetFetchedRecordsModel *getModel;
+
 
 @end
 
@@ -72,96 +67,14 @@
     [self.view addSubview:_tbView];
     
     //初始化
-//    _rssListVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
     _parsedItems = [NSMutableArray array];
-//    _getModel = [[SMGetFetchedRecordsModel alloc]init];
-    
     _allSurscribes = [NSMutableArray array];
     
     //测试Core Data
-//    _appDelegate = [UIApplication sharedApplication].delegate;
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
-//    [self loadTabelViewFromCoreData];
     
-//    //测试AFNetworking
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-//
-//    //激活
-//    NSDictionary *par = @{
-//                          @"mac": @"kd3.32.3",
-//                          @"imei": @"dskafdksa",
-//                          @"bluetooth_addr":@"kdkd2.2.22",
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@active",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error %@",error);
-//    }];
-    
-//    NSString *token = @"233232daddasf";
-    //修改资料
 
-//    NSDictionary *par = @{
-//                          @"name": @"小灰灰",
-//                          @"gender":@"1",
-//                          @"age":@"33",
-//                          @"height":@"175",
-//                          @"weight":@"120",
-//                          @"job":@"猎人",
-//                          @"description":@"来自北方的狼",
-//                          @"token":token
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@profile",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-    
-    //读取主播列表
-//    NSDictionary *par = @{
-//                          @"gender": @"1",
-//                          @"page_index":@"1",
-//                          @"page_size":@"20",
-//                          @"sort_by":@"1"
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@getpresenter",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-    
-    //发送留言
-//    NSDictionary *par = @{
-//                          @"uid": @"11",
-//                          @"content":@"这个是消息",
-//                          @"token":token
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@sendmessage",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
-    
-    //列出留言
-//    NSDictionary *par = @{
-//                          @"uid": @"11",
-//                          @"page_size":@"20",
-//                          @"page_index":@"1",
-//                          @"token":token
-//                          };
-//    NSString *urlString = [NSString stringWithFormat:@"%@getmessagewithpresenter",SERVER_URL];
-//    [manager POST:urlString parameters:par success:^(AFHTTPRequestOperation *operation,id responseObject){
-//        
-//        NSLog(@"JSON:%@",responseObject);
-//    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//        NSLog(@"Error%@",error);
-//    }];
 
     [self getAllSubscribeSources];
     
@@ -290,76 +203,10 @@
     }
 }
 
-//#pragma mark - MWFeedParser Delegate
-//-(void)feedParserDidStart:(MWFeedParser *)parser {
-//    
-//}
-//
-//-(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
-//    _feedInfo = info;
-//}
-//
-//-(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
-//    if (item.title) {
-//        [_parsedItems addObject:item];
-//    }
-//}
-//
-//-(void)feedParserDidFinish:(MWFeedParser *)parser {
-//    if (_parsedItems && [_parsedItems count]) {
-//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-//        rssModel.smRSSModelDelegate = self;
-//        [rssModel insertRSS:_parsedItems withFeedInfo:_feedInfo];
-//    }
-//}
-
 #pragma mark - moreDelegate
 -(void)addSubscribeToMainViewController:(Subscribes *)subscribe {
     [self getAllSubscribeSources];
 }
-
-#pragma mark - SMRSSModelDelegate
-//-(void)rssInserted {
-//    [self loadTabelViewFromCoreData];
-//}
-
-//#pragma mark - background mode
-//-(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler {
-//    [self updateRSSimmedately];
-//}
-//
-//-(void)updateRSSimmedately {
-//    //取
-//    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
-//    getModel.entityName = @"Subscribes";
-//    NSArray *allSubscribes = [APP_DELEGATE getFetchedRecords:getModel];
-//    
-//    //
-//    NSDictionary *udd = [[NSUserDefaults standardUserDefaults]dictionaryForKey:@"userConfig"];
-//    NSUInteger subListNum = 0;
-//    if (udd[@"fetchSubscribeNumInBackground"]) {
-//        subListNum = [udd[@"fetchSubscribeNumInBackground"]integerValue];
-//        if (subListNum >= allSubscribes.count) {
-//            subListNum = 0;
-//        }
-//    }
-//    NSMutableDictionary *mudd = [NSMutableDictionary dictionaryWithDictionary:udd];
-//    mudd[@"fetchSubscribeNumInBackground"] = [NSNumber numberWithInteger:subListNum + 1];
-//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//    [ud setObject:mudd forKey:@"userConfig"];
-//    [ud synchronize];
-//    
-//    Subscribes *subscribe = allSubscribes[subListNum];
-////    _fetchRSSUrl = subscribe.url;
-//    
-//    //解析rss
-//    NSURL *feedUrl = [NSURL URLWithString:subscribe.url];
-//    MWFeedParser *feedParser = [[MWFeedParser alloc]initWithFeedURL:feedUrl];
-//    feedParser.delegate = self;
-//    feedParser.feedParseType = ParseTypeFull;
-//    feedParser.connectionType = ConnectionTypeAsynchronously;
-//    [feedParser parse];
-//}
 
 
 @end
