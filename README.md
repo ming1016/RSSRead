@@ -14,6 +14,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 ##主要使用的技术
 * Feed parser use [MWFeedParser](https://github.com/mwaterfall/MWFeedParser)
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
 * Local data use CoreData
 
 ##TODO
