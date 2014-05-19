@@ -20,6 +20,7 @@
 -(void)unFavRSS:(RSS *)rss;
 -(void)favRSS:(RSS *)rss;
 -(void)insertRSSFeedItem:(MWFeedItem *)item withFeedUrlStr:(NSString *)feedUrlStr;
+-(RSS *)insertRSSWithFeedItem:(MWFeedItem *)item withFeedUrlStr:(NSString *)feedUrlStr;
 //-(void)insertRSSFeedItem:(MWFeedItem *)item withFeedInfo:(MWFeedInfo *)info;
 -(void)insertRSSFeedItems:(NSArray *)items ofFeedUrlStr:(NSString *)feedUrlStr;
 

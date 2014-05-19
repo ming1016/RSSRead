@@ -20,6 +20,7 @@
 
 @implementation SMRSSListViewController {
     UIRefreshControl *_refreshControl;
+    UIActivityIndicatorView *_indicator;
 }
 
 -(void)doBack {
@@ -59,10 +60,34 @@
 }
 
 
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadTableViewFromCoreData];
+    
+    dispatch_queue_t fetchQueue = dispatch_queue_create("Artical Fetch Queue", NULL);
+    dispatch_async(fetchQueue, ^{
+        
+        [self loadTableViewFromCoreData];
+        
+    });
+}
+
+- (void)fetchDataFromDB
+{
+    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+    getModel.entityName = @"RSS";
+    getModel.sortName = @"date";
+    if (_isFav) {
+        getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
+    }
+    
+    getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
+    
+    
+    NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
+    [_rssArray removeAllObjects];
+    [_rssArray addObjectsFromArray:fetchedRecords];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -80,6 +105,7 @@
     [_rssArray removeAllObjects];
     [_rssArray addObjectsFromArray:fetchedRecords];
     
+    
     //首次点击进入页面时进行一次拉取数据
     if (!_isFav && _rssArray.count == 0) {
         SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
@@ -88,23 +114,12 @@
                 SMRSSModel *rssModel = [[SMRSSModel alloc]init];
                 rssModel.smRSSModelDelegate = self;
                 for(MWFeedItem *item in items){
-                    [rssModel insertRSSFeedItem:item withFeedUrlStr:_subscribeUrl];
+                    RSS *rss = [rssModel insertRSSWithFeedItem:item withFeedUrlStr:_subscribeUrl];
                     
-                    RSS *rss = [[RSS alloc] init];
-                    rss.author = item.author ? item.author : @"未知作者";
-                    rss.content = item.content ? item.content : @"无内容";
-                    rss.createDate = [NSDate date];
-                    rss.date = item.date;
-                    rss.identifier = item.identifier;
-                    rss.isFav = @0;
-                    rss.isRead = @0;
-                    rss.link = item.link ? item.link : @"无连接";
-                    rss.subscribeUrl = _subscribeUrl;
-                    rss.summary = item.summary ? item.summary : @"无描述";
-                    rss.title = item.title ? item.title : @"无标题";
-                    rss.updated = item.updated;
+                    if (rss) {
+                        [_rssArray addObject:rss];
+                    }
                     
-                    [_rssArray addObject:rss];
                 }
                 
                 [self.tableView reloadData];
