@@ -161,40 +161,37 @@
 #pragma mark - background mode
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    //你有30秒的时间来在这里从网络获取数据
+    //你有30秒的时间在这里从网络获取数据，完事后需要尽快调用completionHandler
 
     //取
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"Subscribes";
     NSArray *allSubscribes = [APP_DELEGATE getFetchedRecords:getModel];
     
-    
     dispatch_group_t group = dispatch_group_create();
     
     [allSubscribes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
         dispatch_group_enter(group);
-        dispatch_async([SMUIKitHelper getGlobalDispatchQueue], ^{
-            //解析rss
-            NSURL *feedUrl = [NSURL URLWithString:((Subscribes *)obj).url];
+        
+        //解析rss
+        NSURL *feedUrl = [NSURL URLWithString:((Subscribes *)obj).url];
+        
+        SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
+        parserWrapper.timeoutInterval = 20.0;
+        [parserWrapper parseUrl:feedUrl completion:^(NSArray *items) {
+            SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+            [rssModel insertRSSFeedItems:items ofFeedUrlStr:feedUrl.absoluteString];
             
-            SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
-            parserWrapper.timeoutInterval = 20.0;
-            [parserWrapper parseUrl:feedUrl completion:^(NSArray *items) {
-                SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-                [rssModel insertRSSFeedItems:items ofFeedUrlStr:feedUrl.absoluteString];
-                dispatch_group_leave(group);
-            }];
+            dispatch_group_leave(group);
             
-//            MWFeedParser *feedParser = [[MWFeedParser alloc]initWithFeedURL:feedUrl];
-//            feedParser.delegate = (id<MWFeedParserDelegate>)self;
-//            feedParser.feedParseType = ParseTypeFull;
-//            feedParser.connectionType = ConnectionTypeSynchronously;//采用同步方式发送请求
-//            [feedParser parse];
-        });
+        }];
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
         completionHandler(UIBackgroundFetchResultNewData);
+        
         //显示未读数
         SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
         getModel.entityName = @"RSS";

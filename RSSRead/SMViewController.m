@@ -124,23 +124,33 @@
 }
 
 - (void)fetchRss{
+    
+    dispatch_group_t group = dispatch_group_create();
+    
     [_allSurscribes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Subscribes *subscribe = (Subscribes *)obj;
         SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
+      
+        dispatch_group_enter(group);
         
         [parserWrapper parseUrl:[NSURL URLWithString:subscribe.url] completion:^(NSArray *items) {
             if(items && items.count){
                 SMRSSModel *rssModel = [[SMRSSModel alloc]init];
                 rssModel.smRSSModelDelegate = self;
                 [rssModel insertRSSFeedItems:items ofFeedUrlStr:subscribe.url];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-                });
-                [_hud hide:YES];
-        }
+                [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            
+            dispatch_group_leave(group);
+            
         }];
     }];
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [_hud hide:YES];
+    });
+    
+//    dispatch_release(group);//not needed in ARC
 }
 
 -(void)seeMore {

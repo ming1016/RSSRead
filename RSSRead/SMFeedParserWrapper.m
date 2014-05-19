@@ -26,7 +26,7 @@
 - (instancetype)init{
     if(self = [super init]){
         _feedItemArr = [NSMutableArray new];
-        _timeoutInterval = .0;
+        _timeoutInterval = 10.0;//默认超时时间10秒
         _isTimeout = NO;
     }
     return self;
@@ -56,13 +56,14 @@
         dispatch_resume(_timer);
     }
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //TODO：采用线程池或者并行队列
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         MWFeedParser *feedParser = [[MWFeedParser alloc]initWithFeedURL:url];
         feedParser.delegate = self;
         feedParser.feedParseType = ParseTypeFull;
         feedParser.connectionType = ConnectionTypeSynchronously;//采用同步方式发送请求
         [feedParser parse];
-//    });
+    });
 }
 
 #pragma mark - MWFeedParser Delegate
@@ -77,7 +78,9 @@
 - (void)parserTimeout:(NSURL *)url{
     dispatch_suspend(_timer);
     _isTimeout = YES;
-    self.completionHandler(self.feedItemArr);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.completionHandler(self.feedItemArr);
+    });
 }
 
 -(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
