@@ -25,11 +25,11 @@
 
 -(void)loadView {
     [super loadView];
-    UISwipeGestureRecognizer *recognizer;
-    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
-    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [[self view]addGestureRecognizer:recognizer];
-    recognizer = nil;
+//    UISwipeGestureRecognizer *recognizer;
+//    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
+//    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+//    [[self view]addGestureRecognizer:recognizer];
+//    recognizer = nil;
     
     CGRect rect = self.view.bounds;
     rect.size.height = rect.size.height - 64;
