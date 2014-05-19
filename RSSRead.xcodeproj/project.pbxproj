@@ -140,8 +140,8 @@
 		D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMoreCell.m; sourceTree = "<group>"; };
 		D2EEB44218DAB6BE008175F5 /* SMGetFetchedRecordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGetFetchedRecordsModel.h; sourceTree = "<group>"; };
 		D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGetFetchedRecordsModel.m; sourceTree = "<group>"; };
-		D2EFDC0A19186C270057CB71 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
-		D2EFDC0B19186C270057CB71 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
+		D2EFDC0A19186C270057CB71 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APService.h; path = ../RSSRead/APService.h; sourceTree = "<group>"; };
+		D2EFDC0B19186C270057CB71 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPushSDK.a; path = ../RSSRead/libPushSDK.a; sourceTree = "<group>"; };
 		D2EFDC0D19186C370057CB71 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
 		D2EFDC0F19186C3F0057CB71 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2EFE4B419178229009F4266 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -190,6 +190,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F9854C4192A05D80093DDF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2EEB44218DAB6BE008175F5 /* SMGetFetchedRecordsModel.h */,
+				D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */,
+				D2E5D62918E01BF300C3080C /* SMRSSModel.h */,
+				D2E5D62A18E01BF300C3080C /* SMRSSModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1F9854C5192A066D0093DDF8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1F9854C6192A06900093DDF8 /* Home */,
+				D2EDF79518C5BDAC00B0E990 /* More */,
+				D2F75F6718D9827B00ED44A3 /* RSSList */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		1F9854C6192A06900093DDF8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8FC0018C46B5A005E8F2E /* SMViewController.h */,
+				D2E8FC0118C46B5A005E8F2E /* SMViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		1F9854C8192A06DE0093DDF8 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				D2EFDC0A19186C270057CB71 /* APService.h */,
+				D2EFDC0B19186C270057CB71 /* libPushSDK.a */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		1F9854C9192A07280093DDF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2F75F6118D9704E00ED44A3 /* SMSubscribeCell.h */,
+				D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		D284A47D18E50C20004B5D2D /* icon */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +258,7 @@
 			name = icon;
 			sourceTree = "<group>";
 		};
-		D2DDA05C18DC19EB005394E4 /* CoreData */ = {
+		D2DDA05C18DC19EB005394E4 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
 				D2E8FC2218C46F6F005E8F2E /* RSS.xcdatamodeld */,
@@ -219,12 +267,13 @@
 				D2E5D62318DFDC4A00C3080C /* RSS.h */,
 				D2E5D62418DFDC4A00C3080C /* RSS.m */,
 			);
-			name = CoreData;
+			name = DAO;
 			sourceTree = "<group>";
 		};
 		D2E8FBDF18C46B5A005E8F2E = {
 			isa = PBXGroup;
 			children = (
+				1F9854C8192A06DE0093DDF8 /* ThirdParty */,
 				D2E8FBF118C46B5A005E8F2E /* RSSRead */,
 				D2E8FC1018C46B5A005E8F2E /* RSSReadTests */,
 				D2E8FBEA18C46B5A005E8F2E /* Frameworks */,
@@ -264,22 +313,15 @@
 		D2E8FBF118C46B5A005E8F2E /* RSSRead */ = {
 			isa = PBXGroup;
 			children = (
-				D2DDA05C18DC19EB005394E4 /* CoreData */,
-				D2F75F6718D9827B00ED44A3 /* RSSList */,
-				D2EDF79518C5BDAC00B0E990 /* More */,
+				1F9854C9192A07280093DDF8 /* View */,
+				1F9854C5192A066D0093DDF8 /* ViewController */,
+				1F9854C4192A05D80093DDF8 /* Model */,
+				D2DDA05C18DC19EB005394E4 /* DAO */,
 				1F983C961927708B00EBD91B /* SMFeedParserWrapper.h */,
 				1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */,
 				D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */,
 				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
 				D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */,
-				D2E8FC0018C46B5A005E8F2E /* SMViewController.h */,
-				D2E8FC0118C46B5A005E8F2E /* SMViewController.m */,
-				D2F75F6118D9704E00ED44A3 /* SMSubscribeCell.h */,
-				D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */,
-				D2EEB44218DAB6BE008175F5 /* SMGetFetchedRecordsModel.h */,
-				D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */,
-				D2E5D62918E01BF300C3080C /* SMRSSModel.h */,
-				D2E5D62A18E01BF300C3080C /* SMRSSModel.m */,
 				D2F75F6418D97EB400ED44A3 /* Image */,
 				D2EDF78E18C5B20600B0E990 /* Utility */,
 				D2E8FC0318C46B5A005E8F2E /* Images.xcassets */,
@@ -322,8 +364,6 @@
 		D2EDF78E18C5B20600B0E990 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D2EFDC0A19186C270057CB71 /* APService.h */,
-				D2EFDC0B19186C270057CB71 /* libPushSDK.a */,
 				D2EDF78F18C5B22C00B0E990 /* SMUIKitHelper.h */,
 				D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */,
 			);

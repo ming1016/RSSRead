@@ -23,7 +23,7 @@
 @interface SMViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
-@property(nonatomic,strong)NSMutableArray *parsedItems;
+//@property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)NSDateFormatter *dateFormatter;
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
@@ -67,7 +67,7 @@
     [self.view addSubview:_tbView];
     
     //初始化
-    _parsedItems = [NSMutableArray array];
+//    _parsedItems = [NSMutableArray array];
     _allSurscribes = [NSMutableArray array];
     
     //测试Core Data
@@ -181,9 +181,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Subscribes *aSub = _allSurscribes[indexPath.row];
-    SMRSSListViewController * rssListVC = [SMRSSListViewController new];
+    SMRSSListViewController * rssListVC = [[SMRSSListViewController alloc] init];
     rssListVC.subscribeUrl = aSub.url;
-    [rssListVC setSubscribeTitle:aSub.title];
+    rssListVC.subscribeTitle = aSub.title;
     rssListVC.isNewVC = YES;
     [self.navigationController pushViewController:rssListVC animated:YES];
 }

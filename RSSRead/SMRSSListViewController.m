@@ -45,7 +45,6 @@
         self.title = @"收藏列表";
     } else {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"全部标记已读" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllRSS)];
-        
         self.title = @"列表";
     }
     //初始化
@@ -73,10 +72,9 @@
     getModel.sortName = @"date";
     if (_isFav) {
         getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
+    }else{
+        getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
     }
-    
-    getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
-    
     
     NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
     [_rssArray removeAllObjects];
