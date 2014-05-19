@@ -193,6 +193,42 @@
     }
 }
 
+- (RSS *)insertRSSWithFeedItem:(MWFeedItem *)item withFeedUrlStr:(NSString *)feedUrlStr
+{
+    _getModel.entityName = @"RSS";
+    NSError *error;
+    
+    _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",item.identifier];
+    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    RSS *rss = nil;
+    if (_fetchedRecorders.count == 0) {
+        rss = [NSEntityDescription insertNewObjectForEntityForName:@"RSS" inManagedObjectContext:_managedObjectContext];
+        rss.author = item.author ? item.author : @"未知作者";
+        rss.content = item.content ? item.content : @"无内容";
+        rss.createDate = [NSDate date];
+        rss.date = item.date;
+        rss.identifier = item.identifier;
+        rss.isFav = @0;
+        rss.isRead = @0;
+        rss.link = item.link ? item.link : @"无连接";
+        rss.subscribeUrl = feedUrlStr;
+        rss.summary = item.summary ? item.summary : @"无描述";
+        rss.title = item.title ? item.title : @"无标题";
+        rss.updated = item.updated;
+
+        [_managedObjectContext save:&error];
+
+    }
+    
+    [self recountSubscribeUnRead:feedUrlStr];
+    
+    if([(NSObject *)_smRSSModelDelegate respondsToSelector:@selector(rssInserted)]){
+        [_smRSSModelDelegate rssInserted];
+    }
+    
+    return rss;
+}
+
 -(void)recountSubscribeUnRead:(NSString *)url {
     NSError *error;
     _getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@ AND isFav=0 AND isRead=0",url];
