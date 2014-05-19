@@ -18,7 +18,7 @@
 
 #import "SMSubscribeCell.h"
 #import "SMRSSListViewController.h"
-
+#import "MBProgressHUD.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
@@ -30,7 +30,7 @@
 
 @property(nonatomic,strong)UITableView *tbView;
 @property(nonatomic,strong)NSMutableArray *allSurscribes;
-
+@property(nonatomic,strong)MBProgressHUD *hud;
 
 @end
 
@@ -75,9 +75,10 @@
     
     
 
-
-    [self getAllSubscribeSources];
     
+    [self getAllSubscribeSources];
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在获取最新内容...";
     [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
 }
 
@@ -136,6 +137,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                 });
+                [_hud hide:YES];
         }
         }];
     }];

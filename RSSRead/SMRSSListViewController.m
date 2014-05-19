@@ -62,13 +62,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    dispatch_queue_t fetchQueue = dispatch_queue_create("Artical Fetch Queue", NULL);
-    dispatch_async(fetchQueue, ^{
-        
-        [self loadTableViewFromCoreData];
-        
-    });
+    [self loadTableViewFromCoreData];
 }
 
 - (void)fetchDataFromDB
