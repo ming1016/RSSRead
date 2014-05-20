@@ -31,6 +31,7 @@
 @property(nonatomic,strong)UITableView *tbView;
 @property(nonatomic,strong)NSMutableArray *allSurscribes;
 @property(nonatomic,strong)MBProgressHUD *hud;
+@property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
 
 @end
 
@@ -79,7 +80,14 @@
     [self getAllSubscribeSources];
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在获取最新内容...";
-    [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+    
+    _afManager = [AFHTTPRequestOperationManager manager];
+    _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
+        [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        [_hud hide:YES];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

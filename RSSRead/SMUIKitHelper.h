@@ -30,7 +30,7 @@
 #define APP_DELEGATE ((SMAppDelegate *)([[UIApplication sharedApplication] delegate]))
 
 #define SERVER_URL @""
-
+#define SERVER_OF_CHECKNETWORKING @"http://www.starming.com/index.php?v=api&m=check"
 @interface SMUIKitHelper : NSObject
 //label
 +(UILabel *)labelWithRect:(CGRect)rect text:(NSString *)text textColor:(NSString *)color fontSize:(CGFloat)size;
