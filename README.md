@@ -1,24 +1,17 @@
 #RSSRead
-RSSRead是一个iOS设备上的RSS/Atom阅读器。
+RSSRead是一个iOS设备上的RSS/Atom阅读器。 
 
-##在App Store上已上架，应用中文名叫“已阅”  
-<https://itunes.apple.com/us/app/yi-yue-rss-li-xian-xin-wen-yue-du/id850246364?ls=1&mt=8>  
-
-##已有功能
+##已有主要功能
 * Add a new feed
 * Offline feed read
 * Star the content you like
 * Mark as read and mark all as read
 * 能够删除管理已添加rss源
 
-##主要使用的技术
-* Feed parser use [MWFeedParser](https://github.com/mwaterfall/MWFeedParser)
-* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
-* [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
-* Local data use CoreData
-
 ##TODO
 * 期待同好一起完善
+* 将更多改成右拉抽屉式
+* 整理RSS推荐源，添加RSS时可以进行分类选择
 * 解析出带有RSS网页的RSS地址
 * 文章页面排版优化
 * 关联Twitter内容和Weibo内容
@@ -26,8 +19,12 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * 可设置夜间模式
 * UI设计优化
 
+##项目主要贡献者
+[@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou)
+
+
 ##参与进来
-想参与进来吗？太好了，即使你不是开发者也有你能够贡献的，你可以做
+太好了，即使你不是开发者也有你能够贡献的，你可以做
 
 #####本地化
 * English
@@ -45,6 +42,15 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * 微博：<http://weibo.com/allstarming>
 * qq：36270359  
 * email：ming1016@gmail.com  
+
+##在App Store上已上架，应用中文名叫“已阅”  
+<https://itunes.apple.com/us/app/yi-yue-rss-li-xian-xin-wen-yue-du/id850246364?ls=1&mt=8> 
+
+##主要使用的技术
+* Feed parser use [MWFeedParser](https://github.com/mwaterfall/MWFeedParser)
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
+* Local data use CoreData
 
 ##Licensing
 * RSSRead is available under the MIT license.

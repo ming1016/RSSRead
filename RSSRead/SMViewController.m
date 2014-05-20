@@ -19,11 +19,11 @@
 #import "SMSubscribeCell.h"
 #import "SMRSSListViewController.h"
 #import "MBProgressHUD.h"
+#import "HYCircleLoadingView.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
-//@property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)NSDateFormatter *dateFormatter;
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
@@ -31,6 +31,7 @@
 @property(nonatomic,strong)UITableView *tbView;
 @property(nonatomic,strong)NSMutableArray *allSurscribes;
 @property(nonatomic,strong)MBProgressHUD *hud;
+@property(nonatomic,strong)HYCircleLoadingView *loadingView;
 @property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
 
 @end
@@ -56,11 +57,16 @@
 	if (self.title) {
         //
     } else {
-        self.title = @"已阅1.0";
+        self.title = @"已阅1.1";
     }
     
+    //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多" style:UIBarButtonItemStylePlain target:self action:@selector(seeMore)];
+    //读取中的hud
+    _loadingView = [[HYCircleLoadingView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
+    self.navigationItem.leftBarButtonItem = loadingItem;
     
     //界面
     _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
@@ -68,25 +74,23 @@
     [self.view addSubview:_tbView];
     
     //初始化
-//    _parsedItems = [NSMutableArray array];
     _allSurscribes = [NSMutableArray array];
     
-    //测试Core Data
+    //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
-    
-
-    
     [self getAllSubscribeSources];
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在获取最新内容...";
     
+    //Using more fasion hud by HYCircleLoadingView
+    [_loadingView startAnimation];
+    
+    //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
     _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
         [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [_hud hide:YES];
+        [_loadingView stopAnimation];
     }];
 }
 
@@ -126,9 +130,6 @@
         }
     }
     [_tbView reloadData];
-//    for (Subscribes *rssSc in _allSurscribes) {
-//        NSLog(@"title:%@ link:%@ summary:%@ url:%@ count:%d",rssSc.title,rssSc.link,rssSc.summary,rssSc.url,[rssSc.total intValue]);
-//    }
 }
 
 - (void)fetchRss{
@@ -155,10 +156,8 @@
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [_hud hide:YES];
+        [_loadingView stopAnimation];
     });
-    
-//    dispatch_release(group);//not needed in ARC
 }
 
 -(void)seeMore {
