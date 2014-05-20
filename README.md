@@ -18,6 +18,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * feedly等rss服务的接口处理
 * 可设置夜间模式
 * UI设计优化
+* 解析RSS机制优化，利用多线程处理。
 
 ##项目主要贡献者
 [@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou)
