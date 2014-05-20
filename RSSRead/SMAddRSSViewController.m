@@ -93,7 +93,7 @@
     if (_tfValue.text != nil) {
         //
         NSString *tfString =nil;
-        if ([[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
+        if ((_tfValue.text.length >7)&&[[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
             //
             NSLog(@"show it %@",[_tfValue.text substringToIndex:7]);
             tfString = _tfValue.text;
