@@ -30,9 +30,8 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber =0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+
     [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backgroundNavbar"] forBarMetrics:UIBarMetricsDefault];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     self.window.rootViewController = rootViewNav;

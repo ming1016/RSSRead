@@ -7,19 +7,16 @@
 //
 
 #import "SMViewController.h"
-
 #import "SMUIKitHelper.h"
 #import "AFNetworking.h"
-
 #import "RSS.h"
-
 #import "Subscribes.h"
 #import "SMAppDelegate.h"
-
 #import "SMSubscribeCell.h"
 #import "SMRSSListViewController.h"
 #import "MBProgressHUD.h"
 #import "HYCircleLoadingView.h"
+#import "QBlurView.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
@@ -33,7 +30,7 @@
 @property(nonatomic,strong)MBProgressHUD *hud;
 @property(nonatomic,strong)HYCircleLoadingView *loadingView;
 @property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
-
+@property(nonatomic,strong)QBlurView *blurView;
 @end
 
 @implementation SMViewController
@@ -68,8 +65,23 @@
     UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
     self.navigationItem.leftBarButtonItem = loadingItem;
     
+    //使用QBlur模糊效果，按周，每天换图片。需要找些合适的图片
+    NSDate *date = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc]init];
+    NSInteger unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    comps = [calendar components:unitFlags fromDate:date];
+    int week = [comps weekday];
+    UIImageView *backgroundImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg%d",week]]];
+    backgroundImage.frame = self.view.bounds;
+    [self.view addSubview:backgroundImage];
+    _blurView = [[QBlurView alloc]initWithFrame:self.view.bounds];
+    _blurView.synchronized = YES;
+    [self.view addSubview:_blurView];
+    
     //界面
-    _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
+    _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
+    [_tbView setBackgroundColor:[UIColor clearColor]];
     [_tbView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:_tbView];
     
@@ -81,7 +93,7 @@
     
     [self getAllSubscribeSources];
     
-    //Using more fasion hud by HYCircleLoadingView
+    //Using more fashion hud by HYCircleLoadingView
     [_loadingView startAnimation];
     
     //Check the net isWorking
@@ -188,8 +200,9 @@
     SMSubscribeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     }
     if (_allSurscribes.count > 0) {
         [cell setSubscribe:_allSurscribes[indexPath.row]];

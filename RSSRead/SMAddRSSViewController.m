@@ -55,7 +55,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, 276, 52)];
+    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, NAVBARHEIGHT, 276, 52)];
     _tfValue.backgroundColor = [UIColor whiteColor];
     _tfValue.delegate = self;
     _tfValue.returnKeyType = UIReturnKeyDone;
