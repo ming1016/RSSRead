@@ -22,7 +22,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * 参考<http://ctrlq.org/rss/>实时检索功能对添加RSS源进行优化
 
 ##项目主要贡献者
-[@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou)
+[@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou) [@ftxbird](https://github.com/ftxbird)
 
 
 ##参与进来

@@ -10,7 +10,6 @@
 #import "SMUIKitHelper.h"
 #import "SMAppDelegate.h"
 #import "SMGetFetchedRecordsModel.h"
-
 #import "SMRSSListCell.h"
 #import "RSS.h"
 
@@ -95,14 +94,12 @@
     [self.tableView reloadData];
 }
 
-
 -(void)loadTableViewFromCoreData {
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"RSS";
     getModel.sortName = @"date";
     if (_isFav) {
         getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
-        NSLog(@"isfav");
     }else{
         getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
     }
@@ -110,7 +107,6 @@
     NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
     [_rssArray removeAllObjects];
     [_rssArray addObjectsFromArray:fetchedRecords];
-    NSLog(@"kkkk %@",_rssArray);
     
     //首次点击进入页面时进行一次拉取数据
     if (!_isFav && _rssArray.count == 0) {
@@ -158,6 +154,13 @@
     [self doBack];
 }
 
+-(void)quickFavRSS:(NSIndexPath *)indexPath {
+    RSS *rss = _rssArray[indexPath.row];
+    SMRSSModel *model = [[SMRSSModel alloc] init];
+    [model favRSS:rss];
+    [self faved];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -170,6 +173,30 @@
 }
 -(void)faved {
     [self loadTableViewFromCoreData];
+}
+
+#pragma mark - SWTableViewCell delegate
+//左拉出现快捷收藏按钮
+-(NSArray *)rightButtons {
+    NSMutableArray *rightButtons = [NSMutableArray new];
+    [rightButtons sw_addUtilityButtonWithColor:[SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR] title:@"收藏"];
+    return rightButtons;
+}
+-(void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            [self quickFavRSS:cellIndexPath];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -196,15 +223,15 @@
     SMRSSListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMRSSListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.rightUtilityButtons = [self rightButtons];
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+        cell.delegate = self;
     }
     
-//    if (_rssArray.count > 0) {
-        [cell setSubscribeTitle:_subscribeTitle];
-        [cell setRss:_rssArray[indexPath.row]];
-        
-//    }
+    [cell setSubscribeTitle:_subscribeTitle];
+    [cell setRss:_rssArray[indexPath.row]];
+    
     return cell;
 }
 
