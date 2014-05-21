@@ -27,10 +27,12 @@
 #define LIST_LIGHT_COLOR @"#999999"
 #define LIST_YELLOW_COLOR @"#CD8500"
 
+#define LINK_COLOR [UIColor purpleColor]
+
 #define APP_DELEGATE ((SMAppDelegate *)([[UIApplication sharedApplication] delegate]))
 
 #define SERVER_URL @""
-
+#define SERVER_OF_CHECKNETWORKING @"http://www.starming.com/index.php?v=api&m=check"
 @interface SMUIKitHelper : NSObject
 //label
 +(UILabel *)labelWithRect:(CGRect)rect text:(NSString *)text textColor:(NSString *)color fontSize:(CGFloat)size;

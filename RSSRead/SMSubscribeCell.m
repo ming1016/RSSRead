@@ -20,8 +20,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
-        _lbtitle = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:@"#444444" fontSize:18];
+        self.contentView.backgroundColor = [UIColor clearColor];
+        _lbtitle = [SMUIKitHelper labelWithRect:CGRectZero text:nil textColor:@"#FFFFFF" fontSize:18];
         [self.contentView addSubview:_lbtitle];
         
         _btCount = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -48,7 +48,7 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     CGRect rect = CGRectZero;
-    rect.origin.x = 14;
+    rect.origin.x = 20;
     rect.origin.y = 14;
     CGSize fitSize = [_lbtitle.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18]}];
     rect.size = fitSize;
@@ -57,16 +57,6 @@
     
     //记总数
     [_btCount setFrame:CGRectMake(SCREEN_WIDTH - 50, 16, 28, 18)];
-    
-    //分割线
-//    rect =self.contentView.frame;
-//    CGRect mrect = CGRectMake(0, rect.size.height - 1, rect.size.width, 1);
-//    if (_sepView == nil) {
-//        _sepView = [[UIView alloc] initWithFrame:mrect];
-//        _sepView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#e5e3de"];
-//        [self.contentView addSubview:_sepView];
-//    }
-//    _sepView.frame = mrect;
 }
 
 +(float)heightForSubscribe {

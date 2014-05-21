@@ -7,23 +7,20 @@
 //
 
 #import "SMViewController.h"
-
 #import "SMUIKitHelper.h"
 #import "AFNetworking.h"
-
 #import "RSS.h"
-
 #import "Subscribes.h"
 #import "SMAppDelegate.h"
-
 #import "SMSubscribeCell.h"
 #import "SMRSSListViewController.h"
 #import "MBProgressHUD.h"
+#import "HYCircleLoadingView.h"
+#import "SMBlurBackground.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
-//@property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)NSDateFormatter *dateFormatter;
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
@@ -31,7 +28,9 @@
 @property(nonatomic,strong)UITableView *tbView;
 @property(nonatomic,strong)NSMutableArray *allSurscribes;
 @property(nonatomic,strong)MBProgressHUD *hud;
-
+@property(nonatomic,strong)HYCircleLoadingView *loadingView;
+@property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
+@property(nonatomic,strong)QBlurView *blurView;
 @end
 
 @implementation SMViewController
@@ -55,31 +54,43 @@
 	if (self.title) {
         //
     } else {
-        self.title = @"已阅1.0";
+        self.title = @"已阅1.1";
     }
-    
+    [self.view addSubview:[SMBlurBackground QBluerView]];
+    //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多" style:UIBarButtonItemStylePlain target:self action:@selector(seeMore)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
+    //读取中的hud
+    _loadingView = [[HYCircleLoadingView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
+    self.navigationItem.leftBarButtonItem = loadingItem;
+    
     
     //界面
-    _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
+    _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
+    [_tbView setBackgroundColor:[UIColor clearColor]];
     [_tbView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:_tbView];
     
     //初始化
-//    _parsedItems = [NSMutableArray array];
     _allSurscribes = [NSMutableArray array];
     
-    //测试Core Data
+    //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
-    
-
-    
     [self getAllSubscribeSources];
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在获取最新内容...";
-    [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+    
+    //Using more fashion hud by HYCircleLoadingView
+    [_loadingView startAnimation];
+    
+    //Check the net isWorking
+    _afManager = [AFHTTPRequestOperationManager manager];
+    _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
+        [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        [_loadingView stopAnimation];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -118,9 +129,6 @@
         }
     }
     [_tbView reloadData];
-//    for (Subscribes *rssSc in _allSurscribes) {
-//        NSLog(@"title:%@ link:%@ summary:%@ url:%@ count:%d",rssSc.title,rssSc.link,rssSc.summary,rssSc.url,[rssSc.total intValue]);
-//    }
 }
 
 - (void)fetchRss{
@@ -147,17 +155,14 @@
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [_hud hide:YES];
+        [_loadingView stopAnimation];
     });
-    
-//    dispatch_release(group);//not needed in ARC
 }
 
--(void)seeMore {
-    SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
-    moreVC.smMoreViewControllerDelegate = self;
-    moreVC.title = @"更多";
-    [self.navigationController pushViewController:moreVC animated:YES];
+-(void)addNewRSS {
+    SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
+    addRSSVC.smAddRSSViewControllerDelegate = self;
+    [self.navigationController pushViewController:addRSSVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -181,8 +186,9 @@
     SMSubscribeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     }
     if (_allSurscribes.count > 0) {
         [cell setSubscribe:_allSurscribes[indexPath.row]];
@@ -213,6 +219,15 @@
         [_allSurscribes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
+#pragma mark addsubscribesdelegate
+-(void)addedRSS:(Subscribes *)subscribe {
+    [self getAllSubscribeSources];
 }
 
 #pragma mark - moreDelegate

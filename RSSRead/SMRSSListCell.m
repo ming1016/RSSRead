@@ -10,13 +10,11 @@
 #import "SMUIKitHelper.h"
 #import "NSString+HTML.h"
 
-
-
 @implementation SMRSSListCell {
     NSDateFormatter *_formatter;
     UILabel *_lbTitle;
     UILabel *_lbSummary;
-    UILabel *_lbAuthor;
+    UILabel *_lbSource;
     UILabel *_lbDate;
 }
 
@@ -25,7 +23,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        _formatter = [[NSDateFormatter alloc] init] ;
+        _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"MM.dd HH:mm"];
         
         self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
@@ -37,8 +35,8 @@
         _lbSummary = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbSummary];
         
-        _lbAuthor = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
-        [self.contentView addSubview:_lbAuthor];
+        _lbSource = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
+        [self.contentView addSubview:_lbSource];
         
         _lbDate = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbDate];
@@ -49,13 +47,8 @@
 
 -(void)setRss:(RSS *)rss {
     [_lbTitle setText:rss.title];
-    if (_subscribeTitle) {
-        [_lbAuthor setText:[NSString stringWithFormat:@"%@ - %@",rss.author,_subscribeTitle]];
-    } else {
-        [_lbAuthor setText:rss.author];
-    }
-    
-    [_lbDate setText:[_formatter stringFromDate:rss.date]];
+    [_lbSource setText:_subscribeTitle];
+    [_lbDate setText:[NSString stringWithFormat:@"[%@]",[_formatter stringFromDate:rss.date]]];
     if ([rss.isFav isEqual:@1]) {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR];
     } else if([rss.isRead  isEqual: @1]) {
@@ -71,50 +64,50 @@
     [super layoutSubviews];
     CGRect rect = CGRectZero;
     rect.origin.x = 11;
-    rect.origin.y = 6;
+    rect.origin.y = 16;
     
-    //作者
-    CGSize fitSize = [_lbAuthor.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-    rect.size = fitSize;
-    _lbAuthor.frame = rect;
-    
-    //时间
-    if (_lbDate.text) {
-        fitSize = [_lbDate.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-        rect.size = fitSize;
-        rect.origin.x = SCREEN_WIDTH - fitSize.width - 11;
-        _lbDate.frame = rect;
-    }
-    
+    //来源
+//    CGSize fitSize = [_lbSource.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LIST_SMALL_FONT]}];
+//    rect.size = fitSize;
+//    _lbSource.frame = rect;
     
     //标题
-    rect.origin.x = _lbAuthor.frame.origin.x;
-    rect.origin.y += fitSize.height + 2;
-    fitSize = [_lbTitle.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 11*2, 99) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
+//    rect.origin.x = _lbSource.frame.origin.x;
+//    rect.origin.y += fitSize.height + 2;
+    CGSize fitSize = [_lbTitle.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 11*2, 99) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
     rect.size = fitSize;
     _lbTitle.frame = rect;
     
-    //简介
+    //时间
     rect.origin.y += fitSize.height + 2;
+    if (_lbDate.text) {
+        fitSize = [_lbDate.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
+        rect.size = fitSize;
+//        rect.origin.x = SCREEN_WIDTH - fitSize.width - 11;
+        _lbDate.frame = rect;
+    }
+    
+    //简介
+    rect.origin.x += fitSize.width + 2;
     fitSize = [_lbSummary.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-    fitSize.width = SCREEN_WIDTH - 11*2;
+    fitSize.width = SCREEN_WIDTH - 11*2 - _lbDate.frame.size.width;
     rect.size = fitSize;
     _lbSummary.frame = rect;
 }
 
 +(float)heightForRSSList:(RSS *)rss {
-    float countHeight = 6;
+    float countHeight = 16;
     
-    CGSize fitSize = [rss.author sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-    countHeight += fitSize.height + 2;
+//    CGSize fitSize = [rss.author sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
+//    countHeight += fitSize.height + 2;
     
-    fitSize = [rss.title boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 11*2, 999) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
+    CGSize fitSize = [rss.title boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 11*2, 999) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
     countHeight += fitSize.height + 2;
     
     fitSize = [rss.summary sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
     countHeight += fitSize.height;
     
-    countHeight += 8;
+//    countHeight += 8;
     return countHeight;
 }
 

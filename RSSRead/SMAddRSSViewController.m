@@ -25,6 +25,8 @@
 @property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)SMAppDelegate *appDelegate;
 @property(nonatomic,strong)UILabel *lbSending;
+
+@property(nonatomic,weak) SMAddRSSToolbar *toolbar;
 @end
 
 @implementation SMAddRSSViewController
@@ -55,8 +57,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, 276, 52)];
+    //加载toolbar
+    [self setupToolbar];
+    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, NAVBARHEIGHT, 276, 52)];
     _tfValue.backgroundColor = [UIColor whiteColor];
     _tfValue.delegate = self;
     _tfValue.returnKeyType = UIReturnKeyDone;
@@ -79,7 +82,9 @@
     
     //Core Data
     _appDelegate = [UIApplication sharedApplication].delegate;
-    _managedObjectContext = _appDelegate.managedObjectContext;    
+    _managedObjectContext = _appDelegate.managedObjectContext;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,7 +99,7 @@
     if (_tfValue.text != nil) {
         //
         NSString *tfString =nil;
-        if ([[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
+        if ((_tfValue.text.length >7)&&[[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
             //
             NSLog(@"show it %@",[_tfValue.text substringToIndex:7]);
             tfString = _tfValue.text;
@@ -180,4 +185,74 @@
     [_lbSending setText:@"链接无效，请尝试其它链接"];
 }
 
+/**
+ *  toolbar代理方法
+ */
+- (void)Toolbar:(SMAddRSSToolbar *)toolbar didClickedButtonWithString:(NSString *)str
+{
+    if ([str isEqualToString:@"clear"]) {
+        _tfValue.text = @"";
+        _tfValue.placeholder = @"请重新输入RSS";
+    }
+    else{
+        
+    _tfValue.text = [_tfValue.text stringByAppendingString:str];
+    }
+    
+   
+}
+
+/**
+ *  加载toolbar
+ */
+-(void)setupToolbar
+{
+    SMAddRSSToolbar *toolbar = [[SMAddRSSToolbar alloc] init];
+    CGFloat toolbarX = 0;
+    CGFloat toolbarH = 44;
+    CGFloat toolbarY = self.view.frame.size.height-toolbarH;
+    CGFloat toolbarW = self.view.frame.size.width;
+    toolbar.frame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
+    toolbar.delegate =self;
+    [self.view addSubview:toolbar];
+    self.toolbar = toolbar;
+    // 3.监听键盘的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+/**
+ *  键盘即将显示的时候调用
+ */
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    CGRect keyboardF = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    self.toolbar.hidden = NO;
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.toolbar.transform = CGAffineTransformMakeTranslation(0, -keyboardF.size.height);
+    }];
+}
+
+/**
+ *  键盘即将退出的时候调用
+ */
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+
+        self.toolbar.transform = CGAffineTransformIdentity;
+        self.toolbar.hidden = YES;
+    }];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
