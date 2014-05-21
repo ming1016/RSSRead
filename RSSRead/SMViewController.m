@@ -16,7 +16,7 @@
 #import "SMRSSListViewController.h"
 #import "MBProgressHUD.h"
 #import "HYCircleLoadingView.h"
-#import "QBlurView.h"
+#import "SMBlurBackground.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
@@ -56,7 +56,7 @@
     } else {
         self.title = @"已阅1.1";
     }
-    
+    [self.view addSubview:[SMBlurBackground QBluerView]];
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多" style:UIBarButtonItemStylePlain target:self action:@selector(seeMore)];
@@ -65,19 +65,6 @@
     UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
     self.navigationItem.leftBarButtonItem = loadingItem;
     
-    //使用QBlur模糊效果，按周，每天换图片。需要找些合适的图片
-    NSDate *date = [NSDate date];
-    NSDateComponents *comps = [[NSDateComponents alloc]init];
-    NSInteger unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    comps = [calendar components:unitFlags fromDate:date];
-    NSInteger week = [comps weekday];
-    UIImageView *backgroundImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg%ld",(long)week]]];
-    backgroundImage.frame = self.view.bounds;
-    [self.view addSubview:backgroundImage];
-    _blurView = [[QBlurView alloc]initWithFrame:self.view.bounds];
-    _blurView.synchronized = YES;
-    [backgroundImage addSubview:_blurView];
     
     //界面
     _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
