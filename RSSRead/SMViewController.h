@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMMoreViewController.h"
 #import "SMRSSModel.h"
+#import "SMAddRSSViewController.h"
 
-@interface SMViewController : UIViewController<SMMoreViewControllerDelegate,UITableViewDelegate,UITableViewDataSource,MWFeedParserDelegate,SMRSSModelDelegate>
+@interface SMViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,MWFeedParserDelegate,SMRSSModelDelegate,SMAddRSSViewControllerDelegate>
 //-(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler;
 @end

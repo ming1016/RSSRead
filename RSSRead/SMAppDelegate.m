@@ -13,6 +13,7 @@
 #import "SMFeedParserWrapper.h"
 #import "MSDynamicsDrawerViewController.h"
 #import "MSDynamicsDrawerStyler.h"
+#import "SMMoreViewController.h"
 
 @implementation SMAppDelegate
 //{

@@ -59,7 +59,7 @@
     
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多" style:UIBarButtonItemStylePlain target:self action:@selector(seeMore)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
     //读取中的hud
     _loadingView = [[HYCircleLoadingView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
     UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
@@ -172,11 +172,10 @@
     });
 }
 
--(void)seeMore {
-    SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
-    moreVC.smMoreViewControllerDelegate = self;
-    moreVC.title = @"更多";
-    [self.navigationController pushViewController:moreVC animated:YES];
+-(void)addNewRSS {
+    SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
+    addRSSVC.smAddRSSViewControllerDelegate = self;
+    [self.navigationController pushViewController:addRSSVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -237,6 +236,11 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
+}
+
+#pragma mark addsubscribesdelegate
+-(void)addedRSS:(Subscribes *)subscribe {
+    [self getAllSubscribeSources];
 }
 
 #pragma mark - moreDelegate
