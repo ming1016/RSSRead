@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.8)
+  - MSDynamicsDrawerViewController (1.5.1)
   - MWFeedParser (1.0.1):
     - MWFeedParser/FeedParser
     - MWFeedParser/NSDate+InternetDateTime
@@ -33,13 +34,15 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - MBProgressHUD (~> 0.8)
+  - MSDynamicsDrawerViewController
   - MWFeedParser
   - pop (~> 1.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  MWFeedParser: c747d7e43ad365a7f18e84924496665944228e86
-  pop: 63a4f5e8942077fed2efe195036ecc572c71c48c
+  AFNetworking: 47947303319594706f48a55185ea95a95159ab94
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  MSDynamicsDrawerViewController: 0002059480a4b5ddde7eafbafb958a79a9b0ffaf
+  MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
+  pop: 626af22f9f3b6eb866141a1af7bfd909dac1851e
 
 COCOAPODS: 0.32.1
