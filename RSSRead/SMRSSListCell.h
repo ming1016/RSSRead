@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RSS.h"
+#import "SWTableViewCell.h"
 
-@interface SMRSSListCell : UITableViewCell
+@interface SMRSSListCell : SWTableViewCell
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)NSString *subscribeTitle;
 

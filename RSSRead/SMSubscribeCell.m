@@ -48,7 +48,7 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     CGRect rect = CGRectZero;
-    rect.origin.x = 14;
+    rect.origin.x = 20;
     rect.origin.y = 14;
     CGSize fitSize = [_lbtitle.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18]}];
     rect.size = fitSize;

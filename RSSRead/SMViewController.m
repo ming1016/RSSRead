@@ -235,6 +235,10 @@
     }
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
 #pragma mark - moreDelegate
 -(void)addSubscribeToMainViewController:(Subscribes *)subscribe {
     [self getAllSubscribeSources];

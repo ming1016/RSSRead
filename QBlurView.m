@@ -197,6 +197,7 @@
 }
 
 - (void)dealloc{
+    [super dealloc];
     dispatch_source_cancel(source);
     dispatch_release(source);
 }
