@@ -77,7 +77,7 @@
     [self.view addSubview:backgroundImage];
     _blurView = [[QBlurView alloc]initWithFrame:self.view.bounds];
     _blurView.synchronized = YES;
-    [self.view addSubview:_blurView];
+    [backgroundImage addSubview:_blurView];
     
     //界面
     _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
