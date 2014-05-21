@@ -9,10 +9,12 @@
 #import "SMAboutViewController.h"
 #import "SMRSSaboutgroup.h"
 #import "SMRSSaboutModel.h"
+#import "MBProgressHUD.h"
 
 @interface SMAboutViewController () <UIWebViewDelegate>
 @property(nonatomic,strong)UIWebView *webView;
 @property (nonatomic, strong) NSArray *groups;
+@property (nonatomic,weak) MBProgressHUD *HUD;
 @end
 
 @implementation SMAboutViewController
@@ -76,6 +78,7 @@
     cell.imageView.layer.cornerRadius = 22;
     cell.imageView.layer.masksToBounds = YES;
     cell.textLabel.text = about.title;
+    cell.detailTextLabel.text = about.link;
     
     return cell;
 }
@@ -97,7 +100,29 @@
     [webView loadRequest:request];
     
 }
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    //显示的文字
+    HUD.labelText = @"已阅正在为您努力加载中";
+    //是否有庶罩
+    HUD.dimBackground = YES;
+    [HUD show:YES];
+    self.HUD =HUD;
+    return YES;
+}
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.HUD hide:YES afterDelay:0.5];
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+     self.HUD.labelText = @"亲,你的网络可能有问题.";
+    [self.HUD hide:YES afterDelay:2];
+    [self.webView removeFromSuperview];
+}
 
 /**
  *  第section组显示的头部标题
