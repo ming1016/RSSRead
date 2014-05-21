@@ -46,7 +46,6 @@
         self.title = @"收藏列表";
     } else {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"全部标记已读" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllRSS)];
-        self.title = @"列表";
     }
     //初始化
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
@@ -56,13 +55,21 @@
     _refreshControl = [[UIRefreshControl alloc]init];
     [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = _refreshControl;
-    
+}
+
+-(void)setSubscribeTitle:(NSString *)subscribeTitle {
+    self.title = subscribeTitle;
+    _subscribeTitle = subscribeTitle;
 }
 
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadTableViewFromCoreData];
+    //加上此判断主要为了解决Detail详细页返回延时问题
+    if (_isNewVC) {
+        _isNewVC = NO;
+        [self loadTableViewFromCoreData];
+    }
 }
 
 - (void)fetchDataFromDB

@@ -71,8 +71,8 @@
     NSInteger unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     comps = [calendar components:unitFlags fromDate:date];
-    int week = [comps weekday];
-    UIImageView *backgroundImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg%d",week]]];
+    NSInteger week = [comps weekday];
+    UIImageView *backgroundImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg%ld",(long)week]]];
     backgroundImage.frame = self.view.bounds;
     [self.view addSubview:backgroundImage];
     _blurView = [[QBlurView alloc]initWithFrame:self.view.bounds];

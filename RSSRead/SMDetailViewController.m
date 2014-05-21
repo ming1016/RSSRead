@@ -32,7 +32,7 @@
 //    recognizer = nil;
     
     CGRect rect = self.view.bounds;
-    rect.size.height = rect.size.height - 64;
+    rect.size.height = rect.size.height + NAVBARHEIGHT;
     rect.size.width = rect.size.width;
     _webView = [[UIWebView alloc]initWithFrame:rect];
     [_webView setBackgroundColor:[UIColor whiteColor]];
@@ -59,11 +59,6 @@
     
 }
 
--(void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [_webView loadHTMLString:@"" baseURL:nil];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,7 +81,11 @@
     NSError *err=nil;
     NSString *mTxt=[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
     
-    NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\"><style>body{color:#333333;font-size:12pt;}</style></head><body><h3><a style=\"color:#333333;text-decoration:none;\" href=\"%@\">%@</a></h3>%@%@</body></html>",_rss.link,_rss.title,_showContent,mTxt];
+    NSDateFormatter *formatter;
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM.dd HH:mm"];
+    NSString *publishDate = [formatter stringFromDate:_rss.date];
+    NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\"><style>body{color:#333333;font-size:12pt;}</style></head><body><h3><a style=\"color:#333333;text-decoration:none;\" href=\"%@\">%@</a></h3><p style=\"text-align:center;font-size:9pt\">%@ 发表于 %@</p>%@%@</body></html>",_rss.link,_rss.title,_rss.author,publishDate,_showContent,mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
     
     

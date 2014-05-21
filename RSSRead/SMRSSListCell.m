@@ -16,7 +16,7 @@
     NSDateFormatter *_formatter;
     UILabel *_lbTitle;
     UILabel *_lbSummary;
-    UILabel *_lbAuthor;
+    UILabel *_lbSource;
     UILabel *_lbDate;
 }
 
@@ -25,7 +25,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        _formatter = [[NSDateFormatter alloc] init] ;
+        _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"MM.dd HH:mm"];
         
         self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
@@ -37,8 +37,8 @@
         _lbSummary = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbSummary];
         
-        _lbAuthor = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
-        [self.contentView addSubview:_lbAuthor];
+        _lbSource = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
+        [self.contentView addSubview:_lbSource];
         
         _lbDate = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbDate];
@@ -49,12 +49,7 @@
 
 -(void)setRss:(RSS *)rss {
     [_lbTitle setText:rss.title];
-    if (_subscribeTitle) {
-        [_lbAuthor setText:[NSString stringWithFormat:@"%@ - %@",rss.author,_subscribeTitle]];
-    } else {
-        [_lbAuthor setText:rss.author];
-    }
-    
+    [_lbSource setText:_subscribeTitle];
     [_lbDate setText:[_formatter stringFromDate:rss.date]];
     if ([rss.isFav isEqual:@1]) {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR];
@@ -73,10 +68,10 @@
     rect.origin.x = 11;
     rect.origin.y = 6;
     
-    //作者
-    CGSize fitSize = [_lbAuthor.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LIST_SMALL_FONT]}];
+    //来源
+    CGSize fitSize = [_lbSource.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LIST_SMALL_FONT]}];
     rect.size = fitSize;
-    _lbAuthor.frame = rect;
+    _lbSource.frame = rect;
     
     //时间
     if (_lbDate.text) {
@@ -88,7 +83,7 @@
     
     
     //标题
-    rect.origin.x = _lbAuthor.frame.origin.x;
+    rect.origin.x = _lbSource.frame.origin.x;
     rect.origin.y += fitSize.height + 2;
     fitSize = [_lbTitle.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 11*2, 99) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
     rect.size = fitSize;
