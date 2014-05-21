@@ -10,7 +10,6 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 
 ##TODO
 * 期待同好一起完善
-* 将更多改成右拉抽屉式
 * 整理RSS推荐源，添加RSS时可以进行分类选择
 * 解析出带有RSS网页的RSS地址
 * 文章页面排版优化
@@ -20,6 +19,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * UI设计优化
 * 解析RSS机制优化，利用多线程处理。
 * 参考<http://ctrlq.org/rss/>实时检索功能对添加RSS源进行优化
+* 二级列表左拉添加分享文章到其它平台
 
 ##项目主要贡献者
 [@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou) [@ftxbird](https://github.com/ftxbird)
