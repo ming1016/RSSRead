@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SMGetFetchedRecordsModel.h"
 
+@class MSDynamicsDrawerViewController;
+
 @interface SMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
+
 @property(nonatomic,readonly,retain)NSManagedObjectModel *managedObjectModel;
 @property(nonatomic,readonly,retain)NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,readonly,retain)NSPersistentStoreCoordinator *persistentStoreCoordinator;

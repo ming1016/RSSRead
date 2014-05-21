@@ -11,6 +11,8 @@
 #import "SMViewController.h"
 #import "APService.h"
 #import "SMFeedParserWrapper.h"
+#import "MSDynamicsDrawerViewController.h"
+#import "MSDynamicsDrawerStyler.h"
 
 @implementation SMAppDelegate
 //{
@@ -30,11 +32,27 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber =0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //MSDynamicsDrawerViewController setting
+    self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
+    
+    //self.dynamicsDrawerViewController.delegate = self;
+    
+    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 
     [[UINavigationBar appearance] setTintColor:LINK_COLOR];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
-    self.window.rootViewController = rootViewNav;
+    
+    //pane view
+    self.dynamicsDrawerViewController.paneViewController = rootViewNav;
+    
+    //rigth drawer
+    SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
+    moreVC.title = @"更多";
+    [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
+    
+    self.window.rootViewController = self.dynamicsDrawerViewController;
     [self.window makeKeyAndVisible];
     
     //通知

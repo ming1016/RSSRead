@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SMAboutViewController : UIViewController
+@interface SMAboutViewController : UITableViewController
 
 @end

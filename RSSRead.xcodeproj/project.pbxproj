@@ -81,6 +81,11 @@
 		D2FB786918E3C4BB007BD413 /* js.html in Resources */ = {isa = PBXBuildFile; fileRef = D2FB786818E3C4BB007BD413 /* js.html */; };
 		DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */; };
 		DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */; };
+		DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */; };
+		DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3C192C87DE00621576 /* SMRSSaboutModel.m */; };
+		DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE3F192C87FB00621576 /* aboutRSS.plist */; };
+		DEE9FE43192C880700621576 /* github@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE41192C880700621576 /* github@2x.png */; };
+		DEE9FE44192C880700621576 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE42192C880700621576 /* weibo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +203,13 @@
 		DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSToolbar.h; sourceTree = "<group>"; };
 		DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSToolbar.m; sourceTree = "<group>"; };
 		DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRSS_toolbar_background@2x.png"; sourceTree = "<group>"; };
+		DEE9FE39192C87DE00621576 /* SMRSSaboutgroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutgroup.h; sourceTree = "<group>"; };
+		DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSaboutgroup.m; sourceTree = "<group>"; };
+		DEE9FE3B192C87DE00621576 /* SMRSSaboutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutModel.h; sourceTree = "<group>"; };
+		DEE9FE3C192C87DE00621576 /* SMRSSaboutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSaboutModel.m; sourceTree = "<group>"; };
+		DEE9FE3F192C87FB00621576 /* aboutRSS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = aboutRSS.plist; sourceTree = "<group>"; };
+		DEE9FE41192C880700621576 /* github@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "github@2x.png"; sourceTree = "<group>"; };
+		DEE9FE42192C880700621576 /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,14 +450,13 @@
 		D2EDF79518C5BDAC00B0E990 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				DEE9FE38192C87B200621576 /* SMaboutRSS */,
 				D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */,
 				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
 				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
 				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
 				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
 				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
-				D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */,
-				D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */,
 				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
 				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
 			);
@@ -517,6 +528,30 @@
 				DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */,
 			);
 			name = addRSS;
+			sourceTree = "<group>";
+		};
+		DEE9FE38192C87B200621576 /* SMaboutRSS */ = {
+			isa = PBXGroup;
+			children = (
+				DEE9FE45192C881300621576 /* source */,
+				D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */,
+				D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */,
+				DEE9FE39192C87DE00621576 /* SMRSSaboutgroup.h */,
+				DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */,
+				DEE9FE3B192C87DE00621576 /* SMRSSaboutModel.h */,
+				DEE9FE3C192C87DE00621576 /* SMRSSaboutModel.m */,
+			);
+			name = SMaboutRSS;
+			sourceTree = "<group>";
+		};
+		DEE9FE45192C881300621576 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				DEE9FE41192C880700621576 /* github@2x.png */,
+				DEE9FE42192C880700621576 /* weibo@2x.png */,
+				DEE9FE3F192C87FB00621576 /* aboutRSS.plist */,
+			);
+			name = source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,6 +652,8 @@
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				D284A49218E511EC004B5D2D /* lanch-640x960.png in Resources */,
 				D284A48B18E50D33004B5D2D /* icon-152.png in Resources */,
+				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
+				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
 				D2EB1F2F18FA733C000C13D3 /* backgroundNavbar.png in Resources */,
 				D2F79E28192B4682000727D4 /* bg6.png in Resources */,
 				D284A48218E50C2F004B5D2D /* icon-80.png in Resources */,
@@ -625,6 +662,7 @@
 				D2F79E2A192B5208000727D4 /* bg7.png in Resources */,
 				D284A49318E511EC004B5D2D /* lanch-640x1136.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
+				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
 				D284A49618E511EC004B5D2D /* lanch-1536x2048.png in Resources */,
 				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
 				D284A49518E511EC004B5D2D /* lanch-1024x768.png in Resources */,
@@ -687,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
+				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,
@@ -705,6 +744,7 @@
 				D204F356192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */,
 				D2E5D62818DFDC4A00C3080C /* Subscribes.m in Sources */,
+				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
