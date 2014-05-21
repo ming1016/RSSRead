@@ -20,7 +20,7 @@
 /**
  *  链接
  */
-//@property (nonatomic, copy) NSString *link;
+@property (nonatomic, copy) NSString *link;
 
 
 + (instancetype)aboutWithDict:(NSDictionary *)dict;

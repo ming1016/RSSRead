@@ -6,12 +6,16 @@
 		<key>abouts</key>
 		<array>
 			<dict>
+				<key>link</key>
+				<string>https://github.com/ming1016/RSSRead</string>
 				<key>icon</key>
 				<string>github.png</string>
 				<key>title</key>
 				<string>github</string>
 			</dict>
 			<dict>
+				<key>link</key>
+				<string>https://github.com/ming1016/RSSRead</string>
 				<key>icon</key>
 				<string>weibo.png</string>
 				<key>title</key>
@@ -25,12 +29,16 @@
 		<key>abouts</key>
 		<array>
 			<dict>
+				<key>link</key>
+				<string>https://github.com/ming1016/RSSRead</string>
 				<key>icon</key>
 				<string>github.png</string>
 				<key>title</key>
 				<string>github</string>
 			</dict>
 			<dict>
+				<key>link</key>
+				<string>https://github.com/ming1016/RSSRead</string>
 				<key>icon</key>
 				<string>weibo.png</string>
 				<key>title</key>

@@ -10,8 +10,8 @@
 #import "SMRSSaboutgroup.h"
 #import "SMRSSaboutModel.h"
 
-@interface SMAboutViewController ()
-//@property(nonatomic,strong)UIWebView *webView;
+@interface SMAboutViewController () <UIWebViewDelegate>
+@property(nonatomic,strong)UIWebView *webView;
 @property (nonatomic, strong) NSArray *groups;
 @end
 
@@ -78,6 +78,24 @@
     cell.textLabel.text = about.title;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SMRSSaboutgroup *group = self.groups[indexPath.section];
+    SMRSSaboutModel *about = group.abouts[indexPath.row];
+    //加载webview
+    UIWebView *webView = [[UIWebView alloc]init];
+    webView.frame = self.view.bounds;
+    webView.delegate =self;
+    [self.view addSubview:webView];
+    
+    //加载指定页面
+    NSString * str = about.link;
+    NSURL *url = [NSURL URLWithString:str];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
+    
 }
 
 
