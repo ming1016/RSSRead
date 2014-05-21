@@ -86,6 +86,7 @@
 		DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE3F192C87FB00621576 /* aboutRSS.plist */; };
 		DEE9FE43192C880700621576 /* github@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE41192C880700621576 /* github@2x.png */; };
 		DEE9FE44192C880700621576 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE42192C880700621576 /* weibo@2x.png */; };
+		DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE47192CAF6000621576 /* SMBlurBackground.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +211,8 @@
 		DEE9FE3F192C87FB00621576 /* aboutRSS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = aboutRSS.plist; sourceTree = "<group>"; };
 		DEE9FE41192C880700621576 /* github@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "github@2x.png"; sourceTree = "<group>"; };
 		DEE9FE42192C880700621576 /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
+		DEE9FE46192CAF6000621576 /* SMBlurBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBlurBackground.h; sourceTree = "<group>"; };
+		DEE9FE47192CAF6000621576 /* SMBlurBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBlurBackground.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +446,8 @@
 			children = (
 				D2EDF78F18C5B22C00B0E990 /* SMUIKitHelper.h */,
 				D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */,
+				DEE9FE46192CAF6000621576 /* SMBlurBackground.h */,
+				DEE9FE47192CAF6000621576 /* SMBlurBackground.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 				D204F356192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */,
 				D2E5D62818DFDC4A00C3080C /* Subscribes.m in Sources */,
+				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,

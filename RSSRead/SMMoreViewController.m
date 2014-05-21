@@ -11,6 +11,7 @@
 #import "SMMoreCell.h"
 #import "SMRSSListViewController.h"
 #import "SMAboutViewController.h"
+#import "SMBlurBackground.h"
 
 @interface SMMoreViewController ()
 @property(nonatomic,strong)NSArray *optionArr;
@@ -44,6 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //[self.view addSubview:[SMBlurBackground QBluerView]];
     _optionArr = @[
                    @{
                        @"cn": @"添加新订阅",
