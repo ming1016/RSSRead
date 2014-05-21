@@ -27,6 +27,8 @@
 #define LIST_LIGHT_COLOR @"#999999"
 #define LIST_YELLOW_COLOR @"#CD8500"
 
+#define LINK_COLOR [UIColor purpleColor]
+
 #define APP_DELEGATE ((SMAppDelegate *)([[UIApplication sharedApplication] delegate]))
 
 #define SERVER_URL @""

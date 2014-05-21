@@ -62,6 +62,10 @@
     _subscribeTitle = subscribeTitle;
 }
 
+-(void)setIsFav:(BOOL)isFav {
+    _isFav = isFav;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -98,6 +102,7 @@
     getModel.sortName = @"date";
     if (_isFav) {
         getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
+        NSLog(@"isfav");
     }else{
         getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
     }
@@ -105,7 +110,7 @@
     NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
     [_rssArray removeAllObjects];
     [_rssArray addObjectsFromArray:fetchedRecords];
-    
+    NSLog(@"kkkk %@",_rssArray);
     
     //首次点击进入页面时进行一次拉取数据
     if (!_isFav && _rssArray.count == 0) {

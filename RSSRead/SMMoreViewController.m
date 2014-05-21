@@ -121,6 +121,7 @@
         //收藏的
         SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
         rsslistVC.isFav = YES;
+        rsslistVC.isNewVC = YES;
         [self.navigationController pushViewController:rsslistVC animated:YES];
     }
     if ([aOption[@"en"]isEqualToString:@"about"]) {

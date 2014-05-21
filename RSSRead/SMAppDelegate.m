@@ -31,7 +31,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
+    [[UINavigationBar appearance] setTintColor:LINK_COLOR];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     self.window.rootViewController = rootViewNav;
