@@ -50,8 +50,10 @@
     
     //rigth drawer
     SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
+    UINavigationController *leftnav = [[UINavigationController alloc]initWithRootViewController:moreVC];
     moreVC.title = @"更多";
-    [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
+    [self.dynamicsDrawerViewController setDrawerViewController:leftnav forDirection:MSDynamicsDrawerDirectionLeft];
+    [self.dynamicsDrawerViewController setRevealWidth:310 forDirection:MSDynamicsDrawerDirectionLeft];
     
     self.window.rootViewController = self.dynamicsDrawerViewController;
     [self.window makeKeyAndVisible];

@@ -64,7 +64,7 @@
     _tfValue.returnKeyType = UIReturnKeyDone;
     _tfValue.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _tfValue.placeholder = @"请输入RSS地址";
-    [_tfValue becomeFirstResponder];
+    
     [self.view addSubview:_tfValue];
     
     CGRect rect = _tfValue.frame;
@@ -84,6 +84,10 @@
     _managedObjectContext = _appDelegate.managedObjectContext;
     
     
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [_tfValue becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -203,7 +207,7 @@
     SMAddRSSToolbar *toolbar = [[SMAddRSSToolbar alloc] init];
     CGFloat toolbarX = 0;
     CGFloat toolbarH = 44;
-    CGFloat toolbarY = self.view.frame.size.height-toolbarH;
+    CGFloat toolbarY = self.view.frame.size.height;
     CGFloat toolbarW = self.view.frame.size.width;
     toolbar.frame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
     toolbar.delegate =self;
@@ -226,7 +230,7 @@
     self.toolbar.hidden = NO;
     
     [UIView animateWithDuration:duration animations:^{
-        self.toolbar.transform = CGAffineTransformMakeTranslation(0, -keyboardF.size.height);
+        self.toolbar.transform = CGAffineTransformMakeTranslation(0, -keyboardF.size.height-44);
     }];
 }
 
