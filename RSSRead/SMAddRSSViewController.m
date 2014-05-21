@@ -11,7 +11,8 @@
 #import "SMAppDelegate.h"
 #import "RSS.h"
 #import "SMRSSModel.h"
-
+#import "MBProgressHUD.h"
+#import "SMFeedParserWrapper.h"
 
 @interface SMAddRSSViewController ()
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
@@ -110,6 +111,12 @@
         _feedParser.connectionType = ConnectionTypeSynchronously;
         [_feedParser parse];
         //这里需要一个hud不让用户操作。
+        
+//        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+//        [hud showAnimated:YES whileExecutingBlock:^{
+//            SMFeedParserWrapper *parser = [[SMFeedParserWrapper alloc] init];
+//        }];
+        
     }
     return YES;
 }
