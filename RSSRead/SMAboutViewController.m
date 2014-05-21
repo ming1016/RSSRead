@@ -10,6 +10,7 @@
 #import "SMRSSaboutgroup.h"
 #import "SMRSSaboutModel.h"
 #import "MBProgressHUD.h"
+#define  krowHeight 44
 
 @interface SMAboutViewController () <UIWebViewDelegate>
 @property(nonatomic,strong)UIWebView *webView;
@@ -31,6 +32,7 @@
 {
     [super viewDidLoad];
     self.title = @"关于";
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (NSArray *)groups
@@ -79,6 +81,15 @@
     cell.imageView.layer.masksToBounds = YES;
     cell.textLabel.text = about.title;
     cell.detailTextLabel.text = about.link;
+    
+    //添加cell分割线
+    CGFloat lineViewX = 65;
+    CGFloat lineViewY = krowHeight-1;
+    CGFloat lineViewW = self.view.bounds.size.width - lineViewX -5;
+    CGFloat lineViewH = 1;
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(lineViewX, lineViewY, lineViewW , lineViewH)];
+    lineView.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.5];
+    [cell.contentView addSubview:lineView];
     
     return cell;
 }
@@ -132,8 +143,8 @@
     SMRSSaboutgroup *group = self.groups[section];
     return group.title;
 }
-@end
 
+@end
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 //{
 //    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
