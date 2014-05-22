@@ -12,4 +12,5 @@
 
 @interface SMViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,MWFeedParserDelegate,SMRSSModelDelegate,SMAddRSSViewControllerDelegate>
 //-(void)fetchWithCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler;
+
 @end

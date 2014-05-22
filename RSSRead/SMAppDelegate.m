@@ -37,25 +37,22 @@
     //MSDynamicsDrawerViewController setting
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
     
-    //self.dynamicsDrawerViewController.delegate = self;
-    
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 
+    //Pane view
     [[UINavigationBar appearance] setTintColor:LINK_COLOR];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     
-    //pane view
     self.dynamicsDrawerViewController.paneViewController = rootViewNav;
     
-    //rigth drawer
+    //Left drawer
     SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
-    UINavigationController *leftnav = [[UINavigationController alloc]initWithRootViewController:moreVC];
-    moreVC.title = @"更多";
-    [self.dynamicsDrawerViewController setDrawerViewController:leftnav forDirection:MSDynamicsDrawerDirectionLeft];
-    [self.dynamicsDrawerViewController setRevealWidth:310 forDirection:MSDynamicsDrawerDirectionLeft];
+    moreVC.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
+    [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
     
     self.window.rootViewController = self.dynamicsDrawerViewController;
+    
     [self.window makeKeyAndVisible];
     
     //通知
