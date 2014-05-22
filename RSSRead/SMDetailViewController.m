@@ -48,6 +48,10 @@
     [self.view addSubview:_webView];
     [self.view addSubview:_bottomBar];
 
+    UIView *statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, STATUS_BAR_HEIGHT)];
+    [statusBarBackView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:statusBarBackView];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

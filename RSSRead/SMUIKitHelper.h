@@ -13,6 +13,7 @@
 #define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define STATUS_BAR_HEIGHT   [[UIApplication sharedApplication] statusBarFrame].size.height
 
 #define QM_TABLEVIEW_BACKGROUND_COLOR [UIColor clearColor]
 #define QM_TABLEVIEW_SEPARATOR_COLOR [UIColor clearColor]
