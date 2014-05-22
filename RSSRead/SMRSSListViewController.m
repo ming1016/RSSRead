@@ -12,6 +12,7 @@
 #import "SMGetFetchedRecordsModel.h"
 #import "SMRSSListCell.h"
 #import "RSS.h"
+#import "SMScreenShotMgr.h"
 
 @interface SMRSSListViewController ()
 @property(nonatomic,strong)NSMutableArray *rssArray;
@@ -73,6 +74,12 @@
         _isNewVC = NO;
         [self loadTableViewFromCoreData];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+//    [[SMScreenShotMgr sharedInstance] takeScreenShot];
 }
 
 - (void)fetchDataFromDB
