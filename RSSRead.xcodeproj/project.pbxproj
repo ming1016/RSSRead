@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
+		CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */; };
+		CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
@@ -98,6 +100,10 @@
 		1F983C961927708B00EBD91B /* SMFeedParserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedParserWrapper.h; sourceTree = "<group>"; };
 		1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedParserWrapper.m; sourceTree = "<group>"; };
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CB3DA4BB192DD33E00AC52D6 /* UIColor+TBExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TBExt.h"; sourceTree = "<group>"; };
+		CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TBExt.m"; sourceTree = "<group>"; };
+		CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSS.h"; sourceTree = "<group>"; };
+		CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RSS.m"; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
@@ -269,6 +275,17 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		CB3DA4BA192DD27200AC52D6 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CB3DA4BB192DD33E00AC52D6 /* UIColor+TBExt.h */,
+				CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */,
+				CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */,
+				CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		D20C7058192D8891002A2236 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +389,7 @@
 		D2E8FBF118C46B5A005E8F2E /* RSSRead */ = {
 			isa = PBXGroup;
 			children = (
+				CB3DA4BA192DD27200AC52D6 /* Category */,
 				1F9854C9192A07280093DDF8 /* View */,
 				1F9854C5192A066D0093DDF8 /* ViewController */,
 				1F9854C4192A05D80093DDF8 /* Model */,
@@ -693,6 +711,7 @@
 			files = (
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
+				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
@@ -712,6 +731,7 @@
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
+				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
