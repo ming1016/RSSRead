@@ -79,6 +79,12 @@
     _appDelegate = [UIApplication sharedApplication].delegate;
     _managedObjectContext = _appDelegate.managedObjectContext;
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [_searchBar becomeFirstResponder];
     [self loadRssSourcesWithStr:@"伯乐在线"];
 }
 /**
@@ -137,10 +143,6 @@
     cell.searchRss = self.RSSArray[indexPath.row];
    
     return cell;
-}
--(void)viewDidAppear:(BOOL)animated
-{
-    [_searchBar becomeFirstResponder];
 }
 
 #pragma mark - TextField delegate

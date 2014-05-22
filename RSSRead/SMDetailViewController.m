@@ -48,6 +48,10 @@
     [self.view addSubview:_webView];
     [self.view addSubview:_bottomBar];
 
+    UIView *statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, STATUS_BAR_HEIGHT)];
+    [statusBarBackView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:statusBarBackView];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -100,24 +104,54 @@
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM.dd HH:mm"];
     NSString *publishDate = [formatter stringFromDate:_rss.date];
-    NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\"><style>body{color:#333333;font-size:12pt;}</style></head><body><h3><a style=\"color:#333333;text-decoration:none;\" href=\"%@\">%@</a></h3><p style=\"text-align:center;font-size:9pt\">%@ 发表于 %@</p>%@%@</body></html>",_rss.link,_rss.title,_rss.author,publishDate,_showContent,mTxt];
+    NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\"><style>body{color:#333333;font-size:12pt;}.content{  width: 277px;\
+                         font-size: 16px;\
+                         line-height: 26px;\
+                         color: #333333;\
+                         margin: 0 auto;\
+                         }  p{\
+                                        margin: 0;\
+                                        padding: 5px 0;\
+                         }\
+                         sup{\
+                            font-style: italic; \
+                            color: #999;\
+                         }\
+                         .title {\
+                             color:#333333;\
+                             text-decoration:none;\
+                             margin-top: 20px;\
+                             margin-left: 14px;\
+                             line-height: 26px;\
+                             font-size: 18px;\
+                             text-align:left;\
+                         }\
+                         .diver{\
+                         margin:14px;\
+                         padding:0;\
+                         font-size:0;\
+                         line-height:0;\
+                         border-bottom:#ccc 1px solid;\
+                         }\
+                         </style></head><body><div class=\"title\" href=\"%@\">%@</div>\
+                         <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>",_rss.link,_rss.title,_rss.author,publishDate,_showContent,mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
     
-    [self.bottomBar fillWithRSS:_rss];
     [_rssModel markAsRead:_rss];
+    [_bottomBar fillWithRSS:_rss];
 }
 
 -(void)favRSS {
     [_rssModel favRSS:_rss];
     _rss.isFav = @1;
-    [self.bottomBar fillWithRSS:_rss];
+    [_bottomBar fillWithRSS:_rss];
     [self.delegate faved];
 }
 
 -(void)unFavRSS {
     [_rssModel unFavRSS:_rss];
     _rss.isFav = @0;
-    [self.bottomBar fillWithRSS:_rss];
+    [_bottomBar fillWithRSS:_rss];
     [self.delegate unFav];
     [self doBack];
 }

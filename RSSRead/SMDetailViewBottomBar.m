@@ -40,7 +40,7 @@
 
 - (void)fillWithRSS:(RSS *)rss;
 {
-    if(rss.isFav) {
+    if([rss.isFav isEqual:@1]) {
         [self.favButton setImage:[UIImage imageNamed:@"toolbar_favorite"] forState:UIControlStateNormal];
     } else {
         [self.favButton setImage:[[UIImage imageNamed:@"toolbar_favorite"] imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
