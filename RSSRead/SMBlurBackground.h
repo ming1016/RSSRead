@@ -16,4 +16,8 @@
  *  @return UIImageView
  */
 + (UIImageView *)QBluerView;
+/**
+ *  仅返回尺寸为屏幕大小的image,不带模糊效果
+ */
++ (UIImage *)QBNoneBluerImage;
 @end

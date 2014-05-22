@@ -14,7 +14,7 @@
 #define  krowHeight 44
 
 @interface SMAboutViewController () <UIWebViewDelegate>
-@property(nonatomic,strong)UIWebView *webView;
+@property(nonatomic,weak)UIWebView *webView;
 @property (nonatomic, strong) NSArray *groups;
 @property (nonatomic, weak) UIImageView *bgIcon;
 @property (nonatomic,weak) MBProgressHUD *HUD;
@@ -45,14 +45,14 @@
  */
 - (void)setupBackground
 {
-    UIImage *image = [UIImage imageNamed:@"bg3"];
-   // UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    UIImageView *imageView = [SMBlurBackground QBluerView];
+    UIImage *image = [SMBlurBackground QBNoneBluerImage];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+   // UIImageView *imageView = [SMBlurBackground QBluerView];
     self.bgIcon = imageView;
     self.bgIcon.bounds = CGRectMake(0, 0, 320, 700);
     _bgIcon.layer.anchorPoint = CGPointMake(0.4, 0);
     _bgIcon.layer.position = CGPointMake(120, -80);
-    [self.tableView insertSubview:_bgIcon atIndex:0];
+    [self.tableView insertSubview:imageView atIndex:0];
 
 }
 /**
