@@ -14,7 +14,6 @@
 		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
 		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
 		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
-		CB45E7C6192E4C6E00C6D84C /* SMScreenShotMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C5192E4C6E00C6D84C /* SMScreenShotMgr.m */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
