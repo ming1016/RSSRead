@@ -8,10 +8,14 @@
 
 #import "SMDetailViewBottomBar.h"
 #import "UIImage+Tint.h"
+#import <ViewUtils.h>
+#import "UIColor+TBExt.h"
+#import "RSS.h"
 
 @interface SMDetailViewBottomBar ()
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIImageView *flatShadowSepia;
 @property (weak, nonatomic) IBOutlet UIButton *favButton;
 
 @end
@@ -30,9 +34,17 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self.backButton setBackgroundImage:[[UIImage imageNamed:@"toolbar_back"] imageWithTintColor:[UIColor grayColor]] forState:UIControlStateNormal];
-    [self.favButton setBackgroundImage:[[UIImage imageNamed:@"toolbar_favorite"] imageWithTintColor:[UIColor grayColor]] forState:UIControlStateNormal];
+    [self.backButton setImage:[[UIImage imageNamed:@"toolbar_back"] imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
+    [self.favButton setImage:[[UIImage imageNamed:@"toolbar_favorite"] imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
+}
 
+- (void)fillWithRSS:(RSS *)rss;
+{
+    if(rss.isFav) {
+        [self.favButton setImage:[UIImage imageNamed:@"toolbar_favorite"] forState:UIControlStateNormal];
+    } else {
+        [self.favButton setImage:[[UIImage imageNamed:@"toolbar_favorite"] imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)backButtonTouched:(id)sender

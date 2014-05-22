@@ -15,8 +15,10 @@
 
 @end
 
+@class RSS;
 @interface SMDetailViewBottomBar : UIView
 
 @property (weak, nonatomic) id<SMDetailViewBottomBarDelegate> delegate;
+- (void)fillWithRSS:(RSS *)rss;
 
 @end

@@ -7,21 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="I90-WJ-d9l" customClass="SMDetailViewBottomBar">
-            <rect key="frame" x="0.0" y="0.0" width="333" height="45"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-FM-urE">
-                    <rect key="frame" x="20" y="12.5" width="28" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="toolbar_back">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="backButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="cbb-hN-MI5"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS4-ma-Q6m">
-                    <rect key="frame" x="267" y="12.5" width="28" height="22"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS4-ma-Q6m" userLabel="fav">
+                    <rect key="frame" x="272" y="12" width="28" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="toolbar_favorite">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,16 +20,32 @@
                         <action selector="favButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="0Zw-Xa-imJ"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-FM-urE" userLabel="back">
+                    <rect key="frame" x="20" y="12" width="28" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="toolbar_back">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="backButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="cbb-hN-MI5"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flat_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="YML-Xw-AeX">
+                    <rect key="frame" x="0.0" y="-3" width="320" height="3"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backButton" destination="ju1-FM-urE" id="6hZ-cl-BYT"/>
                 <outlet property="favButton" destination="vS4-ma-Q6m" id="Taj-zN-5NC"/>
+                <outlet property="flatShadowSepia" destination="YML-Xw-AeX" id="ZXh-TM-y09"/>
             </connections>
         </view>
     </objects>
     <resources>
+        <image name="flat_shadow" width="320" height="3"/>
         <image name="toolbar_back" width="28" height="21"/>
         <image name="toolbar_favorite" width="28" height="21"/>
     </resources>
