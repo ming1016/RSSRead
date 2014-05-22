@@ -24,8 +24,7 @@
     //将endImage写入沙盒
     NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES).lastObject;
     NSString *filePath = [document stringByAppendingPathComponent:[NSString stringWithFormat:@"SMRSSBackground.png"]];   // 保存文件的名称
-    BOOL result = [UIImagePNGRepresentation(endImage) writeToFile: filePath atomically:YES]; // 保存成功会返回YES
-    NSLog(@"%d",result);
+    [UIImagePNGRepresentation(endImage) writeToFile: filePath atomically:YES]; // 保存成功会返回YES
 }
 
 

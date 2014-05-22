@@ -22,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // 背景
+        
         UIImage *image =[UIImage imageNamed:@"searchbar_textfield_background"];
      self.background = [image stretchableImageWithLeftCapWidth:image.size.width * 0.5 topCapHeight:image.size.height * 0.5];
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;

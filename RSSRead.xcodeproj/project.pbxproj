@@ -248,8 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				1F9854C6192A06900093DDF8 /* Home */,
-				D2EDF79518C5BDAC00B0E990 /* More */,
 				D2F75F6718D9827B00ED44A3 /* RSSList */,
+				D2EDF79518C5BDAC00B0E990 /* More */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
