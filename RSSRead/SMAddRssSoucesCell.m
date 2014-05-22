@@ -39,6 +39,7 @@
     
 }
 
+
 - (void)setSearchRss:(SMAddRssSourceModel *)searchRss
 {
     self.textLabel.text = searchRss.title;
