@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "HYCircleLoadingView.h"
 #import "SMBlurBackground.h"
+#import "UIColor+RSS.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
@@ -57,11 +58,17 @@
     [self.navigationItem setTitleView:imgView];
     
     [self.view addSubview:[SMBlurBackground SMbackgroundView]];
+    
+    UIView *naviWhiteCover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, NAVBARHEIGHT)];
+    naviWhiteCover.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:naviWhiteCover];
+
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
     //读取中的hud
-    _loadingView = [[HYCircleLoadingView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    _loadingView = [[HYCircleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
+    _loadingView.lineColor = [UIColor rss_cyanColor];
     UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
     self.navigationItem.leftBarButtonItem = loadingItem;
     
