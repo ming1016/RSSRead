@@ -31,10 +31,7 @@
 //    [[self view]addGestureRecognizer:recognizer];
 //    recognizer = nil;
     
-    CGRect rect = self.view.bounds;
-    rect.size.height = rect.size.height + NAVBARHEIGHT;
-    rect.size.width = rect.size.width;
-    _webView = [[UIWebView alloc]initWithFrame:rect];
+    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [_webView setBackgroundColor:[UIColor whiteColor]];
     _webView.scalesPageToFit = YES;
     _webView.scrollView.directionalLockEnabled = YES;
