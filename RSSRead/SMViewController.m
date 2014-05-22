@@ -111,7 +111,7 @@
     [super viewDidAppear:animated];
 #if TARGET_IPHONE_SIMULATOR
     [[MMLayershots sharedInstance] setDelegate:self];
-    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationUserDidTakeScreenshotNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationUserDidTakeScreenshotNotification object:nil];
 #endif
 }
 
