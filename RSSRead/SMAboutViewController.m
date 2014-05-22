@@ -35,9 +35,6 @@
     [super viewDidLoad];
     self.title = @"关于";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    self.tableView.backgroundColor =[UIColor clearColor];
-    
     [self setupBackground];
 }
 /**
@@ -47,11 +44,7 @@
 {
    
     UIImageView *imageView =  [SMBlurBackground SMbackgroundView];;
-   // UIImageView *imageView = [SMBlurBackground QBluerView];
     self.bgIcon = imageView;
-    self.bgIcon.bounds = CGRectMake(0, 0, 320, 700);
-    _bgIcon.layer.anchorPoint = CGPointMake(0.4, 0);
-    _bgIcon.layer.position = CGPointMake(120, -80);
     [self.tableView insertSubview:imageView atIndex:0];
 
 }
