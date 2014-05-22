@@ -15,6 +15,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGFloat toolbarX = 0;
+        CGFloat toolbarH = 44;
+        CGFloat toolbarY = [UIScreen mainScreen].bounds.size.height;
+        CGFloat toolbarW = [UIScreen mainScreen].bounds.size.width;
+        self.frame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
         // 1.设置toobar背景
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"addRSS_toolbar_background"]];
         

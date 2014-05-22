@@ -19,16 +19,12 @@
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
-//@property(nonatomic,strong)UITextField *tfValue;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,strong)Subscribes *subscribe;
 @property(nonatomic,strong)RSS *rss;
-
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)SMAppDelegate *appDelegate;
-//@property(nonatomic,strong)UILabel *lbSending;
-
 @property(nonatomic,weak) SMAddRssSearchBar *searchBar;
 @property(nonatomic,weak) SMAddRSSToolbar *toolbar;
 @property(nonatomic,strong)NSMutableArray *RSSArray;
@@ -87,6 +83,7 @@
     [_searchBar becomeFirstResponder];
     [self loadRssSourcesWithStr:@"伯乐在线"];
 }
+
 /**
  *  根据用户输入字符串搜索RSS源
  *
@@ -115,7 +112,6 @@
        for (NSDictionary *dict in rssArray) {
         SMAddRssSourceModel *rssModel = [SMAddRssSourceModel rssWithDict:dict];
             [Array addObject:rssModel];
-           NSLog(@"%@",rssModel.url);
                  }
         _RSSArray = Array;
 
@@ -155,8 +151,6 @@
         NSString *tfString =nil;
         #warning 这边判断要重写
         if ((_searchBar.text.length >7)&&[[_searchBar.text substringToIndex:7]isEqualToString:@"http://"]) {
-            //
-            NSLog(@"show it %@",[_searchBar.text substringToIndex:7]);
             tfString = _searchBar.text;
         } else {
             tfString = [NSString stringWithFormat:@"http://%@",_searchBar.text];
@@ -296,11 +290,6 @@
 -(void)setupToolbar
 {
     SMAddRSSToolbar *toolbar = [[SMAddRSSToolbar alloc] init];
-    CGFloat toolbarX = 0;
-    CGFloat toolbarH = 44;
-    CGFloat toolbarY = self.view.frame.size.height;
-    CGFloat toolbarW = self.view.frame.size.width;
-    toolbar.frame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
     toolbar.delegate =self;
     [self.view addSubview:toolbar];
     self.toolbar = toolbar;
