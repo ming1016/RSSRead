@@ -12,9 +12,23 @@
 #import "SMRSSListViewController.h"
 #import "SMAboutViewController.h"
 #import "SMBlurBackground.h"
+#import "MSDynamicsDrawerViewController.h"
+#import "SMViewController.h"
 
 @interface SMMoreViewController ()
+
 @property(nonatomic,strong)NSArray *optionArr;
+
+@property (nonatomic, strong) NSDictionary *paneViewControllerClasses;
+@property (nonatomic, strong) NSDictionary *paneViewControllerTitles;
+
+@property (nonatomic, strong) NSDictionary *sectionTitles;
+@property (nonatomic, strong) NSArray *tableViewSectionBreaks;
+
+@property (nonatomic, strong) UIBarButtonItem *paneStateBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *paneRevealRightBarButtonItem;
+
 @end
 
 @implementation SMMoreViewController
@@ -47,6 +61,10 @@
     [super viewDidLoad];
     //[self.view addSubview:[SMBlurBackground QBluerView]];
     _optionArr = @[
+                   @{
+                       @"cn": @"首页",
+                       @"en":@"home"
+                       },
                    @{
                        @"cn": @"添加新订阅",
                        @"en":@"addRSS"
@@ -113,24 +131,31 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *aOption = _optionArr[indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([aOption[@"en"]isEqualToString:@"home"]) {
+        //首页
+        [self transitionToViewController:HomeViewController];
+        return;
+    }
+    
     if ([aOption[@"en"]isEqualToString:@"addRSS"]) {
         //添加rss
-        SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
-        addRSSVC.smAddRSSViewControllerDelegate = self;
-        [self.navigationController pushViewController:addRSSVC animated:YES];
+        [self transitionToViewController:AddRSSViewController];
+        return;
     }
+    
     if ([aOption[@"en"]isEqualToString:@"fav"]) {
         //收藏的
-        SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
-        rsslistVC.isFav = YES;
-        rsslistVC.isNewVC = YES;
-        [self.navigationController pushViewController:rsslistVC animated:YES];
+        [self transitionToViewController:FavoriteListController];
+        return;
     }
+    
     if ([aOption[@"en"]isEqualToString:@"about"]) {
         //关于
-        SMAboutViewController *aboutVC = [[SMAboutViewController alloc]initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:aboutVC animated:YES];
+        [self transitionToViewController:AboutViewController];
+        return;
     }
+    
     if ([aOption[@"en"]isEqualToString:@"setting"]) {
         //设置
         
@@ -140,9 +165,67 @@
 #pragma mark addsubscribesdelegate
 -(void)addedRSS:(Subscribes *)subscribe {
     NSLog(@"add subscribe1111111");
-    [_smMoreViewControllerDelegate addSubscribeToMainViewController:subscribe];
+    //[_smMoreViewControllerDelegate addSubscribeToMainViewController:subscribe];
+    [self transitionToViewController:HomeViewController];
 }
 
+#pragma mark - MSDynamicDrawerController
+- (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType
+{
+    // Close pane if already displaying the pane view controller
+    if (paneViewControllerType == self.paneViewControllerType) {
+        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:YES completion:nil];
+        return;
+    }
+    
+    BOOL animateTransition = self.dynamicsDrawerViewController.paneViewController != nil;
+    
+    UIViewController *paneViewController;
+    
+    switch (paneViewControllerType) {
+        case HomeViewController:
+            paneViewController = [SMViewController new];
+            break;
+            
+        case AddRSSViewController:{
+            SMAddRSSViewController *controller = [SMAddRSSViewController new];
+            controller.smAddRSSViewControllerDelegate = self;
+            paneViewController = controller;
+            self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
+            paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
+            break;
+        }
+        
+        case FavoriteListController:{
+            SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
+            rsslistVC.isFav = YES;
+            rsslistVC.isNewVC = YES;
+            paneViewController = rsslistVC;
+            self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
+            paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
+            break;
+        }
+            
+        case AboutViewController:
+            paneViewController = [SMAboutViewController new];
+            self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
+            paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
+            break;
+            
+        default:
+            break;
+    }
+    
+    UINavigationController *paneNavigationViewController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
+    [self.dynamicsDrawerViewController setPaneViewController:paneNavigationViewController animated:animateTransition completion:nil];
+    
+    self.paneViewControllerType = paneViewControllerType;
+}
+
+- (void)dynamicsDrawerRevealLeftBarButtonItemTapped:(id)sender
+{
+    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionLeft animated:YES allowUserInterruption:YES completion:nil];
+}
 
 
 @end
