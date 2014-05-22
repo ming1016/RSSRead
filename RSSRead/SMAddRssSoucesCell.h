@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class SMAddRssSourceModel;
+
 @interface SMAddRssSoucesCell : UITableViewCell
 
 @property (nonatomic,strong) SMAddRssSourceModel* searchRss;

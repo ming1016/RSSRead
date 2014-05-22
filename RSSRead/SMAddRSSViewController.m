@@ -16,6 +16,7 @@
 #import "AFNetworking.h"
 #import "SMAddRssSourceModel.h"
 #import "SMAddRssSoucesCell.h"
+#import "MBProgressHUD.h"
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
@@ -29,6 +30,7 @@
 @property(nonatomic,weak) SMAddRSSToolbar *toolbar;
 @property(nonatomic,strong)NSMutableArray *RSSArray;
 @property(nonatomic,weak)UITableView *tableView;
+@property(nonatomic,weak)MBProgressHUD *HUD;
 @end
 
 @implementation SMAddRSSViewController
@@ -67,6 +69,11 @@
     
     //加载searchbar
     [self setupSearchBar];
+    
+    //加载指示层
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    _HUD =HUD;
     
     //init
     _parsedItems = [NSMutableArray array];
@@ -137,36 +144,53 @@
     // 1.创建cell
     SMAddRssSoucesCell *cell = [SMAddRssSoucesCell cellWithTableView:tableView];
     cell.searchRss = self.RSSArray[indexPath.row];
-   
+    //cell.
     return cell;
 }
 
 #pragma mark - TextField delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-
+    //退出键盘
     [_searchBar resignFirstResponder];
-    if (_searchBar.text != nil) {
-        //
-        NSString *tfString =nil;
-        #warning 这边判断要重写
-        if ((_searchBar.text.length >7)&&[[_searchBar.text substringToIndex:7]isEqualToString:@"http://"]) {
-            tfString = _searchBar.text;
-        } else {
-            tfString = [NSString stringWithFormat:@"http://%@",_searchBar.text];
+    NSString *str= _searchBar.text;
+    /**
+     *  判断用户是添加源 还是搜索源
+     */
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http+:[^\\s]*" options:0 error:&error];
+    /**
+     *  检查是否是网址,不是返回值为null
+     */
+    if (regex != nil) {
+        NSTextCheckingResult *result = [regex firstMatchInString:str options:0 range:NSMakeRange(0, str.length)];
+        if(result)
+        {
+             //用户添加源
+            [self addInputRSS];
+            return YES;
         }
+    }
+    //用户搜索源
+    [self loadRssSourcesWithStr:str];
+    
+    return YES;
+}
+
+- (void)addInputRSS
+{
         //读取解析rss
-        NSURL *feedURL = [NSURL URLWithString:tfString];
+        NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
         _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
         _feedParser.delegate = self;
         _feedParser.feedParseType = ParseTypeFull;
         _feedParser.connectionType = ConnectionTypeSynchronously;
-        [_feedParser parse];
-        //这里需要一个hud不让用户操作。
-    }
-    return YES;
+    
+        //判断添加源是否失败
+        _HUD.labelText = [_feedParser parse] ? @"成功添加":@"无法解析该源";
+        [_HUD show:YES];
+        [_HUD hide:YES afterDelay:2];
+    
 }
-
 #pragma mark - MWFeedParserDelegate
 -(void)feedParserDidStart:(MWFeedParser *)parser {
     NSLog(@"Started Parsing");
@@ -217,6 +241,10 @@
 }
 
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
+    _HUD.labelText = @"解析失败";
+    [_HUD show:YES];
+    [_HUD hide:YES afterDelay:2];
+    
 }
 
 /**
@@ -266,17 +294,21 @@
 
 - (void)setupSearchBar
 {
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.frame = CGRectMake(0, 64, 320, 46);
+    backgroundView.backgroundColor = [UIColor colorWithRed:0.153 green:0.956 blue:0.585 alpha:1.000];
+    [self.view addSubview:backgroundView];
     SMAddRssSearchBar *searchBar = [SMAddRssSearchBar searchBar];
-    searchBar.frame = CGRectMake(5, 79, 310, 40);
+    searchBar.frame = CGRectMake(1,1, 318, 44);
     searchBar.delegate =self;
     self.searchBar = searchBar;
-    [self.view addSubview:searchBar];
+    [backgroundView addSubview:searchBar];
 }
 
 - (void)setupResultView
 {
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.frame = CGRectMake(0,80, 320, 400);
+    tableView.frame = CGRectMake(0,80, 320, self.view.frame.size.height-80);
     tableView.delegate =self;
     tableView.dataSource =self;
     _tableView =tableView;
@@ -303,13 +335,3 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
-
-//    //提示lable
-//    CGRect rect = _searchBar.frame;
-//    rect.origin.y += 55;
-//    NSString *sendingText = @"您输入的rss正在添加中，请耐心等待...";
-//    rect.size = [sendingText sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
-//    //label of sending
-//    _lbSending = [SMUIKitHelper labelShadowWithRect:rect text:sendingText textColor:@"#333333" fontSize:14];
-//    [self.view addSubview:_lbSending];
-//    _lbSending.hidden = YES;
