@@ -434,21 +434,12 @@
 		D2EDF79518C5BDAC00B0E990 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				DEE9FE64192E73B400621576 /* SMAddRSS */,
 				DEE9FE38192C87B200621576 /* SMaboutRSS */,
 				D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */,
 				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
 				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
 				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
-				DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */,
-				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
-				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
-				DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */,
-				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
-				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
-				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
-				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
-				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
-				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -528,6 +519,23 @@
 				DEE9FE3F192C87FB00621576 /* aboutRSS.plist */,
 			);
 			name = source;
+			sourceTree = "<group>";
+		};
+		DEE9FE64192E73B400621576 /* SMAddRSS */ = {
+			isa = PBXGroup;
+			children = (
+				DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */,
+				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
+				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
+				DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */,
+				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
+				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
+				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
+				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
+				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
+				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
+			);
+			name = SMAddRSS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
