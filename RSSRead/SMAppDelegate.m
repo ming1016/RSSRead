@@ -15,7 +15,7 @@
 #import "MSDynamicsDrawerStyler.h"
 #import "SMMoreViewController.h"
 #import "UIColor+RSS.h"
-
+#import "SMBlurBackground.h"
 @implementation SMAppDelegate
 //{
 //    SMViewController *_smViewController;
@@ -60,6 +60,8 @@
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
+    //模糊图片写入沙盒
+    [SMBlurBackground SMRSSbackgroundImage:nil];
     
     return YES;
 }

@@ -11,13 +11,12 @@
 @interface SMBlurBackground : NSObject
 
 /**
- *  使用QBlur模糊效果，按周，每天换图片。需要找些合适的图片
- *
- *  @return UIImageView
+ *  仅在初始化作一次调用,将背景图片做模糊处理,快照该处理后的图片,写入沙盒.
  */
-+ (UIImageView *)QBluerView;
++ (void)SMRSSbackgroundImage: (UIImage*)image;
+
 /**
- *  仅返回尺寸为屏幕大小的image,不带模糊效果
+ *  读取沙盒图片,返回UIImageView
  */
-+ (UIImage *)QBNoneBluerImage;
++ (UIImageView *)SMbackgroundView;
 @end

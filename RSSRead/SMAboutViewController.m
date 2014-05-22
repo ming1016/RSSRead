@@ -45,8 +45,8 @@
  */
 - (void)setupBackground
 {
-    UIImage *image = [SMBlurBackground QBNoneBluerImage];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+   
+    UIImageView *imageView =  [SMBlurBackground SMbackgroundView];;
    // UIImageView *imageView = [SMBlurBackground QBluerView];
     self.bgIcon = imageView;
     self.bgIcon.bounds = CGRectMake(0, 0, 320, 700);
