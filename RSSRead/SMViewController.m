@@ -56,7 +56,8 @@
     } else {
         self.title = @"已阅1.1";
     }
-    [self.view addSubview:[SMBlurBackground QBluerView]];
+    
+    [self.view addSubview:[SMBlurBackground SMbackgroundView]];
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
