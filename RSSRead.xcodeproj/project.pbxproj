@@ -77,6 +77,7 @@
 		DEE9FE58192E212B00621576 /* searchbar_textfield_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */; };
 		DEE9FE59192E212B00621576 /* searchbar_textfield_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */; };
 		DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */; };
+		DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,8 @@
 		DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_background@2x.png"; sourceTree = "<group>"; };
 		DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSourceModel.h; sourceTree = "<group>"; };
 		DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSourceModel.m; sourceTree = "<group>"; };
+		DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSoucesCell.h; sourceTree = "<group>"; };
+		DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSoucesCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +437,8 @@
 				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
 				DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */,
 				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
+				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
+				DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */,
 				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
 				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
 				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
@@ -710,6 +715,7 @@
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
+				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
