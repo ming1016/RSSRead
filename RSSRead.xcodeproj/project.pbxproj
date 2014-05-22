@@ -11,6 +11,9 @@
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
 		CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */; };
 		CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */; };
+		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
+		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
+		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
@@ -91,6 +94,11 @@
 		CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TBExt.m"; sourceTree = "<group>"; };
 		CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSS.h"; sourceTree = "<group>"; };
 		CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RSS.m"; sourceTree = "<group>"; };
+		CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDetailViewBottomBar.xib; sourceTree = "<group>"; };
+		CB45E7BE192E332D00C6D84C /* SMDetailViewBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailViewBottomBar.h; sourceTree = "<group>"; };
+		CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailViewBottomBar.m; sourceTree = "<group>"; };
+		CB45E7C1192E375400C6D84C /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
+		CB45E7C2192E375400C6D84C /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
@@ -256,6 +264,8 @@
 				CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */,
 				CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */,
 				CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */,
+				CB45E7C1192E375400C6D84C /* UIImage+Tint.h */,
+				CB45E7C2192E375400C6D84C /* UIImage+Tint.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -434,14 +444,17 @@
 		D2F75F6718D9827B00ED44A3 /* RSSList */ = {
 			isa = PBXGroup;
 			children = (
-				D2F75F6818D9842500ED44A3 /* SMRSSListViewController.h */,
-				D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */,
-				D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */,
-				D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */,
+				D2A2A6B719248C81009BDB38 /* about.html */,
+				D2FB786818E3C4BB007BD413 /* js.html */,
+				CB45E7BE192E332D00C6D84C /* SMDetailViewBottomBar.h */,
+				CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */,
+				CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */,
 				D2DDA05D18DC25E1005394E4 /* SMDetailViewController.h */,
 				D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */,
-				D2FB786818E3C4BB007BD413 /* js.html */,
-				D2A2A6B719248C81009BDB38 /* about.html */,
+				D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */,
+				D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */,
+				D2F75F6818D9842500ED44A3 /* SMRSSListViewController.h */,
+				D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */,
 			);
 			name = RSSList;
 			sourceTree = "<group>";
@@ -593,6 +606,7 @@
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
 				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
+				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
 				D2F79E24192B4682000727D4 /* bg2.png in Resources */,
@@ -657,6 +671,7 @@
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
 				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,
 				D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */,
+				CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */,
 				D20C7060192D896D002A2236 /* QBlurView.m in Sources */,
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,
 				DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */,
@@ -675,6 +690,7 @@
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
+				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
