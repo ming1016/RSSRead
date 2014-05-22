@@ -70,6 +70,10 @@
 		DEE9FE43192C880700621576 /* github@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE41192C880700621576 /* github@2x.png */; };
 		DEE9FE44192C880700621576 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE42192C880700621576 /* weibo@2x.png */; };
 		DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE47192CAF6000621576 /* SMBlurBackground.m */; };
+		DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */; };
+		DEE9FE58192E212B00621576 /* searchbar_textfield_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */; };
+		DEE9FE59192E212B00621576 /* searchbar_textfield_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */; };
+		DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +179,12 @@
 		DEE9FE42192C880700621576 /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
 		DEE9FE46192CAF6000621576 /* SMBlurBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBlurBackground.h; sourceTree = "<group>"; };
 		DEE9FE47192CAF6000621576 /* SMBlurBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBlurBackground.m; sourceTree = "<group>"; };
+		DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSearchBar.h; sourceTree = "<group>"; };
+		DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSearchBar.m; sourceTree = "<group>"; };
+		DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_search_icon@2x.png"; sourceTree = "<group>"; };
+		DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_background@2x.png"; sourceTree = "<group>"; };
+		DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSourceModel.h; sourceTree = "<group>"; };
+		DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSourceModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +422,10 @@
 				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
 				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
 				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
+				DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */,
+				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
+				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
+				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
 				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
 				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
 				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
@@ -463,6 +477,8 @@
 		DE6576F5192BC98900017996 /* addRSS */ = {
 			isa = PBXGroup;
 			children = (
+				DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */,
+				DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */,
 				DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */,
 			);
 			name = addRSS;
@@ -584,6 +600,7 @@
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
+				DEE9FE59192E212B00621576 /* searchbar_textfield_background@2x.png in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
 				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
@@ -592,6 +609,7 @@
 				D2F79E26192B4682000727D4 /* bg4.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
+				DEE9FE58192E212B00621576 /* searchbar_textfield_search_icon@2x.png in Resources */,
 				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
@@ -656,10 +674,12 @@
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
 				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,
+				DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */,
 				D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */,
 				D20C7060192D896D002A2236 /* QBlurView.m in Sources */,
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,
 				DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */,
+				DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
 				D2E8FC2418C46F6F005E8F2E /* RSS.xcdatamodeld in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
