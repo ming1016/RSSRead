@@ -4,4 +4,5 @@ pod "MWFeedParser"
 pod 'pop', '~> 1.0'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'MSDynamicsDrawerViewController'
+pod 'MMLayershots', :podspec => 'https://raw.githubusercontent.com/vpdn/MMLayershots/master/MMLayershots.podspec'
 

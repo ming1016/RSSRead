@@ -10,11 +10,13 @@
 #import "SMRSSaboutgroup.h"
 #import "SMRSSaboutModel.h"
 #import "MBProgressHUD.h"
+#import "SMBlurBackground.h"
 #define  krowHeight 44
 
 @interface SMAboutViewController () <UIWebViewDelegate>
-@property(nonatomic,strong)UIWebView *webView;
+@property(nonatomic,weak)UIWebView *webView;
 @property (nonatomic, strong) NSArray *groups;
+@property (nonatomic, weak) UIImageView *bgIcon;
 @property (nonatomic,weak) MBProgressHUD *HUD;
 @end
 
@@ -33,7 +35,38 @@
     [super viewDidLoad];
     self.title = @"关于";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self setupBackground];
 }
+/**
+ *  设置背景图
+ */
+- (void)setupBackground
+{
+   
+    UIImageView *imageView =  [SMBlurBackground SMbackgroundView];;
+    self.bgIcon = imageView;
+    [self.tableView insertSubview:imageView atIndex:0];
+
+}
+/**
+ *  拖拽时背景变化
+ */
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > 0) return;
+    CGFloat upFactor = 0.6;
+    CGFloat value = 10;
+    CGFloat upMin = - (_bgIcon.frame.size.height / value) / (1 - upFactor);
+    if (offsetY >= upMin) {
+        _bgIcon.transform = CGAffineTransformMakeTranslation(0, offsetY * upFactor);
+    } else {
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, offsetY - upMin * (1 - upFactor));
+        CGFloat s = 1 + (upMin - offsetY) * 0.005;
+        _bgIcon.transform = CGAffineTransformScale(transform, s, s);
+    }
+}
+
 
 - (NSArray *)groups
 {
@@ -70,7 +103,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     
     SMRSSaboutgroup *group = self.groups[indexPath.section];
@@ -90,6 +123,7 @@
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(lineViewX, lineViewY, lineViewW , lineViewH)];
     lineView.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.5];
     [cell.contentView addSubview:lineView];
+    
     
     return cell;
 }

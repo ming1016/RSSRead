@@ -14,7 +14,8 @@
 #import "MSDynamicsDrawerViewController.h"
 #import "MSDynamicsDrawerStyler.h"
 #import "SMMoreViewController.h"
-
+#import "UIColor+RSS.h"
+#import "SMBlurBackground.h"
 @implementation SMAppDelegate
 //{
 //    SMViewController *_smViewController;
@@ -37,23 +38,21 @@
     //MSDynamicsDrawerViewController setting
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
     
-    //self.dynamicsDrawerViewController.delegate = self;
-    
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 
-    [[UINavigationBar appearance] setTintColor:LINK_COLOR];
+    [[UINavigationBar appearance] setTintColor:[UIColor rss_cyanColor]];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     
-    //pane view
     self.dynamicsDrawerViewController.paneViewController = rootViewNav;
     
-    //rigth drawer
+    //Left drawer
     SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
-    moreVC.title = @"更多";
+    moreVC.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
     [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
     
     self.window.rootViewController = self.dynamicsDrawerViewController;
+    
     [self.window makeKeyAndVisible];
     
     //通知
@@ -61,6 +60,8 @@
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
+    //模糊图片写入沙盒
+    [SMBlurBackground SMRSSbackgroundImage:nil];
     
     return YES;
 }

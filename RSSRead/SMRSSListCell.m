@@ -64,7 +64,7 @@
     [super layoutSubviews];
     CGRect rect = CGRectZero;
     rect.origin.x = 11;
-    rect.origin.y = 16;
+    rect.origin.y = 8;
     
     //来源
 //    CGSize fitSize = [_lbSource.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LIST_SMALL_FONT]}];
@@ -96,7 +96,7 @@
 }
 
 +(float)heightForRSSList:(RSS *)rss {
-    float countHeight = 16;
+    float countHeight = 8;
     
 //    CGSize fitSize = [rss.author sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
 //    countHeight += fitSize.height + 2;
@@ -107,7 +107,7 @@
     fitSize = [rss.summary sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
     countHeight += fitSize.height;
     
-//    countHeight += 8;
+    countHeight += 8;
     return countHeight;
 }
 

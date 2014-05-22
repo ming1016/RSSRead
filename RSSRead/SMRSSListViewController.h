@@ -10,9 +10,8 @@
 #import "SMDetailViewController.h"
 #import "SMRSSModel.h"
 #import "SMFeedParserWrapper.h"
-#import "SWTableViewCell.h"
 
-@interface SMRSSListViewController : UITableViewController<SMDetailViewControllerDelegate,SMRSSModelDelegate,MWFeedParserDelegate,SWTableViewCellDelegate>
+@interface SMRSSListViewController : UITableViewController<SMDetailViewControllerDelegate,SMRSSModelDelegate,MWFeedParserDelegate>
 @property(nonatomic,strong)NSString *subscribeUrl;
 @property(nonatomic,strong)NSString *subscribeTitle;
 @property(nonatomic)BOOL isNewVC;

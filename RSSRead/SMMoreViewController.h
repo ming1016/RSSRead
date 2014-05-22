@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMAddRSSViewController.h"
 #import "Subscribes.h"
+#import "MSDynamicsDrawerViewController.h"
+#import "SMAddRSSViewController.h"
+
+
+typedef NS_ENUM(NSUInteger, MSPaneViewControllerType) {
+    HomeViewController,
+    AddRSSViewController,
+    FavoriteListController,
+    AboutViewController
+};
 
 @protocol SMMoreViewControllerDelegate
 
@@ -18,6 +27,11 @@
 @end
 
 @interface SMMoreViewController : UITableViewController<SMAddRSSViewControllerDelegate>
+
 @property(nonatomic,assign)id<SMMoreViewControllerDelegate>smMoreViewControllerDelegate;
+@property(nonatomic, weak) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
+@property(nonatomic, assign) MSPaneViewControllerType paneViewControllerType;
+
+- (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType;
 
 @end

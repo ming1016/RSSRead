@@ -16,7 +16,7 @@
 
 @interface SMAddRSSViewController ()
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
-@property(nonatomic,strong)UITextField *tfValue;
+//@property(nonatomic,strong)UITextField *tfValue;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,strong)Subscribes *subscribe;
 @property(nonatomic,strong)RSS *rss;
@@ -26,7 +26,10 @@
 @property(nonatomic,strong)SMAppDelegate *appDelegate;
 @property(nonatomic,strong)UILabel *lbSending;
 
+@property(nonatomic,weak) SMAddRssSearchBar *searchBar;
 @property(nonatomic,weak) SMAddRSSToolbar *toolbar;
+@property(nonatomic,strong)NSMutableArray *RSSArray;
+@property(nonatomic,weak)UITableView *tableView;
 @end
 
 @implementation SMAddRSSViewController
@@ -57,18 +60,36 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+//    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, NAVBARHEIGHT, 276, 52)];
+//    _tfValue.backgroundColor = [UIColor whiteColor];
+//    _tfValue.delegate = self;
+//    _tfValue.returnKeyType = UIReturnKeyDone;
+//    _tfValue.autocapitalizationType = UITextAutocapitalizationTypeNone;
+//    _tfValue.placeholder = @"请输入RSS地址";
+    
+   // [self.view addSubview:_tfValue];
+    //加载结果页面(tableView)
+    UITableView *tableView = [[UITableView alloc] init];
+    tableView.frame = CGRectMake(0,200 , 320, 200);
+    tableView.delegate =self;
+    [self.view addSubview:tableView];
+    
     //加载toolbar
     [self setupToolbar];
-    _tfValue = [[UITextField alloc]initWithFrame:CGRectMake(20, NAVBARHEIGHT, 276, 52)];
-    _tfValue.backgroundColor = [UIColor whiteColor];
-    _tfValue.delegate = self;
-    _tfValue.returnKeyType = UIReturnKeyDone;
-    _tfValue.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    _tfValue.placeholder = @"请输入RSS地址";
-    [_tfValue becomeFirstResponder];
-    [self.view addSubview:_tfValue];
     
-    CGRect rect = _tfValue.frame;
+    //加载searchbar
+    SMAddRssSearchBar *searchBar = [SMAddRssSearchBar searchBar];
+    searchBar.frame = CGRectMake(15, 100, 290, 40);
+    searchBar.delegate =self;
+    self.searchBar = searchBar;
+    [self.view addSubview:searchBar];
+    
+    
+    
+    //提示lable
+    CGRect rect = _searchBar.frame;
     rect.origin.y += 55;
     NSString *sendingText = @"您输入的rss正在添加中，请耐心等待...";
     rect.size = [sendingText sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
@@ -84,7 +105,68 @@
     _appDelegate = [UIApplication sharedApplication].delegate;
     _managedObjectContext = _appDelegate.managedObjectContext;
     
+    [self loadRssSourcesWithStr:@"伯乐在线"];
     
+}
+
+/**
+ *  根据用户输入字符串搜索RSS源
+ *
+ *  @param str 用户输入字符串
+ */
+- (void)loadRssSourcesWithStr:(NSString *)str
+{
+    
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"context"] =@"";
+    params[@"hl"] = @"zh_CN";
+    params[@"q"]=str;
+    params[@"key"] = @"ABQIAAAA6C4bndUCBastUbawfhKGURTFnqBuwPowtiyJohQxh-8vJXk-MBTetbTPnQAbLgs9lUkeE34hNbC15Q";
+    params[@"v"] =@"1.0";
+
+ 
+    [mgr GET:@"http://www.google.com/uds/GfindFeeds" parameters:params
+     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     
+     NSDictionary *dic = responseObject[@"responseData"];
+     NSArray *rssArray = dic[@"entries"];
+     NSMutableArray *Array = [NSMutableArray array];
+       for (NSDictionary *dict in rssArray) {
+        SMAddRssSourceModel *rssModel = [SMAddRssSourceModel rssWithDict:dict];
+            [Array addObject:rssModel];
+           NSLog(@"%@",rssModel.url);
+                 }
+        _RSSArray = Array;
+
+     
+ } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     
+ }];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _RSSArray.count;
+}
+
+//表行高
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    return nil;
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [_searchBar becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,16 +177,16 @@
 
 #pragma mark - TextField delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [_tfValue resignFirstResponder];
-    if (_tfValue.text != nil) {
+    [_searchBar resignFirstResponder];
+    if (_searchBar.text != nil) {
         //
         NSString *tfString =nil;
-        if ((_tfValue.text.length >7)&&[[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
+        if ((_searchBar.text.length >7)&&[[_searchBar.text substringToIndex:7]isEqualToString:@"http://"]) {
             //
-            NSLog(@"show it %@",[_tfValue.text substringToIndex:7]);
-            tfString = _tfValue.text;
+            NSLog(@"show it %@",[_searchBar.text substringToIndex:7]);
+            tfString = _searchBar.text;
         } else {
-            tfString = [NSString stringWithFormat:@"http://%@",_tfValue.text];
+            tfString = [NSString stringWithFormat:@"http://%@",_searchBar.text];
         }
         
         _lbSending.hidden = NO;
@@ -191,12 +273,13 @@
 - (void)Toolbar:(SMAddRSSToolbar *)toolbar didClickedButtonWithString:(NSString *)str
 {
     if ([str isEqualToString:@"clear"]) {
-        _tfValue.text = @"";
-        _tfValue.placeholder = @"请重新输入RSS";
+        _searchBar.text = @"";
+        _searchBar.placeholder = @"请重新输入RSS";
+        _lbSending.hidden = YES;
     }
     else{
         
-    _tfValue.text = [_tfValue.text stringByAppendingString:str];
+    _searchBar.text = [_searchBar.text stringByAppendingString:str];
     }
     
    
@@ -210,7 +293,7 @@
     SMAddRSSToolbar *toolbar = [[SMAddRSSToolbar alloc] init];
     CGFloat toolbarX = 0;
     CGFloat toolbarH = 44;
-    CGFloat toolbarY = self.view.frame.size.height-toolbarH;
+    CGFloat toolbarY = self.view.frame.size.height;
     CGFloat toolbarW = self.view.frame.size.width;
     toolbar.frame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
     toolbar.delegate =self;
@@ -231,9 +314,10 @@
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     self.toolbar.hidden = NO;
+    _lbSending.hidden = YES;
     
     [UIView animateWithDuration:duration animations:^{
-        self.toolbar.transform = CGAffineTransformMakeTranslation(0, -keyboardF.size.height);
+        self.toolbar.transform = CGAffineTransformMakeTranslation(0, -keyboardF.size.height-44);
     }];
 }
 
@@ -248,6 +332,7 @@
 
         self.toolbar.transform = CGAffineTransformIdentity;
         self.toolbar.hidden = YES;
+        
     }];
 }
 
