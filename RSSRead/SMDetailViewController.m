@@ -52,6 +52,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _rssModel = [[SMRSSModel alloc]init];
+    self.title = _rss.title;
     [self renderDetailViewFromRSS];
     
 }
@@ -62,7 +63,6 @@
     
     
     // Do any additional setup after loading the view.
-    self.title = @"正文";
 //    [self renderDetailViewFromRSS];
 }
 
