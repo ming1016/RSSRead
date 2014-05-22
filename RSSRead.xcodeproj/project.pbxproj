@@ -10,13 +10,9 @@
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
-		D204F356192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D204F34B192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m */; };
-		D204F357192C8BB400425808 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D204F34D192C8BB400425808 /* SWCellScrollView.m */; };
-		D204F358192C8BB400425808 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D204F34F192C8BB400425808 /* SWLongPressGestureRecognizer.m */; };
-		D204F359192C8BB400425808 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D204F351192C8BB400425808 /* SWTableViewCell.m */; };
-		D204F35A192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D204F353192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.m */; };
-		D204F35B192C8BB400425808 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = D204F355192C8BB400425808 /* SWUtilityButtonView.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
+		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
+		D20C7060192D896D002A2236 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705F192D896D002A2236 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D284A48118E50C2F004B5D2D /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47E18E50C2F004B5D2D /* icon-58.png */; };
 		D284A48218E50C2F004B5D2D /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47F18E50C2F004B5D2D /* icon-80.png */; };
 		D284A48318E50C2F004B5D2D /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48018E50C2F004B5D2D /* icon-120.png */; };
@@ -70,8 +66,6 @@
 		D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */; };
 		D2F75F6618D97EC600ED44A3 /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F75F6518D97EC600ED44A3 /* news.png */; };
 		D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */; };
-		D2F79E13192B2055000727D4 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F79E12192B2055000727D4 /* HYCircleLoadingView.m */; };
-		D2F79E1C192B3F0E000727D4 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F79E1B192B3F0E000727D4 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2F79E23192B4682000727D4 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F79E1D192B4681000727D4 /* bg1.png */; };
 		D2F79E24192B4682000727D4 /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F79E1E192B4681000727D4 /* bg2.png */; };
 		D2F79E25192B4682000727D4 /* bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F79E1F192B4681000727D4 /* bg3.png */; };
@@ -106,19 +100,11 @@
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
-		D204F34A192C8BB400425808 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = SOURCE_ROOT; };
-		D204F34B192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = SOURCE_ROOT; };
-		D204F34C192C8BB400425808 /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = SOURCE_ROOT; };
-		D204F34D192C8BB400425808 /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = SOURCE_ROOT; };
-		D204F34E192C8BB400425808 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = SOURCE_ROOT; };
-		D204F34F192C8BB400425808 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = SOURCE_ROOT; };
-		D204F350192C8BB400425808 /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		D204F351192C8BB400425808 /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		D204F352192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = SOURCE_ROOT; };
-		D204F353192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = SOURCE_ROOT; };
-		D204F354192C8BB400425808 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = SOURCE_ROOT; };
-		D204F355192C8BB400425808 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = SOURCE_ROOT; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
+		D20C705A192D891E002A2236 /* HYCircleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCircleLoadingView.h; sourceTree = "<group>"; };
+		D20C705B192D891E002A2236 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = "<group>"; };
+		D20C705E192D896D002A2236 /* QBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlurView.h; sourceTree = "<group>"; };
+		D20C705F192D896D002A2236 /* QBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBlurView.m; sourceTree = "<group>"; };
 		D284A47E18E50C2F004B5D2D /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58.png"; sourceTree = "<group>"; };
 		D284A47F18E50C2F004B5D2D /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-80.png"; sourceTree = "<group>"; };
 		D284A48018E50C2F004B5D2D /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
@@ -176,8 +162,8 @@
 		D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMoreCell.m; sourceTree = "<group>"; };
 		D2EEB44218DAB6BE008175F5 /* SMGetFetchedRecordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGetFetchedRecordsModel.h; sourceTree = "<group>"; };
 		D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGetFetchedRecordsModel.m; sourceTree = "<group>"; };
-		D2EFDC0A19186C270057CB71 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APService.h; path = ../RSSRead/APService.h; sourceTree = "<group>"; };
-		D2EFDC0B19186C270057CB71 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPushSDK.a; path = ../RSSRead/libPushSDK.a; sourceTree = "<group>"; };
+		D2EFDC0A19186C270057CB71 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		D2EFDC0B19186C270057CB71 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
 		D2EFDC0D19186C370057CB71 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
 		D2EFDC0F19186C3F0057CB71 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2EFE4B419178229009F4266 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -190,10 +176,6 @@
 		D2F75F6518D97EC600ED44A3 /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
 		D2F75F6818D9842500ED44A3 /* SMRSSListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListViewController.h; sourceTree = "<group>"; };
 		D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListViewController.m; sourceTree = "<group>"; };
-		D2F79E11192B2055000727D4 /* HYCircleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCircleLoadingView.h; sourceTree = SOURCE_ROOT; };
-		D2F79E12192B2055000727D4 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = SOURCE_ROOT; };
-		D2F79E1A192B3F0E000727D4 /* QBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlurView.h; sourceTree = SOURCE_ROOT; };
-		D2F79E1B192B3F0E000727D4 /* QBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBlurView.m; sourceTree = SOURCE_ROOT; };
 		D2F79E1D192B4681000727D4 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
 		D2F79E1E192B4681000727D4 /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg2.png; sourceTree = "<group>"; };
 		D2F79E1F192B4681000727D4 /* bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg3.png; sourceTree = "<group>"; };
@@ -278,18 +260,6 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		1F9854C8192A06DE0093DDF8 /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-				D204F349192C8B9A00425808 /* SWTableViewCell */,
-				D2F79E19192B3EED000727D4 /* QBlur */,
-				D2F79E0D192B1E81000727D4 /* HYCircleLoadingView */,
-				D2EFDC0A19186C270057CB71 /* APService.h */,
-				D2EFDC0B19186C270057CB71 /* libPushSDK.a */,
-			);
-			path = ThirdParty;
-			sourceTree = "<group>";
-		};
 		1F9854C9192A07280093DDF8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,23 +269,33 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		D204F349192C8B9A00425808 /* SWTableViewCell */ = {
+		D20C7058192D8891002A2236 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				D204F34A192C8BB400425808 /* NSMutableArray+SWUtilityButtons.h */,
-				D204F34B192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m */,
-				D204F34C192C8BB400425808 /* SWCellScrollView.h */,
-				D204F34D192C8BB400425808 /* SWCellScrollView.m */,
-				D204F34E192C8BB400425808 /* SWLongPressGestureRecognizer.h */,
-				D204F34F192C8BB400425808 /* SWLongPressGestureRecognizer.m */,
-				D204F350192C8BB400425808 /* SWTableViewCell.h */,
-				D204F351192C8BB400425808 /* SWTableViewCell.m */,
-				D204F352192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.h */,
-				D204F353192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.m */,
-				D204F354192C8BB400425808 /* SWUtilityButtonView.h */,
-				D204F355192C8BB400425808 /* SWUtilityButtonView.m */,
+				D20C705D192D8962002A2236 /* QBlur */,
+				D20C7059192D88F2002A2236 /* HYCircleLoadingView */,
+				D2EFDC0A19186C270057CB71 /* APService.h */,
+				D2EFDC0B19186C270057CB71 /* libPushSDK.a */,
 			);
-			name = SWTableViewCell;
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		D20C7059192D88F2002A2236 /* HYCircleLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				D20C705A192D891E002A2236 /* HYCircleLoadingView.h */,
+				D20C705B192D891E002A2236 /* HYCircleLoadingView.m */,
+			);
+			name = HYCircleLoadingView;
+			sourceTree = "<group>";
+		};
+		D20C705D192D8962002A2236 /* QBlur */ = {
+			isa = PBXGroup;
+			children = (
+				D20C705E192D896D002A2236 /* QBlurView.h */,
+				D20C705F192D896D002A2236 /* QBlurView.m */,
+			);
+			name = QBlur;
 			sourceTree = "<group>";
 		};
 		D284A47D18E50C20004B5D2D /* icon */ = {
@@ -353,7 +333,6 @@
 		D2E8FBDF18C46B5A005E8F2E = {
 			isa = PBXGroup;
 			children = (
-				1F9854C8192A06DE0093DDF8 /* ThirdParty */,
 				D2E8FBF118C46B5A005E8F2E /* RSSRead */,
 				D2E8FC1018C46B5A005E8F2E /* RSSReadTests */,
 				D2E8FBEA18C46B5A005E8F2E /* Frameworks */,
@@ -403,6 +382,7 @@
 				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
 				D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */,
 				D2EDF78E18C5B20600B0E990 /* Utility */,
+				D20C7058192D8891002A2236 /* ThirdParty */,
 				D2F75F6418D97EB400ED44A3 /* Image */,
 				D2E8FC0318C46B5A005E8F2E /* Images.xcassets */,
 				D2E8FBF218C46B5A005E8F2E /* Supporting Files */,
@@ -495,15 +475,6 @@
 			name = RSSList;
 			sourceTree = "<group>";
 		};
-		D2F79E0D192B1E81000727D4 /* HYCircleLoadingView */ = {
-			isa = PBXGroup;
-			children = (
-				D2F79E11192B2055000727D4 /* HYCircleLoadingView.h */,
-				D2F79E12192B2055000727D4 /* HYCircleLoadingView.m */,
-			);
-			name = HYCircleLoadingView;
-			sourceTree = "<group>";
-		};
 		D2F79E18192B3EBE000727D4 /* background */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,15 +487,6 @@
 				D2F79E22192B4681000727D4 /* bg6.png */,
 			);
 			name = background;
-			sourceTree = "<group>";
-		};
-		D2F79E19192B3EED000727D4 /* QBlur */ = {
-			isa = PBXGroup;
-			children = (
-				D2F79E1A192B3F0E000727D4 /* QBlurView.h */,
-				D2F79E1B192B3F0E000727D4 /* QBlurView.m */,
-			);
-			name = QBlur;
 			sourceTree = "<group>";
 		};
 		DE6576F5192BC98900017996 /* addRSS */ = {
@@ -733,20 +695,18 @@
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
+				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
 				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,
 				D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */,
+				D20C7060192D896D002A2236 /* QBlurView.m in Sources */,
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,
-				D204F35A192C8BB400425808 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
 				D2E8FC2418C46F6F005E8F2E /* RSS.xcdatamodeld in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
-				D2F79E13192B2055000727D4 /* HYCircleLoadingView.m in Sources */,
 				D2EDF79418C5BD9500B0E990 /* SMMoreViewController.m in Sources */,
 				D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */,
-				D204F357192C8BB400425808 /* SWCellScrollView.m in Sources */,
 				D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */,
-				D204F356192C8BB400425808 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */,
 				D2E5D62818DFDC4A00C3080C /* Subscribes.m in Sources */,
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
@@ -754,11 +714,7 @@
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
-				D204F35B192C8BB400425808 /* SWUtilityButtonView.m in Sources */,
-				D204F359192C8BB400425808 /* SWTableViewCell.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
-				D2F79E1C192B3F0E000727D4 /* QBlurView.m in Sources */,
-				D204F358192C8BB400425808 /* SWLongPressGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

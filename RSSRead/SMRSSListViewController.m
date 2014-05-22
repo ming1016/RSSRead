@@ -175,30 +175,6 @@
     [self loadTableViewFromCoreData];
 }
 
-#pragma mark - SWTableViewCell delegate
-//左拉出现快捷收藏按钮
--(NSArray *)rightButtons {
-    NSMutableArray *rightButtons = [NSMutableArray new];
-    [rightButtons sw_addUtilityButtonWithColor:[SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR] title:@"收藏"];
-    return rightButtons;
-}
--(void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
-    switch (index) {
-        case 0:
-        {
-            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-            [self quickFavRSS:cellIndexPath];
-        }
-            break;
-            
-        default:
-            break;
-    }
-}
-- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
-    return YES;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -223,12 +199,9 @@
     SMRSSListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMRSSListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.rightUtilityButtons = [self rightButtons];
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
-        cell.delegate = self;
     }
-    
     [cell setSubscribeTitle:_subscribeTitle];
     [cell setRss:_rssArray[indexPath.row]];
     
@@ -248,6 +221,18 @@
     [self loadTableViewFromCoreData];
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self quickFavRSS:indexPath];
+    }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"收藏";
+}
 
 @end
