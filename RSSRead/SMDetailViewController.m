@@ -107,21 +107,21 @@
     NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\"><style>body{color:#333333;font-size:12pt;}</style></head><body><h3><a style=\"color:#333333;text-decoration:none;\" href=\"%@\">%@</a></h3><p style=\"text-align:center;font-size:9pt\">%@ 发表于 %@</p>%@%@</body></html>",_rss.link,_rss.title,_rss.author,publishDate,_showContent,mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
     
-    [self.bottomBar fillWithRSS:_rss];
     [_rssModel markAsRead:_rss];
+    [_bottomBar fillWithRSS:_rss];
 }
 
 -(void)favRSS {
     [_rssModel favRSS:_rss];
     _rss.isFav = @1;
-    [self.bottomBar fillWithRSS:_rss];
+    [_bottomBar fillWithRSS:_rss];
     [self.delegate faved];
 }
 
 -(void)unFavRSS {
     [_rssModel unFavRSS:_rss];
     _rss.isFav = @0;
-    [self.bottomBar fillWithRSS:_rss];
+    [_bottomBar fillWithRSS:_rss];
     [self.delegate unFav];
     [self doBack];
 }
