@@ -14,6 +14,7 @@
 #import "MSDynamicsDrawerViewController.h"
 #import "MSDynamicsDrawerStyler.h"
 #import "SMMoreViewController.h"
+#import "UIColor+RSS.h"
 
 @implementation SMAppDelegate
 //{
@@ -41,7 +42,7 @@
     
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 
-    [[UINavigationBar appearance] setTintColor:LINK_COLOR];
+    [[UINavigationBar appearance] setTintColor:[UIColor rss_cyanColor]];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     
