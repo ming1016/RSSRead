@@ -91,6 +91,8 @@
     [self loadRssSourcesWithStr:@"伯乐在线"];
 }
 
+
+#pragma mark - 根据用户输入字符串搜索RSS源
 /**
  *  根据用户输入字符串搜索RSS源
  *
@@ -128,6 +130,8 @@
  }];
 }
 
+#pragma mark - tableView代理方法
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _RSSArray.count;
@@ -148,7 +152,7 @@
     return cell;
 }
 
-#pragma mark - TextField delegate
+#pragma mark  - TextField delegate 监听键盘确认键
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     //退出键盘
     [_searchBar resignFirstResponder];
@@ -191,7 +195,7 @@
         [_HUD hide:YES afterDelay:2];
     
 }
-#pragma mark - MWFeedParserDelegate
+#pragma mark - Feed解析器代理方法
 -(void)feedParserDidStart:(MWFeedParser *)parser {
     NSLog(@"Started Parsing");
 }
@@ -250,6 +254,7 @@
 /**
  *  toolbar代理方法
  */
+#pragma mark - toolbar按钮点击代理方法
 - (void)Toolbar:(SMAddRSSToolbar *)toolbar didClickedButtonWithString:(NSString *)str
 {
     if ([str isEqualToString:@"clear"]) {
@@ -261,6 +266,7 @@
     }
 }
 
+#pragma mark - 键盘显示隐藏通知
 /**
  *  键盘即将显示的时候调用
  */
@@ -292,6 +298,7 @@
     }];
 }
 
+#pragma mark - 加载自定义控件
 - (void)setupSearchBar
 {
     UIView *backgroundView = [[UIView alloc] init];
@@ -329,7 +336,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
-
+#pragma mark - 通知移除
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
