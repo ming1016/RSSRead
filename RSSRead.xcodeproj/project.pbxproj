@@ -9,23 +9,12 @@
 /* Begin PBXBuildFile section */
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
+		CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */; };
+		CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
 		D20C7060192D896D002A2236 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705F192D896D002A2236 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D284A48118E50C2F004B5D2D /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47E18E50C2F004B5D2D /* icon-58.png */; };
-		D284A48218E50C2F004B5D2D /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A47F18E50C2F004B5D2D /* icon-80.png */; };
-		D284A48318E50C2F004B5D2D /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48018E50C2F004B5D2D /* icon-120.png */; };
-		D284A48818E50D33004B5D2D /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48418E50D33004B5D2D /* icon-29.png */; };
-		D284A48918E50D33004B5D2D /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48518E50D33004B5D2D /* icon-40.png */; };
-		D284A48A18E50D33004B5D2D /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48618E50D33004B5D2D /* icon-76.png */; };
-		D284A48B18E50D33004B5D2D /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48718E50D33004B5D2D /* icon-152.png */; };
-		D284A49218E511EC004B5D2D /* lanch-640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48C18E511EC004B5D2D /* lanch-640x960.png */; };
-		D284A49318E511EC004B5D2D /* lanch-640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48D18E511EC004B5D2D /* lanch-640x1136.png */; };
-		D284A49418E511EC004B5D2D /* lanch-768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48E18E511EC004B5D2D /* lanch-768x1024.png */; };
-		D284A49518E511EC004B5D2D /* lanch-1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A48F18E511EC004B5D2D /* lanch-1024x768.png */; };
-		D284A49618E511EC004B5D2D /* lanch-1536x2048.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A49018E511EC004B5D2D /* lanch-1536x2048.png */; };
-		D284A49718E511EC004B5D2D /* lanch-2048x1536.png in Resources */ = {isa = PBXBuildFile; fileRef = D284A49118E511EC004B5D2D /* lanch-2048x1536.png */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
 		D2A2A6B819248C81009BDB38 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D2A2A6B719248C81009BDB38 /* about.html */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
@@ -98,6 +87,10 @@
 		1F983C961927708B00EBD91B /* SMFeedParserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedParserWrapper.h; sourceTree = "<group>"; };
 		1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedParserWrapper.m; sourceTree = "<group>"; };
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CB3DA4BB192DD33E00AC52D6 /* UIColor+TBExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TBExt.h"; sourceTree = "<group>"; };
+		CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TBExt.m"; sourceTree = "<group>"; };
+		CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSS.h"; sourceTree = "<group>"; };
+		CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RSS.m"; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
@@ -105,19 +98,6 @@
 		D20C705B192D891E002A2236 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = "<group>"; };
 		D20C705E192D896D002A2236 /* QBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlurView.h; sourceTree = "<group>"; };
 		D20C705F192D896D002A2236 /* QBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBlurView.m; sourceTree = "<group>"; };
-		D284A47E18E50C2F004B5D2D /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58.png"; sourceTree = "<group>"; };
-		D284A47F18E50C2F004B5D2D /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-80.png"; sourceTree = "<group>"; };
-		D284A48018E50C2F004B5D2D /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
-		D284A48418E50D33004B5D2D /* icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-29.png"; sourceTree = "<group>"; };
-		D284A48518E50D33004B5D2D /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
-		D284A48618E50D33004B5D2D /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
-		D284A48718E50D33004B5D2D /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-152.png"; sourceTree = "<group>"; };
-		D284A48C18E511EC004B5D2D /* lanch-640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-640x960.png"; sourceTree = "<group>"; };
-		D284A48D18E511EC004B5D2D /* lanch-640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-640x1136.png"; sourceTree = "<group>"; };
-		D284A48E18E511EC004B5D2D /* lanch-768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-768x1024.png"; sourceTree = "<group>"; };
-		D284A48F18E511EC004B5D2D /* lanch-1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-1024x768.png"; sourceTree = "<group>"; };
-		D284A49018E511EC004B5D2D /* lanch-1536x2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-1536x2048.png"; sourceTree = "<group>"; };
-		D284A49118E511EC004B5D2D /* lanch-2048x1536.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanch-2048x1536.png"; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
 		D2A2A6B719248C81009BDB38 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
@@ -269,6 +249,17 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		CB3DA4BA192DD27200AC52D6 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CB3DA4BB192DD33E00AC52D6 /* UIColor+TBExt.h */,
+				CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */,
+				CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */,
+				CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		D20C7058192D8891002A2236 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,26 +287,6 @@
 				D20C705F192D896D002A2236 /* QBlurView.m */,
 			);
 			name = QBlur;
-			sourceTree = "<group>";
-		};
-		D284A47D18E50C20004B5D2D /* icon */ = {
-			isa = PBXGroup;
-			children = (
-				D284A48C18E511EC004B5D2D /* lanch-640x960.png */,
-				D284A48D18E511EC004B5D2D /* lanch-640x1136.png */,
-				D284A48E18E511EC004B5D2D /* lanch-768x1024.png */,
-				D284A48F18E511EC004B5D2D /* lanch-1024x768.png */,
-				D284A49018E511EC004B5D2D /* lanch-1536x2048.png */,
-				D284A49118E511EC004B5D2D /* lanch-2048x1536.png */,
-				D284A48418E50D33004B5D2D /* icon-29.png */,
-				D284A48518E50D33004B5D2D /* icon-40.png */,
-				D284A48618E50D33004B5D2D /* icon-76.png */,
-				D284A48718E50D33004B5D2D /* icon-152.png */,
-				D284A47E18E50C2F004B5D2D /* icon-58.png */,
-				D284A47F18E50C2F004B5D2D /* icon-80.png */,
-				D284A48018E50C2F004B5D2D /* icon-120.png */,
-			);
-			name = icon;
 			sourceTree = "<group>";
 		};
 		D2DDA05C18DC19EB005394E4 /* DAO */ = {
@@ -372,6 +343,7 @@
 		D2E8FBF118C46B5A005E8F2E /* RSSRead */ = {
 			isa = PBXGroup;
 			children = (
+				CB3DA4BA192DD27200AC52D6 /* Category */,
 				1F9854C9192A07280093DDF8 /* View */,
 				1F9854C5192A066D0093DDF8 /* ViewController */,
 				1F9854C4192A05D80093DDF8 /* Model */,
@@ -454,7 +426,6 @@
 				DE6576F5192BC98900017996 /* addRSS */,
 				D2F79E18192B3EBE000727D4 /* background */,
 				D2EB1F2E18FA733B000C13D3 /* backgroundNavbar.png */,
-				D284A47D18E50C20004B5D2D /* icon */,
 				D2F75F6518D97EC600ED44A3 /* news.png */,
 			);
 			name = Image;
@@ -607,39 +578,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D284A48318E50C2F004B5D2D /* icon-120.png in Resources */,
 				D2E078BD19278D9000ABF6EB /* RecommendFeedList.plist in Resources */,
 				D2F75F6618D97EC600ED44A3 /* news.png in Resources */,
-				D284A49718E511EC004B5D2D /* lanch-2048x1536.png in Resources */,
 				D2F79E23192B4682000727D4 /* bg1.png in Resources */,
-				D284A48818E50D33004B5D2D /* icon-29.png in Resources */,
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
-				D284A49218E511EC004B5D2D /* lanch-640x960.png in Resources */,
-				D284A48B18E50D33004B5D2D /* icon-152.png in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
 				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
 				D2EB1F2F18FA733C000C13D3 /* backgroundNavbar.png in Resources */,
 				D2F79E28192B4682000727D4 /* bg6.png in Resources */,
-				D284A48218E50C2F004B5D2D /* icon-80.png in Resources */,
 				D2F79E26192B4682000727D4 /* bg4.png in Resources */,
-				D284A48A18E50D33004B5D2D /* icon-76.png in Resources */,
-				D284A49318E511EC004B5D2D /* lanch-640x1136.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
-				D284A49618E511EC004B5D2D /* lanch-1536x2048.png in Resources */,
 				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
-				D284A49518E511EC004B5D2D /* lanch-1024x768.png in Resources */,
-				D284A48918E50D33004B5D2D /* icon-40.png in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
 				D2F79E24192B4682000727D4 /* bg2.png in Resources */,
 				D2F79E25192B4682000727D4 /* bg3.png in Resources */,
 				DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */,
-				D284A48118E50C2F004B5D2D /* icon-58.png in Resources */,
-				D284A49418E511EC004B5D2D /* lanch-768x1024.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +651,7 @@
 			files = (
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
+				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
@@ -712,6 +671,7 @@
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
+				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
@@ -838,6 +798,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSSRead/RSSRead-Prefix.pch";
 				INFOPLIST_FILE = "RSSRead/RSSRead-Info.plist";
@@ -856,6 +818,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSSRead/RSSRead-Prefix.pch";
 				INFOPLIST_FILE = "RSSRead/RSSRead-Info.plist";

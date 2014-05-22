@@ -14,6 +14,7 @@
 #import "MSDynamicsDrawerViewController.h"
 #import "MSDynamicsDrawerStyler.h"
 #import "SMMoreViewController.h"
+#import "UIColor+RSS.h"
 
 @implementation SMAppDelegate
 //{
