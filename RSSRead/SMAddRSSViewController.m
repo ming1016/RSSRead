@@ -152,6 +152,11 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_searchBar resignFirstResponder];
+
+}
 #pragma mark  - TextField delegate 监听键盘确认键
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     //退出键盘
