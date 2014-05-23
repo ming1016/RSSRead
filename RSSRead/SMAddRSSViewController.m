@@ -20,7 +20,7 @@
 #import "UIColor+RSS.h"
 #import <ViewUtils.h>
 
-@interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,strong)Subscribes *subscribe;
@@ -106,10 +106,17 @@
 {
     [super viewDidAppear:animated];
     [_searchBar becomeFirstResponder];
-    [self loadRssSourcesWithStr:@"伯乐在线"];
 }
 
-
+- (void)btnClickAddRssUsingTag:(UIButton *)btn
+{
+    
+    btn.backgroundColor = [UIColor colorWithRed:0.883 green:0.420 blue:0.849 alpha:0.80];
+    [btn setTitle:@"已操作" forState:UIControlStateNormal];
+    SMAddRssSourceModel *searchRss = _RSSArray[btn.tag];
+    _searchBar.text = searchRss.url;
+    [self addInputRSS];
+}
 #pragma mark - 根据用户输入字符串搜索RSS源
 /**
  *  根据用户输入字符串搜索RSS源
@@ -141,10 +148,12 @@
             [Array addObject:rssModel];
                  }
         _RSSArray = Array;
-
-         [self.tableView reloadData];
+       [self.tableView reloadData];
+         
  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-     
+     _HUD.labelText = @"您的网络可能没有连接";
+     [_HUD show:YES];
+     [_HUD hide:YES afterDelay:2];
  }];
 }
 
@@ -166,7 +175,8 @@
     // 1.创建cell
     SMAddRssSoucesCell *cell = [SMAddRssSoucesCell cellWithTableView:tableView];
     cell.searchRss = self.RSSArray[indexPath.row];
-    //cell.
+    cell.delegate =self;
+    cell.btn.tag = indexPath.row;
     return cell;
 }
 
@@ -205,17 +215,21 @@
 
 - (void)addInputRSS
 {
+    
         //读取解析rss
         NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
         _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
         _feedParser.delegate = self;
         _feedParser.feedParseType = ParseTypeFull;
         _feedParser.connectionType = ConnectionTypeSynchronously;
-    
+        
+        
         //判断添加源是否失败
         _HUD.labelText = [_feedParser parse] ? @"成功添加":@"无法解析该源";
         [_HUD show:YES];
         [_HUD hide:YES afterDelay:2];
+   
+    
     
 }
 #pragma mark - Feed解析器代理方法
@@ -264,7 +278,7 @@
     }
     SMRSSModel *rssModel = [[SMRSSModel alloc]init];
     [rssModel insertRSSFeedItems:_parsedItems ofFeedUrlStr:[_feedInfo.url absoluteString]];
-    [self doBack];
+   // [self doBack];
 }
 
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
