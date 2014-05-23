@@ -16,7 +16,7 @@
     if (self) {
         [self addBtn];
         
-        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -35,13 +35,22 @@
     [btn setTitle:@"添加" forState:UIControlStateNormal];
     btn.layer.cornerRadius = 10;
     btn.layer.masksToBounds = YES;
+    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
+    self.btn = btn;
     
+}
+
+- (void)btnClick:(UIButton *)btn
+{
+    [self.delegate btnClickAddRssUsingTag:btn];
 }
 
 
 - (void)setSearchRss:(SMAddRssSourceModel *)searchRss
 {
+    //对标题做特殊处理 删除<b></b>
+   // searchRss.title
     self.textLabel.text = searchRss.title;
     self.detailTextLabel.text = searchRss.url;
 }

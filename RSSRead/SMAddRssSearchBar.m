@@ -32,7 +32,8 @@
         self.leftView = iconView;
         
         self.leftViewMode = UITextFieldViewModeAlways;
-        self.font = [UIFont systemFontOfSize:13];
+        self.font = [UIFont systemFontOfSize:18];
+        self.textColor = [UIColor colorWithRed:0.119 green:0.730 blue:0.598 alpha:1.000];
         self.clearButtonMode = UITextFieldViewModeAlways;
         
         // 设置提醒文字
