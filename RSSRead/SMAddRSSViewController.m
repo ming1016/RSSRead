@@ -431,6 +431,7 @@
 #pragma mark - 通知移除
 - (void)dealloc
 {
+    _feedParser.delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
