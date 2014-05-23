@@ -104,11 +104,10 @@
     if (_isFav) {
         getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
     }else{
-        getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@ AND isDislike=0",_subscribeUrl];
+        getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
     }
     
     NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
-    NSLog(@"dkdkdk%@",fetchedRecords);
     [_rssArray removeAllObjects];
     [_rssArray addObjectsFromArray:fetchedRecords];
     
