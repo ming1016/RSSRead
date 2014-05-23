@@ -67,6 +67,7 @@
 		D2FB786918E3C4BB007BD413 /* js.html in Resources */ = {isa = PBXBuildFile; fileRef = D2FB786818E3C4BB007BD413 /* js.html */; };
 		DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */; };
 		DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */; };
+		DE948399192F20C300EA431C /* SMTouchsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE948398192F20C300EA431C /* SMTouchsView.m */; };
 		DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */; };
 		DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3C192C87DE00621576 /* SMRSSaboutModel.m */; };
 		DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE3F192C87FB00621576 /* aboutRSS.plist */; };
@@ -181,6 +182,8 @@
 		DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSToolbar.h; sourceTree = "<group>"; };
 		DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSToolbar.m; sourceTree = "<group>"; };
 		DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRSS_toolbar_background@2x.png"; sourceTree = "<group>"; };
+		DE948397192F20C300EA431C /* SMTouchsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTouchsView.h; sourceTree = "<group>"; };
+		DE948398192F20C300EA431C /* SMTouchsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTouchsView.m; sourceTree = "<group>"; };
 		DEE9FE39192C87DE00621576 /* SMRSSaboutgroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutgroup.h; sourceTree = "<group>"; };
 		DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSaboutgroup.m; sourceTree = "<group>"; };
 		DEE9FE3B192C87DE00621576 /* SMRSSaboutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutModel.h; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
 				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
 				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
+				DE948397192F20C300EA431C /* SMTouchsView.h */,
+				DE948398192F20C300EA431C /* SMTouchsView.m */,
 			);
 			name = SMAddRSS;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
+				DE948399192F20C300EA431C /* SMTouchsView.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,

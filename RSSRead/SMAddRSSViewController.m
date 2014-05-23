@@ -18,7 +18,9 @@
 #import "SMAddRssSoucesCell.h"
 #import "MBProgressHUD.h"
 #import "UIColor+RSS.h"
-#import <ViewUtils.h>
+#import "SMRSSListViewController.h"
+#import "SMTouchsView.h"
+
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
@@ -58,16 +60,18 @@
     [[self view]addGestureRecognizer:recognizer];
     recognizer = nil;
     [self.navigationController setNavigationBarHidden:YES];
-    
-    [self setupSearchBar];
-
     //加载结果页面(tableView)
     [self setupResultView];
+    //加载searchbar
+    [self setupSearchBar];
+    //添加小横条
+    [self setupLine];
+    
     
     //加载toolbar
 //    [self setupToolbar];
     
-    //加载searchbar
+    
     
     //加载指示层
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -80,6 +84,9 @@
 {
     [super viewDidLoad];
 
+    //点击close左下角通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doBack) name:@"touchCloseBtnClick" object:nil];
+    
     //init
     _parsedItems = [NSMutableArray array];
     
@@ -178,6 +185,21 @@
     cell.delegate =self;
     cell.btn.tag = indexPath.row;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Subscribes *aSub = _RSSArray[indexPath.row];
+    SMRSSListViewController * rssListVC = [[SMRSSListViewController alloc] init];
+    rssListVC.subscribeUrl = aSub.url;
+    rssListVC.subscribeTitle = aSub.title;
+    rssListVC.isNewVC = YES;
+    rssListVC.isUnsubscribed = YES;
+
+    [self.navigationController pushViewController:rssListVC animated:YES];
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -297,9 +319,8 @@
     if ([str isEqualToString:@"clear"]) {
         _searchBar.text = @"";
         _searchBar.placeholder = @"请重新输入RSS";
-    }
-    else{
-    _searchBar.text = [_searchBar.text stringByAppendingString:str];
+    } else {
+        _searchBar.text = [_searchBar.text stringByAppendingString:str];
     }
 }
 
@@ -354,10 +375,25 @@
     self.searchBar = searchBar;
     
     closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor rss_cyanColor];
+    view.top = searchBar.top -1 ;
     
+    view.height =searchBar.height+2;
+    view.left = searchBar.left -1;
+    view.width = searchBar.width+2;
+    
+    SMTouchsView *touchsView = [[SMTouchsView alloc] init];
+    touchsView.frame = CGRectMake(0, 0, 100, 100);
+    
+    [self.view addSubview:view];
     [self.view addSubview:searchBar];
     [self.view addSubview:closeButton];
-
+    [self.view addSubview:touchsView];
+}
+- (void)setupLine
+{
+    
 }
 
 - (void)setupResultView
@@ -391,4 +427,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
+
+
 @end
