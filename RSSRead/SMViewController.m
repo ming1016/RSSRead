@@ -175,6 +175,7 @@
     SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
     addRSSVC.smAddRSSViewControllerDelegate = self;
     [self.navigationController pushViewController:addRSSVC animated:YES];
+//    [self.navigationController presentViewController:addRSSVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

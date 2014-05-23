@@ -38,7 +38,7 @@
         // 设置提醒文字
         NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
         attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
-        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索" attributes:attrs];
+        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索/输入源URL" attributes:attrs];
         
         // 设置键盘右下角按钮的样式
         self.returnKeyType = UIReturnKeySearch;

@@ -17,6 +17,8 @@
 #import "SMAddRssSourceModel.h"
 #import "SMAddRssSoucesCell.h"
 #import "MBProgressHUD.h"
+#import "UIColor+RSS.h"
+#import <ViewUtils.h>
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
@@ -55,26 +57,29 @@
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [[self view]addGestureRecognizer:recognizer];
     recognizer = nil;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    [self setupSearchBar];
 
     //加载结果页面(tableView)
     [self setupResultView];
-   
+    
     //加载toolbar
-    [self setupToolbar];
+//    [self setupToolbar];
     
     //加载searchbar
-    [self setupSearchBar];
     
     //加载指示层
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     _HUD =HUD;
     
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
     //init
     _parsedItems = [NSMutableArray array];
     
@@ -82,6 +87,19 @@
     _appDelegate = [UIApplication sharedApplication].delegate;
     _managedObjectContext = _appDelegate.managedObjectContext;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO];
+    [super viewWillDisappear:animated];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -306,21 +324,32 @@
 #pragma mark - 加载自定义控件
 - (void)setupSearchBar
 {
-    UIView *backgroundView = [[UIView alloc] init];
-    backgroundView.frame = CGRectMake(0, 64, 320, 46);
-    backgroundView.backgroundColor = [UIColor colorWithRed:0.153 green:0.956 blue:0.585 alpha:1.000];
-    [self.view addSubview:backgroundView];
+   
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(8, 0, 50, 50)];
+    [closeButton setTitleColor:[UIColor rss_cyanColor] forState:UIControlStateNormal];
+    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+    [closeButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [closeButton sizeToFit];
+    [closeButton addTarget:self action:@selector(doBack) forControlEvents:UIControlEventTouchUpInside];
+    
     SMAddRssSearchBar *searchBar = [SMAddRssSearchBar searchBar];
-    searchBar.frame = CGRectMake(1,1, 318, 44);
+    searchBar.frame = CGRectMake(closeButton.right + 12, STATUS_BAR_HEIGHT + 2, 0, 32);
+    searchBar.width = SCREEN_WIDTH - searchBar.left - 6;
     searchBar.delegate =self;
     self.searchBar = searchBar;
-    [backgroundView addSubview:searchBar];
+    
+    closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
+    
+    [self.view addSubview:searchBar];
+    [self.view addSubview:closeButton];
+
 }
 
 - (void)setupResultView
 {
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.frame = CGRectMake(0,80, 320, self.view.frame.size.height-80);
+    tableView.frame = CGRectMake(0, 80, 320, self.view.frame.size.height-80);
+    tableView.top = _searchBar.bottom + 2;
     tableView.delegate =self;
     tableView.dataSource =self;
     _tableView =tableView;
