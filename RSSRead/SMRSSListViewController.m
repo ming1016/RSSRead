@@ -321,13 +321,9 @@
     }
     SMRSSModel *rssModel = [[SMRSSModel alloc]init];
     [rssModel insertRSSFeedItems:_parsedItems ofFeedUrlStr:[_feedInfo.url absoluteString]];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-
-    _HUD.labelText = @"添加成功";
-    [self.view.window addSubview:_HUD];
-    [_HUD show:YES];
-    [_HUD hide:YES afterDelay:0.7f];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"已添加" style:UIBarButtonItemStylePlain target:self action:nil];
+
 }
 
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
