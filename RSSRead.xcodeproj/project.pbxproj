@@ -14,6 +14,7 @@
 		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
 		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
 		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
+		CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */; };
 		CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
@@ -106,6 +107,8 @@
 		CB45E7C2192E375400C6D84C /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		CB45E7C4192E4C6E00C6D84C /* SMScreenShotMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenShotMgr.h; sourceTree = "<group>"; };
 		CB45E7C5192E4C6E00C6D84C /* SMScreenShotMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenShotMgr.m; sourceTree = "<group>"; };
+		CB502757192FA39D00EB4DD1 /* MBProgressHUD+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Ext.h"; sourceTree = "<group>"; };
+		CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Ext.m"; sourceTree = "<group>"; };
 		CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddRssSoucesCell.xib; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 				CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */,
 				CB45E7C1192E375400C6D84C /* UIImage+Tint.h */,
 				CB45E7C2192E375400C6D84C /* UIImage+Tint.m */,
+				CB502757192FA39D00EB4DD1 /* MBProgressHUD+Ext.h */,
+				CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -764,6 +769,7 @@
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
 				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
+				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
 				D21D4849192F7692007003C8 /* Subscribes.m in Sources */,
 			);
