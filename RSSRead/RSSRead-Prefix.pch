@@ -15,4 +15,7 @@
     #import <Foundation/Foundation.h>
     #import<CoreData/CoreData.h>
 #import <ViewUtils.h>
+#import "UIColor+TBExt.h"
+#import "UIColor+RSS.h"
+#import "UIImage+Tint.h"
 #endif

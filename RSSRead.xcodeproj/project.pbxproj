@@ -14,6 +14,7 @@
 		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
 		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
 		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
+		CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
@@ -33,7 +34,6 @@
 		D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FBF418C46B5A005E8F2E /* InfoPlist.strings */; };
 		D2E8FBF818C46B5A005E8F2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FBF718C46B5A005E8F2E /* main.m */; };
 		D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */; };
-		D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */; };
 		D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FC0118C46B5A005E8F2E /* SMViewController.m */; };
 		D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FC0318C46B5A005E8F2E /* Images.xcassets */; };
 		D2E8FC0B18C46B5A005E8F2E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E8FC0A18C46B5A005E8F2E /* XCTest.framework */; };
@@ -106,6 +106,7 @@
 		CB45E7C2192E375400C6D84C /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		CB45E7C4192E4C6E00C6D84C /* SMScreenShotMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenShotMgr.h; sourceTree = "<group>"; };
 		CB45E7C5192E4C6E00C6D84C /* SMScreenShotMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenShotMgr.m; sourceTree = "<group>"; };
+		CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddRssSoucesCell.xib; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		D2E8FBF918C46B5A005E8F2E /* RSSRead-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSRead-Prefix.pch"; sourceTree = "<group>"; };
 		D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
 		D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAppDelegate.m; sourceTree = "<group>"; };
-		D2E8FBFE18C46B5A005E8F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2E8FC0018C46B5A005E8F2E /* SMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
 		D2E8FC0118C46B5A005E8F2E /* SMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
 		D2E8FC0318C46B5A005E8F2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -381,7 +381,6 @@
 				1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */,
 				D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */,
 				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
-				D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */,
 				D2EDF78E18C5B20600B0E990 /* Utility */,
 				D20C7058192D8891002A2236 /* ThirdParty */,
 				D2F75F6418D97EB400ED44A3 /* Image */,
@@ -563,12 +562,13 @@
 				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
 				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
 				DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */,
+				CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */,
 				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
 				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
-				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
-				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
 				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
 				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
+				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
+				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
 				DE948397192F20C300EA431C /* SMTouchsView.h */,
 				DE948398192F20C300EA431C /* SMTouchsView.m */,
 			);
@@ -667,6 +667,7 @@
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
+				CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
 				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
@@ -675,7 +676,6 @@
 				D2F79E26192B4682000727D4 /* bg4.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
-				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
@@ -794,14 +794,6 @@
 				D2E8FBF518C46B5A005E8F2E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2E8FBFE18C46B5A005E8F2E /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D2E8FC1318C46B5A005E8F2E /* InfoPlist.strings */ = {

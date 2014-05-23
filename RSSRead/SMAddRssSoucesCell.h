@@ -20,7 +20,11 @@
 
 @property (nonatomic,strong) SMAddRssSourceModel* searchRss;
 @property (nonatomic,weak) id<SMAddRssSoucesCellDelegate> delegate;
-@property (nonatomic,weak) UIButton *btn;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @end
