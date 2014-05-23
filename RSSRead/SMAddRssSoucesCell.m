@@ -59,16 +59,26 @@
 
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
-    static NSString *ID = @"search";
-    SMAddRssSoucesCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    SMAddRssSoucesCell *cell = [tableView dequeueReusableCellWithIdentifier:[self cellReuseIdentifier]];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SMAddRssSoucesCell class]) owner:nil options:nil] lastObject];
+        [tableView registerNib:[self nib] forCellReuseIdentifier:[self cellReuseIdentifier]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self cellAnimation:cell];
     }
 
+    return cell;
+}
 
-[self cellAnimation:cell];
-return cell;
++ (NSString *)cellReuseIdentifier
+{
+    return NSStringFromClass([self class]);
+}
+
++ (UINib *)nib
+{
+    return [UINib nibWithNibName:NSStringFromClass([self class])
+                          bundle:[NSBundle mainBundle]];
 }
 
 //设置cell动画效果
