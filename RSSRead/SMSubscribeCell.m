@@ -25,7 +25,6 @@
         [self.contentView addSubview:_lbtitle];
         
         _btCount = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_btCount setBackgroundImage:[UIImage imageNamed:@"news.png"] forState:UIControlStateNormal];
         _btCount.titleLabel.font = [UIFont systemFontOfSize:12];
         [_btCount setUserInteractionEnabled:NO];
         [self.contentView addSubview:_btCount];
@@ -48,15 +47,15 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     CGRect rect = CGRectZero;
-    rect.origin.x = 20;
+    rect.origin.x = 30;
     rect.origin.y = 14;
     CGSize fitSize = [_lbtitle.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18]}];
     rect.size = fitSize;
-    rect.size.width = SCREEN_WIDTH - 66;
+    rect.size.width = SCREEN_WIDTH - 56;
     _lbtitle.frame = rect;
     
     //记总数
-    [_btCount setFrame:CGRectMake(SCREEN_WIDTH - 50, 16, 28, 18)];
+    [_btCount setFrame:CGRectMake(SCREEN_WIDTH - 50, 18, 28, 18)];
 }
 
 +(float)heightForSubscribe {
