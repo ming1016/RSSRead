@@ -335,6 +335,7 @@
     SMAddRssSearchBar *searchBar = [SMAddRssSearchBar searchBar];
     searchBar.frame = CGRectMake(closeButton.right + 12, STATUS_BAR_HEIGHT + 2, 0, 32);
     searchBar.width = SCREEN_WIDTH - searchBar.left - 6;
+    searchBar.top = STATUS_BAR_HEIGHT + (44 - searchBar.height)/2;
     searchBar.delegate =self;
     self.searchBar = searchBar;
     
@@ -348,8 +349,9 @@
 - (void)setupResultView
 {
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.frame = CGRectMake(0, 80, 320, self.view.frame.size.height-80);
-    tableView.top = _searchBar.bottom + 2;
+    tableView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height-80);
+    tableView.top = 44 + STATUS_BAR_HEIGHT;
+    tableView.height = self.view.height - tableView.top;
     tableView.delegate =self;
     tableView.dataSource =self;
     _tableView =tableView;
