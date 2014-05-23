@@ -65,7 +65,27 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SMAddRssSoucesCell class]) owner:nil options:nil] lastObject];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-    return cell;
+
+
+[self cellAnimation:cell];
+return cell;
+}
+
+//设置cell动画效果
++ (void)cellAnimation:(SMAddRssSoucesCell *)cell
+{
+    cell.layer.shadowColor = [[UIColor blackColor] CGColor];
+    cell.layer.shadowOffset = CGSizeMake(10, 10);
+    cell.alpha = 0;
+    cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5);
+    cell.layer.anchorPoint = CGPointMake(0, 0.5);
+    
+    [UIView beginAnimations:@"scaleTableViewCellAnimationID" context:NULL];
+    [UIView setAnimationDuration:1.3];
+    cell.layer.shadowOffset = CGSizeMake(0, 0);
+    cell.alpha = 1;
+    cell.layer.transform = CATransform3DIdentity;
+    [UIView commitAnimations];
 }
 
 
