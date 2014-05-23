@@ -108,6 +108,7 @@
     }
     
     NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
+    NSLog(@"dkdkdk%@",fetchedRecords);
     [_rssArray removeAllObjects];
     [_rssArray addObjectsFromArray:fetchedRecords];
     
