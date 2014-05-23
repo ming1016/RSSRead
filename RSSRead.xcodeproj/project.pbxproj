@@ -377,14 +377,9 @@
 				1F9854C5192A066D0093DDF8 /* ViewController */,
 				1F9854C4192A05D80093DDF8 /* Model */,
 				D2DDA05C18DC19EB005394E4 /* DAO */,
-				1F983C961927708B00EBD91B /* SMFeedParserWrapper.h */,
-				1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */,
-				D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */,
-				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
 				D2EDF78E18C5B20600B0E990 /* Utility */,
 				D20C7058192D8891002A2236 /* ThirdParty */,
 				D2F75F6418D97EB400ED44A3 /* Image */,
-				D2E8FC0318C46B5A005E8F2E /* Images.xcassets */,
 				D2E8FBF218C46B5A005E8F2E /* Supporting Files */,
 			);
 			path = RSSRead;
@@ -393,6 +388,11 @@
 		D2E8FBF218C46B5A005E8F2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2E8FC0318C46B5A005E8F2E /* Images.xcassets */,
+				1F983C961927708B00EBD91B /* SMFeedParserWrapper.h */,
+				1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */,
+				D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */,
+				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
 				D2E8FBF318C46B5A005E8F2E /* RSSRead-Info.plist */,
 				D2E8FBF418C46B5A005E8F2E /* InfoPlist.strings */,
 				D2E8FBF718C46B5A005E8F2E /* main.m */,
