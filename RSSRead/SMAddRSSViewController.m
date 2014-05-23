@@ -19,6 +19,7 @@
 #import "MBProgressHUD.h"
 #import "UIColor+RSS.h"
 #import "SMRSSListViewController.h"
+#import "SMTouchsView.h"
 
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
@@ -59,12 +60,13 @@
     [[self view]addGestureRecognizer:recognizer];
     recognizer = nil;
     [self.navigationController setNavigationBarHidden:YES];
+    //加载结果页面(tableView)
+    [self setupResultView];
     //加载searchbar
     [self setupSearchBar];
     //添加小横条
     [self setupLine];
-    //加载结果页面(tableView)
-    [self setupResultView];
+    
     
     //加载toolbar
 //    [self setupToolbar];
@@ -82,6 +84,9 @@
 {
     [super viewDidLoad];
 
+    //点击close左下角通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doBack) name:@"touchCloseBtnClick" object:nil];
+    
     //init
     _parsedItems = [NSMutableArray array];
     
@@ -108,7 +113,6 @@
 {
     [super viewDidAppear:animated];
     [_searchBar becomeFirstResponder];
-//    [self loadRssSourcesWithStr:@"伯乐在线"];
 }
 
 - (void)btnClickAddRssUsingTag:(UIButton *)btn
@@ -379,10 +383,13 @@
     view.left = searchBar.left -1;
     view.width = searchBar.width+2;
     
+    SMTouchsView *touchsView = [[SMTouchsView alloc] init];
+    touchsView.frame = CGRectMake(0, 0, 100, 100);
+    
     [self.view addSubview:view];
     [self.view addSubview:searchBar];
     [self.view addSubview:closeButton];
-
+    [self.view addSubview:touchsView];
 }
 - (void)setupLine
 {
@@ -420,4 +427,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
+
+
 @end
