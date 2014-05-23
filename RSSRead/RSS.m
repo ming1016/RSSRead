@@ -22,4 +22,5 @@
 @dynamic title;
 @dynamic updated;
 @dynamic isRead;
+@dynamic isDislike;
 @end

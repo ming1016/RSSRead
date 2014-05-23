@@ -24,5 +24,6 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * updated;
 @property (nonatomic, retain) NSNumber * isRead;
+@property (nonatomic, retain) NSNumber * isDislike;
 
 @end
