@@ -61,6 +61,11 @@
 //    [[self view]addGestureRecognizer:recognizer];
 //    recognizer = nil;
 //    [self.navigationController setNavigationBarHidden:YES];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, NAVBARHEIGHT)];
+    [view setBackgroundColor:[UIColor colorFromRGB:0xf6f6f6]];
+    [self.view addSubview:view];
+    
     //加载结果页面(tableView)
     [self setupResultView];
     //加载searchbar
@@ -402,6 +407,21 @@
     tableView.height = self.view.height - tableView.top;
     tableView.delegate =self;
     tableView.dataSource =self;
+
+    UILabel *introLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [introLabel setFont:[UIFont systemFontOfSize:16]];
+    [introLabel setTextColor:[UIColor rss_darkGrayColor]];
+    [introLabel setBackgroundColor:[UIColor clearColor]];
+    [introLabel setText:@"这里可以搜索订阅源哦。喵。^V^"];
+    [introLabel setNumberOfLines:0];
+    [introLabel sizeToFit];
+    
+    UIView *view = [[UIView alloc] initWithFrame:tableView.bounds];
+    introLabel.left = (view.width - introLabel.width)/2;
+    introLabel.top = 150;
+    [view addSubview:introLabel];
+    [tableView setBackgroundView:view];
+
     _tableView =tableView;
     [self.view addSubview:tableView];
 }
