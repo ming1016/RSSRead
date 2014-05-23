@@ -14,7 +14,7 @@
 #import "RSS.h"
 #import "SMScreenShotMgr.h"
 #import "Subscribes.h"
-#import <MBProgressHUD.h>
+#import "MBProgressHUD+Ext.h"
 #import <MWFeedParser/MWFeedParser.h>
 
 @interface SMRSSListViewController ()<RMSwipeTableViewCellDelegate>
@@ -113,6 +113,7 @@
     
     //首次点击进入页面时进行一次拉取数据
     if (!_isFav && _rssArray.count == 0) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
         [parserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] completion:^(NSArray *items) {
             if(items && items.count){
@@ -126,7 +127,7 @@
                     }
                     
                 }
-                
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [self.tableView reloadData];
             }
         }];

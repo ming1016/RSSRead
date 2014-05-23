@@ -16,7 +16,7 @@
 #import "AFNetworking.h"
 #import "SMAddRssSourceModel.h"
 #import "SMAddRssSoucesCell.h"
-#import "MBProgressHUD.h"
+#import "MBProgressHUD+Ext.h"
 #import "UIColor+RSS.h"
 #import "SMRSSListViewController.h"
 #import "SMTouchsView.h"
@@ -34,7 +34,6 @@
 @property(nonatomic,weak) SMAddRSSToolbar *toolbar;
 @property(nonatomic,strong)NSMutableArray *RSSArray;
 @property(nonatomic,weak)UITableView *tableView;
-@property(nonatomic,weak)MBProgressHUD *HUD;
 @end
 
 @implementation SMAddRSSViewController
@@ -78,9 +77,6 @@
     [self setupToolbar];
     
     //加载指示层
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    _HUD =HUD;
     
 }
 
@@ -135,7 +131,8 @@
  */
 - (void)loadRssSourcesWithStr:(NSString *)str
 {
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     /**
      *  封装请求参数
@@ -159,11 +156,11 @@
                  }
         _RSSArray = Array;
        [self.tableView reloadData];
+         [MBProgressHUD  hideHUDForView:self.view animated:YES];
+
          
  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-     _HUD.labelText = @"您的网络可能没有连接";
-     [_HUD show:YES];
-     [_HUD hide:YES afterDelay:2];
+     [MBProgressHUD showShortHUDAddTo:self.view labelText:@"您的网络可能没有连接"];
  }];
 }
 
@@ -242,7 +239,8 @@
 {
     
         //读取解析rss
-        NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+     NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
         _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
         _feedParser.delegate = self;
         _feedParser.feedParseType = ParseTypeFull;
@@ -307,10 +305,7 @@
 }
 
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
-    _HUD.labelText = @"解析失败";
-    [_HUD show:YES];
-    [_HUD hide:YES afterDelay:2];
-    
+    [MBProgressHUD showShortHUDAddTo:self.view labelText:@"解析失败"];
 }
 
 /**
@@ -378,13 +373,6 @@
     self.searchBar = searchBar;
     
     closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
-//    UIView *view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor rss_cyanColor];
-//    view.top = searchBar.top -1 ;
-//    
-//    view.height =searchBar.height+2;
-//    view.left = searchBar.left -1;
-//    view.width = searchBar.width+2;
     
     SMTouchsView *touchsView = [[SMTouchsView alloc] init];
     touchsView.frame = CGRectMake(0, 0, 100, 100);
