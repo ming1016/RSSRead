@@ -18,10 +18,9 @@
 #import "SMAddRssSoucesCell.h"
 #import "MBProgressHUD.h"
 #import "UIColor+RSS.h"
-#import <ViewUtils.h>
+#import "SMRSSListViewController.h"
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,strong)Subscribes *subscribe;
 @property(nonatomic,strong)RSS *rss;
@@ -33,6 +32,7 @@
 @property(nonatomic,strong)NSMutableArray *RSSArray;
 @property(nonatomic,weak)UITableView *tableView;
 @property(nonatomic,weak)MBProgressHUD *HUD;
+@property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
 @end
 
 @implementation SMAddRSSViewController
@@ -59,15 +59,14 @@
     recognizer = nil;
     [self.navigationController setNavigationBarHidden:YES];
     
+    //加载searchbar
     [self setupSearchBar];
 
     //加载结果页面(tableView)
     [self setupResultView];
     
     //加载toolbar
-//    [self setupToolbar];
-    
-    //加载searchbar
+    [self setupToolbar];
     
     //加载指示层
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -106,7 +105,7 @@
 {
     [super viewDidAppear:animated];
     [_searchBar becomeFirstResponder];
-    [self loadRssSourcesWithStr:@"伯乐在线"];
+//    [self loadRssSourcesWithStr:@"伯乐在线"];
 }
 
 
@@ -168,6 +167,21 @@
     cell.searchRss = self.RSSArray[indexPath.row];
     //cell.
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Subscribes *aSub = _RSSArray[indexPath.row];
+    SMRSSListViewController * rssListVC = [[SMRSSListViewController alloc] init];
+    rssListVC.subscribeUrl = aSub.url;
+    rssListVC.subscribeTitle = aSub.title;
+    rssListVC.isNewVC = YES;
+    rssListVC.isUnsubscribed = YES;
+
+    [self.navigationController pushViewController:rssListVC animated:YES];
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -283,9 +297,8 @@
     if ([str isEqualToString:@"clear"]) {
         _searchBar.text = @"";
         _searchBar.placeholder = @"请重新输入RSS";
-    }
-    else{
-    _searchBar.text = [_searchBar.text stringByAppendingString:str];
+    } else {
+        _searchBar.text = [_searchBar.text stringByAppendingString:str];
     }
 }
 

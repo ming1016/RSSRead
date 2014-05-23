@@ -26,13 +26,14 @@
 {
     #warning 待美化图片.
     UIButton *btn = [[UIButton alloc] init];
-    CGFloat btnX = self.contentView.frame.size.width -80;
+    CGFloat btnX = self.contentView.frame.size.width - 60;
     CGFloat btnY =  5;
-    CGFloat btnW =  60;
-    CGFloat btnH =  35;
+    CGFloat btnW =  45;
+    CGFloat btnH =  28;
     btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
     btn.backgroundColor = [UIColor colorWithRed:0.153 green:0.956 blue:0.585 alpha:1.000];
     [btn setTitle:@"添加" forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
     btn.layer.cornerRadius = 10;
     btn.layer.masksToBounds = YES;
     [self addSubview:btn];
@@ -43,6 +44,7 @@
 - (void)setSearchRss:(SMAddRssSourceModel *)searchRss
 {
     self.textLabel.text = searchRss.title;
+    [self.textLabel setFont:[UIFont systemFontOfSize:12]];
     self.detailTextLabel.text = searchRss.url;
 }
 
@@ -52,6 +54,7 @@
     SMAddRssSoucesCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
         cell = [[SMAddRssSoucesCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     return cell;
 }
