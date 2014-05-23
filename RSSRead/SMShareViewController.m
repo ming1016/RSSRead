@@ -10,6 +10,9 @@
 #import "SMAppDelegate.h"
 #import "EvernoteSession.h"
 #import "EvernoteUserStore.h"
+#import "ENMLUtility.h"
+#import "ENAPI.h"
+#import "EvernoteNoteStore.h"
 
 @interface SMShareViewController ()
 
@@ -56,22 +59,56 @@
         }
     }];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+/**
+ *  创建印象笔记
+ *
+ *  @param noteTile       笔记标题
+ *  @param noteBody       笔记内容
+ *  @param resources      笔记附件
+ *  @param parentNotebook 笔记本信息(指定存储笔记本)
+ */
+- (void)makeNoteWithTitle:(NSString*)noteTile withBody:(NSString*) noteBody withResources:(NSMutableArray*)resources withParentBotebook:(EDAMNotebook*)parentNotebook {
+    
+    NSString *noteContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                             "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"
+                             "<en-note>"
+                             "%@",noteBody];
+    
+    // Add resource objects to note body
+    if(resources.count > 0) {
+        noteContent = [noteContent stringByAppendingString:
+                       @"<br />"];
+    }
+    // Include ENMLUtility.h .
+    for (EDAMResource* resource in resources) {
+        noteContent = [noteContent stringByAppendingFormat:@"Attachment : <br /> %@",
+                       [ENMLUtility mediaTagWithDataHash:resource.data.bodyHash
+                                                    mime:resource.mime]];
+    }
+    
+    noteContent = [noteContent stringByAppendingString:@"</en-note"];
+    
+    // Parent notebook is optional; if omitted, default notebook is used
+    NSString* parentNotebookGUID;
+    if(parentNotebook) {
+        parentNotebookGUID = parentNotebook.guid;
+    }
+    
+    //  创建笔记对象
+    EDAMNote *ourNote = [[EDAMNote alloc] initWithGuid:nil title:noteTile content:noteContent contentHash:nil contentLength:noteContent.length created:0 updated:0 deleted:0 active:YES updateSequenceNum:0 notebookGuid:parentNotebookGUID tagGuids:nil resources:resources attributes:nil tagNames:nil];
+    
+    // 将笔记对象传入指定账户中
+    [[EvernoteNoteStore noteStore] createNote:ourNote success:^(EDAMNote *note) {
+        // Log the created note object
+        NSLog(@"Note created : %@",note);
+    } failure:^(NSError *error) {
+        // Something was wrong with the note data
+        // See EDAMErrorCode enumeration for error code explanation
+        // http://dev.evernote.com/documentation/reference/Errors.html#Enum_EDAMErrorCode
+        NSLog(@"Error : %@",error);
+    }];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

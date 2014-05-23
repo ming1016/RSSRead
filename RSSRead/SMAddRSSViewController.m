@@ -52,14 +52,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 -(void)loadView {
     [super loadView];
-    UISwipeGestureRecognizer *recognizer;
-    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
-    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [[self view]addGestureRecognizer:recognizer];
-    recognizer = nil;
-    [self.navigationController setNavigationBarHidden:YES];
+//    UISwipeGestureRecognizer *recognizer;
+//    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:nil];
+//    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+//    [[self view]addGestureRecognizer:recognizer];
+//    recognizer = nil;
+//    [self.navigationController setNavigationBarHidden:YES];
     //加载结果页面(tableView)
     [self setupResultView];
     //加载searchbar
