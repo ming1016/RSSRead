@@ -16,4 +16,5 @@
 @property(nonatomic,strong)NSString *subscribeTitle;
 @property(nonatomic)BOOL isNewVC;
 @property(nonatomic)BOOL isFav;
+@property(nonatomic)BOOL isUnsubscribed;
 @end

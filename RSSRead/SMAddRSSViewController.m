@@ -18,7 +18,7 @@
 #import "SMAddRssSoucesCell.h"
 #import "MBProgressHUD.h"
 #import "UIColor+RSS.h"
-#import <ViewUtils.h>
+#import "SMRSSListViewController.h"
 
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
@@ -108,6 +108,7 @@
 {
     [super viewDidAppear:animated];
     [_searchBar becomeFirstResponder];
+//    [self loadRssSourcesWithStr:@"伯乐在线"];
 }
 
 - (void)btnClickAddRssUsingTag:(UIButton *)btn
@@ -180,6 +181,21 @@
     cell.delegate =self;
     cell.btn.tag = indexPath.row;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Subscribes *aSub = _RSSArray[indexPath.row];
+    SMRSSListViewController * rssListVC = [[SMRSSListViewController alloc] init];
+    rssListVC.subscribeUrl = aSub.url;
+    rssListVC.subscribeTitle = aSub.title;
+    rssListVC.isNewVC = YES;
+    rssListVC.isUnsubscribed = YES;
+
+    [self.navigationController pushViewController:rssListVC animated:YES];
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -299,9 +315,8 @@
     if ([str isEqualToString:@"clear"]) {
         _searchBar.text = @"";
         _searchBar.placeholder = @"请重新输入RSS";
-    }
-    else{
-    _searchBar.text = [_searchBar.text stringByAppendingString:str];
+    } else {
+        _searchBar.text = [_searchBar.text stringByAppendingString:str];
     }
 }
 

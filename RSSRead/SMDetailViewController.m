@@ -133,7 +133,7 @@
                          line-height:0;\
                          border-bottom:#ccc 1px solid;\
                          }\
-                         </style></head><body><div class=\"title\" href=\"%@\">%@</div>\
+                         </style></head><body><a class=\"title\" href=\"%@\">%@</a>\
                          <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>",_rss.link,_rss.title,_rss.author,publishDate,_showContent,mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
     
