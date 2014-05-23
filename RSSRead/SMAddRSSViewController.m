@@ -161,6 +161,7 @@
 
          
  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     [MBProgressHUD  hideHUDForView:self.view animated:YES];
      [MBProgressHUD showShortHUDAddTo:self.view labelText:@"您的网络可能没有连接"];
  }];
 }
