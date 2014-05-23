@@ -56,7 +56,7 @@
     [button setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:highIcon] forState:UIControlStateHighlighted];
     [button setTitle:text forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor rss_cyanColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor rss_darkGrayColor] forState:UIControlStateNormal];
     [self addSubview:button];
 }
 

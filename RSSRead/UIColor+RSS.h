@@ -11,5 +11,6 @@
 @interface UIColor (RSS)
 
 + (UIColor *)rss_cyanColor;
++ (UIColor *)rss_darkGrayColor;
 
 @end

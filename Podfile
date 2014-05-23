@@ -7,4 +7,5 @@ pod 'Evernote-SDK-iOS', '~> 1.3.1'
 pod 'MSDynamicsDrawerViewController'
 pod 'ViewUtils'
 pod 'MMLayershots', :podspec => 'https://raw.githubusercontent.com/vpdn/MMLayershots/master/MMLayershots.podspec'
+pod 'RMSwipeTableViewCell'
 

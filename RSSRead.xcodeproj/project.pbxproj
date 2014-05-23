@@ -76,8 +76,6 @@
 		DEE9FE44192C880700621576 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE42192C880700621576 /* weibo@2x.png */; };
 		DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE47192CAF6000621576 /* SMBlurBackground.m */; };
 		DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */; };
-		DEE9FE58192E212B00621576 /* searchbar_textfield_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */; };
-		DEE9FE59192E212B00621576 /* searchbar_textfield_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */; };
 		DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */; };
 		DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */; };
 /* End PBXBuildFile section */
@@ -198,8 +196,6 @@
 		DEE9FE47192CAF6000621576 /* SMBlurBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBlurBackground.m; sourceTree = "<group>"; };
 		DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSearchBar.h; sourceTree = "<group>"; };
 		DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSearchBar.m; sourceTree = "<group>"; };
-		DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_search_icon@2x.png"; sourceTree = "<group>"; };
-		DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_background@2x.png"; sourceTree = "<group>"; };
 		DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSourceModel.h; sourceTree = "<group>"; };
 		DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSourceModel.m; sourceTree = "<group>"; };
 		DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSoucesCell.h; sourceTree = "<group>"; };
@@ -497,8 +493,6 @@
 		DE6576F5192BC98900017996 /* addRSS */ = {
 			isa = PBXGroup;
 			children = (
-				DEE9FE56192E212B00621576 /* searchbar_textfield_search_icon@2x.png */,
-				DEE9FE57192E212B00621576 /* searchbar_textfield_background@2x.png */,
 				DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */,
 			);
 			name = addRSS;
@@ -672,7 +666,6 @@
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
-				DEE9FE59192E212B00621576 /* searchbar_textfield_background@2x.png in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
 				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
@@ -681,7 +674,6 @@
 				D2F79E26192B4682000727D4 /* bg4.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
-				DEE9FE58192E212B00621576 /* searchbar_textfield_search_icon@2x.png in Resources */,
 				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
