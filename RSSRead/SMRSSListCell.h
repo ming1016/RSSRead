@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RSS.h"
+#import <RMSwipeTableViewCell.h>
 
-@interface SMRSSListCell : UITableViewCell
+@interface SMRSSListCell : RMSwipeTableViewCell
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)NSString *subscribeTitle;
 

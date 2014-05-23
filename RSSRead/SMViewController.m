@@ -85,7 +85,7 @@
     //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
-    [self getAllSubscribeSources];
+//    [self getAllSubscribeSources];
     
     //Using more fashion hud by HYCircleLoadingView
     [_loadingView startAnimation];

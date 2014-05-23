@@ -17,7 +17,7 @@
 #import <MBProgressHUD.h>
 #import <MWFeedParser/MWFeedParser.h>
 
-@interface SMRSSListViewController ()
+@interface SMRSSListViewController ()<RMSwipeTableViewCellDelegate>
 @property(nonatomic,strong)NSMutableArray *rssArray;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,weak)MBProgressHUD *HUD;
@@ -97,25 +97,6 @@
 //    [[SMScreenShotMgr sharedInstance] takeScreenShot];
 }
 
-- (void)fetchDataFromDB
-{
-    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
-    getModel.entityName = @"RSS";
-    getModel.sortName = @"date";
-    if (_isFav) {
-        getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
-    }
-    
-    getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
-    
-    
-    NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
-    [_rssArray removeAllObjects];
-    [_rssArray addObjectsFromArray:fetchedRecords];
-    
-    [self.tableView reloadData];
-}
-
 -(void)loadTableViewFromCoreData {
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"RSS";
@@ -123,7 +104,7 @@
     if (_isFav) {
         getModel.predicate = [NSPredicate predicateWithFormat:@"isFav=1"];
     }else{
-        getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",_subscribeUrl];
+        getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@ AND isDislike=0",_subscribeUrl];
     }
     
     NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
@@ -240,6 +221,7 @@
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
     }
+    cell.delegate = self;
     [cell setSubscribeTitle:_subscribeTitle];
     [cell setRss:_rssArray[indexPath.row]];
     
@@ -260,19 +242,19 @@
     [self loadTableViewFromCoreData];
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
+//-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self quickFavRSS:indexPath];
-    }
-}
+//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [self quickFavRSS:indexPath];
+//    }
+//}
 
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"收藏";
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"收藏";
+//}
 
 
 #pragma mark - Feed解析器代理方法
@@ -334,5 +316,36 @@
     
 }
 
+#pragma mark -
+
+-(void)swipeTableViewCellWillResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
+    NSLog(@"swipeTableViewCellWillResetState: %@ fromPoint: %@ animation: %d, velocity: %@", swipeTableViewCell, NSStringFromCGPoint(point), animation, NSStringFromCGPoint(velocity));
+
+    if (point.x >= CGRectGetHeight(swipeTableViewCell.frame)) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
+        
+    } else if (point.x < 0 && -point.x >= CGRectGetHeight(swipeTableViewCell.frame)) {
+        swipeTableViewCell.shouldAnimateCellReset = NO;
+ 
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
+        RSS *rss = _rssArray[indexPath.row];
+        SMRSSModel *model = [[SMRSSModel alloc] init];
+        [model dislikeRSS:rss];
+        [_rssArray removeObjectAtIndex:indexPath.row];
+        
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [self.tableView endUpdates];
+        
+    }
+}
+
+-(void)swipeTableViewCellDidResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
+    NSLog(@"swipeTableViewCellDidResetState: %@ fromPoint: %@ animation: %d, velocity: %@", swipeTableViewCell, NSStringFromCGPoint(point), animation, NSStringFromCGPoint(velocity));
+
+    if (point.x < 0 && -point.x > CGRectGetHeight(swipeTableViewCell.frame)) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
+    }
+}
 
 @end
