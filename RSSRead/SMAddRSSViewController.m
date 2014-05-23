@@ -238,21 +238,17 @@
 - (void)addInputRSS
 {
     
-        //读取解析rss
+    //读取解析rss
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
      NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
-        _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
-        _feedParser.delegate = self;
-        _feedParser.feedParseType = ParseTypeFull;
-        _feedParser.connectionType = ConnectionTypeSynchronously;
-        
-        
-        //判断添加源是否失败
-        _HUD.labelText = [_feedParser parse] ? @"成功添加":@"无法解析该源";
-        [_HUD show:YES];
-        [_HUD hide:YES afterDelay:2];
-   
+    _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
+    _feedParser.delegate = self;
+    _feedParser.feedParseType = ParseTypeFull;
+    _feedParser.connectionType = ConnectionTypeSynchronously;
     
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    //判断添加源是否失败
+    [MBProgressHUD showShortHUDAddTo:self.view labelText:[_feedParser parse] ? @"成功添加":@"无法解析该源"];
     
 }
 #pragma mark - Feed解析器代理方法
