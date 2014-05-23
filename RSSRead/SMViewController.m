@@ -142,7 +142,7 @@
     }
     [_tbView reloadData];
 }
-
+#pragma mark - 获取rss
 - (void)fetchRss{
     
     dispatch_group_t group = dispatch_group_create();
@@ -171,6 +171,7 @@
     });
 }
 
+//跳转到添加控制器
 -(void)addNewRSS {
     SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
     addRSSVC.smAddRSSViewControllerDelegate = self;
@@ -185,9 +186,7 @@
 }
 
 #pragma mark - UITableViewDelegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _allSurscribes.count;
 }

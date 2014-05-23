@@ -251,6 +251,7 @@
     RSS *rss = [_rssArray objectAtIndex:indexPath.row];
     
     SMDetailViewController *detailVC = [SMDetailViewController new];
+    detailVC.delegate = self;
     [detailVC setRss:rss];
     [self.navigationController pushViewController:detailVC animated:YES];
     
