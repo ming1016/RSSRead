@@ -52,7 +52,7 @@
     rect.origin.y = 14;
     CGSize fitSize = [_lbtitle.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18]}];
     rect.size = fitSize;
-    rect.size.width = SCREEN_WIDTH - 30;
+    rect.size.width = SCREEN_WIDTH - 66;
     _lbtitle.frame = rect;
     
     //记总数

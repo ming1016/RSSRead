@@ -8,6 +8,7 @@
 
 #import "SMAddRSSToolbar.h"
 #import "SMUIKitHelper.h"
+#import "UIColor+RSS.h"
 
 @implementation SMAddRSSToolbar
 
@@ -55,7 +56,7 @@
     [button setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:highIcon] forState:UIControlStateHighlighted];
     [button setTitle:text forState:UIControlStateNormal];
-    [button setTitleColor:LINK_COLOR forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor rss_cyanColor] forState:UIControlStateNormal];
     [self addSubview:button];
 }
 
