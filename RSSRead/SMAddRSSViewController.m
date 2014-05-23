@@ -20,6 +20,7 @@
 #import "UIColor+RSS.h"
 #import <ViewUtils.h>
 
+
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,strong)MWFeedParser *feedParser;
@@ -58,16 +59,17 @@
     [[self view]addGestureRecognizer:recognizer];
     recognizer = nil;
     [self.navigationController setNavigationBarHidden:YES];
-    
+    //加载searchbar
     [self setupSearchBar];
-
+    //添加小横条
+    [self setupLine];
     //加载结果页面(tableView)
     [self setupResultView];
     
     //加载toolbar
 //    [self setupToolbar];
     
-    //加载searchbar
+    
     
     //加载指示层
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -354,10 +356,22 @@
     self.searchBar = searchBar;
     
     closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor rss_cyanColor];
+    view.top = searchBar.top -1 ;
     
+    view.height =searchBar.height+2;
+    view.left = searchBar.left -1;
+    view.width = searchBar.width+2;
+    
+    [self.view addSubview:view];
     [self.view addSubview:searchBar];
     [self.view addSubview:closeButton];
 
+}
+- (void)setupLine
+{
+    
 }
 
 - (void)setupResultView
