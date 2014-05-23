@@ -50,7 +50,11 @@
 - (void)setSearchRss:(SMAddRssSourceModel *)searchRss
 {
     //对标题做特殊处理 删除<b></b>
+    NSString * str = searchRss.title;
+    str =[str stringByReplacingOccurrencesOfString:@"<b>" withString:@" "];
+    str =[str stringByReplacingOccurrencesOfString:@"</b>" withString:@" "];
    // searchRss.title
+    searchRss.title = str;
     self.textLabel.text = searchRss.title;
     self.detailTextLabel.text = searchRss.url;
 }
