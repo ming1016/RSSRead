@@ -68,6 +68,7 @@
 		DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */; };
 		DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */; };
 		DE948399192F20C300EA431C /* SMTouchsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE948398192F20C300EA431C /* SMTouchsView.m */; };
+		DE9483A2192F62A100EA431C /* SMShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9483A1192F62A100EA431C /* SMShareViewController.m */; };
 		DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */; };
 		DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3C192C87DE00621576 /* SMRSSaboutModel.m */; };
 		DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE3F192C87FB00621576 /* aboutRSS.plist */; };
@@ -184,6 +185,8 @@
 		DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRSS_toolbar_background@2x.png"; sourceTree = "<group>"; };
 		DE948397192F20C300EA431C /* SMTouchsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTouchsView.h; sourceTree = "<group>"; };
 		DE948398192F20C300EA431C /* SMTouchsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTouchsView.m; sourceTree = "<group>"; };
+		DE9483A0192F62A100EA431C /* SMShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMShareViewController.h; sourceTree = "<group>"; };
+		DE9483A1192F62A100EA431C /* SMShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMShareViewController.m; sourceTree = "<group>"; };
 		DEE9FE39192C87DE00621576 /* SMRSSaboutgroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutgroup.h; sourceTree = "<group>"; };
 		DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSaboutgroup.m; sourceTree = "<group>"; };
 		DEE9FE3B192C87DE00621576 /* SMRSSaboutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutModel.h; sourceTree = "<group>"; };
@@ -371,6 +374,7 @@
 		D2E8FBF118C46B5A005E8F2E /* RSSRead */ = {
 			isa = PBXGroup;
 			children = (
+				DE94839C192F624700EA431C /* ShareEverynote */,
 				CB3DA4BA192DD27200AC52D6 /* Category */,
 				1F9854C9192A07280093DDF8 /* View */,
 				1F9854C5192A066D0093DDF8 /* ViewController */,
@@ -498,6 +502,39 @@
 				DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */,
 			);
 			name = addRSS;
+			sourceTree = "<group>";
+		};
+		DE94839C192F624700EA431C /* ShareEverynote */ = {
+			isa = PBXGroup;
+			children = (
+				DE94839F192F627C00EA431C /* Model */,
+				DE94839E192F627200EA431C /* View */,
+				DE94839D192F626100EA431C /* Controller */,
+			);
+			name = ShareEverynote;
+			sourceTree = "<group>";
+		};
+		DE94839D192F626100EA431C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE9483A0192F62A100EA431C /* SMShareViewController.h */,
+				DE9483A1192F62A100EA431C /* SMShareViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DE94839E192F627200EA431C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DE94839F192F627C00EA431C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		DEE9FE38192C87B200621576 /* SMaboutRSS */ = {
@@ -703,6 +740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9483A2192F62A100EA431C /* SMShareViewController.m in Sources */,
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,

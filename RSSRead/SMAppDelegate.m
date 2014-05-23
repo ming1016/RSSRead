@@ -16,6 +16,10 @@
 #import "SMMoreViewController.h"
 #import "UIColor+RSS.h"
 #import "SMBlurBackground.h"
+#import "EvernoteSDK.h"
+#import "EvernoteSession.h"
+#import "ENConstants.h"
+#import "SMShareViewController.h"
 @implementation SMAppDelegate
 //{
 //    SMViewController *_smViewController;
@@ -51,6 +55,19 @@
     moreVC.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
     [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
     
+    //填写印象笔记相关key信息
+    //BootstrapServerBaseURLStringSandbox
+    //BootstrapServerBaseURLStringCN
+    NSString *EVERNOTE_HOST = BootstrapServerBaseURLStringSandbox;
+    NSString *CONSUMER_KEY = @"ftxbird";
+    NSString *CONSUMER_SECRET = @"6408c2414d321e93";
+    
+    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST
+                              consumerKey:CONSUMER_KEY
+                           consumerSecret:CONSUMER_SECRET];
+    //测试印象 OAUTH认证
+//    SMShareViewController *shareVc = [[SMShareViewController alloc] init];
+//    self.window.rootViewController = shareVc;
     self.window.rootViewController = self.dynamicsDrawerViewController;
     
     [self.window makeKeyAndVisible];
@@ -62,6 +79,8 @@
     [APService setupWithOption:launchOptions];
     //模糊图片写入沙盒
     [SMBlurBackground SMRSSbackgroundImage:nil];
+    
+
     
     return YES;
 }
@@ -87,6 +106,9 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [UIApplication sharedApplication].applicationIconBadgeNumber =0;
+    //印象笔记
+    [[EvernoteSession sharedSession] handleDidBecomeActive];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -233,6 +255,14 @@
     
     // Required
     [APService handleRemoteNotification:userInfo];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    BOOL canHandle = NO;
+    if ([[NSString stringWithFormat:@"en-%@", [[EvernoteSession sharedSession] consumerKey]] isEqualToString:[url scheme]] == YES) {
+        canHandle = [[EvernoteSession sharedSession] canHandleOpenURL:url];
+    }
+    return canHandle;
 }
 
 @end
