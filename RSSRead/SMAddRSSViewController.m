@@ -216,9 +216,6 @@
 - (void)addInputRSS
 {
     
-    dispatch_queue_t q = dispatch_queue_create("addRSS", DISPATCH_QUEUE_SERIAL);
-    
-    dispatch_async(q, ^{
         //读取解析rss
         NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
         _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
@@ -231,7 +228,7 @@
         _HUD.labelText = [_feedParser parse] ? @"成功添加":@"无法解析该源";
         [_HUD show:YES];
         [_HUD hide:YES afterDelay:2];
-    });
+   
     
     
 }
