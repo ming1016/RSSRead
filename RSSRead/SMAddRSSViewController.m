@@ -118,10 +118,11 @@
 - (void)btnClickAddRssUsingTag:(UIButton *)btn
 {
     [btn setTitleColor:[UIColor colorFromRGB:0xcccccc] forState:UIControlStateNormal];
-    [btn setTitle:@"已添加" forState:UIControlStateNormal];
     SMAddRssSourceModel *searchRss = _RSSArray[btn.tag];
     _searchBar.text = searchRss.url;
-    [self addInputRSS];
+    BOOL isOK =  [self addInputRSS];
+    [btn setTitle:isOK ? @"已添加" : @"无法解析" forState:UIControlStateNormal];
+
 }
 #pragma mark - 根据用户输入字符串搜索RSS源
 /**
@@ -235,20 +236,23 @@
     return YES;
 }
 
-- (void)addInputRSS
+- (BOOL)addInputRSS
 {
     
     //读取解析rss
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
      NSURL *feedURL = [NSURL URLWithString:_searchBar.text];
-    _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
+    if(!_feedParser)
+        _feedParser = [[MWFeedParser alloc]initWithFeedURL:feedURL];
+    
     _feedParser.delegate = self;
     _feedParser.feedParseType = ParseTypeFull;
-    _feedParser.connectionType = ConnectionTypeSynchronously;
+    _feedParser.connectionType = ConnectionTypeAsynchronously;
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    //判断添加源是否失败
-    [MBProgressHUD showShortHUDAddTo:self.view labelText:[_feedParser parse] ? @"成功添加":@"无法解析该源"];
+    BOOL isSuccess = [_feedParser parse];
+    [MBProgressHUD showShortHUDAddTo:self.view labelText: isSuccess ? @"成功添加":@"无法解析该源"];
+    return isSuccess;
     
 }
 #pragma mark - Feed解析器代理方法
