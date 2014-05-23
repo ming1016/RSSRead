@@ -14,17 +14,19 @@
 		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
 		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
 		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
+		CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
 		D20C7060192D896D002A2236 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705F192D896D002A2236 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21D4834192F7248007003C8 /* RSS.xcdatamodeld */; };
+		D21D4846192F7691007003C8 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4845192F7691007003C8 /* RSS.m */; };
+		D21D4849192F7692007003C8 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4848192F7692007003C8 /* Subscribes.m */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
 		D2A2A6B819248C81009BDB38 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D2A2A6B719248C81009BDB38 /* about.html */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
 		D2E078BD19278D9000ABF6EB /* RecommendFeedList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */; };
-		D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62418DFDC4A00C3080C /* RSS.m */; };
-		D2E5D62818DFDC4A00C3080C /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62718DFDC4A00C3080C /* Subscribes.m */; };
 		D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E5D62A18E01BF300C3080C /* SMRSSModel.m */; };
 		D2E8FBEC18C46B5A005E8F2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E8FBEB18C46B5A005E8F2E /* Foundation.framework */; };
 		D2E8FBEE18C46B5A005E8F2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E8FBED18C46B5A005E8F2E /* CoreGraphics.framework */; };
@@ -32,7 +34,6 @@
 		D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FBF418C46B5A005E8F2E /* InfoPlist.strings */; };
 		D2E8FBF818C46B5A005E8F2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FBF718C46B5A005E8F2E /* main.m */; };
 		D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */; };
-		D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */; };
 		D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FC0118C46B5A005E8F2E /* SMViewController.m */; };
 		D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FC0318C46B5A005E8F2E /* Images.xcassets */; };
 		D2E8FC0B18C46B5A005E8F2E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E8FC0A18C46B5A005E8F2E /* XCTest.framework */; };
@@ -41,7 +42,6 @@
 		D2E8FC1518C46B5A005E8F2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2E8FC1318C46B5A005E8F2E /* InfoPlist.strings */; };
 		D2E8FC1718C46B5A005E8F2E /* RSSReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FC1618C46B5A005E8F2E /* RSSReadTests.m */; };
 		D2E8FC2118C46F19005E8F2E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E8FC2018C46F19005E8F2E /* CoreData.framework */; };
-		D2E8FC2418C46F6F005E8F2E /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E8FC2218C46F6F005E8F2E /* RSS.xcdatamodeld */; };
 		D2EB1F2F18FA733C000C13D3 /* backgroundNavbar.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EB1F2E18FA733B000C13D3 /* backgroundNavbar.png */; };
 		D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */; };
 		D2EDF79418C5BD9500B0E990 /* SMMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */; };
@@ -106,6 +106,7 @@
 		CB45E7C2192E375400C6D84C /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		CB45E7C4192E4C6E00C6D84C /* SMScreenShotMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenShotMgr.h; sourceTree = "<group>"; };
 		CB45E7C5192E4C6E00C6D84C /* SMScreenShotMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenShotMgr.m; sourceTree = "<group>"; };
+		CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddRssSoucesCell.xib; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
@@ -113,6 +114,12 @@
 		D20C705B192D891E002A2236 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = "<group>"; };
 		D20C705E192D896D002A2236 /* QBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlurView.h; sourceTree = "<group>"; };
 		D20C705F192D896D002A2236 /* QBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBlurView.m; sourceTree = "<group>"; };
+		D21D4835192F7248007003C8 /* RSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS.xcdatamodel; sourceTree = "<group>"; };
+		D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 2.xcdatamodel"; sourceTree = "<group>"; };
+		D21D4844192F7691007003C8 /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
+		D21D4845192F7691007003C8 /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
+		D21D4847192F7692007003C8 /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
+		D21D4848192F7692007003C8 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
 		D2A2A6B719248C81009BDB38 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
@@ -121,10 +128,6 @@
 		D2DDA05D18DC25E1005394E4 /* SMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailViewController.h; sourceTree = "<group>"; };
 		D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailViewController.m; sourceTree = "<group>"; };
 		D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RecommendFeedList.plist; sourceTree = "<group>"; };
-		D2E5D62318DFDC4A00C3080C /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
-		D2E5D62418DFDC4A00C3080C /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
-		D2E5D62618DFDC4A00C3080C /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
-		D2E5D62718DFDC4A00C3080C /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D2E5D62918E01BF300C3080C /* SMRSSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSModel.h; sourceTree = "<group>"; };
 		D2E5D62A18E01BF300C3080C /* SMRSSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSModel.m; sourceTree = "<group>"; };
 		D2E8FBE818C46B5A005E8F2E /* RSSRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +140,6 @@
 		D2E8FBF918C46B5A005E8F2E /* RSSRead-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSRead-Prefix.pch"; sourceTree = "<group>"; };
 		D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
 		D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAppDelegate.m; sourceTree = "<group>"; };
-		D2E8FBFE18C46B5A005E8F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2E8FC0018C46B5A005E8F2E /* SMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
 		D2E8FC0118C46B5A005E8F2E /* SMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
 		D2E8FC0318C46B5A005E8F2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 		D2E8FC1418C46B5A005E8F2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2E8FC1618C46B5A005E8F2E /* RSSReadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSReadTests.m; sourceTree = "<group>"; };
 		D2E8FC2018C46F19005E8F2E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D2E8FC2318C46F6F005E8F2E /* RSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS.xcdatamodel; sourceTree = "<group>"; };
 		D2EB1F2E18FA733B000C13D3 /* backgroundNavbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundNavbar.png; sourceTree = "<group>"; };
 		D2EDF78F18C5B22C00B0E990 /* SMUIKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUIKitHelper.h; sourceTree = "<group>"; };
 		D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUIKitHelper.m; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 		1F9854C4192A05D80093DDF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D21D4834192F7248007003C8 /* RSS.xcdatamodeld */,
 				D2EEB44218DAB6BE008175F5 /* SMGetFetchedRecordsModel.h */,
 				D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */,
 				D2E5D62918E01BF300C3080C /* SMRSSModel.h */,
@@ -319,11 +321,10 @@
 		D2DDA05C18DC19EB005394E4 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				D2E8FC2218C46F6F005E8F2E /* RSS.xcdatamodeld */,
-				D2E5D62618DFDC4A00C3080C /* Subscribes.h */,
-				D2E5D62718DFDC4A00C3080C /* Subscribes.m */,
-				D2E5D62318DFDC4A00C3080C /* RSS.h */,
-				D2E5D62418DFDC4A00C3080C /* RSS.m */,
+				D21D4847192F7692007003C8 /* Subscribes.h */,
+				D21D4848192F7692007003C8 /* Subscribes.m */,
+				D21D4844192F7691007003C8 /* RSS.h */,
+				D21D4845192F7691007003C8 /* RSS.m */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -380,7 +381,6 @@
 				1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */,
 				D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */,
 				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
-				D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */,
 				D2EDF78E18C5B20600B0E990 /* Utility */,
 				D20C7058192D8891002A2236 /* ThirdParty */,
 				D2F75F6418D97EB400ED44A3 /* Image */,
@@ -562,12 +562,13 @@
 				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
 				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
 				DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */,
+				CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */,
 				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
 				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
-				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
-				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
 				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
 				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
+				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
+				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
 				DE948397192F20C300EA431C /* SMTouchsView.h */,
 				DE948398192F20C300EA431C /* SMTouchsView.m */,
 			);
@@ -666,6 +667,7 @@
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
+				CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
 				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
@@ -674,7 +676,6 @@
 				D2F79E26192B4682000727D4 /* bg4.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
-				D2E8FBFF18C46B5A005E8F2E /* Main.storyboard in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
@@ -748,16 +749,15 @@
 				DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */,
 				DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
-				D2E8FC2418C46F6F005E8F2E /* RSS.xcdatamodeld in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
 				D2EDF79418C5BD9500B0E990 /* SMMoreViewController.m in Sources */,
 				D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */,
 				D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */,
-				D2E5D62518DFDC4A00C3080C /* RSS.m in Sources */,
-				D2E5D62818DFDC4A00C3080C /* Subscribes.m in Sources */,
+				D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */,
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
+				D21D4846192F7691007003C8 /* RSS.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
 				DE948399192F20C300EA431C /* SMTouchsView.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
@@ -765,6 +765,7 @@
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
 				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
+				D21D4849192F7692007003C8 /* Subscribes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,14 +794,6 @@
 				D2E8FBF518C46B5A005E8F2E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D2E8FBFD18C46B5A005E8F2E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2E8FBFE18C46B5A005E8F2E /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D2E8FC1318C46B5A005E8F2E /* InfoPlist.strings */ = {
@@ -997,12 +990,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D2E8FC2218C46F6F005E8F2E /* RSS.xcdatamodeld */ = {
+		D21D4834192F7248007003C8 /* RSS.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D2E8FC2318C46F6F005E8F2E /* RSS.xcdatamodel */,
+				D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */,
+				D21D4835192F7248007003C8 /* RSS.xcdatamodel */,
 			);
-			currentVersion = D2E8FC2318C46F6F005E8F2E /* RSS.xcdatamodel */;
+			currentVersion = D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */;
 			path = RSS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

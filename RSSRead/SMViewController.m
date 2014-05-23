@@ -52,7 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.title = @"返回";//给navigation push过去的vc的返回有个中文提示
     // 设置title view
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title_view"]];
     [self.navigationItem setTitleView:imgView];

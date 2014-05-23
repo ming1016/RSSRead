@@ -65,14 +65,12 @@
     [self setupResultView];
     //加载searchbar
     [self setupSearchBar];
-    //添加小横条
-    [self setupLine];
     
+    //添加小横条
+//    [self setupLine];
     
     //加载toolbar
-//    [self setupToolbar];
-    
-    
+    [self setupToolbar];
     
     //加载指示层
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -118,9 +116,8 @@
 
 - (void)btnClickAddRssUsingTag:(UIButton *)btn
 {
-    
-    btn.backgroundColor = [UIColor colorWithRed:0.883 green:0.420 blue:0.849 alpha:0.80];
-    [btn setTitle:@"已操作" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor colorFromRGB:0xcccccc] forState:UIControlStateNormal];
+    [btn setTitle:@"已添加" forState:UIControlStateNormal];
     SMAddRssSourceModel *searchRss = _RSSArray[btn.tag];
     _searchBar.text = searchRss.url;
     [self addInputRSS];
@@ -175,7 +172,7 @@
 //表行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 65;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -184,7 +181,7 @@
     SMAddRssSoucesCell *cell = [SMAddRssSoucesCell cellWithTableView:tableView];
     cell.searchRss = self.RSSArray[indexPath.row];
     cell.delegate =self;
-    cell.btn.tag = indexPath.row;
+    cell.addButton.tag = indexPath.row;
     return cell;
 }
 
@@ -376,18 +373,17 @@
     self.searchBar = searchBar;
     
     closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor rss_cyanColor];
-    view.top = searchBar.top -1 ;
-    
-    view.height =searchBar.height+2;
-    view.left = searchBar.left -1;
-    view.width = searchBar.width+2;
+//    UIView *view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor rss_cyanColor];
+//    view.top = searchBar.top -1 ;
+//    
+//    view.height =searchBar.height+2;
+//    view.left = searchBar.left -1;
+//    view.width = searchBar.width+2;
     
     SMTouchsView *touchsView = [[SMTouchsView alloc] init];
     touchsView.frame = CGRectMake(0, 0, 100, 100);
     
-    [self.view addSubview:view];
     [self.view addSubview:searchBar];
     [self.view addSubview:closeButton];
     [self.view addSubview:touchsView];
@@ -400,6 +396,7 @@
 - (void)setupResultView
 {
     UITableView *tableView = [[UITableView alloc] init];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     tableView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height-80);
     tableView.top = 44 + STATUS_BAR_HEIGHT;
     tableView.height = self.view.height - tableView.top;

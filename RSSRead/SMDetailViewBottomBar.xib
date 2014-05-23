@@ -20,8 +20,8 @@
                         <action selector="favButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="0Zw-Xa-imJ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-FM-urE" userLabel="back">
-                    <rect key="frame" x="20" y="12" width="28" height="22"/>
+                <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-FM-urE" userLabel="back">
+                    <rect key="frame" x="20" y="9" width="37" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="toolbar_back">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

@@ -23,7 +23,7 @@
 }
 
 static const NSInteger kRSSListCellMarginLeft = 21;
-static const NSInteger kRSSListCellPaddingTop = 12;
+static const NSInteger kRSSListCellPaddingTop = 18;
 static const NSInteger kRSSListCellDateMarginTop = 6;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -48,9 +48,17 @@ static const NSInteger kRSSListCellDateMarginTop = 6;
         
         _lbDate = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbDate];
-        
+        [self setupSeperateLine];
     }
     return self;
+}
+
+- (void)setupSeperateLine
+{
+    int leftMargin = 10;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(leftMargin, 0, self.contentView.width - leftMargin * 2, 1)];
+    view.backgroundColor = [UIColor colorFromRGB:0xeeeeee];
+    [self.contentView addSubview:view];
 }
 
 -(void)setRss:(RSS *)rss {

@@ -22,7 +22,7 @@
 
 #define COLOR_BACKGROUND @"#FFFFFF"
 
-#define LIST_BIG_FONT 13
+#define LIST_BIG_FONT 15
 #define LIST_SMALL_FONT 10
 #define LIST_DARK_COLOR @"#2e2e2e"
 #define LIST_LIGHT_COLOR @"#999999"
