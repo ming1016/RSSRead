@@ -15,6 +15,7 @@
 
 @property(nonatomic,strong)REBoolItem *isInitWithFetchRSS;
 @property(nonatomic,strong)REBoolItem *isUserYourOwnBackgroundImage;
+@property(nonatomic,strong)REBoolItem *isUseBlurForYourBackgroundImage;
 @property(nonatomic,strong)RETableViewItem *backgroundImageSelect;
 @end
 
@@ -62,7 +63,9 @@
     _isUserYourOwnBackgroundImage = [REBoolItem itemWithTitle:@"是否启用自己的背景" value:NO switchValueChangeHandler:^(REBoolItem *item){
         //
     }];
-    
+    _isUseBlurForYourBackgroundImage = [REBoolItem itemWithTitle:@"是否启用模糊效果" value:YES switchValueChangeHandler:^(REBoolItem *item){
+        
+    }];
     
     _backgroundImageSelect = [RETableViewItem itemWithTitle:@"选择一张自己的背景" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
         //选择相册一张背景
