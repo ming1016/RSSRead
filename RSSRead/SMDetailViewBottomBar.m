@@ -75,6 +75,7 @@
     } else {
         [[SMPreferences sharedInstance] setTheme:eAppThemeBlack];
     }
+    [[SMPreferences sharedInstance] synchronize];
     [self setupSubviews];
     if([self.delegate respondsToSelector:@selector(bottomBarThemeButtonTouched:)]){
         [self.delegate performSelector:@selector(bottomBarThemeButtonTouched:) withObject:self];

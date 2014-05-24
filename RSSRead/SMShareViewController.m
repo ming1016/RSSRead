@@ -25,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.view.frame =[UIScreen mainScreen].bounds;
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor blueColor];
     }
     return self;
 }
@@ -35,15 +35,21 @@
     [super viewDidLoad];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self makeNoteWithTitle:@"1111111" withBody:@"222222" withResources:nil withParentBotebook:nil];
+}
+
 /**
  *  OAUTH授权  测试帐号信息  帐号: 66322510  密码:rssread
  *       目前采用沙盒环境  登录网址是:https://sandbox.evernote.com/
  *  @param EvernoteSession * session
  */
 
-- (void)oauthUSingSession
+- (void)oauthUSingSession:(EvernoteSession *)session
 {
-    EvernoteSession *session = [EvernoteSession sharedSession];
+   // EvernoteSession *session = [EvernoteSession sharedSession];
     [session authenticateWithViewController:self completionHandler:^(NSError *error) {
         if (error || !session.isAuthenticated){
             if (error) {
@@ -74,11 +80,11 @@
  *  @param parentNotebook 笔记本信息(指定存储笔记本)
  */
 - (void)makeNoteWithTitle:(NSString*)noteTile withBody:(NSString*) noteBody withResources:(NSMutableArray*)resources withParentBotebook:(EDAMNotebook*)parentNotebook {
-    
+ 
     EvernoteSession *session = [EvernoteSession sharedSession];
     if(!session.isAuthenticated)
     {
-        [self oauthUSingSession];
+        [self oauthUSingSession:session];
     }
     
     NSString *noteContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
