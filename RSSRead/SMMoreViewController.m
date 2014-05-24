@@ -30,8 +30,6 @@
 @property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *paneRevealRightBarButtonItem;
 
-@property (nonatomic, strong) SMViewController *indexVC;
-
 @end
 
 @implementation SMMoreViewController
@@ -85,8 +83,6 @@
     UIView *tbHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, NAVBARHEIGHT * 2)];
     self.tableView.tableHeaderView = tbHeadView;
     self.tableView.backgroundView = [SMUIKitHelper imageViewWithRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) imageName:@"leftBg"];
-    
-    _indexVC = [[SMViewController alloc]initWithNibName:nil bundle:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -179,7 +175,7 @@
     
     switch (paneViewControllerType) {
         case HomeViewController:
-            paneViewController = _indexVC;
+            paneViewController = [SMViewController new];
             break;
         
         case FavoriteListController:{

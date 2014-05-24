@@ -77,6 +77,8 @@
     //设置里可以设置是否启用模糊效果
     if ([[SMPreferences sharedInstance] isUseBlurForYourBackgroundImage]) {
         QBlurView *QB = [[QBlurView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        QB.blurRadius = [[SMPreferences sharedInstance] backgroundBlurRadius] * 10;
+        NSLog(@"kfdskf %f",QB.blurRadius);
         QB.synchronized = YES;
         [imgView addSubview:QB];
     }

@@ -14,4 +14,5 @@
 @dynamic isInitWithFetchRSS;
 @dynamic isUseBlurForYourBackgroundImage;
 @dynamic isUseYourOwnBackgroundImage;
+@dynamic backgroundBlurRadius;
 @end

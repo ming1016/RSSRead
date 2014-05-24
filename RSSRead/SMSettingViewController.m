@@ -17,6 +17,7 @@
 @property(nonatomic,strong)REBoolItem *isInitWithFetchRSS;
 @property(nonatomic,strong)REBoolItem *isUseYourOwnBackgroundImage;
 @property(nonatomic,strong)REBoolItem *isUseBlurForYourBackgroundImage;
+@property(nonatomic,strong)REFloatItem *backgroundBlurRadius;
 @property(nonatomic,strong)RETableViewItem *backgroundImageSelect;
 @end
 
@@ -73,13 +74,16 @@
     [section addItem:_isUseBlurForYourBackgroundImage];
     
     //调节模糊值
+    _backgroundBlurRadius = [REFloatItem itemWithTitle:@"高斯模糊半径" value:[[SMPreferences sharedInstance] backgroundBlurRadius] sliderValueChangeHandler:^(REFloatItem *item){
+        [[SMPreferences sharedInstance] setBackgroundBlurRadius:item.value];
+        [[SMPreferences sharedInstance] synchronize];
+    }];
+    [section addItem:_backgroundBlurRadius];
     
     _backgroundImageSelect = [RETableViewItem itemWithTitle:@"选择一张自己的背景" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
         //TODO:选择相册一张背景
     }];
     _backgroundImageSelect.image = [UIImage imageNamed:@"bg3"];
-    
-    
     [section addItem:_backgroundImageSelect];
     
     return section;
