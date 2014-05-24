@@ -181,6 +181,12 @@
     [self setupStatusBar];
 }
 
+- (void)bottomBarShareButtonTouched:(id)sender
+{
+#warning TODO 分享到Evernote
+
+}
+
 /*
 #pragma mark - Navigation
 
