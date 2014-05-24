@@ -193,7 +193,7 @@
         }
             
         case SettingViewController:{
-            SMSettingViewController *settingVC = [[SMSettingViewController alloc]initWithNibName:nil bundle:nil];
+            SMSettingViewController *settingVC = [[SMSettingViewController alloc]initWithStyle:UITableViewStyleGrouped];
             paneViewController = settingVC;
             self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
             paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
