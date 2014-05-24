@@ -91,6 +91,7 @@
     //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
     _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [self getAllSubscribeSources];
     [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
         [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
@@ -100,7 +101,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self getAllSubscribeSources];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -196,9 +197,12 @@
     SMSubscribeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.backgroundColor = [UIColor clearColor];
+        
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+//        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
+        cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
+        cell.backgroundColor = [UIColor clearColor];
     }
     if (_allSurscribes.count > 0) {
         [cell setSubscribe:_allSurscribes[indexPath.row]];

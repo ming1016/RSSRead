@@ -79,7 +79,7 @@
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
     //模糊图片写入沙盒
-    [SMBlurBackground SMRSSbackgroundImage:nil];
+//    [SMBlurBackground SMRSSbackgroundImage:nil];
     
 
     

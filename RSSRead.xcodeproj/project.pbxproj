@@ -57,6 +57,7 @@
 		D2EFE4BB19178252009F4266 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EFE4BA19178252009F4266 /* SystemConfiguration.framework */; };
 		D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2EFE4BC191782CB009F4266 /* PushConfig.plist */; };
 		D2F5F1361930555100321CBE /* leftBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F5F1351930555100321CBE /* leftBg.png */; };
+		D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F13919306B7300321CBE /* SMSettingViewController.m */; };
 		D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */; };
 		D2F75F6618D97EC600ED44A3 /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F75F6518D97EC600ED44A3 /* news.png */; };
 		D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */; };
@@ -172,6 +173,8 @@
 		D2EFE4BA19178252009F4266 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2EFE4BC191782CB009F4266 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		D2F5F1351930555100321CBE /* leftBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftBg.png; sourceTree = "<group>"; };
+		D2F5F13819306B7300321CBE /* SMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingViewController.h; sourceTree = "<group>"; };
+		D2F5F13919306B7300321CBE /* SMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingViewController.m; sourceTree = "<group>"; };
 		D2F75F6118D9704E00ED44A3 /* SMSubscribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSubscribeCell.h; sourceTree = "<group>"; };
 		D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSubscribeCell.m; sourceTree = "<group>"; };
 		D2F75F6518D97EC600ED44A3 /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
@@ -446,12 +449,22 @@
 			children = (
 				DEE9FE64192E73B400621576 /* SMAddRSS */,
 				DEE9FE38192C87B200621576 /* SMaboutRSS */,
+				D2F5F13719306B2B00321CBE /* Setting */,
 				D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */,
 				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
 				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
 				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
 			);
 			name = More;
+			sourceTree = "<group>";
+		};
+		D2F5F13719306B2B00321CBE /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F13819306B7300321CBE /* SMSettingViewController.h */,
+				D2F5F13919306B7300321CBE /* SMSettingViewController.m */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		D2F75F6418D97EB400ED44A3 /* Image */ = {
@@ -747,6 +760,7 @@
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
+				D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
 				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,

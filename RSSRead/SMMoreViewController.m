@@ -14,6 +14,7 @@
 #import "SMBlurBackground.h"
 #import "MSDynamicsDrawerViewController.h"
 #import "SMViewController.h"
+#import "SMSettingViewController.h"
 
 @interface SMMoreViewController ()
 
@@ -28,6 +29,8 @@
 @property (nonatomic, strong) UIBarButtonItem *paneStateBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *paneRevealRightBarButtonItem;
+
+@property (nonatomic, strong) SMViewController *indexVC;
 
 @end
 
@@ -82,11 +85,8 @@
     UIView *tbHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, NAVBARHEIGHT * 2)];
     self.tableView.tableHeaderView = tbHeadView;
     self.tableView.backgroundView = [SMUIKitHelper imageViewWithRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) imageName:@"leftBg"];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _indexVC = [[SMViewController alloc]initWithNibName:nil bundle:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,7 +120,7 @@
         cell = [[SMMoreCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+        cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
         cell.backgroundColor = [UIColor clearColor];
     }
     if (_optionArr.count > 0) {
@@ -179,7 +179,7 @@
     
     switch (paneViewControllerType) {
         case HomeViewController:
-            paneViewController = [SMViewController new];
+            paneViewController = _indexVC;
             break;
         
         case FavoriteListController:{
@@ -193,11 +193,8 @@
         }
             
         case SettingViewController:{
-            //TODO:添加设置页
-            SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
-            rsslistVC.isFav = YES;
-            rsslistVC.isNewVC = YES;
-            paneViewController = rsslistVC;
+            SMSettingViewController *settingVC = [[SMSettingViewController alloc]initWithNibName:nil bundle:nil];
+            paneViewController = settingVC;
             self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
             paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
             break;

@@ -10,16 +10,15 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 
 ##TODO
 * 期待同好一起完善
-* 整理RSS推荐源，添加RSS时可以进行分类选择
 * 关联Twitter内容和Weibo内容
 * feedly等rss服务的接口处理
 * 可设置夜间模式
 * UI设计优化
 * 解析RSS机制优化，利用多线程处理。
-* 参考<http://ctrlq.org/rss/>实时检索功能对添加RSS源进行优化
 * 二级列表左拉添加分享文章到其它平台(比如印象笔记)
 * coredata需要组织一下
 * 二级列表左拉添加分享文章到其它平台
+* 整理RSS推荐源，添加RSS时可以进行分类选择
 
 ##项目主要贡献者
 [@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou) [@ftxbird](https://github.com/ftxbird) [ben46](https://github.com/ben46)
