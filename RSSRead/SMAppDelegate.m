@@ -41,6 +41,7 @@
     
     //MSDynamicsDrawerViewController setting
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
+    [self.dynamicsDrawerViewController setRevealWidth:SCREEN_WIDTH - 150 forDirection:MSDynamicsDrawerDirectionLeft];
     
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 
