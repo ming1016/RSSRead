@@ -13,7 +13,6 @@
 #import "Subscribes.h"
 #import "SMAppDelegate.h"
 #import "SMSubscribeCell.h"
-#import "SMRSSListViewController.h"
 #import "MBProgressHUD.h"
 #import "HYCircleLoadingView.h"
 #import "SMBlurBackground.h"
@@ -223,6 +222,7 @@
     rssListVC.subscribeUrl = aSub.url;
     rssListVC.subscribeTitle = aSub.title;
     rssListVC.isNewVC = YES;
+    rssListVC.delegate = self;
     [self.navigationController pushViewController:rssListVC animated:YES];
 }
 
@@ -245,7 +245,12 @@
     return @"删除";
 }
 
-#pragma mark addsubscribesdelegate
+#pragma mark - rsslistviewcontroller delegate
+-(void)updateSubscribeList {
+    [self getAllSubscribeSources];
+}
+
+#pragma mark - addsubscribesdelegate
 -(void)addedRSS:(Subscribes *)subscribe {
     [self getAllSubscribeSources];
 }

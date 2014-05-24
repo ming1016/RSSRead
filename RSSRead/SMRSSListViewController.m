@@ -35,9 +35,9 @@
 }
 
 -(void)doBack {
+    [self.delegate updateSubscribeList];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -47,7 +47,6 @@
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -70,12 +69,9 @@
     self.title = subscribeTitle;
     _subscribeTitle = subscribeTitle;
 }
-
 -(void)setIsFav:(BOOL)isFav {
     _isFav = isFav;
 }
-
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (_isFav) {
@@ -93,13 +89,11 @@
         [self loadTableViewFromCoreData];
     }
 }
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 //    [[SMScreenShotMgr sharedInstance] takeScreenShot];
 }
-
 -(void)loadTableViewFromCoreData {
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"RSS";
@@ -142,7 +136,6 @@
     }
     
 }
-
 - (void)calculateRowHeight
 {
     if(_cellMgrs == nil) {
@@ -158,7 +151,6 @@
     }
     
 }
-
 -(void)refreshView:(UIRefreshControl *)refresh {
     [_refreshControl beginRefreshing];
     SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
@@ -174,7 +166,6 @@
         [weakSelf loadTableViewFromCoreData];
     }];
 }
-
 - (void)addThisRSS
 {
     //读取解析rss
@@ -190,20 +181,17 @@
     [_HUD show:YES];
     [_HUD hide:YES afterDelay:2];
 }
-
 -(void)clearAllRSS {
     SMRSSModel *model = [[SMRSSModel alloc] init];
     [model markAllAsRead:_subscribeUrl];
     [self doBack];
 }
-
 -(void)quickFavRSS:(NSIndexPath *)indexPath {
     RSS *rss = _rssArray[indexPath.row];
     SMRSSModel *model = [[SMRSSModel alloc] init];
     [model favRSS:rss];
     [self faved];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -219,24 +207,20 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return _rssArray.count;
 }
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     SMRSSListCellMgr *mgr = _cellMgrs[indexPath.row];
     return mgr.cellHeight;
 }
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SMRSSListCell";
@@ -253,7 +237,6 @@
     
     return cell;
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RSS *rss = [_rssArray objectAtIndex:indexPath.row];
@@ -264,38 +247,21 @@
     [self.navigationController pushViewController:detailVC animated:YES];
     
     SMRSSModel *rssModel = [SMRSSModel new];
-    [rssModel markAsRead:rss];
-    [self loadTableViewFromCoreData];
+    [rssModel markAsRead:rss];//标记已读
+    [self loadTableViewFromCoreData];//更新列表
+    [self.delegate updateSubscribeList];//更新首页已读数
 }
 
-//-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return YES;
-//}
-
-//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [self quickFavRSS:indexPath];
-//    }
-//}
-
-//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return @"收藏";
-//}
-
-
 #pragma mark - Feed解析器代理方法
-
 -(void)feedParserDidStart:(MWFeedParser *)parser {
     NSLog(@"Started Parsing");
 }
-
 -(void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
     if (info.title) {
         _feedInfo = info;
     } else {
     }
 }
-
 -(void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
     if (item.title) {
         [_parsedItems addObject:item];
@@ -304,7 +270,6 @@
         NSLog(@"failed by item");
     }
 }
-
 -(void)feedParserDidFinish:(MWFeedParser *)parser {
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"Subscribes";
@@ -333,7 +298,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"已添加" style:UIBarButtonItemStylePlain target:self action:nil];
 
 }
-
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
     _HUD.labelText = @"解析失败";
     [self.view.window addSubview:_HUD];
@@ -342,8 +306,7 @@
     
 }
 
-#pragma mark -
-
+#pragma mark - swipTableViewCell
 -(void)swipeTableViewCellWillResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
     NSLog(@"swipeTableViewCellWillResetState: %@ fromPoint: %@ animation: %d, velocity: %@", swipeTableViewCell, NSStringFromCGPoint(point), animation, NSStringFromCGPoint(velocity));
 
@@ -366,7 +329,6 @@
         
     }
 }
-
 -(void)swipeTableViewCellDidResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
     NSLog(@"swipeTableViewCellDidResetState: %@ fromPoint: %@ animation: %d, velocity: %@", swipeTableViewCell, NSStringFromCGPoint(point), animation, NSStringFromCGPoint(velocity));
 

@@ -1,5 +1,5 @@
 #RSSRead
-RSSRead是一个iOS设备上的RSS/Atom阅读器。 
+“已阅”是一个iOS设备上的RSS/Atom阅读器。 
 
 ##已有主要功能
 * Add a new feed with powerful search
@@ -35,7 +35,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 
 #####写代码
 * 具有iOS开发经验即可，或者加入qq开发群参与讨论，群号：191430246
-* 参与者请先阅读项目Wiki<https://github.com/ming1016/RSSRead/wiki>
+* 参与者请先阅读项目Wiki <https://github.com/ming1016/RSSRead/wiki>
 
 ##联系我
 * twitter：<https://twitter.com/ming1016>
@@ -43,7 +43,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * qq：36270359  
 * email：ming1016@gmail.com  
 
-##在App Store上已上架，应用中文名叫“已阅”  
+##“已阅”已在App Store上架
 <https://itunes.apple.com/us/app/yi-yue-rss-li-xian-xin-wen-yue-du/id850246364?ls=1&mt=8> 
 
 ##主要使用的技术
