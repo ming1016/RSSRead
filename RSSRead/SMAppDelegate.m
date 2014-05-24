@@ -59,15 +59,15 @@
     //BootstrapServerBaseURLStringSandbox
     //BootstrapServerBaseURLStringCN
     NSString *EVERNOTE_HOST = BootstrapServerBaseURLStringSandbox;
-    NSString *CONSUMER_KEY = @"ftxbird";
-    NSString *CONSUMER_SECRET = @"6408c2414d321e93";
+    NSString *CONSUMER_KEY = @"66322510";
+    NSString *CONSUMER_SECRET = @"404740e1e2b2f71d";
     
     [EvernoteSession setSharedSessionHost:EVERNOTE_HOST
                               consumerKey:CONSUMER_KEY
                            consumerSecret:CONSUMER_SECRET];
     //测试印象 OAUTH认证
-//    SMShareViewController *shareVc = [[SMShareViewController alloc] init];
-//    self.window.rootViewController = shareVc;
+   // SMShareViewController *shareVc = [[SMShareViewController alloc] init];
+    //self.window.rootViewController = shareVc;
     self.window.rootViewController = self.dynamicsDrawerViewController;
     
     [self.window makeKeyAndVisible];

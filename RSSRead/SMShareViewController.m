@@ -24,7 +24,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.view.frame =[UIScreen mainScreen].bounds;
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -32,12 +33,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //仅作测试
+}
+
+/**
+ *  OAUTH授权
+ *
+ *  @param EvernoteSession * session
+ */
+
+- (void)oauthUSingSession
+{
     EvernoteSession *session = [EvernoteSession sharedSession];
-    NSLog(@"Session host: %@", [session host]);
-    NSLog(@"Session key: %@", [session consumerKey]);
-    NSLog(@"Session secret: %@", [session consumerSecret]);
-    
     [session authenticateWithViewController:self completionHandler:^(NSError *error) {
         if (error || !session.isAuthenticated){
             if (error) {
@@ -47,10 +53,10 @@
                 NSLog(@"Session not authenticated");
             }
         } else {
-            // We're authenticated!
+            // 授权成功!
             EvernoteUserStore *userStore = [EvernoteUserStore userStore];
             [userStore getUserWithSuccess:^(EDAMUser *user) {
-                // success
+                // 获取用户信息
                 NSLog(@"Authenticated as %@", [user username]);
             } failure:^(NSError *error) {
                 // failure
@@ -60,7 +66,7 @@
     }];
 }
 /**
- *  创建印象笔记
+ *  创建印象笔记  (如果已经授权 可直接调用该方法发送笔记)
  *
  *  @param noteTile       笔记标题
  *  @param noteBody       笔记内容
@@ -68,6 +74,12 @@
  *  @param parentNotebook 笔记本信息(指定存储笔记本)
  */
 - (void)makeNoteWithTitle:(NSString*)noteTile withBody:(NSString*) noteBody withResources:(NSMutableArray*)resources withParentBotebook:(EDAMNotebook*)parentNotebook {
+    
+    EvernoteSession *session = [EvernoteSession sharedSession];
+    if(!session.isAuthenticated)
+    {
+        [self oauthUSingSession];
+    }
     
     NSString *noteContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                              "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"
@@ -86,7 +98,7 @@
                                                     mime:resource.mime]];
     }
     
-    noteContent = [noteContent stringByAppendingString:@"</en-note"];
+    noteContent = [noteContent stringByAppendingString:@"</en-note>"];
     
     // Parent notebook is optional; if omitted, default notebook is used
     NSString* parentNotebookGUID;
@@ -96,6 +108,8 @@
     
     //  创建笔记对象
     EDAMNote *ourNote = [[EDAMNote alloc] initWithGuid:nil title:noteTile content:noteContent contentHash:nil contentLength:noteContent.length created:0 updated:0 deleted:0 active:YES updateSequenceNum:0 notebookGuid:parentNotebookGUID tagGuids:nil resources:resources attributes:nil tagNames:nil];
+    //EvernoteNoteStore *notestore= [EvernoteNoteStore noteStore];
+   // NSLog(@"%@",notestore);
     
     // 将笔记对象传入指定账户中
     [[EvernoteNoteStore noteStore] createNote:ourNote success:^(EDAMNote *note) {
