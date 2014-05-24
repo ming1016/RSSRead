@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *flatShadowSepia;
 @property (weak, nonatomic) IBOutlet UIButton *favButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end
 
@@ -39,6 +40,8 @@
     [self.backButton setImage:[self.backButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
     [self.favButton setImage:[self.favButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
     [self.themeButton setImage:[self.themeButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
+    [self.shareButton setImage:[self.shareButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
+
     [self setupSubviews];
 }
 
@@ -82,6 +85,11 @@
 {
     if([self.delegate respondsToSelector:@selector(bottomBarBackButtonTouched:)]){
         [self.delegate performSelector:@selector(bottomBarBackButtonTouched:) withObject:self];
+    }
+}
+- (IBAction)shareButtonTouched:(id)sender {
+    if([self.delegate respondsToSelector:@selector(bottomBarShareButtonTouched:)]){
+        [self.delegate performSelector:@selector(bottomBarShareButtonTouched:) withObject:self];
     }
 }
 

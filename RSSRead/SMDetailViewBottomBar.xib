@@ -10,18 +10,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS4-ma-Q6m" userLabel="fav">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS4-ma-Q6m" userLabel="share">
                     <rect key="frame" x="272" y="12" width="28" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="ShareServices_Evernote">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="shareButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="6fu-Th-XC2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPI-U5-RCG" userLabel="fav">
+                    <rect key="frame" x="96" y="12" width="28" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="toolbar_favorite">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="favButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="0Zw-Xa-imJ"/>
+                        <action selector="favButtonTouched:" destination="I90-WJ-d9l" eventType="touchUpInside" id="YJh-8q-2HT"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZk-Zs-EQ4" userLabel="theme">
-                    <rect key="frame" x="146" y="12" width="28" height="22"/>
+                    <rect key="frame" x="189" y="12" width="28" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="PKT_DisplaySettings_Brightness">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,14 +59,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backButton" destination="ju1-FM-urE" id="6hZ-cl-BYT"/>
-                <outlet property="favButton" destination="vS4-ma-Q6m" id="Taj-zN-5NC"/>
+                <outlet property="favButton" destination="zPI-U5-RCG" id="zx3-5G-MNh"/>
                 <outlet property="flatShadowSepia" destination="YML-Xw-AeX" id="ZXh-TM-y09"/>
+                <outlet property="shareButton" destination="vS4-ma-Q6m" id="0VV-E9-NEy"/>
                 <outlet property="themeButton" destination="SZk-Zs-EQ4" id="vtP-cA-0ml"/>
             </connections>
         </view>
     </objects>
     <resources>
         <image name="PKT_DisplaySettings_Brightness" width="28" height="22"/>
+        <image name="ShareServices_Evernote" width="15" height="15"/>
         <image name="flat_shadow" width="320" height="3"/>
         <image name="toolbar_back" width="28" height="21"/>
         <image name="toolbar_favorite" width="28" height="21"/>

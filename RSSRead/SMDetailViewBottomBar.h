@@ -13,6 +13,7 @@
 - (void)bottomBarBackButtonTouched:(id)sender;
 - (void)bottomBarFavButtonTouched:(id)sender;
 - (void)bottomBarThemeButtonTouched:(id)sender;
+- (void)bottomBarShareButtonTouched:(id)sender;
 
 @end
 
