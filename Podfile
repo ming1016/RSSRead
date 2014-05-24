@@ -8,4 +8,5 @@ pod 'ViewUtils'
 pod 'MMLayershots', :podspec => 'https://raw.githubusercontent.com/vpdn/MMLayershots/master/MMLayershots.podspec'
 pod 'RMSwipeTableViewCell'
 pod 'RETableViewManager', '~> 1.5.10'
+pod 'PAPreferences'
 

@@ -10,6 +10,7 @@
 #import "SMDetailViewBottomBar.h"
 #import "SMUIKitHelper.h"
 #import "SMRSSModel.h"
+#import "SMPreferences.h"
 #import <ViewUtils.h>
 
 @interface SMDetailViewController ()<SMDetailViewBottomBarDelegate>
@@ -18,6 +19,7 @@
 @property(nonatomic,strong)SMRSSModel *rssModel;
 @property(nonatomic,strong)UIWebView *webView;
 @property(nonatomic,strong)SMDetailViewBottomBar *bottomBar;
+@property(nonatomic,strong)UIView *statusBarBackView;
 
 @end
 
@@ -48,9 +50,8 @@
     [self.view addSubview:_webView];
     [self.view addSubview:_bottomBar];
 
-    UIView *statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, STATUS_BAR_HEIGHT)];
-    [statusBarBackView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:statusBarBackView];
+    _statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, STATUS_BAR_HEIGHT)];
+    [self.view addSubview:_statusBarBackView];
     
 }
 
@@ -76,6 +77,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
@@ -83,9 +85,8 @@
 {
     [super viewDidLoad];
     
-    
+    [self setupStatusBar];
     // Do any additional setup after loading the view.
-//    [self renderDetailViewFromRSS];
 }
 
 -(void)renderDetailViewFromRSS {
@@ -94,51 +95,50 @@
     if ([_rss.content isEqualToString:@"无内容"]) {
         _showContent = _rss.summary;
     }
+    [self loadHTML];
     
+    [_rssModel markAsRead:_rss];
+    [_bottomBar fillWithRSS:_rss];
+}
+
+- (void)setupStatusBar
+{
+    
+    if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        [_statusBarBackView setBackgroundColor:[UIColor colorFromRGB:0x252525]];
+    } else {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        [_statusBarBackView setBackgroundColor:[UIColor whiteColor]];
+    }
+
+}
+
+- (void)loadHTML
+{
     NSString *filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"js.html"];
+    NSString *cssFilePath;
+    
+    if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
+        // 黑色
+        cssFilePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"css_dark.html"];
+    } else {
+        // 白色
+        cssFilePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"css.html"];
+    }
     
     NSError *err=nil;
     NSString *mTxt=[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+    NSString *cssString=[NSString stringWithContentsOfFile:cssFilePath encoding:NSUTF8StringEncoding error:&err];
     
     NSDateFormatter *formatter;
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM.dd HH:mm"];
     NSString *publishDate = [formatter stringFromDate:_rss.date];
-    NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\"><style>body{color:#333333;font-size:12pt;}.content{  width: 277px;\
-                         font-size: 16px;\
-                         line-height: 26px;\
-                         color: #333333;\
-                         margin: 0 auto;\
-                         }  p{\
-                                        margin: 0;\
-                                        padding: 5px 0;\
-                         }\
-                         sup{\
-                            font-style: italic; \
-                            color: #999;\
-                         }\
-                         .title {\
-                             color:#333333;\
-                             text-decoration:none;\
-                             margin-top: 20px;\
-                             margin-left: 14px;\
-                             line-height: 26px;\
-                             font-size: 18px;\
-                             text-align:left;\
-                         }\
-                         .diver{\
-                         margin:14px;\
-                         padding:0;\
-                         font-size:0;\
-                         line-height:0;\
-                         border-bottom:#ccc 1px solid;\
-                         }\
-                         </style></head><body><a class=\"title\" href=\"%@\">%@</a>\
-                         <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>",_rss.link,_rss.title,_rss.author,publishDate,_showContent,mTxt];
+    NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\">%@</head><body><a class=\"title\" href=\"%@\">%@</a>\
+                         <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>", cssString, _rss.link, _rss.title, _rss.author, publishDate, _showContent, mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
     
-    [_rssModel markAsRead:_rss];
-    [_bottomBar fillWithRSS:_rss];
 }
 
 -(void)favRSS {
@@ -176,6 +176,12 @@
     } else {
         [self favRSS];
     }
+}
+
+- (void)bottomBarThemeButtonTouched:(id)sender
+{
+    [self loadHTML];
+    [self setupStatusBar];
 }
 
 /*
