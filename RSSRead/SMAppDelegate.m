@@ -48,6 +48,11 @@
         [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:NO];
         [[SMPreferences sharedInstance] synchronize];
     }
+    if (![[SMPreferences sharedInstance] backgroundBlurRadius]) {
+        [[SMPreferences sharedInstance] setBackgroundBlurRadius:0.8];
+        [[SMPreferences sharedInstance] synchronize];
+    }
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

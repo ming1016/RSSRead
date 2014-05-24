@@ -93,15 +93,16 @@
     _afManager = [AFHTTPRequestOperationManager manager];
     _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [self getAllSubscribeSources];
-    [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
-        if ([[SMPreferences sharedInstance] isInitWithFetchRSS]) {
+    if ([[SMPreferences sharedInstance] isInitWithFetchRSS]) {
+        [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
-        } else {
+        }failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [_loadingView stopAnimation];
-        }
-    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        }];
+    } else {
         [_loadingView stopAnimation];
-    }];
+    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {

@@ -28,7 +28,7 @@
         _blurRadius = 8;
         _saturationDeltaFactor = 1.0;
         source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
-        __weak id weakSelf = self;
+        __block id weakSelf = self;
         dispatch_source_set_event_handler(source, ^{
             [weakSelf refresh];
         });
@@ -198,6 +198,8 @@
 
 - (void)dealloc{
     [super dealloc];
+    [_effectImage release];
+    _effectImage = nil;
     dispatch_source_cancel(source);
     dispatch_release(source);
 }
