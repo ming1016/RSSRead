@@ -84,7 +84,7 @@
                               consumerKey:CONSUMER_KEY
                            consumerSecret:CONSUMER_SECRET];
     //测试印象 OAUTH认证
-   // SMShareViewController *shareVc = [[SMShareViewController alloc] init];
+    //SMShareViewController *shareVc = [[SMShareViewController alloc] init];
     //self.window.rootViewController = shareVc;
     self.window.rootViewController = self.dynamicsDrawerViewController;
     
