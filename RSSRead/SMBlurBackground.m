@@ -8,6 +8,7 @@
 
 #import "SMBlurBackground.h"
 #import "SMUIKitHelper.h"
+#import "SMPreferences.h"
 
 @implementation SMBlurBackground
 
@@ -73,9 +74,13 @@
 //    backimage = [UIImage imageNamed:@"bg3"];
     UIImageView *imgView = [[UIImageView alloc]initWithImage:backimage];
     imgView.frame = [UIScreen mainScreen].bounds;
-    QBlurView *QB = [[QBlurView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    QB.synchronized = YES;
-    [imgView addSubview:QB];
+    //设置里可以设置是否启用模糊效果
+    if ([[SMPreferences sharedInstance] isUseBlurForYourBackgroundImage]) {
+        QBlurView *QB = [[QBlurView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        QB.synchronized = YES;
+        [imgView addSubview:QB];
+    }
+    
     return imgView;
 
     

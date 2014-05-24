@@ -9,5 +9,9 @@
 #import "SMPreferences.h"
 
 @implementation SMPreferences
+@dynamic status;
 @dynamic theme;
+@dynamic isInitWithFetchRSS;
+@dynamic isUseBlurForYourBackgroundImage;
+@dynamic isUseYourOwnBackgroundImage;
 @end

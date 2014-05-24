@@ -7,6 +7,10 @@
 //
 
 #import "PAPreferences.h"
+typedef NS_ENUM(NSInteger, EAppStatus) {
+    eAppNewer = 0,
+    eAppHasInitPreferences = 1
+};
 
 typedef NS_ENUM(NSInteger, EAppTheme) {
     eAppThemeWhite = 0,
@@ -14,6 +18,10 @@ typedef NS_ENUM(NSInteger, EAppTheme) {
 };
 
 @interface SMPreferences : PAPreferences
-@property (nonatomic, assign) EAppTheme theme;
+@property (nonatomic, assign) EAppStatus status;
+@property (nonatomic, assign) EAppTheme theme; //主题
+@property (nonatomic, assign) BOOL isInitWithFetchRSS; //启动时是否自动同步
+@property (nonatomic, assign) BOOL isUseYourOwnBackgroundImage; //是否启用自己的背景
+@property (nonatomic, assign) BOOL isUseBlurForYourBackgroundImage; //是否启用模糊效果
 
 @end

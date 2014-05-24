@@ -7,6 +7,7 @@
 //
 
 #import "SMSettingViewController.h"
+#import "SMPreferences.h"
 
 @interface SMSettingViewController ()
 @property(nonatomic,strong)RETableViewManager *manager;
@@ -14,7 +15,7 @@
 @property(nonatomic,strong)RETableViewSection *backgroundImageSection;
 
 @property(nonatomic,strong)REBoolItem *isInitWithFetchRSS;
-@property(nonatomic,strong)REBoolItem *isUserYourOwnBackgroundImage;
+@property(nonatomic,strong)REBoolItem *isUseYourOwnBackgroundImage;
 @property(nonatomic,strong)REBoolItem *isUseBlurForYourBackgroundImage;
 @property(nonatomic,strong)RETableViewItem *backgroundImageSelect;
 @end
@@ -34,22 +35,21 @@
 {
     [super viewDidLoad];
     self.title = @"设置";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(valuesButtonPressed:)];
     
     _manager = [[RETableViewManager alloc]initWithTableView:self.tableView delegate:self];
     _generalSection = [self addGeneralSection];
     _backgroundImageSection = [self addBackgroundImageSection];
     
-    //TODO:完成功能
+    //TODO:可调节模糊值
 }
 
 -(RETableViewSection *)addGeneralSection{
 //    __typeof (&*self) __weak weakSelf = self;
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"通用"];
     [self.manager addSection:section];
-    
-    _isInitWithFetchRSS = [REBoolItem itemWithTitle:@"启动时是否自动同步RSS" value:YES switchValueChangeHandler:^(REBoolItem *item){
-        NSLog(@"Value: %@", item.value ? @"YES" : @"NO");
+    _isInitWithFetchRSS = [REBoolItem itemWithTitle:@"启动时是否自动同步" value:[[SMPreferences sharedInstance] isInitWithFetchRSS] switchValueChangeHandler:^(REBoolItem *item){
+        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:item.value];
+        [[SMPreferences sharedInstance] synchronize];
     }];
     
     [section addItem:_isInitWithFetchRSS];
@@ -60,27 +60,33 @@
 -(RETableViewSection *)addBackgroundImageSection{
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"背景"];
     [self.manager addSection:section];
-    _isUserYourOwnBackgroundImage = [REBoolItem itemWithTitle:@"是否启用自己的背景" value:NO switchValueChangeHandler:^(REBoolItem *item){
-        //
+    _isUseYourOwnBackgroundImage = [REBoolItem itemWithTitle:@"是否启用自己的背景" value:[[SMPreferences sharedInstance] isUseYourOwnBackgroundImage] switchValueChangeHandler:^(REBoolItem *item){
+        [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:item.value];
+        [[SMPreferences sharedInstance] synchronize];
     }];
-    _isUseBlurForYourBackgroundImage = [REBoolItem itemWithTitle:@"是否启用模糊效果" value:YES switchValueChangeHandler:^(REBoolItem *item){
-        
+    [section addItem:_isUseYourOwnBackgroundImage];
+    
+    _isUseBlurForYourBackgroundImage = [REBoolItem itemWithTitle:@"是否启用模糊效果" value:[[SMPreferences sharedInstance] isUseBlurForYourBackgroundImage] switchValueChangeHandler:^(REBoolItem *item){
+        [[SMPreferences sharedInstance] setIsUseBlurForYourBackgroundImage:item.value];
+        [[SMPreferences sharedInstance] synchronize];
     }];
+    [section addItem:_isUseBlurForYourBackgroundImage];
+    
+    //调节模糊值
     
     _backgroundImageSelect = [RETableViewItem itemWithTitle:@"选择一张自己的背景" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
-        //选择相册一张背景
+        //TODO:选择相册一张背景
     }];
     _backgroundImageSelect.image = [UIImage imageNamed:@"bg3"];
     
-    [section addItem:_isUserYourOwnBackgroundImage];
+    
     [section addItem:_backgroundImageSelect];
     
     return section;
 }
 
--(void)valuesButtonPressed:(id)sender {
-    
-}
+//TODO:外观定制
+
 
 - (void)didReceiveMemoryWarning
 {

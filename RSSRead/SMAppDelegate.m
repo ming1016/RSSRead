@@ -20,6 +20,7 @@
 #import "EvernoteSession.h"
 #import "ENConstants.h"
 #import "SMShareViewController.h"
+#import "SMPreferences.h"
 @implementation SMAppDelegate
 //{
 //    SMViewController *_smViewController;
@@ -36,6 +37,17 @@
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     //清零
     [UIApplication sharedApplication].applicationIconBadgeNumber =0;
+    
+    //初始化设置项目
+    if ([[SMPreferences sharedInstance] status] != eAppHasInitPreferences) {
+        //设置各项的默认值
+        [[SMPreferences sharedInstance] setTheme:eAppThemeWhite];
+        [[SMPreferences sharedInstance] setStatus:eAppHasInitPreferences];
+        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:YES];
+        [[SMPreferences sharedInstance] setIsUseBlurForYourBackgroundImage:YES];
+        [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:NO];
+        [[SMPreferences sharedInstance] synchronize];
+    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

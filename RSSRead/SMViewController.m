@@ -18,6 +18,7 @@
 #import "HYCircleLoadingView.h"
 #import "SMBlurBackground.h"
 #import "UIColor+RSS.h"
+#import "SMPreferences.h"
 
 @interface SMViewController ()<UINavigationControllerDelegate>
 
@@ -93,7 +94,11 @@
     _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [self getAllSubscribeSources];
     [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
-        [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+        if ([[SMPreferences sharedInstance] isInitWithFetchRSS]) {
+            [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+        } else {
+            [_loadingView stopAnimation];
+        }
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
         [_loadingView stopAnimation];
     }];
