@@ -23,6 +23,8 @@
 @property(nonatomic,weak)MBProgressHUD *HUD;
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
+@property (strong, nonatomic) NSMutableArray *rowHeights;
+
 
 @end
 
@@ -128,12 +130,30 @@
                     
                 }
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                [self calculateRowHeight];
                 [self.tableView reloadData];
             }
         }];
+    } else {
+        [self calculateRowHeight];
+        [self.tableView reloadData];
     }
     
-    [self.tableView reloadData];
+}
+
+- (void)calculateRowHeight
+{
+    if(_rowHeights == nil) {
+        _rowHeights = [NSMutableArray array];
+    } else {
+        [_rowHeights removeAllObjects];
+    }
+    
+    for (RSS *rss in _rssArray) {
+        [_rowHeights addObject:@([SMRSSListCell heightForRSSList:rss])];
+    }
+    
 }
 
 -(void)refreshView:(UIRefreshControl *)refresh {
@@ -210,7 +230,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [SMRSSListCell heightForRSSList:[_rssArray objectAtIndex:indexPath.row]];
+    return [_rowHeights[indexPath.row] floatValue];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -333,6 +353,7 @@
         SMRSSModel *model = [[SMRSSModel alloc] init];
         [model dislikeRSS:rss];
         [_rssArray removeObjectAtIndex:indexPath.row];
+        [_rowHeights removeObjectAtIndex:indexPath.row];
         
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];

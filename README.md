@@ -59,7 +59,7 @@ RSSRead是一个iOS设备上的RSS/Atom阅读器。
 * RSSRead is available under the MIT license.
 
 ##截图
-* ![screenshot](http://ww1.sinaimg.cn/bmiddle/681101d0jw1egoblqr9khj20hs0vkafd.jpg)
-* ![screenshot](http://ww3.sinaimg.cn/bmiddle/681101d0jw1egoblyjgtdj20hs0vkn0b.jpg)
-* ![screenshot](http://ww4.sinaimg.cn/bmiddle/681101d0jw1egobm1la2vj20hs0vkmz9.jpg)
-* ![screenshot](http://ww3.sinaimg.cn/bmiddle/681101d0jw1egobm4h2ydj20hs0vkjwm.jpg)
+![screenshot](http://ww3.sinaimg.cn/bmiddle/681101d0jw1egoyufuwuqj20hs0qoacr.jpg)
+![screenshot](http://ww3.sinaimg.cn/bmiddle/681101d0jw1egoblyjgtdj20hs0vkn0b.jpg)
+![screenshot](http://ww2.sinaimg.cn/bmiddle/681101d0jw1egoyuhh3kpj20hs0qo421.jpg)
+![screenshot](http://ww1.sinaimg.cn/bmiddle/681101d0jw1egoyujczw3j20hs0qoq6m.jpg)

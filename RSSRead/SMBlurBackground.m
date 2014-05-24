@@ -7,12 +7,20 @@
 //
 
 #import "SMBlurBackground.h"
+#import "SMUIKitHelper.h"
 
 @implementation SMBlurBackground
 
 +(void)SMBluerViewWithImage:(UIImage *)image
 {
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:image];
+    //缩放UIimage适合填充屏幕大小
+    CGSize imgSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+    UIGraphicsBeginImageContext(imgSize);
+    [image drawInRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:scaledImage];
     QBlurView *QB = [[QBlurView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     QB.synchronized = YES;
     [backgroundImageView addSubview:QB];

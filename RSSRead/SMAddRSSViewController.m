@@ -161,6 +161,7 @@
 
          
  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     [MBProgressHUD  hideHUDForView:self.view animated:YES];
      [MBProgressHUD showShortHUDAddTo:self.view labelText:@"您的网络可能没有连接"];
  }];
 }
@@ -431,6 +432,7 @@
 #pragma mark - 通知移除
 - (void)dealloc
 {
+    _feedParser.delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
