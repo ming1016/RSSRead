@@ -36,8 +36,8 @@
 }
 
 /**
- *  OAUTH授权
- *
+ *  OAUTH授权  测试帐号信息  帐号: 66322510  密码:rssread
+ *       目前采用沙盒环境  登录网址是:https://sandbox.evernote.com/
  *  @param EvernoteSession * session
  */
 
