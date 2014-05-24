@@ -10,6 +10,9 @@
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
 		CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */; };
+		CB09E3DC1930798C000D7597 /* css.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DB1930798C000D7597 /* css.html */; };
+		CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DD19307BC5000D7597 /* css_dark.html */; };
+		CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CB09E3E01930807C000D7597 /* SMPreferences.m */; };
 		CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */; };
 		CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */; };
 		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
@@ -101,6 +104,10 @@
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
 		CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCellMgr.m; sourceTree = "<group>"; };
+		CB09E3DB1930798C000D7597 /* css.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = css.html; sourceTree = "<group>"; };
+		CB09E3DD19307BC5000D7597 /* css_dark.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = css_dark.html; sourceTree = "<group>"; };
+		CB09E3DF1930807C000D7597 /* SMPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPreferences.h; sourceTree = "<group>"; };
+		CB09E3E01930807C000D7597 /* SMPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPreferences.m; sourceTree = "<group>"; };
 		CB3DA4BB192DD33E00AC52D6 /* UIColor+TBExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TBExt.h"; sourceTree = "<group>"; };
 		CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TBExt.m"; sourceTree = "<group>"; };
 		CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSS.h"; sourceTree = "<group>"; };
@@ -255,6 +262,8 @@
 				D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */,
 				D2E5D62918E01BF300C3080C /* SMRSSModel.h */,
 				D2E5D62A18E01BF300C3080C /* SMRSSModel.m */,
+				CB09E3DF1930807C000D7597 /* SMPreferences.h */,
+				CB09E3E01930807C000D7597 /* SMPreferences.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -485,6 +494,8 @@
 			isa = PBXGroup;
 			children = (
 				D2A2A6B719248C81009BDB38 /* about.html */,
+				CB09E3DB1930798C000D7597 /* css.html */,
+				CB09E3DD19307BC5000D7597 /* css_dark.html */,
 				D2FB786818E3C4BB007BD413 /* js.html */,
 				CB45E7BE192E332D00C6D84C /* SMDetailViewBottomBar.h */,
 				CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */,
@@ -493,10 +504,10 @@
 				D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */,
 				D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */,
 				D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */,
-				D2F75F6818D9842500ED44A3 /* SMRSSListViewController.h */,
-				D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */,
 				CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */,
 				CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */,
+				D2F75F6818D9842500ED44A3 /* SMRSSListViewController.h */,
+				D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */,
 			);
 			name = RSSList;
 			sourceTree = "<group>";
@@ -705,9 +716,11 @@
 				D2F5F1361930555100321CBE /* leftBg.png in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
+				CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
 				D2F79E24192B4682000727D4 /* bg2.png in Resources */,
 				D2F79E25192B4682000727D4 /* bg3.png in Resources */,
+				CB09E3DC1930798C000D7597 /* css.html in Resources */,
 				DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,6 +798,7 @@
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
+				CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */,
 				D21D4846192F7691007003C8 /* RSS.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
 				DE948399192F20C300EA431C /* SMTouchsView.m in Sources */,
