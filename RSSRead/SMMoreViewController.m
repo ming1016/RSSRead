@@ -66,20 +66,22 @@
                        @"en":@"home"
                        },
                    @{
-                       @"cn": @"添加新订阅",
-                       @"en":@"addRSS"
-                       },
-                   @{
                        @"cn":@"收藏",
                        @"en":@"fav"
+                       },
+                   @{
+                       @"cn": @"设置",
+                       @"en": @"setting"
                        },
                    @{
                        @"cn": @"关于",
                        @"en":@"about"
                        },
-                   
                    ];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    UIView *tbHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, NAVBARHEIGHT * 2)];
+    self.tableView.tableHeaderView = tbHeadView;
+    self.tableView.backgroundView = [SMUIKitHelper imageViewWithRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) imageName:@"leftBg"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -119,6 +121,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+        cell.backgroundColor = [UIColor clearColor];
     }
     if (_optionArr.count > 0) {
         NSDictionary *aOption = _optionArr[indexPath.row];
@@ -138,12 +141,6 @@
         return;
     }
     
-    if ([aOption[@"en"]isEqualToString:@"addRSS"]) {
-        //添加rss
-        [self transitionToViewController:AddRSSViewController];
-        return;
-    }
-    
     if ([aOption[@"en"]isEqualToString:@"fav"]) {
         //收藏的
         [self transitionToViewController:FavoriteListController];
@@ -158,14 +155,12 @@
     
     if ([aOption[@"en"]isEqualToString:@"setting"]) {
         //设置
-        
+        [self transitionToViewController:SettingViewController];
     }
 }
 
 #pragma mark addsubscribesdelegate
 -(void)addedRSS:(Subscribes *)subscribe {
-    NSLog(@"add subscribe1111111");
-    //[_smMoreViewControllerDelegate addSubscribeToMainViewController:subscribe];
     [self transitionToViewController:HomeViewController];
 }
 
@@ -186,17 +181,19 @@
         case HomeViewController:
             paneViewController = [SMViewController new];
             break;
-            
-        case AddRSSViewController:{
-            SMAddRSSViewController *controller = [SMAddRSSViewController new];
-            controller.smAddRSSViewControllerDelegate = self;
-            paneViewController = controller;
+        
+        case FavoriteListController:{
+            SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
+            rsslistVC.isFav = YES;
+            rsslistVC.isNewVC = YES;
+            paneViewController = rsslistVC;
             self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
             paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
             break;
         }
-        
-        case FavoriteListController:{
+            
+        case SettingViewController:{
+            //TODO:添加设置页
             SMRSSListViewController *rsslistVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
             rsslistVC.isFav = YES;
             rsslistVC.isNewVC = YES;

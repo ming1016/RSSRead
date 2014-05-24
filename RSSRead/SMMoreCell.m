@@ -19,8 +19,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
-        _lbName = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:@"#444444" fontSize:18];
+        self.contentView.backgroundColor = [UIColor clearColor];
+        _lbName = [SMUIKitHelper labelWithRect:CGRectZero text:nil textColor:@"#FFFFFF" fontSize:18];
         [self.contentView addSubview:_lbName];
     }
     return self;
@@ -34,7 +34,7 @@
 
 -(void)layoutSubviews {
     CGRect rect = CGRectZero;
-    rect.origin.x = 14;
+    rect.origin.x = 40;
     rect.origin.y = 14;
     CGSize fitSize = [_lbName.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18]}];
     rect.size = fitSize;

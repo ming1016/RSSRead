@@ -361,7 +361,7 @@
    
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(8, 0, 50, 50)];
     [closeButton setTitleColor:[UIColor rss_darkGrayColor] forState:UIControlStateNormal];
-    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+    [closeButton setTitle:@"返回" forState:UIControlStateNormal];
     [closeButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [closeButton sizeToFit];
     [closeButton addTarget:self action:@selector(doBack) forControlEvents:UIControlEventTouchUpInside];

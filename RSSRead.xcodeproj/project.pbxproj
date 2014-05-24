@@ -56,6 +56,7 @@
 		D2EFE4B919178248009F4266 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EFE4B819178248009F4266 /* CoreTelephony.framework */; };
 		D2EFE4BB19178252009F4266 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EFE4BA19178252009F4266 /* SystemConfiguration.framework */; };
 		D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2EFE4BC191782CB009F4266 /* PushConfig.plist */; };
+		D2F5F1361930555100321CBE /* leftBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F5F1351930555100321CBE /* leftBg.png */; };
 		D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */; };
 		D2F75F6618D97EC600ED44A3 /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F75F6518D97EC600ED44A3 /* news.png */; };
 		D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */; };
@@ -170,6 +171,7 @@
 		D2EFE4B819178248009F4266 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2EFE4BA19178252009F4266 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2EFE4BC191782CB009F4266 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		D2F5F1351930555100321CBE /* leftBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftBg.png; sourceTree = "<group>"; };
 		D2F75F6118D9704E00ED44A3 /* SMSubscribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSubscribeCell.h; sourceTree = "<group>"; };
 		D2F75F6218D9704E00ED44A3 /* SMSubscribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSubscribeCell.m; sourceTree = "<group>"; };
 		D2F75F6518D97EC600ED44A3 /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 		D2F79E18192B3EBE000727D4 /* background */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5F1351930555100321CBE /* leftBg.png */,
 				D204F35C192CB5F400425808 /* bg7.png */,
 				D2F79E1D192B4681000727D4 /* bg1.png */,
 				D2F79E1E192B4681000727D4 /* bg2.png */,
@@ -681,6 +684,7 @@
 				D2F79E26192B4682000727D4 /* bg4.png in Resources */,
 				D2FB786918E3C4BB007BD413 /* js.html in Resources */,
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
+				D2F5F1361930555100321CBE /* leftBg.png in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
