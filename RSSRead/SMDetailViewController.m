@@ -31,11 +31,6 @@
 
 -(void)loadView {
     [super loadView];
-//    UISwipeGestureRecognizer *recognizer;
-//    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
-//    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-//    [[self view]addGestureRecognizer:recognizer];
-//    recognizer = nil;
     
     _bottomBar = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SMDetailViewBottomBar class]) owner:nil options:nil] lastObject];
     _bottomBar.delegate = self;
@@ -43,16 +38,18 @@
 
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _webView.height -= _bottomBar.height;
-    [_webView setBackgroundColor:[UIColor whiteColor]];
+    [_webView setBackgroundColor:[UIColor yellowColor]];
     _webView.scalesPageToFit = YES;
     _webView.scrollView.directionalLockEnabled = YES;
     _webView.scrollView.showsHorizontalScrollIndicator = NO;
+    [_webView setOpaque:NO]; // 默认是透明的
     [self.view addSubview:_webView];
     [self.view addSubview:_bottomBar];
 
-    _statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, STATUS_BAR_HEIGHT)];
+    _statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, STATUS_BAR_HEIGHT)];
     [self.view addSubview:_statusBarBackView];
-    
+    [self setupStatusBar];
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,7 +57,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
+        _rssModel = [[SMRSSModel alloc]init];
+
     }
     return self;
 }
@@ -68,10 +66,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    _rssModel = [[SMRSSModel alloc]init];
     self.title = _rss.title;
     [self renderDetailViewFromRSS];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -85,7 +81,6 @@
 {
     [super viewDidLoad];
     
-    [self setupStatusBar];
     // Do any additional setup after loading the view.
 }
 
@@ -107,9 +102,11 @@
     if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         [_statusBarBackView setBackgroundColor:[UIColor colorFromRGB:0x252525]];
+        [_webView setBackgroundColor:[UIColor colorFromRGB:0x252525]];
     } else {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
         [_statusBarBackView setBackgroundColor:[UIColor whiteColor]];
+        [_webView setBackgroundColor:[UIColor whiteColor]];
     }
 
 }
