@@ -11,6 +11,7 @@
 #import "SMAppDelegate.h"
 #import "SMGetFetchedRecordsModel.h"
 #import "SMRSSListCell.h"
+#import "SMRSSListCellMgr.h"
 #import "RSS.h"
 #import "SMScreenShotMgr.h"
 #import "Subscribes.h"
@@ -23,7 +24,7 @@
 @property(nonatomic,weak)MBProgressHUD *HUD;
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
-@property (strong, nonatomic) NSMutableArray *rowHeights;
+@property (strong, nonatomic) NSMutableArray *cellMgrs;
 
 
 @end
@@ -144,14 +145,16 @@
 
 - (void)calculateRowHeight
 {
-    if(_rowHeights == nil) {
-        _rowHeights = [NSMutableArray array];
+    if(_cellMgrs == nil) {
+        _cellMgrs = [NSMutableArray array];
     } else {
-        [_rowHeights removeAllObjects];
+        [_cellMgrs removeAllObjects];
     }
     
     for (RSS *rss in _rssArray) {
-        [_rowHeights addObject:@([SMRSSListCell heightForRSSList:rss])];
+        SMRSSListCellMgr *mgr = [[SMRSSListCellMgr alloc] init];
+        [mgr setRss:rss];
+        [_cellMgrs addObject:mgr];
     }
     
 }
@@ -230,7 +233,8 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [_rowHeights[indexPath.row] floatValue];
+    SMRSSListCellMgr *mgr = _cellMgrs[indexPath.row];
+    return mgr.cellHeight;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,6 +248,7 @@
     }
     cell.delegate = self;
     [cell setSubscribeTitle:_subscribeTitle];
+    [cell setCellMgr:_cellMgrs[indexPath.row]];
     [cell setRss:_rssArray[indexPath.row]];
     
     return cell;
@@ -353,7 +358,7 @@
         SMRSSModel *model = [[SMRSSModel alloc] init];
         [model dislikeRSS:rss];
         [_rssArray removeObjectAtIndex:indexPath.row];
-        [_rowHeights removeObjectAtIndex:indexPath.row];
+        [_cellMgrs removeObjectAtIndex:indexPath.row];
         
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];

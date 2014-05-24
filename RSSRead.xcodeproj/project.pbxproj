@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
+		CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */; };
 		CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */; };
 		CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3DA4BF192DD36300AC52D6 /* UIColor+RSS.m */; };
 		CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB45E7BC192E310300C6D84C /* SMDetailViewBottomBar.xib */; };
@@ -98,6 +99,8 @@
 		1F983C961927708B00EBD91B /* SMFeedParserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedParserWrapper.h; sourceTree = "<group>"; };
 		1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedParserWrapper.m; sourceTree = "<group>"; };
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
+		CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCellMgr.m; sourceTree = "<group>"; };
 		CB3DA4BB192DD33E00AC52D6 /* UIColor+TBExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TBExt.h"; sourceTree = "<group>"; };
 		CB3DA4BC192DD33E00AC52D6 /* UIColor+TBExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TBExt.m"; sourceTree = "<group>"; };
 		CB3DA4BE192DD36200AC52D6 /* UIColor+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSS.h"; sourceTree = "<group>"; };
@@ -492,6 +495,8 @@
 				D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */,
 				D2F75F6818D9842500ED44A3 /* SMRSSListViewController.h */,
 				D2F75F6918D9842500ED44A3 /* SMRSSListViewController.m */,
+				CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */,
+				CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */,
 			);
 			name = RSSList;
 			sourceTree = "<group>";
@@ -786,6 +791,7 @@
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
+				CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */,
 				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
