@@ -9,6 +9,7 @@
 #import "SMRSSListCell.h"
 #import "SMUIKitHelper.h"
 #import "NSString+HTML.h"
+#import "SMRSSListCellMgr.h"
 
 @interface SMRSSListCell ()
 @property (nonatomic, strong) UILabel *deleteGreyImageView;
@@ -18,13 +19,9 @@
     NSDateFormatter *_formatter;
     UILabel *_lbTitle;
     UILabel *_lbSummary;
-    UILabel *_lbSource;
     UILabel *_lbDate;
 }
 
-static const NSInteger kRSSListCellMarginLeft = 21;
-static const NSInteger kRSSListCellPaddingTop = 18;
-static const NSInteger kRSSListCellDateMarginTop = 6;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -43,10 +40,8 @@ static const NSInteger kRSSListCellDateMarginTop = 6;
         _lbSummary = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbSummary];
         
-        _lbSource = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
-        [self.contentView addSubview:_lbSource];
-        
         _lbDate = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
+        _lbDate.left = kRSSListCellMarginLeft;
         [self.contentView addSubview:_lbDate];
         [self setupSeperateLine];
     }
@@ -63,7 +58,6 @@ static const NSInteger kRSSListCellDateMarginTop = 6;
 
 -(void)setRss:(RSS *)rss {
     [_lbTitle setText:rss.title];
-    [_lbSource setText:_subscribeTitle];
     [_lbDate setText:[NSString stringWithFormat:@"[%@]",[_formatter stringFromDate:rss.date]]];
     if ([rss.isFav isEqual:@1]) {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR];
@@ -82,51 +76,20 @@ static const NSInteger kRSSListCellDateMarginTop = 6;
     CGRect rect = CGRectZero;
     rect.origin.x = kRSSListCellMarginLeft;
     rect.origin.y = kRSSListCellPaddingTop;
+    rect.size = _cellMgr.titleLabelSize;
     
-    //来源
-//    CGSize fitSize = [_lbSource.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-//    rect.size = fitSize;
-//    _lbSource.frame = rect;
-    
-    //标题
-//    rect.origin.x = _lbSource.frame.origin.x;
-//    rect.origin.y += fitSize.height + 2;
-    CGSize fitSize = [_lbTitle.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - kRSSListCellMarginLeft * 2, 99) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
-    rect.size = fitSize;
     _lbTitle.frame = rect;
     
     //时间
-    rect.origin.y += fitSize.height + kRSSListCellDateMarginTop;
-    if (_lbDate.text) {
-        fitSize = [_lbDate.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-        rect.size = fitSize;
-//        rect.origin.x = SCREEN_WIDTH - fitSize.width - 11;
-        _lbDate.frame = rect;
-    }
+    [_lbDate sizeToFit];
+    _lbDate.top = kRSSListCellDateMarginTop + _lbTitle.bottom;
     
-    int summaryMarginLeft = 2;
-    //简介
-    rect.origin.x += fitSize.width + summaryMarginLeft;
-    fitSize = [_lbSummary.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-    fitSize.width = SCREEN_WIDTH - kRSSListCellMarginLeft*2 - _lbDate.frame.size.width;
-    rect.size = fitSize;
-    _lbSummary.frame = rect;
-}
-
-+(float)heightForRSSList:(RSS *)rss {
-    float countHeight = kRSSListCellPaddingTop;
+    int summaryMarginLeft = 10;
+    _lbSummary.top = kRSSListCellDateMarginTop + _lbTitle.bottom;
+    _lbSummary.left = _lbDate.right + summaryMarginLeft;
+    [_lbSummary sizeToFit];
+    _lbSummary.width = self.contentView.width - kRSSListCellMarginLeft * 2 - _lbDate.width;
     
-//    CGSize fitSize = [rss.author sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-//    countHeight += fitSize.height + 2;
-    
-    CGSize fitSize = [rss.title boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - kRSSListCellMarginLeft*2, 999) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_BIG_FONT]} context:nil].size;
-    countHeight += fitSize.height + kRSSListCellDateMarginTop;
-    
-    fitSize = [rss.summary sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:LIST_SMALL_FONT]}];
-    countHeight += fitSize.height;
-    
-    countHeight += kRSSListCellPaddingTop;
-    return countHeight;
 }
 
 - (void)awakeFromNib
