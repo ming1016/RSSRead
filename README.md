@@ -7,6 +7,7 @@
 * Star the content you like
 * Mark as read and mark all as read
 * 能够删除管理已添加rss源
+* 文章分享功能
 
 ##TODO
 * 期待同好一起完善
