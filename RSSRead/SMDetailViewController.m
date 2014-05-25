@@ -19,8 +19,9 @@
 #import "ENMLUtility.h"
 #import "ENAPI.h"
 #import "EvernoteNoteStore.h"
+#import "EvernoteNoteStore+Extras.h"
 
-@interface SMDetailViewController ()<SMDetailViewBottomBarDelegate>
+@interface SMDetailViewController ()<SMDetailViewBottomBarDelegate,ENSessionDelegate>
 
 @property(nonatomic,strong)NSString *showContent;
 @property(nonatomic,strong)SMRSSModel *rssModel;
@@ -142,6 +143,7 @@
     NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\">%@</head><body><a class=\"title\" href=\"%@\">%@</a>\
                          <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>", cssString, _rss.link, _rss.title, _rss.author, publishDate, _showContent, mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
+    NSLog(@"%@",_showContent);
     
 }
 
@@ -274,18 +276,20 @@
     EDAMNote *ourNote = [[EDAMNote alloc] initWithGuid:nil title:noteTile content:noteContent contentHash:nil contentLength:noteContent.length created:0 updated:0 deleted:0 active:YES updateSequenceNum:0 notebookGuid:parentNotebookGUID tagGuids:nil resources:resources attributes:nil tagNames:nil];
     //EvernoteNoteStore *notestore= [EvernoteNoteStore noteStore];
     // NSLog(@"%@",notestore);
-    
+    [[EvernoteSession sharedSession] setDelegate:self];
+    //该方法需要key激活,否则app 会出现同步失败情况.
+    [[EvernoteNoteStore noteStore] saveNewNoteToEvernoteApp:ourNote withType:@"text/html"];
     // 将笔记对象传入指定账户中
-    [[EvernoteNoteStore noteStore] createNote:ourNote success:^(EDAMNote *note) {
-        // Log the created note object
-        NSLog(@"Note created : %@",note);
-        //按钮取消点击 并提示用户成功保存
-    } failure:^(NSError *error) {
-        // Something was wrong with the note data
-        // See EDAMErrorCode enumeration for error code explanation
-        // http://dev.evernote.com/documentation/reference/Errors.html#Enum_EDAMErrorCode
-        NSLog(@"Error : %@",error);
-    }];
+//    [[EvernoteNoteStore noteStore] createNote:ourNote success:^(EDAMNote *note) {
+//        // Log the created note object
+//        NSLog(@"Note created : %@",note);
+//        //按钮取消点击 并提示用户成功保存
+//    } failure:^(NSError *error) {
+//        // Something was wrong with the note data
+//        // See EDAMErrorCode enumeration for error code explanation
+//        // http://dev.evernote.com/documentation/reference/Errors.html#Enum_EDAMErrorCode
+//        NSLog(@"Error : %@",error);
+//    }];
 }
 
 
