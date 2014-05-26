@@ -28,9 +28,8 @@
         _blurRadius = 8;
         _saturationDeltaFactor = 1.0;
         source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
-        __block id weakSelf = self;
         dispatch_source_set_event_handler(source, ^{
-            [weakSelf refresh];
+            [self refresh];
         });
         dispatch_resume(source);
     }
