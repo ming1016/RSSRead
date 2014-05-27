@@ -467,7 +467,7 @@
 {
     _searchBar.text = urlString;
     if( [self addInputRSS]){
-        [self.navigationController popViewControllerAnimated:YES];
+//        [self.navigationController popToRootViewControllerAnimated:NO];
     }
  
 }

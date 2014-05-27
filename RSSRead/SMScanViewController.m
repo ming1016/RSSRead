@@ -145,7 +145,7 @@
             result = symbol.data;
         }
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:NO];
 
         if([self.delegate respondsToSelector:@selector(scanFinishedWithURL:)]){
             [self.delegate performSelector:@selector(scanFinishedWithURL:) withObject:result];
