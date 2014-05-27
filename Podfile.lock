@@ -1,0 +1,84 @@
+PODS:
+  - AFNetworking (2.2.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.4):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.4)
+  - AFNetworking/Security (2.2.4)
+  - AFNetworking/Serialization (2.2.4)
+  - AFNetworking/UIKit (2.2.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Evernote-SDK-iOS (1.3.1):
+    - SSKeychain (~> 1.2.2)
+  - MBProgressHUD (0.8)
+  - MMLayershots (0.2.1)
+  - MSDynamicsDrawerViewController (1.5.1)
+  - MWFeedParser (1.0.1):
+    - MWFeedParser/FeedParser
+    - MWFeedParser/NSDate+InternetDateTime
+    - MWFeedParser/NSString+HTML
+  - MWFeedParser/FeedParser (1.0.1):
+    - MWFeedParser/NSDate+InternetDateTime
+    - MWFeedParser/NSString+HTML
+  - MWFeedParser/NSDate+InternetDateTime (1.0.1)
+  - MWFeedParser/NSString+HTML (1.0.1)
+  - PAPreferences (0.2)
+  - REFormattedNumberField (1.1.2)
+  - RETableViewManager (1.5.10):
+    - REFormattedNumberField (~> 1.1.2)
+    - REValidation (~> 0.1.4)
+  - REValidation (0.1.4)
+  - RMSwipeTableViewCell (0.5.6)
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
+  - SSKeychain (1.2.2)
+  - ViewUtils (1.1.2)
+  - ZBarSDK (1.3.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.0)
+  - Evernote-SDK-iOS (~> 1.3.1)
+  - MBProgressHUD (~> 0.8)
+  - MMLayershots (from `https://raw.githubusercontent.com/vpdn/MMLayershots/master/MMLayershots.podspec`)
+  - MSDynamicsDrawerViewController
+  - MWFeedParser
+  - PAPreferences
+  - RETableViewManager (~> 1.5.10)
+  - RMSwipeTableViewCell
+  - SDWebImage (~> 3.6)
+  - ViewUtils
+  - ZBarSDK
+
+EXTERNAL SOURCES:
+  MMLayershots:
+    :podspec: https://raw.githubusercontent.com/vpdn/MMLayershots/master/MMLayershots.podspec
+
+SPEC CHECKSUMS:
+  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  Evernote-SDK-iOS: 92f4eb30d74d2fb3b495fe216d73aac67a68e6d3
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  MMLayershots: a8c669a533747eb209ff8791989d6e47182e1886
+  MSDynamicsDrawerViewController: 0002059480a4b5ddde7eafbafb958a79a9b0ffaf
+  MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
+  PAPreferences: 18b132bfa1d183809ef1ba2c186c416c070af438
+  REFormattedNumberField: 321bf62160e6dc480844ac99ab6821ef4dd20802
+  RETableViewManager: 534104717ea10a71b203e80ee0dd3c4c79648be3
+  REValidation: a0033a582415848854e875dfcbe69c107de19f81
+  RMSwipeTableViewCell: 5851d9d93ae26776ca93a87ef4431bbc9608c2b0
+  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
+  ViewUtils: 11aaceb3b215b3d051c2f00ae143133a71095365
+  ZBarSDK: 3ed560856963f765b66d834f464590bd6ba13b44
+
+COCOAPODS: 0.33.1
