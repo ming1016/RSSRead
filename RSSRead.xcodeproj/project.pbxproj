@@ -28,7 +28,6 @@
 		D21D4846192F7691007003C8 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4845192F7691007003C8 /* RSS.m */; };
 		D21D4849192F7692007003C8 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4848192F7692007003C8 /* Subscribes.m */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
-		D2A2A6B819248C81009BDB38 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D2A2A6B719248C81009BDB38 /* about.html */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
 		D2E078BD19278D9000ABF6EB /* RecommendFeedList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */; };
@@ -72,6 +71,8 @@
 		D2F79E27192B4682000727D4 /* bg5.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F79E21192B4681000727D4 /* bg5.png */; };
 		D2F79E28192B4682000727D4 /* bg6.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F79E22192B4681000727D4 /* bg6.png */; };
 		D2FB786918E3C4BB007BD413 /* js.html in Resources */ = {isa = PBXBuildFile; fileRef = D2FB786818E3C4BB007BD413 /* js.html */; };
+		D2FF7288193622F00062F839 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2FF7287193622F00062F839 /* twitter@2x.png */; };
+		D2FF728B193629EC0062F839 /* SMAboutWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FF728A193629EC0062F839 /* SMAboutWebViewController.m */; };
 		DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */; };
 		DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */; };
 		DE948399192F20C300EA431C /* SMTouchsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE948398192F20C300EA431C /* SMTouchsView.m */; };
@@ -137,7 +138,6 @@
 		D21D4848192F7692007003C8 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
-		D2A2A6B719248C81009BDB38 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCell.h; sourceTree = "<group>"; };
 		D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCell.m; sourceTree = "<group>"; };
 		D2DDA05D18DC25E1005394E4 /* SMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailViewController.h; sourceTree = "<group>"; };
@@ -197,6 +197,9 @@
 		D2F79E21192B4681000727D4 /* bg5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg5.png; sourceTree = "<group>"; };
 		D2F79E22192B4681000727D4 /* bg6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg6.png; sourceTree = "<group>"; };
 		D2FB786818E3C4BB007BD413 /* js.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = js.html; sourceTree = "<group>"; };
+		D2FF7287193622F00062F839 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
+		D2FF7289193629EC0062F839 /* SMAboutWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutWebViewController.h; sourceTree = "<group>"; };
+		D2FF728A193629EC0062F839 /* SMAboutWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutWebViewController.m; sourceTree = "<group>"; };
 		DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSToolbar.h; sourceTree = "<group>"; };
 		DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSToolbar.m; sourceTree = "<group>"; };
 		DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRSS_toolbar_background@2x.png"; sourceTree = "<group>"; };
@@ -493,7 +496,6 @@
 		D2F75F6718D9827B00ED44A3 /* RSSList */ = {
 			isa = PBXGroup;
 			children = (
-				D2A2A6B719248C81009BDB38 /* about.html */,
 				CB09E3DB1930798C000D7597 /* css.html */,
 				CB09E3DD19307BC5000D7597 /* css_dark.html */,
 				D2FB786818E3C4BB007BD413 /* js.html */,
@@ -574,6 +576,8 @@
 				DEE9FE45192C881300621576 /* source */,
 				D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */,
 				D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */,
+				D2FF7289193629EC0062F839 /* SMAboutWebViewController.h */,
+				D2FF728A193629EC0062F839 /* SMAboutWebViewController.m */,
 				DEE9FE39192C87DE00621576 /* SMRSSaboutgroup.h */,
 				DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */,
 				DEE9FE3B192C87DE00621576 /* SMRSSaboutModel.h */,
@@ -585,6 +589,7 @@
 		DEE9FE45192C881300621576 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				D2FF7287193622F00062F839 /* twitter@2x.png */,
 				DEE9FE41192C880700621576 /* github@2x.png */,
 				DEE9FE42192C880700621576 /* weibo@2x.png */,
 				DEE9FE3F192C87FB00621576 /* aboutRSS.plist */,
@@ -707,6 +712,7 @@
 				CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
+				D2FF7288193622F00062F839 /* twitter@2x.png in Resources */,
 				DEE9FE43192C880700621576 /* github@2x.png in Resources */,
 				D2EB1F2F18FA733C000C13D3 /* backgroundNavbar.png in Resources */,
 				D2F79E28192B4682000727D4 /* bg6.png in Resources */,
@@ -715,7 +721,6 @@
 				DEE9FE44192C880700621576 /* weibo@2x.png in Resources */,
 				D2F5F1361930555100321CBE /* leftBg.png in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
-				D2A2A6B819248C81009BDB38 /* about.html in Resources */,
 				CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
 				D2F79E24192B4682000727D4 /* bg2.png in Resources */,
@@ -806,6 +811,7 @@
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
 				CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */,
+				D2FF728B193629EC0062F839 /* SMAboutWebViewController.m in Sources */,
 				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,

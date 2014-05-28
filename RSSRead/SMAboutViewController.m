@@ -11,6 +11,7 @@
 #import "SMRSSaboutModel.h"
 #import "MBProgressHUD.h"
 #import "SMBlurBackground.h"
+#import "SMAboutWebViewController.h"
 #define  krowHeight 44
 
 @interface SMAboutViewController () <UIWebViewDelegate>
@@ -91,6 +92,10 @@
 
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     SMRSSaboutgroup *group = self.groups[section];
@@ -112,18 +117,18 @@
     cell.imageView.image = [UIImage imageNamed:about.icon];
     cell.imageView.layer.cornerRadius = 22;
     cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.frame = CGRectMake(0, 0, 40, 40);
     cell.textLabel.text = about.title;
     cell.detailTextLabel.text = about.link;
     
     //添加cell分割线
-    CGFloat lineViewX = 65;
-    CGFloat lineViewY = krowHeight-1;
-    CGFloat lineViewW = self.view.bounds.size.width - lineViewX -5;
-    CGFloat lineViewH = 1;
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(lineViewX, lineViewY, lineViewW , lineViewH)];
-    lineView.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.5];
-    [cell.contentView addSubview:lineView];
-    
+//    CGFloat lineViewX = 65;
+//    CGFloat lineViewY = krowHeight-1;
+//    CGFloat lineViewW = self.view.bounds.size.width - lineViewX -5;
+//    CGFloat lineViewH = 1;
+//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(lineViewX, lineViewY, lineViewW , lineViewH)];
+//    lineView.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.5];
+//    [cell.contentView addSubview:lineView];
     
     return cell;
 }
@@ -132,42 +137,27 @@
 {
     SMRSSaboutgroup *group = self.groups[indexPath.section];
     SMRSSaboutModel *about = group.abouts[indexPath.row];
-    //加载webview
-    UIWebView *webView = [[UIWebView alloc]init];
-    webView.frame = self.view.bounds;
-    webView.delegate =self;
-    [self.view addSubview:webView];
     
-    //加载指定页面
-    NSString * str = about.link;
-    NSURL *url = [NSURL URLWithString:str];
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
+    SMAboutWebViewController *webVC = [[SMAboutWebViewController alloc]initWithNibName:nil bundle:nil];
+    webVC.url = about.link;
+    webVC.title = about.title;
+    [self.navigationController pushViewController:webVC animated:YES];
     
-}
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    //显示的文字
-    HUD.labelText = @"已阅正在为您努力加载中";
-    //是否有庶罩
-    HUD.dimBackground = YES;
-    [HUD show:YES];
-    self.HUD =HUD;
-    return YES;
+    
+//    //加载webview
+//    UIWebView *webView = [[UIWebView alloc]init];
+//    webView.frame = self.view.bounds;
+//    webView.delegate =self;
+//    [self.view addSubview:webView];
+//    
+//    //加载指定页面
+//    NSString * str = about.link;
+//    NSURL *url = [NSURL URLWithString:str];
+//    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+//    [webView loadRequest:request];
+    
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [self.HUD hide:YES afterDelay:0.5];
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-     self.HUD.labelText = @"亲,你的网络可能有问题.";
-    [self.HUD hide:YES afterDelay:2];
-    [self.webView removeFromSuperview];
-}
 
 /**
  *  第section组显示的头部标题

@@ -11,42 +11,74 @@
 				<key>icon</key>
 				<string>github.png</string>
 				<key>title</key>
-				<string>github</string>
+				<string>已阅GitHub地址</string>
 			</dict>
 			<dict>
 				<key>link</key>
-				<string>https://github.com/ming1016/RSSRead</string>
+				<string>http://weibo.com/allstarming/</string>
 				<key>icon</key>
 				<string>weibo.png</string>
 				<key>title</key>
 				<string>微博</string>
 			</dict>
+            <dict>
+				<key>link</key>
+				<string>https://twitter.com/ming1016</string>
+				<key>icon</key>
+				<string>twitter.png</string>
+				<key>title</key>
+				<string>Twitter</string>
+			</dict>
 		</array>
 		<key>title</key>
-		<string>产品动态</string>
+		<string>关注动态</string>
 	</dict>
 	<dict>
 		<key>abouts</key>
 		<array>
 			<dict>
 				<key>link</key>
-				<string>https://github.com/ming1016/RSSRead</string>
+				<string>https://github.com/ming1016</string>
 				<key>icon</key>
 				<string>github.png</string>
 				<key>title</key>
-				<string>github</string>
+				<string>ming1016</string>
 			</dict>
 			<dict>
 				<key>link</key>
-				<string>https://github.com/ming1016/RSSRead</string>
+				<string>https://github.com/zaczh</string>
 				<key>icon</key>
-				<string>weibo.png</string>
+				<string>github.png</string>
 				<key>title</key>
-				<string>微博</string>
+				<string>zaczh</string>
+			</dict>
+            <dict>
+				<key>link</key>
+				<string>https://github.com/wuzhou</string>
+				<key>icon</key>
+				<string>github.png</string>
+				<key>title</key>
+				<string>wuzhou</string>
+			</dict>
+            <dict>
+				<key>link</key>
+				<string>https://github.com/ftxbird</string>
+				<key>icon</key>
+				<string>github.png</string>
+				<key>title</key>
+				<string>ftxbird</string>
+			</dict>
+            <dict>
+				<key>link</key>
+				<string>https://github.com/ben46</string>
+				<key>icon</key>
+				<string>github.png</string>
+				<key>title</key>
+				<string>ben46</string>
 			</dict>
 		</array>
 		<key>title</key>
-		<string>其他</string>
+		<string>主要贡献者</string>
 	</dict>
 </array>
 </plist>
