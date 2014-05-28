@@ -32,6 +32,9 @@
 @property(nonatomic,strong)HYCircleLoadingView *loadingView;
 @property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
 @property(nonatomic,strong)QBlurView *blurView;
+@property(nonatomic,strong)UIBarButtonItem *loadingItem;
+@property(nonatomic,strong)UIBarButtonItem *btRefreash;
+@property(nonatomic)BOOL isInited;
 @end
 
 @implementation SMViewController
@@ -69,9 +72,12 @@
     //读取中的hud
     _loadingView = [[HYCircleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
     _loadingView.lineColor = [UIColor rss_cyanColor];
-    UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
-    self.navigationItem.leftBarButtonItem = loadingItem;
+    _loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
+    //刷新
+    _btRefreash = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(fetchRss)];
     
+    self.navigationItem.leftBarButtonItem = _loadingItem;
+    [_loadingView startAnimation];
     
     //界面
     _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
@@ -85,8 +91,8 @@
     //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
+    
     //Using more fashion hud by HYCircleLoadingView
-    [_loadingView startAnimation];
     
     //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
@@ -96,10 +102,10 @@
         [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
         }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [_loadingView stopAnimation];
+            self.navigationItem.leftBarButtonItem = _btRefreash;
         }];
     } else {
-        [_loadingView stopAnimation];
+        self.navigationItem.leftBarButtonItem = _btRefreash;
     }
     
 }
@@ -148,6 +154,12 @@
 }
 #pragma mark - 获取rss
 - (void)fetchRss{
+    self.navigationItem.leftBarButtonItem = _loadingItem;
+    if (_isInited) {
+        [_loadingView startAnimation];
+    } else {
+        _isInited = YES;
+    }
     
     dispatch_group_t group = dispatch_group_create();
     
@@ -172,6 +184,7 @@
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [_loadingView stopAnimation];
+        self.navigationItem.leftBarButtonItem = _btRefreash;
     });
 }
 
