@@ -60,7 +60,8 @@
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
     [self.dynamicsDrawerViewController setRevealWidth:SCREEN_WIDTH - 190 forDirection:MSDynamicsDrawerDirectionLeft];
     
-    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
+    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler],[MSDynamicsDrawerShadowStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
+    self.dynamicsDrawerViewController.gravityMagnitude = 10;
 
     [[UINavigationBar appearance] setTintColor:[UIColor rss_cyanColor]];
     SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
