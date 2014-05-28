@@ -14,17 +14,14 @@
 #import "SMPreferences.h"
 
 @interface SMDetailViewBottomBar ()
-
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIImageView *flatShadowSepia;
 @property (weak, nonatomic) IBOutlet UIButton *favButton;
 @property (weak, nonatomic) IBOutlet UIButton *themeButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
-
 @end
 
 @implementation SMDetailViewBottomBar
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -41,7 +38,6 @@
     [self.favButton setImage:[self.favButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
     [self.themeButton setImage:[self.themeButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
     [self.shareButton setImage:[self.shareButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
-
     [self setupSubviews];
 }
 

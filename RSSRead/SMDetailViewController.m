@@ -148,9 +148,9 @@
 }
 
 -(void)favRSS {
-    [_rssModel favRSS:_rss];
     _rss.isFav = @1;
     [_bottomBar fillWithRSS:_rss];
+    [_rssModel favRSS:_rss];
     [self.delegate faved];
 }
 
