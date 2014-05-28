@@ -32,6 +32,9 @@
 @property(nonatomic,strong)HYCircleLoadingView *loadingView;
 @property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
 @property(nonatomic,strong)QBlurView *blurView;
+@property(nonatomic,strong)UIBarButtonItem *loadingItem;
+@property(nonatomic,strong)UIBarButtonItem *btRefreash;
+@property(nonatomic)BOOL isInited;
 @end
 
 @implementation SMViewController
@@ -62,16 +65,19 @@
     UIView *naviWhiteCover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, NAVBARHEIGHT)];
     naviWhiteCover.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:naviWhiteCover];
-
+    
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
     //读取中的hud
     _loadingView = [[HYCircleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
     _loadingView.lineColor = [UIColor rss_cyanColor];
-    UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
-    self.navigationItem.leftBarButtonItem = loadingItem;
+    _loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
+    //刷新
+    _btRefreash = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(fetchRss)];
     
+    self.navigationItem.leftBarButtonItem = _loadingItem;
+    [_loadingView startAnimation];
     
     //界面
     _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
@@ -85,8 +91,8 @@
     //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
+    
     //Using more fashion hud by HYCircleLoadingView
-    [_loadingView startAnimation];
     
     //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
@@ -96,10 +102,10 @@
         [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
         }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [_loadingView stopAnimation];
+            self.navigationItem.leftBarButtonItem = _btRefreash;
         }];
     } else {
-        [_loadingView stopAnimation];
+        self.navigationItem.leftBarButtonItem = _btRefreash;
     }
     
 }
@@ -148,13 +154,19 @@
 }
 #pragma mark - 获取rss
 - (void)fetchRss{
+    self.navigationItem.leftBarButtonItem = _loadingItem;
+    if (_isInited) {
+        [_loadingView startAnimation];
+    } else {
+        _isInited = YES;
+    }
     
     dispatch_group_t group = dispatch_group_create();
     
     [_allSurscribes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Subscribes *subscribe = (Subscribes *)obj;
         SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
-      
+        
         dispatch_group_enter(group);
         
         [parserWrapper parseUrl:[NSURL URLWithString:subscribe.url] completion:^(NSArray *items) {
@@ -172,6 +184,7 @@
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [_loadingView stopAnimation];
+        self.navigationItem.leftBarButtonItem = _btRefreash;
     });
 }
 
@@ -180,7 +193,7 @@
     SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
     addRSSVC.smAddRSSViewControllerDelegate = self;
     [self.navigationController pushViewController:addRSSVC animated:YES];
-//    [self.navigationController presentViewController:addRSSVC animated:YES completion:nil];
+    //    [self.navigationController presentViewController:addRSSVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -204,7 +217,7 @@
         cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-//        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+        //        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
         cell.backgroundColor = [UIColor clearColor];
