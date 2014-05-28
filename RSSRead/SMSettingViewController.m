@@ -19,6 +19,7 @@
 @property(nonatomic,strong)REBoolItem *isUseBlurForYourBackgroundImage;
 @property(nonatomic,strong)REFloatItem *backgroundBlurRadius;
 @property(nonatomic,strong)RETableViewItem *backgroundImageSelect;
+@property(nonatomic,strong)RESegmentedItem *choseTheme;
 @end
 
 @implementation SMSettingViewController
@@ -52,8 +53,13 @@
         [[SMPreferences sharedInstance] setIsInitWithFetchRSS:item.value];
         [[SMPreferences sharedInstance] synchronize];
     }];
-    
     [section addItem:_isInitWithFetchRSS];
+    
+    _choseTheme = [RESegmentedItem itemWithTitle:@"主题模式" segmentedControlTitles:@[@"白天",@"夜晚"] value:[[SMPreferences sharedInstance] theme] switchValueChangeHandler:^(RESegmentedItem *item) {
+        [[SMPreferences sharedInstance] setTheme:item.value];
+        [[SMPreferences sharedInstance] synchronize];
+    }];
+    [section addItem:_choseTheme];
     
     return section;
 }

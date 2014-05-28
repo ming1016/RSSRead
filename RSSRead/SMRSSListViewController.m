@@ -17,6 +17,7 @@
 #import "Subscribes.h"
 #import "MBProgressHUD+Ext.h"
 #import <MWFeedParser/MWFeedParser.h>
+#import "SMPreferences.h"
 
 @interface SMRSSListViewController ()<RMSwipeTableViewCellDelegate>
 @property(nonatomic,strong)NSMutableArray *rssArray;
@@ -25,7 +26,8 @@
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
 @property (strong, nonatomic) NSMutableArray *cellMgrs;
-
+@property(nonatomic,strong)UIColor *bgColor;
+@property(nonatomic,strong)UIColor *selectBgColor;
 
 @end
 
@@ -43,7 +45,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
+//        self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     }
     return self;
 }
@@ -54,9 +56,17 @@
     //init
     _rssArray = [NSMutableArray array];
     _parsedItems = [NSMutableArray array];
+    
+    if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
+        _bgColor = [SMUIKitHelper colorWithHexString:@"#252525"];
+        _selectBgColor = [UIColor darkGrayColor];
+    } else {
+        _bgColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
+        _selectBgColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+    }
   
     //初始化
-    self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
+    self.view.backgroundColor = _bgColor;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     //下拉刷新
@@ -228,7 +238,7 @@
     if (cell == nil) {
         cell = [[SMRSSListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+        cell.selectedBackgroundView.backgroundColor = _selectBgColor;
     }
     cell.delegate = self;
     [cell setSubscribeTitle:_subscribeTitle];

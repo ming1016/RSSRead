@@ -10,6 +10,7 @@
 #import "SMUIKitHelper.h"
 #import "NSString+HTML.h"
 #import "SMRSSListCellMgr.h"
+#import "SMPreferences.h"
 
 @interface SMRSSListCell ()
 @property (nonatomic, strong) UILabel *deleteGreyImageView;
@@ -20,6 +21,8 @@
     UILabel *_lbTitle;
     UILabel *_lbSummary;
     UILabel *_lbDate;
+    NSString *_darkcolor;
+    NSString *_lightColor;
 }
 
 
@@ -31,19 +34,31 @@
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"MM.dd HH:mm"];
         
-        self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
-        _lbTitle = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_DARK_COLOR fontSize:LIST_BIG_FONT];
+        //背景颜色
+        _darkcolor = nil;
+        _lightColor = nil;
+        if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
+            self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#252525"];
+            _darkcolor = @"#cccccc";
+            _lightColor = @"#404040";
+        } else {
+            self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
+            _darkcolor = LIST_DARK_COLOR;
+            _lightColor = LIST_LIGHT_COLOR;
+        }
+        
+        _lbTitle = [SMUIKitHelper labelWithRect:CGRectZero text:nil textColor:_darkcolor fontSize:LIST_BIG_FONT];
         _lbTitle.numberOfLines = 99;
         _lbTitle.lineBreakMode = NSLineBreakByCharWrapping;
         [self.contentView addSubview:_lbTitle];
         
-        _lbSummary = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
+        _lbSummary = [SMUIKitHelper labelWithRect:CGRectZero text:nil textColor:_lightColor fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbSummary];
         
-        _lbDate = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
+        _lbDate = [SMUIKitHelper labelWithRect:CGRectZero text:nil textColor:_lightColor fontSize:LIST_SMALL_FONT];
         _lbDate.left = kRSSListCellMarginLeft;
         [self.contentView addSubview:_lbDate];
-        [self setupSeperateLine];
+//        [self setupSeperateLine];
     }
     return self;
 }
@@ -62,9 +77,9 @@
     if ([rss.isFav isEqual:@1]) {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR];
     } else if([rss.isRead  isEqual: @1]) {
-        _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_LIGHT_COLOR];
+        _lbTitle.textColor = [SMUIKitHelper colorWithHexString:_lightColor];
     } else {
-        _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_DARK_COLOR];
+        _lbTitle.textColor = [SMUIKitHelper colorWithHexString:_darkcolor];
     }
     [_lbSummary setText:[rss.summary stringByConvertingHTMLToPlainText]];
     [self setNeedsDisplay];
