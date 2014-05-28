@@ -13,12 +13,13 @@
 #import "Subscribes.h"
 #import "SMAppDelegate.h"
 #import "SMSubscribeCell.h"
+#import "SMRSSListViewController.h"
 #import "MBProgressHUD.h"
 #import "HYCircleLoadingView.h"
 #import "SMBlurBackground.h"
-#import "UIColor+RSS.h"
-#import "SMPreferences.h"
-
+#if TARGET_IPHONE_SIMULATOR
+#import <MMLayershots/MMLayershots.h>
+#endif
 @interface SMViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
@@ -33,6 +34,12 @@
 @property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
 @property(nonatomic,strong)QBlurView *blurView;
 @end
+
+#if TARGET_IPHONE_SIMULATOR
+@interface SMViewController ()<MMLayershotsDelegate>
+@end
+#endif
+
 
 @implementation SMViewController
 
@@ -52,23 +59,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"返回";//给navigation push过去的vc的返回有个中文提示
+    
     // 设置title view
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title_view"]];
     [self.navigationItem setTitleView:imgView];
     
     [self.view addSubview:[SMBlurBackground SMbackgroundView]];
-    
-    UIView *naviWhiteCover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, NAVBARHEIGHT)];
-    naviWhiteCover.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:naviWhiteCover];
-
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
     //读取中的hud
-    _loadingView = [[HYCircleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
-    _loadingView.lineColor = [UIColor rss_cyanColor];
+    _loadingView = [[HYCircleLoadingView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
     UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
     self.navigationItem.leftBarButtonItem = loadingItem;
     
@@ -85,33 +86,33 @@
     //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
     
+    [self getAllSubscribeSources];
+    
     //Using more fashion hud by HYCircleLoadingView
     [_loadingView startAnimation];
     
     //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
     _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [self getAllSubscribeSources];
-    if ([[SMPreferences sharedInstance] isInitWithFetchRSS]) {
-        [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
-            [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
-        }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [_loadingView stopAnimation];
-        }];
-    } else {
+    [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
+        [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
+    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
         [_loadingView stopAnimation];
-    }
-    
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self getAllSubscribeSources];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+#if TARGET_IPHONE_SIMULATOR
+    [[MMLayershots sharedInstance] setDelegate:self];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationUserDidTakeScreenshotNotification object:nil];
+#endif
 }
 
 -(void)getAllSubscribeSources {
@@ -146,7 +147,7 @@
     }
     [_tbView reloadData];
 }
-#pragma mark - 获取rss
+
 - (void)fetchRss{
     
     dispatch_group_t group = dispatch_group_create();
@@ -175,12 +176,10 @@
     });
 }
 
-//跳转到添加控制器
 -(void)addNewRSS {
     SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
     addRSSVC.smAddRSSViewControllerDelegate = self;
     [self.navigationController pushViewController:addRSSVC animated:YES];
-//    [self.navigationController presentViewController:addRSSVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -190,7 +189,9 @@
 }
 
 #pragma mark - UITableViewDelegate
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _allSurscribes.count;
 }
@@ -202,12 +203,9 @@
     SMSubscribeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-//        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
-        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
+        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     }
     if (_allSurscribes.count > 0) {
         [cell setSubscribe:_allSurscribes[indexPath.row]];
@@ -222,7 +220,6 @@
     rssListVC.subscribeUrl = aSub.url;
     rssListVC.subscribeTitle = aSub.title;
     rssListVC.isNewVC = YES;
-    rssListVC.delegate = self;
     [self.navigationController pushViewController:rssListVC animated:YES];
 }
 
@@ -245,12 +242,7 @@
     return @"删除";
 }
 
-#pragma mark - rsslistviewcontroller delegate
--(void)updateSubscribeList {
-    [self getAllSubscribeSources];
-}
-
-#pragma mark - addsubscribesdelegate
+#pragma mark addsubscribesdelegate
 -(void)addedRSS:(Subscribes *)subscribe {
     [self getAllSubscribeSources];
 }
@@ -259,6 +251,41 @@
 -(void)addSubscribeToMainViewController:(Subscribes *)subscribe {
     [self getAllSubscribeSources];
 }
+
+
+#pragma mark - layer shots delegate
+
+#if TARGET_IPHONE_SIMULATOR
+- (CGFloat)shouldCreatePSDDataAfterDelay {
+    // set a delay, e.g. to show a notification before starting the capture.
+    // During the capture, the screen currently doesn't support showing any
+    // progress indication. Everything that is shown will just simply be rendered
+    // as well.
+    NSLog(@"Will start assembling psd in 3 seconds...");
+    CGFloat delay = 3.0;
+    return delay;
+}
+
+- (void)willCreatePSDDataForScreen:(UIScreen *)screen {
+    //Creating psd now...
+    NSLog(@"Creating psd now...");
+}
+
++ (NSString *)__documentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return documentsDirectory;
+}
+
+- (void)didCreatePSDDataForScreen:(UIScreen *)screen data:(NSData *)data {
+    
+    NSString *dataPath = [[[self class] __documentsDirectory] stringByAppendingPathComponent:@"layershots.psd"];
+    [data writeToFile:dataPath atomically:NO];
+    NSLog(@"Saving psd to \n%@", dataPath);
+    
+}
+#endif
 
 
 @end

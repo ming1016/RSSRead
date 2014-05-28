@@ -11,10 +11,10 @@
 $(window).load(function(){
     var $img = $("img");
     $img.each(function() {
-        if($(this).width() > 277) {
+        if($(this).width() > 300) {
             var imgowidth = $(this).width();
             var imgoheight = $(this).height();
-            $(this).width(277).height(Math.round(277*(imgoheight/imgowidth)));
+            $(this).width(300).height(Math.round(300*(imgoheight/imgowidth)));
         }
     });
 }); 

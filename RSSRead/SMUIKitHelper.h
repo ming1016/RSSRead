@@ -13,7 +13,6 @@
 #define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
-#define STATUS_BAR_HEIGHT   [[UIApplication sharedApplication] statusBarFrame].size.height
 
 #define QM_TABLEVIEW_BACKGROUND_COLOR [UIColor clearColor]
 #define QM_TABLEVIEW_SEPARATOR_COLOR [UIColor clearColor]
@@ -24,7 +23,7 @@
 
 #define LIST_BIG_FONT 15
 #define LIST_SMALL_FONT 10
-#define LIST_DARK_COLOR @"#2e2e2e"
+#define LIST_DARK_COLOR @"#111111"
 #define LIST_LIGHT_COLOR @"#999999"
 #define LIST_YELLOW_COLOR @"#CD8500"
 

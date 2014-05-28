@@ -14,8 +14,8 @@
 
 typedef NS_ENUM(NSUInteger, MSPaneViewControllerType) {
     HomeViewController,
+    AddRSSViewController,
     FavoriteListController,
-    SettingViewController,
     AboutViewController
 };
 

@@ -55,20 +55,6 @@
     [_managedObjectContext save:&error];
 }
 
-- (void)dislikeRSS:(RSS *)rss;
-{
-    _getModel.entityName = @"RSS";
-    _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",rss.identifier];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
-    if (_fetchedRecorders && [_fetchedRecorders count]) {
-        for (RSS *aRSS in _fetchedRecorders) {
-            aRSS.isDislike = @1;
-        }
-    }
-    NSError *error;
-    [_managedObjectContext save:&error];
-}
-
 -(void)markAsRead:(RSS *)rss {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",rss.identifier];

@@ -8,18 +8,11 @@
 
 #import "SMDetailViewBottomBar.h"
 #import "UIImage+Tint.h"
-#import <ViewUtils.h>
-#import "UIColor+TBExt.h"
-#import "RSS.h"
-#import "SMPreferences.h"
 
 @interface SMDetailViewBottomBar ()
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
-@property (weak, nonatomic) IBOutlet UIImageView *flatShadowSepia;
 @property (weak, nonatomic) IBOutlet UIButton *favButton;
-@property (weak, nonatomic) IBOutlet UIButton *themeButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end
 
@@ -37,60 +30,15 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self.backButton setImage:[self.backButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
-    [self.favButton setImage:[self.favButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
-    [self.themeButton setImage:[self.themeButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
-    [self.shareButton setImage:[self.shareButton.currentImage imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
+    [self.backButton setBackgroundImage:[[UIImage imageNamed:@"toolbar_back"] imageWithTintColor:[UIColor grayColor]] forState:UIControlStateNormal];
+    [self.favButton setBackgroundImage:[[UIImage imageNamed:@"toolbar_favorite"] imageWithTintColor:[UIColor grayColor]] forState:UIControlStateNormal];
 
-    [self setupSubviews];
-}
-
-- (void)fillWithRSS:(RSS *)rss;
-{
-    if([rss.isFav isEqual:@1]) {
-        [self.favButton setImage:[UIImage imageNamed:@"toolbar_favorite"] forState:UIControlStateNormal];
-    } else {
-        [self.favButton setImage:[[UIImage imageNamed:@"toolbar_favorite"] imageWithTintColor:[UIColor colorFromRGB:0xcccccc]] forState:UIControlStateNormal];
-    }
-}
-
-- (void)setupSubviews
-{
-    
-    if([[SMPreferences sharedInstance] theme] == eAppThemeWhite) {
-        // 白色。。。
-        self.backgroundColor = [UIColor whiteColor];
-        [self.flatShadowSepia setImage:[self.flatShadowSepia.image imageWithTintColor:[UIColor colorFromRGB:0x999999]]];
-    } else {
-        // 黑色
-        self.backgroundColor = [UIColor blackColor];
-        [self.flatShadowSepia setImage:[self.flatShadowSepia.image imageWithTintColor:[UIColor colorFromRGB:0xcccccc]]];
-    }
-    
-}
-
-- (IBAction)themeButtonTouched:(id)sender {
-    if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
-        [[SMPreferences sharedInstance] setTheme:eAppThemeWhite];
-    } else {
-        [[SMPreferences sharedInstance] setTheme:eAppThemeBlack];
-    }
-    [[SMPreferences sharedInstance] synchronize];
-    [self setupSubviews];
-    if([self.delegate respondsToSelector:@selector(bottomBarThemeButtonTouched:)]){
-        [self.delegate performSelector:@selector(bottomBarThemeButtonTouched:) withObject:self];
-    }
 }
 
 - (IBAction)backButtonTouched:(id)sender
 {
     if([self.delegate respondsToSelector:@selector(bottomBarBackButtonTouched:)]){
         [self.delegate performSelector:@selector(bottomBarBackButtonTouched:) withObject:self];
-    }
-}
-- (IBAction)shareButtonTouched:(id)sender {
-    if([self.delegate respondsToSelector:@selector(bottomBarShareButtonTouched:)]){
-        [self.delegate performSelector:@selector(bottomBarShareButtonTouched:) withObject:self];
     }
 }
 

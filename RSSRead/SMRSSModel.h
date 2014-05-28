@@ -26,8 +26,6 @@
 
 -(void)markAsRead:(RSS *)rss;
 -(void)markAllAsRead:(NSString *)url;
-
-- (void)dislikeRSS:(RSS *)rss;
 -(void)deleteSubscrib:(NSString *)url;
 -(void)deleteAllRSS:(NSString *)url;
 -(void)deleteReadRSS:(NSString *)url;

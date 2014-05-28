@@ -16,11 +16,6 @@
 #import "SMMoreViewController.h"
 #import "UIColor+RSS.h"
 #import "SMBlurBackground.h"
-#import "EvernoteSDK.h"
-#import "EvernoteSession.h"
-#import "ENConstants.h"
-#import "SMShareViewController.h"
-#import "SMPreferences.h"
 @implementation SMAppDelegate
 //{
 //    SMViewController *_smViewController;
@@ -36,29 +31,12 @@
     //后台更新
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     //清零
-    [UIApplication sharedApplication].applicationIconBadgeNumber =0;
-    
-    //初始化设置项目
-    if ([[SMPreferences sharedInstance] status] != eAppHasInitPreferences) {
-        //设置各项的默认值
-        [[SMPreferences sharedInstance] setTheme:eAppThemeWhite];
-        [[SMPreferences sharedInstance] setStatus:eAppHasInitPreferences];
-        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:YES];
-        [[SMPreferences sharedInstance] setIsUseBlurForYourBackgroundImage:YES];
-        [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:NO];
-        [[SMPreferences sharedInstance] synchronize];
-    }
-    if (![[SMPreferences sharedInstance] backgroundBlurRadius]) {
-        [[SMPreferences sharedInstance] setBackgroundBlurRadius:0.8];
-        [[SMPreferences sharedInstance] synchronize];
-    }
-    
+//    [UIApplication sharedApplication].applicationIconBadgeNumber =0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //MSDynamicsDrawerViewController setting
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
-    [self.dynamicsDrawerViewController setRevealWidth:SCREEN_WIDTH - 190 forDirection:MSDynamicsDrawerDirectionLeft];
     
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 
@@ -73,19 +51,6 @@
     moreVC.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
     [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
     
-    //填写印象笔记相关key信息
-    //BootstrapServerBaseURLStringSandbox
-    //BootstrapServerBaseURLStringCN
-    NSString *EVERNOTE_HOST = BootstrapServerBaseURLStringSandbox;
-    NSString *CONSUMER_KEY = @"66322510";
-    NSString *CONSUMER_SECRET = @"404740e1e2b2f71d";
-    
-    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST
-                              consumerKey:CONSUMER_KEY
-                           consumerSecret:CONSUMER_SECRET];
-    //测试印象 OAUTH认证
-    //SMShareViewController *shareVc = [[SMShareViewController alloc] init];
-    //self.window.rootViewController = shareVc;
     self.window.rootViewController = self.dynamicsDrawerViewController;
     
     [self.window makeKeyAndVisible];
@@ -96,9 +61,7 @@
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
     //模糊图片写入沙盒
-//    [SMBlurBackground SMRSSbackgroundImage:nil];
-    
-
+    [SMBlurBackground SMRSSbackgroundImage:nil];
     
     return YES;
 }
@@ -113,6 +76,13 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    //显示未读数
+    SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+    getModel.entityName = @"RSS";
+    getModel.predicate = [NSPredicate predicateWithFormat:@"isRead=0"];
+    NSArray *allRss = [self getFetchedRecords:getModel];
+    NSInteger allRssCount = allRss.count;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = allRssCount;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -123,10 +93,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [UIApplication sharedApplication].applicationIconBadgeNumber =0;
-    //印象笔记
-    [[EvernoteSession sharedSession] handleDidBecomeActive];
-
+//    [UIApplication sharedApplication].applicationIconBadgeNumber =0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -273,14 +240,6 @@
     
     // Required
     [APService handleRemoteNotification:userInfo];
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    BOOL canHandle = NO;
-    if ([[NSString stringWithFormat:@"en-%@", [[EvernoteSession sharedSession] consumerKey]] isEqualToString:[url scheme]] == YES) {
-        canHandle = [[EvernoteSession sharedSession] canHandleOpenURL:url];
-    }
-    return canHandle;
 }
 
 @end
