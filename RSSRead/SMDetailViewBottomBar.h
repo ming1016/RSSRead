@@ -12,11 +12,15 @@
 
 - (void)bottomBarBackButtonTouched:(id)sender;
 - (void)bottomBarFavButtonTouched:(id)sender;
+- (void)bottomBarThemeButtonTouched:(id)sender;
+- (void)bottomBarShareButtonTouched:(id)sender;
 
 @end
 
+@class RSS;
 @interface SMDetailViewBottomBar : UIView
 
 @property (weak, nonatomic) id<SMDetailViewBottomBarDelegate> delegate;
+- (void)fillWithRSS:(RSS *)rss;
 
 @end

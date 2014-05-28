@@ -35,7 +35,7 @@
     [super viewDidLoad];
     self.title = @"关于";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self setupBackground];
+    //[self setupBackground];
 }
 /**
  *  设置背景图
@@ -51,21 +51,21 @@
 /**
  *  拖拽时背景变化
  */
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat offsetY = scrollView.contentOffset.y;
-    if (offsetY > 0) return;
-    CGFloat upFactor = 0.6;
-    CGFloat value = 10;
-    CGFloat upMin = - (_bgIcon.frame.size.height / value) / (1 - upFactor);
-    if (offsetY >= upMin) {
-        _bgIcon.transform = CGAffineTransformMakeTranslation(0, offsetY * upFactor);
-    } else {
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, offsetY - upMin * (1 - upFactor));
-        CGFloat s = 1 + (upMin - offsetY) * 0.005;
-        _bgIcon.transform = CGAffineTransformScale(transform, s, s);
-    }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    if (offsetY > 0) return;
+//    CGFloat upFactor = 0.6;
+//    CGFloat value = 10;
+//    CGFloat upMin = - (_bgIcon.frame.size.height / value) / (1 - upFactor);
+//    if (offsetY >= upMin) {
+//        _bgIcon.transform = CGAffineTransformMakeTranslation(0, offsetY * upFactor);
+//    } else {
+//        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, offsetY - upMin * (1 - upFactor));
+//        CGFloat s = 1 + (upMin - offsetY) * 0.005;
+//        _bgIcon.transform = CGAffineTransformScale(transform, s, s);
+//    }
+//}
 
 
 - (NSArray *)groups

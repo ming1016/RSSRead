@@ -8,6 +8,7 @@
 
 #import "SMAddRSSToolbar.h"
 #import "SMUIKitHelper.h"
+#import "UIColor+RSS.h"
 
 @implementation SMAddRSSToolbar
 
@@ -15,6 +16,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGFloat toolbarX = 0;
+        CGFloat toolbarH = 44;
+        CGFloat toolbarY = [UIScreen mainScreen].bounds.size.height;
+        CGFloat toolbarW = [UIScreen mainScreen].bounds.size.width;
+        self.frame = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
         // 1.设置toobar背景
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"addRSS_toolbar_background"]];
         
@@ -50,7 +56,7 @@
     [button setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:highIcon] forState:UIControlStateHighlighted];
     [button setTitle:text forState:UIControlStateNormal];
-    [button setTitleColor:LINK_COLOR forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor rss_darkGrayColor] forState:UIControlStateNormal];
     [self addSubview:button];
 }
 

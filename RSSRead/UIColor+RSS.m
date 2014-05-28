@@ -15,4 +15,9 @@
     return [UIColor colorFromRGB:0x27b196];
 }
 
++ (UIColor *)rss_darkGrayColor;
+{
+    return [UIColor colorFromRGB:0x333333];
+}
+
 @end
