@@ -19,7 +19,6 @@
 		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
 		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
 		CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */; };
-		CB9F66711934DD590003BD4B /* SMScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9F66701934DD590003BD4B /* SMScanViewController.m */; };
 		CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */; };
 		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
@@ -122,8 +121,6 @@
 		CB45E7C5192E4C6E00C6D84C /* SMScreenShotMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenShotMgr.m; sourceTree = "<group>"; };
 		CB502757192FA39D00EB4DD1 /* MBProgressHUD+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Ext.h"; sourceTree = "<group>"; };
 		CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Ext.m"; sourceTree = "<group>"; };
-		CB9F666F1934DD590003BD4B /* SMScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScanViewController.h; sourceTree = "<group>"; };
-		CB9F66701934DD590003BD4B /* SMScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScanViewController.m; sourceTree = "<group>"; };
 		CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddRssSoucesCell.xib; sourceTree = "<group>"; };
 		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
 		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
@@ -598,8 +595,6 @@
 		DEE9FE64192E73B400621576 /* SMAddRSS */ = {
 			isa = PBXGroup;
 			children = (
-				CB9F666F1934DD590003BD4B /* SMScanViewController.h */,
-				CB9F66701934DD590003BD4B /* SMScanViewController.m */,
 				DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */,
 				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
 				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
@@ -803,7 +798,6 @@
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
-				CB9F66711934DD590003BD4B /* SMScanViewController.m in Sources */,
 				CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */,
 				D21D4846192F7691007003C8 /* RSS.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,

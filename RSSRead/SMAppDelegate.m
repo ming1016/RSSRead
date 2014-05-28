@@ -43,7 +43,7 @@
         //设置各项的默认值
         [[SMPreferences sharedInstance] setTheme:eAppThemeWhite];
         [[SMPreferences sharedInstance] setStatus:eAppHasInitPreferences];
-        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:NO];
+        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:YES];
         [[SMPreferences sharedInstance] setIsUseBlurForYourBackgroundImage:YES];
         [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:NO];
         [[SMPreferences sharedInstance] synchronize];

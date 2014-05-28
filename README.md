@@ -20,15 +20,8 @@
 * 整理RSS推荐源，添加RSS时可以进行分类选择
 
 ##项目主要贡献者
+[@ming1016](https://github.com/ming1016) [@zaczh](https://github.com/zaczh) [@wuzhou](https://github.com/wuzhou) [@ftxbird](https://github.com/ftxbird) [ben46](https://github.com/ben46)
 
-
-ID|Github Page
--|-
-**ming1016**|[https://github.com/ming1016](https://github.com/ming1016)
-**zaczh**|[https://github.com/zaczh](https://github.com/zaczh)
-**wuzhou**|[https://github.com/wuzhou](https://github.com/wuzhou)
-**ftxbird**|[https://github.com/ftxbird](https://github.com/ftxbird)
-**ben46**|[https://github.com/ben46](https://github.com/ben46)
 
 ##参与进来
 太好了，即使你不是开发者也有你能够贡献的，你可以做

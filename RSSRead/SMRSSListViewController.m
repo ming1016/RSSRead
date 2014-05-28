@@ -34,7 +34,6 @@
     UIActivityIndicatorView *_indicator;
 }
 
-
 -(void)doBack {
     [self.delegate updateSubscribeList];
     [self.navigationController popViewControllerAnimated:YES];
