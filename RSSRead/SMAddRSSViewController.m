@@ -20,9 +20,10 @@
 #import "UIColor+RSS.h"
 #import "SMRSSListViewController.h"
 #import "SMTouchsView.h"
+#import "SMScanViewController.h"
 
 
-@interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
+@interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate, SMScanViewControllerDelegate>
 @property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,strong)Subscribes *subscribe;
@@ -51,6 +52,17 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+- (void)scanButtonTouched
+{
+    
+#warning TODO push vc
+    
+    SMScanViewController *vc = [[SMScanViewController alloc]init];
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
 -(void)loadView {
     [super loadView];
@@ -366,22 +378,33 @@
     [closeButton sizeToFit];
     [closeButton addTarget:self action:@selector(doBack) forControlEvents:UIControlEventTouchUpInside];
     
+    UIButton *scanButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [scanButton setTitleColor:[UIColor rss_darkGrayColor] forState:UIControlStateNormal];
+    [scanButton setTitle:@"二维码" forState:UIControlStateNormal];
+    [scanButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [scanButton sizeToFit];
+    [scanButton addTarget:self action:@selector(scanButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    int scanButtonLeftMargin = 4;
+    
     SMAddRssSearchBar *searchBar = [SMAddRssSearchBar searchBar];
     searchBar.frame = CGRectMake(closeButton.right + 12, STATUS_BAR_HEIGHT + 2, 0, 32);
-    searchBar.width = SCREEN_WIDTH - searchBar.left - 6;
+    searchBar.width = SCREEN_WIDTH - searchBar.left - 6 - scanButton.width - scanButtonLeftMargin;
     searchBar.top = STATUS_BAR_HEIGHT + (44 - searchBar.height)/2;
     searchBar.delegate =self;
     self.searchBar = searchBar;
     
-    closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
+    scanButton.left = _searchBar.right + scanButtonLeftMargin;
+    scanButton.top = closeButton.top = searchBar.top + (searchBar.height - closeButton.height)/2;
     
     SMTouchsView *touchsView = [[SMTouchsView alloc] init];
     touchsView.frame = CGRectMake(0, 0, 100, 100);
     
     [self.view addSubview:searchBar];
     [self.view addSubview:closeButton];
+    [self.view addSubview:scanButton];
     [self.view addSubview:touchsView];
 }
+
 - (void)setupLine
 {
     
@@ -429,14 +452,30 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
 #pragma mark - 通知移除
+
 - (void)dealloc
 {
     _feedParser.delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - scan delegate
 
+- (void)scanFinishedWithURL:(NSString *)urlString;
+{
+    _searchBar.text = urlString;
+    if( [self addInputRSS]){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
+        });
+        
+    }
+ 
+}
 
 
 @end
