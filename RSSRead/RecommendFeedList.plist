@@ -14,13 +14,13 @@
         </dict>
         <dict>
             <key>title</key>
-            <string>dApps开发者</string>
+            <string>大洋24小时滚动新闻</string>
             <key>link</key>
-            <string>http://www.dapps.net</string>
+            <string>http://www.dayoo.com/roll</string>
             <key>summary</key>
-            <string>为手机应用APP开发、手机游戏开发,移动互联网、云计算、HTML5等开发者提供专业的资讯！</string>
+            <string>大洋网是立足广州、辐射华南的综合性区域门户网站，为用户提供新闻、生活、论坛、书城等20多个频道及广州日报集团旗下《广州日报》《信息时报》等20家报刊杂志电子版</string>
             <key>url</key>
-            <string>http://www.dapps.net/feed</string>
+            <string>http://rss.dayoo.com/feed/news/roll.xml</string>
         </dict>
         <dict>
             <key>title</key>
@@ -44,13 +44,13 @@
         </dict>
         <dict>
             <key>title</key>
-            <string>Solidot</string>
+            <string>科技--华尔街日报</string>
             <key>link</key>
-            <string>http://www.solidot.org</string>
+            <string>http://cn.wsj.com/gb/tech.asp</string>
             <key>summary</key>
-            <string>奇客的资讯，重要的东西</string>
+            <string>《华尔街日报》中文版络版最新科技要闻</string>
             <key>url</key>
-            <string>http://feeds2.feedburner.com/solidot</string>
+            <string>http://cn.wsj.com/gb/rsstech.xml</string>
         </dict>
         <dict>
             <key>title</key>
@@ -74,13 +74,13 @@
         </dict>
         <dict>
             <key>title</key>
-            <string>爱范儿 · Beats of Bits</string>
+            <string>新闻要闻-新浪新闻</string>
             <key>link</key>
-            <string>http://www.ifanr.com</string>
+            <string>http://roll.news.sina.com.cn/s/</string>
             <key>summary</key>
-            <string>发现创新价值的科技媒体</string>
+            <string>新闻中心-新闻要闻</string>
             <key>url</key>
-            <string>http://fulltextrssfeed.com/www.ifanr.com</string>
+            <string>http://rss.sina.com.cn/news/marquee/ddt.xml</string>
         </dict>
         <dict>
             <key>title</key>
@@ -94,13 +94,13 @@
         </dict>
         <dict>
             <key>title</key>
-            <string>和邪社</string>
+            <string>Mashable</string>
             <key>link</key>
-            <string>http://www.hexieshe.com/</string>
+            <string>http://mashable.com/</string>
             <key>summary</key>
-            <string>你的ACG生活 文不在长.内涵则明 图不在色.意淫则灵</string>
+            <string>Mashable is a leading source for news</string>
             <key>url</key>
-            <string>http://www.hexieshe.com/feed/</string>
+            <string>http://feeds.mashable.com/Mashable</string>
         </dict>
     </array>
 </plist>

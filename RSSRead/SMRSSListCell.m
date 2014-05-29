@@ -81,7 +81,6 @@
     } else {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:_darkcolor];
     }
-    rss.summary = [rss.summary stringByReplacingOccurrencesOfString:@" " withString:@""];
     [_lbSummary setText:[rss.summary stringByConvertingHTMLToPlainText]];
     [self setNeedsDisplay];
 }

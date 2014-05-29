@@ -96,10 +96,6 @@
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
-    //模糊图片写入沙盒
-//    [SMBlurBackground SMRSSbackgroundImage:nil];
-    
-
     
     return YES;
 }
@@ -199,7 +195,7 @@
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
                                                stringByAppendingPathComponent: @"RSS.sqlite"]];
     NSError *error = nil;
-    //下面的options能够解决每次修改coredata数据结构的不删除app就crash的问题。
+    //下面的options能够解决每次修改coredata数据结构的不删除app就crash的问题。要注意，改变coredata数据结构时需要添加一个新版本xcdatamodeldz，具体操作可以查看项目wiki
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
     						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
     						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
@@ -209,7 +205,6 @@
                                                   configuration:nil URL:storeUrl options:options error:&error]) {
         /*Error for store creation should be handled in here*/
     }
-    
     return _persistentStoreCoordinator;
 }
 

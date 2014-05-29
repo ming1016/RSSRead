@@ -34,6 +34,8 @@
 @property(nonatomic,weak) SMAddRSSToolbar *toolbar;
 @property(nonatomic,strong)NSMutableArray *RSSArray;
 @property(nonatomic,weak)UITableView *tableView;
+@property(nonatomic,strong)NSArray *keyWords;
+@property(nonatomic,strong)UIView *keywordsView;
 @end
 
 @implementation SMAddRSSViewController
@@ -132,6 +134,7 @@
  */
 - (void)loadRssSourcesWithStr:(NSString *)str
 {
+    [_keywordsView removeFromSuperview];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
@@ -358,7 +361,6 @@
 #pragma mark - 加载自定义控件
 - (void)setupSearchBar
 {
-   
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(8, 0, 50, 50)];
     [closeButton setTitleColor:[UIColor rss_darkGrayColor] forState:UIControlStateNormal];
     [closeButton setTitle:@"返回" forState:UIControlStateNormal];
@@ -397,6 +399,9 @@
     tableView.delegate =self;
     tableView.dataSource =self;
 
+    _keywordsView = [[UIView alloc] initWithFrame:tableView.bounds];
+    
+    //介绍
     UILabel *introLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [introLabel setFont:[UIFont systemFontOfSize:16]];
     [introLabel setTextColor:[UIColor rss_darkGrayColor]];
@@ -404,15 +409,57 @@
     [introLabel setText:@"这里可以搜索订阅源哦。喵。^V^"];
     [introLabel setNumberOfLines:0];
     [introLabel sizeToFit];
+    introLabel.left = (_keywordsView.width - introLabel.width)/2;
+    introLabel.top = tableView.top + 10;
+    [_keywordsView addSubview:introLabel];
     
-    UIView *view = [[UIView alloc] initWithFrame:tableView.bounds];
-    introLabel.left = (view.width - introLabel.width)/2;
-    introLabel.top = 150;
-    [view addSubview:introLabel];
-    [tableView setBackgroundView:view];
+    //推荐搜索关键字,
+    //TODO:大家有什么觉得比较常用的关键字放这里好，还有颜色
+   _keyWords = @[@"科技",@"体育",@"电影",@"音乐",@"新闻",@"文学",@"艺术",@"北京",@"上海",@"杭州",@"程序员",@"云计算",@"创意",@"设计",@"创造",@"游戏",@"旅游",@"英雄联盟",@"PlayStation",@"Xbox"];
+    NSArray *colorArray = @[@"#ff96aa",@"#25c0dc",@"#3edc13",@"#1dcba8"];
 
+    CGFloat leftPadding = 10;
+    CGFloat topPadding = 10;
+//    CGRect rect = CGRectMake(leftPadding, topPadding, 0, 0);
+    CGFloat x = leftPadding;
+    CGFloat y = topPadding + introLabel.top + 20;
+    
+    CGSize btSize = CGSizeZero;
+    
+    NSInteger i = 0;
+    for (NSString *kw in _keyWords) {
+        UIButton *btKw = [[UIButton alloc]initWithFrame:CGRectZero];
+        int r = arc4random() % [colorArray count];
+        NSString *colorStr = colorArray[r];
+        [btKw setBackgroundColor:[SMUIKitHelper colorWithHexString:colorStr]];
+        [btKw setTitle:kw forState:UIControlStateNormal];
+        [btKw setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        btKw.titleLabel.font = [UIFont systemFontOfSize:14];
+        btKw.size = [kw sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+        btSize = CGSizeMake(btKw.width + 10, btKw.height + 10);
+        
+        if (x + btSize.width + leftPadding > SCREEN_WIDTH - 15) {
+            x = leftPadding;
+            y += btSize.height + topPadding;
+        }
+        
+        btKw.frame = CGRectMake(x, y, btSize.width, btSize.height);
+        btKw.tag = i;
+        [btKw addTarget:self action:@selector(keyWordClick:) forControlEvents:UIControlEventTouchUpInside];
+
+        x += btSize.width + leftPadding;
+        
+        [_keywordsView addSubview:btKw];
+        i++;
+    }
     _tableView =tableView;
     [self.view addSubview:tableView];
+    [self.view addSubview:_keywordsView];
+}
+
+-(void)keyWordClick:(UIButton *)sender {
+    [self loadRssSourcesWithStr:_keyWords[sender.tag]];
+    NSLog(@"come here");
 }
 
 
