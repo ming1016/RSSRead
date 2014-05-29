@@ -40,7 +40,7 @@
         if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
             self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:@"#252525"];
             _darkcolor = @"#cccccc";
-            _lightColor = @"#404040";
+            _lightColor = @"#888888";
         } else {
             self.contentView.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
             _darkcolor = LIST_DARK_COLOR;
@@ -81,6 +81,7 @@
     } else {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:_darkcolor];
     }
+    rss.summary = [rss.summary stringByReplacingOccurrencesOfString:@" " withString:@""];
     [_lbSummary setText:[rss.summary stringByConvertingHTMLToPlainText]];
     [self setNeedsDisplay];
 }
@@ -99,7 +100,7 @@
     [_lbDate sizeToFit];
     _lbDate.top = kRSSListCellDateMarginTop + _lbTitle.bottom;
     
-    int summaryMarginLeft = 10;
+    int summaryMarginLeft = 8;
     _lbSummary.top = kRSSListCellDateMarginTop + _lbTitle.bottom;
     _lbSummary.left = _lbDate.right + summaryMarginLeft;
     [_lbSummary sizeToFit];
