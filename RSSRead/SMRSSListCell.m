@@ -175,10 +175,10 @@
     if (!_deleteGreyImageView) {
         
         UILabel *introLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.contentView.frame), 0, CGRectGetHeight(self.frame), CGRectGetHeight(self.frame))];
-        [introLabel setFont:[UIFont systemFontOfSize:10]];
+        [introLabel setFont:[UIFont systemFontOfSize:LIST_BIG_FONT]];
         [introLabel setBackgroundColor:[UIColor clearColor]];
         introLabel.textColor = [UIColor lightGrayColor];
-        [introLabel setText:@"不感兴趣"];
+        [introLabel setText:@"收藏"];
         [introLabel setNumberOfLines:0];
         [introLabel sizeToFit];
         

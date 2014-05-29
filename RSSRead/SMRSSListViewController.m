@@ -318,29 +318,32 @@
 
 #pragma mark - swipTableViewCell
 -(void)swipeTableViewCellWillResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
-    NSLog(@"swipeTableViewCellWillResetState: %@ fromPoint: %@ animation: %d, velocity: %@", swipeTableViewCell, NSStringFromCGPoint(point), animation, NSStringFromCGPoint(velocity));
-
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
+    RSS *rss = _rssArray[indexPath.row];
+    SMRSSModel *model = [[SMRSSModel alloc] init];
+    
     if (point.x >= CGRectGetHeight(swipeTableViewCell.frame)) {
 //        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
-        
+        //右拉
+        [model unFavRSS:rss];
+        [self unFav];
     } else if (point.x < 0 && -point.x >= CGRectGetHeight(swipeTableViewCell.frame)) {
+        //左拉
         swipeTableViewCell.shouldAnimateCellReset = NO;
  
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
-        RSS *rss = _rssArray[indexPath.row];
-        SMRSSModel *model = [[SMRSSModel alloc] init];
-        [model dislikeRSS:rss];
-        [_rssArray removeObjectAtIndex:indexPath.row];
-        [_cellMgrs removeObjectAtIndex:indexPath.row];
-        
-        [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        [self.tableView endUpdates];
+        [model favRSS:rss];
+        [self faved];
+//        [model dislikeRSS:rss];
+//        [_rssArray removeObjectAtIndex:indexPath.row];
+//        [_cellMgrs removeObjectAtIndex:indexPath.row];
+//        
+//        [self.tableView beginUpdates];
+//        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//        [self.tableView endUpdates];
         
     }
 }
 -(void)swipeTableViewCellDidResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
-    NSLog(@"swipeTableViewCellDidResetState: %@ fromPoint: %@ animation: %d, velocity: %@", swipeTableViewCell, NSStringFromCGPoint(point), animation, NSStringFromCGPoint(velocity));
 
     if (point.x < 0 && -point.x > CGRectGetHeight(swipeTableViewCell.frame)) {
 //        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
