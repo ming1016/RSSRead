@@ -217,11 +217,8 @@
     SMSubscribeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        //        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
-        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
+        cell.selectedBackgroundView.backgroundColor = [UIColor rss_cyanColor];
         cell.backgroundColor = [UIColor clearColor];
     }
     if (_allSurscribes.count > 0) {
