@@ -55,7 +55,7 @@
     [self.view addSubview:_bottomBar];
 
     _statusBarBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, STATUS_BAR_HEIGHT)];
-    [self.view addSubview:_statusBarBackView];
+//    [self.view addSubview:_statusBarBackView];
     [self setupStatusBar];
 
 }
