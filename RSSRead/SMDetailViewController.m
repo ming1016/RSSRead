@@ -159,7 +159,6 @@
     _rss.isFav = @0;
     [_bottomBar fillWithRSS:_rss];
     [self.delegate unFav];
-    [self doBack];
 }
 
 - (void)didReceiveMemoryWarning
