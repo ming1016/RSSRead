@@ -12,5 +12,7 @@
 
 @interface SMFeedParserWrapper : NSObject<MWFeedParserDelegate>
 @property (assign) NSTimeInterval timeoutInterval;//请求超时时间（秒）
-- (void)parseUrl:(NSURL *)url completion:(void (^)(NSArray *items))completionHandler;
+//- (void)parseUrl:(NSURL *)url completion:(void (^)(NSArray *items))completionHandler;
+
++ (void)parseUrl:(NSURL *)url timeout:(NSTimeInterval)timeout completion:(void (^)(NSArray *items))completionHandler;
 @end

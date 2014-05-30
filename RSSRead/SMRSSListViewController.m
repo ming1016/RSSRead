@@ -121,8 +121,7 @@
     //首次点击进入页面时进行一次拉取数据
     if (!_isFav && _rssArray.count == 0) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
-        [parserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] completion:^(NSArray *items) {
+        [SMFeedParserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] timeout:10 completion:^(NSArray *items) {
             if(items && items.count){
                 SMRSSModel *rssModel = [[SMRSSModel alloc]init];
                 rssModel.smRSSModelDelegate = self;
@@ -163,10 +162,9 @@
 }
 -(void)refreshView:(UIRefreshControl *)refresh {
     [_refreshControl beginRefreshing];
-    SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
     
     __weak SMRSSListViewController *weakSelf = self;
-    [parserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] completion:^(NSArray *items) {
+    [SMFeedParserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] timeout:10 completion:^(NSArray *items) {
         if(items && items.count){
             SMRSSModel *rssModel = [[SMRSSModel alloc]init];
             rssModel.smRSSModelDelegate = self;

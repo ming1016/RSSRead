@@ -163,23 +163,25 @@
     
     dispatch_group_t group = dispatch_group_create();
     
+
     [_allSurscribes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Subscribes *subscribe = (Subscribes *)obj;
-        SMFeedParserWrapper *parserWrapper = [[SMFeedParserWrapper alloc] init];
         
         dispatch_group_enter(group);
-        
-        [parserWrapper parseUrl:[NSURL URLWithString:subscribe.url] completion:^(NSArray *items) {
-            if(items && items.count){
-                SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-                rssModel.smRSSModelDelegate = self;
-                [rssModel insertRSSFeedItems:items ofFeedUrlStr:subscribe.url];
-                [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-            }
-            
-            dispatch_group_leave(group);
-            
-        }];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [SMFeedParserWrapper parseUrl:[NSURL URLWithString:subscribe.url] timeout:10 completion:^(NSArray *items) {
+                if(items && items.count){
+                    SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+                    rssModel.smRSSModelDelegate = self;
+                    [rssModel insertRSSFeedItems:items ofFeedUrlStr:subscribe.url];
+                    [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                }
+                
+                dispatch_group_leave(group);
+                
+            }];
+
+        });
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{

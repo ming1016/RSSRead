@@ -233,9 +233,7 @@
         //解析rss
         NSURL *feedUrl = [NSURL URLWithString:((Subscribes *)obj).url];
         
-        SMFeedParserWrapper *parserWrapper = [SMFeedParserWrapper new];
-        parserWrapper.timeoutInterval = 20.0;
-        [parserWrapper parseUrl:feedUrl completion:^(NSArray *items) {
+        [SMFeedParserWrapper parseUrl:feedUrl timeout:20 completion:^(NSArray *items) {
             SMRSSModel *rssModel = [[SMRSSModel alloc]init];
             [rssModel insertRSSFeedItems:items ofFeedUrlStr:feedUrl.absoluteString];
             
