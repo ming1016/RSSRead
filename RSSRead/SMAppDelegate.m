@@ -68,6 +68,7 @@
     
     //MSDynamicsDrawerViewController setting
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
+    self.dynamicsDrawerViewController.paneViewSlideOffAnimationEnabled = NO;
     [self.dynamicsDrawerViewController setRevealWidth:SCREEN_WIDTH - 190 forDirection:MSDynamicsDrawerDirectionLeft];
     
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler],[MSDynamicsDrawerShadowStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];

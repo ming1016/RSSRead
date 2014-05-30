@@ -217,23 +217,23 @@
     //退出键盘
     [_searchBar resignFirstResponder];
     NSString *str= _searchBar.text;
-    /**
-     *  判断用户是添加源 还是搜索源
-     */
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http+:[^\\s]*" options:0 error:&error];
-    /**
-     *  检查是否是网址,不是返回值为null
-     */
-    if (regex != nil) {
-        NSTextCheckingResult *result = [regex firstMatchInString:str options:0 range:NSMakeRange(0, str.length)];
-        if(result)
-        {
-             //用户添加源
-            [self addInputRSS];
-            return YES;
-        }
-    }
+//    /**
+//     *  判断用户是添加源 还是搜索源
+//     */
+//    NSError *error;
+//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http+:[^\\s]*" options:0 error:&error];
+//    /**
+//     *  检查是否是网址,不是返回值为null
+//     */
+//    if (regex != nil) {
+//        NSTextCheckingResult *result = [regex firstMatchInString:str options:0 range:NSMakeRange(0, str.length)];
+//        if(result)
+//        {
+//             //用户添加源
+//            [self addInputRSS];
+//            return YES;
+//        }
+//    }
     //用户搜索源
     [self loadRssSourcesWithStr:str];
     
