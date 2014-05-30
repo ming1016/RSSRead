@@ -53,6 +53,16 @@
         [[SMPreferences sharedInstance] synchronize];
     }
     
+    if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        [[UINavigationBar appearance] setBarTintColor:[SMUIKitHelper colorWithHexString:@"#333333"]];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0]}];
+    } else {
+//        _bgColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
+//        _selectBgColor = [SMUIKitHelper colorWithHexString:@"#f2f2f2"];
+    }
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
