@@ -86,6 +86,7 @@
 		DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */; };
 		DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */; };
 		DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */; };
+		FE471E471938C320005D7806 /* JTOpenDoorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE471E461938C320005D7806 /* JTOpenDoorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +223,8 @@
 		DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSourceModel.m; sourceTree = "<group>"; };
 		DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSoucesCell.h; sourceTree = "<group>"; };
 		DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSoucesCell.m; sourceTree = "<group>"; };
+		FE471E451938C320005D7806 /* JTOpenDoorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTOpenDoorViewController.h; sourceTree = "<group>"; };
+		FE471E461938C320005D7806 /* JTOpenDoorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTOpenDoorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +320,7 @@
 		D20C7058192D8891002A2236 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				FE471E441938C320005D7806 /* lauchAnimation */,
 				D20C705D192D8962002A2236 /* QBlur */,
 				D20C7059192D88F2002A2236 /* HYCircleLoadingView */,
 				D2EFDC0A19186C270057CB71 /* APService.h */,
@@ -617,6 +621,15 @@
 			name = SMAddRSS;
 			sourceTree = "<group>";
 		};
+		FE471E441938C320005D7806 /* lauchAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				FE471E451938C320005D7806 /* JTOpenDoorViewController.h */,
+				FE471E461938C320005D7806 /* JTOpenDoorViewController.m */,
+			);
+			path = lauchAnimation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -783,6 +796,7 @@
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
+				FE471E471938C320005D7806 /* JTOpenDoorViewController.m in Sources */,
 				D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
