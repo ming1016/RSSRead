@@ -8,10 +8,8 @@
 
 #import "SMRSSModel.h"
 #import "Subscribes.h"
-#import "SMAppDelegate.h"
 
 @implementation SMRSSModel {
-    SMAppDelegate *_appDelegate;
     NSManagedObjectContext *_managedObjectContext;
     SMGetFetchedRecordsModel *_getModel;
     NSArray *_fetchedRecorders;
@@ -21,8 +19,7 @@
 
 -(id)init {
     if (self = [super init]) {
-        _appDelegate = [UIApplication sharedApplication].delegate;
-        _managedObjectContext = _appDelegate.managedObjectContext;
+        _managedObjectContext = APP_DELEGATE.managedObjectContext;
         _getModel = [[SMGetFetchedRecordsModel alloc]init];
         _fetchedRecorders = [NSArray array];
     }
@@ -32,7 +29,7 @@
 -(void)unFavRSS:(RSS *)rss {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",rss.identifier];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (RSS *aRSS in _fetchedRecorders) {
             aRSS.isFav = @0;
@@ -45,7 +42,7 @@
 -(void)favRSS:(RSS *)rss {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",rss.identifier];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (RSS *aRSS in _fetchedRecorders) {
             aRSS.isFav = @1;
@@ -59,7 +56,7 @@
 {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",rss.identifier];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (RSS *aRSS in _fetchedRecorders) {
             aRSS.isDislike = @1;
@@ -72,7 +69,7 @@
 -(void)markAsRead:(RSS *)rss {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",rss.identifier];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (RSS *aRSS in _fetchedRecorders) {
             aRSS.isRead = @1;
@@ -87,7 +84,7 @@
     _getModel.entityName = @"RSS";
     _getModel.sortName = @"createDate";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",url];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         int countNum = 0;
         BOOL isOver = NO;
@@ -114,7 +111,7 @@
 -(void)deleteSubscrib:(NSString *)url {
     _getModel.entityName = @"Subscribes";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"url=%@",url];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (NSManagedObject *obj in _fetchedRecorders) {
             [_managedObjectContext deleteObject:obj];
@@ -124,7 +121,7 @@
     [_managedObjectContext save:&error];
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@",url];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (NSManagedObject *obj in _fetchedRecorders) {
             [_managedObjectContext deleteObject:obj];
@@ -138,7 +135,7 @@
 -(void)deleteAllRSS:(NSString *)url {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@ AND isFav=0 AND isRead=1",url];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (NSManagedObject *obj in _fetchedRecorders) {
             [_managedObjectContext deleteObject:obj];
@@ -154,7 +151,7 @@
 -(void)deleteReadRSS:(NSString *)url {
     _getModel.entityName = @"RSS";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"isRead=%@ AND isFav=0",@1];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     if (_fetchedRecorders && [_fetchedRecorders count]) {
         for (NSManagedObject *obj in _fetchedRecorders) {
             [_managedObjectContext deleteObject:obj];
@@ -180,7 +177,7 @@
     NSError *error;
 //    for (MWFeedItem *item in items) {
         _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",item.identifier];
-        _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+        _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
         if (_fetchedRecorders.count == 0) {
             RSS *rss = [NSEntityDescription insertNewObjectForEntityForName:@"RSS" inManagedObjectContext:_managedObjectContext];
             rss.author = item.author ? item.author : @"未知作者";
@@ -213,7 +210,7 @@
     NSError *error;
     
     _getModel.predicate = [NSPredicate predicateWithFormat:@"identifier=%@",item.identifier];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     RSS *rss = nil;
     if (_fetchedRecorders.count == 0) {
         rss = [NSEntityDescription insertNewObjectForEntityForName:@"RSS" inManagedObjectContext:_managedObjectContext];
@@ -246,10 +243,10 @@
 -(void)recountSubscribeUnRead:(NSString *)url {
     NSError *error;
     _getModel.predicate = [NSPredicate predicateWithFormat:@"subscribeUrl=%@ AND isFav=0 AND isRead=0",url];
-    _fetchedRecorders = [_appDelegate getFetchedRecords:_getModel];
+    _fetchedRecorders = [APP_DELEGATE getFetchedRecords:_getModel];
     _getModel.entityName = @"Subscribes";
     _getModel.predicate = [NSPredicate predicateWithFormat:@"url=%@",url];
-    NSArray *fetchSubscribes = [_appDelegate getFetchedRecords:_getModel];
+    NSArray *fetchSubscribes = [APP_DELEGATE getFetchedRecords:_getModel];
     for (Subscribes *aSubscribe in fetchSubscribes) {
         aSubscribe.total = [NSNumber numberWithInteger:_fetchedRecorders.count];
     }

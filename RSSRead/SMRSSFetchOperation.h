@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class MWFeedInfo;
+
 @interface SMRSSFetchOperation : NSOperation
 
-@property (readonly, nonatomic) NSTimeInterval timeout;
 
-@property (readonly,nonatomic) NSURL *url;
-
-@property (copy, nonatomic) void (^completionHandler)(NSArray *items);
 
 - (id) initWithURL:(NSURL *)url timeout:(NSTimeInterval)timeout completionHandler:(void (^)(NSArray *items))completionHandler;
+
+- (id)initWithTryURL:(NSURL *)url timeout:(NSTimeInterval)timeout completionHandler:(void (^)(MWFeedInfo *items))completionHandler;
+
 @end

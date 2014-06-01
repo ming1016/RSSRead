@@ -122,6 +122,7 @@
     if (!_isFav && _rssArray.count == 0) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [SMFeedParserWrapper parseUrl:[NSURL URLWithString:_subscribeUrl] timeout:10 completion:^(NSArray *items) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             if(items && items.count){
                 SMRSSModel *rssModel = [[SMRSSModel alloc]init];
                 rssModel.smRSSModelDelegate = self;
@@ -133,7 +134,6 @@
                     }
                     
                 }
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 
                 [self calculateRowHeight];
                 [self.tableView reloadData];
