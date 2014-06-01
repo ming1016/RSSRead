@@ -23,13 +23,13 @@
 
 
 @interface SMAddRSSViewController ()<SMAddRSSToolbarDelegate,UITableViewDelegate,UITableViewDataSource,SMAddRssSoucesCellDelegate>
-@property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
+//@property(nonatomic,retain)NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,strong)Subscribes *subscribe;
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)MWFeedInfo *feedInfo;
 @property(nonatomic,strong)NSMutableArray *parsedItems;
-@property(nonatomic,strong)SMAppDelegate *appDelegate;
+//@property(nonatomic,strong)SMAppDelegate *appDelegate;
 @property(nonatomic,weak) SMAddRssSearchBar *searchBar;
 @property(nonatomic,weak) SMAddRSSToolbar *toolbar;
 @property(nonatomic,strong)NSMutableArray *RSSArray;
@@ -93,8 +93,8 @@
     _parsedItems = [NSMutableArray array];
     
     //Core Data
-    _appDelegate = [UIApplication sharedApplication].delegate;
-    _managedObjectContext = _appDelegate.managedObjectContext;
+//    _appDelegate = [UIApplication sharedApplication].delegate;
+//    _managedObjectContext = _appDelegate.managedObjectContext;
     
 }
 
@@ -253,7 +253,11 @@
     _feedParser.feedParseType = ParseTypeFull;
     _feedParser.connectionType = ConnectionTypeAsynchronously;
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [SMFeedParserWrapper parseUrl:feedURL timeout:10.0 completion:^(NSArray *items) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+    }];
+    
     BOOL isSuccess = [_feedParser parse];
     [MBProgressHUD showShortHUDAddTo:self.view labelText: isSuccess ? @"成功添加":@"无法解析该源"];
     return isSuccess;
@@ -284,20 +288,21 @@
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
     getModel.entityName = @"Subscribes";
     getModel.predicate = [NSPredicate predicateWithFormat:@"url=%@",[_feedInfo.url absoluteString]];
-    NSArray *fetchedRecords = [_appDelegate getFetchedRecords:getModel];
+    NSArray *fetchedRecords = [APP_DELEGATE getFetchedRecords:getModel];
     NSError *error;
     if (fetchedRecords.count == 0) {
-        _subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:_managedObjectContext];
+        _subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:APP_DELEGATE.managedObjectContext];
         _subscribe.title = _feedInfo.title ? _feedInfo.title : @"未命名";
         _subscribe.summary = _feedInfo.summary ? _feedInfo.summary : @"无描述";
         _subscribe.link = _feedInfo.link ? _feedInfo.link : @"无连接";
         _subscribe.url = [_feedInfo.url absoluteString] ? [_feedInfo.url absoluteString] : @"无连接";
         _subscribe.createDate = [NSDate date];
         _subscribe.total = [NSNumber numberWithInteger:_parsedItems.count];
-        
+        _subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
+        _subscribe.updateTimeInterval = 60;
         
         if (_subscribe.title) {
-            [_managedObjectContext save:&error];
+            [APP_DELEGATE.managedObjectContext save:&error];
             [_smAddRSSViewControllerDelegate addedRSS:_subscribe];
         }
     } else {

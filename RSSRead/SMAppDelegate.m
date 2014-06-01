@@ -21,6 +21,9 @@
 #import "ENConstants.h"
 #import "SMShareViewController.h"
 #import "SMPreferences.h"
+
+#import "SMFeedUpdateController.h"
+
 @implementation SMAppDelegate
 //{
 //    SMViewController *_smViewController;
@@ -33,6 +36,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //开启RSS源后台更新
+    [SMFeedUpdateController start];
+    
+    
     //后台更新
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     //清零
@@ -149,7 +156,7 @@
 // Core Data
 -(NSArray *)getFetchedRecords:(SMGetFetchedRecordsModel *)getModel {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:getModel.entityName inManagedObjectContext:_managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:getModel.entityName inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     if (getModel.sortName) {
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:getModel.sortName ascending:NO];

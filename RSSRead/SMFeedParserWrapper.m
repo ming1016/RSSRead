@@ -109,6 +109,14 @@ static SMFeedParserWrapper *sharedInstance;
 //    }
 //}
 
++ (void)tryParseUrl:(NSURL *)url timeout:(NSTimeInterval)timeout completion:(void (^)(MWFeedInfo *rssInfo))completionHandler;
+{
+    SMRSSFetchOperation *operation = [[SMRSSFetchOperation alloc] initWithTryURL:url timeout:timeout completionHandler:completionHandler];
+    NSOperationQueue *queue = [[[self sharedInstance] queueArr] objectAtIndex:rand()%MAX_NUM_OF_QUEUES];
+    [queue addOperation:operation];
+
+}
+
 + (void)parseUrl:(NSURL *)url timeout:(NSTimeInterval)timeout completion:(void (^)(NSArray *items))completionHandler
 {
     SMRSSFetchOperation *operation = [[SMRSSFetchOperation alloc] initWithURL:url timeout:timeout completionHandler:completionHandler];

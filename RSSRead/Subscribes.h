@@ -12,12 +12,17 @@
 
 @interface Subscribes : NSManagedObject
 
-@property (nonatomic, retain) NSDate * createDate;
-@property (nonatomic, retain) NSData * favicon;
-@property (nonatomic, retain) NSString * link;
-@property (nonatomic, retain) NSString * summary;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * total;
-@property (nonatomic, retain) NSString * url;
+@property (nonatomic, copy) NSDate * createDate;
+@property (nonatomic, copy) NSData * favicon;
+@property (nonatomic, copy) NSString * link;
+@property (nonatomic, copy) NSString * summary;
+@property (nonatomic, copy) NSString * title;
+@property (nonatomic, copy) NSNumber * total;
+@property (nonatomic, copy) NSString * url;
 
+//上一次更新发生的时间
+@property (nonatomic, copy) NSDate *lastUpdateTime;
+
+//该RSS源的更新间隔，对于那些更新比较频繁的RSS，可以设定一个较小的值
+@property (nonatomic, assign) NSTimeInterval updateTimeInterval;
 @end

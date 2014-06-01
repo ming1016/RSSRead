@@ -10,6 +10,7 @@
 		18ED1814861D418E994C02DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D56B220E943798F3345C3 /* libPods.a */; };
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
 		1FC13C631938AAFE002EBB94 /* SMRSSFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13C621938AAFE002EBB94 /* SMRSSFetchOperation.m */; };
+		1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */; };
 		CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */; };
 		CB09E3DC1930798C000D7597 /* css.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DB1930798C000D7597 /* css.html */; };
 		CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DD19307BC5000D7597 /* css_dark.html */; };
@@ -106,6 +107,8 @@
 		1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedParserWrapper.m; sourceTree = "<group>"; };
 		1FC13C611938AAFE002EBB94 /* SMRSSFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSFetchOperation.h; sourceTree = "<group>"; };
 		1FC13C621938AAFE002EBB94 /* SMRSSFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSFetchOperation.m; sourceTree = "<group>"; };
+		1FC13C66193ADB3F002EBB94 /* SMFeedUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedUpdateController.h; sourceTree = "<group>"; };
+		1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedUpdateController.m; sourceTree = "<group>"; };
 		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
 		CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCellMgr.m; sourceTree = "<group>"; };
@@ -316,6 +319,15 @@
 			name = parser;
 			sourceTree = "<group>";
 		};
+		1FC13C65193ADAFF002EBB94 /* SMFeedUpdateController */ = {
+			isa = PBXGroup;
+			children = (
+				1FC13C66193ADB3F002EBB94 /* SMFeedUpdateController.h */,
+				1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */,
+			);
+			name = SMFeedUpdateController;
+			sourceTree = "<group>";
+		};
 		CB3DA4BA192DD27200AC52D6 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +477,7 @@
 		D2EDF78E18C5B20600B0E990 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				1FC13C65193ADAFF002EBB94 /* SMFeedUpdateController */,
 				1FC13C641938DD52002EBB94 /* parser */,
 				D2EDF78F18C5B22C00B0E990 /* SMUIKitHelper.h */,
 				D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */,
@@ -694,7 +707,7 @@
 				ORGANIZATIONNAME = starming;
 				TargetAttributes = {
 					D2E8FBE718C46B5A005E8F2E = {
-						DevelopmentTeam = 5AJEH63V73;
+						DevelopmentTeam = X78J75TA52;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -821,6 +834,7 @@
 				CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */,
 				D20C7060192D896D002A2236 /* QBlurView.m in Sources */,
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,
+				1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */,
 				DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */,
 				DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
@@ -973,7 +987,7 @@
 					"$(PROJECT_DIR)/RSSRead",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8A0445FF-550A-40CC-AC0B-E856F506ABB6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -985,8 +999,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ming Dai (5AJEH63V73)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ming Dai (5AJEH63V73)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSSRead/RSSRead-Prefix.pch";
 				INFOPLIST_FILE = "RSSRead/RSSRead-Info.plist";
@@ -996,7 +1010,7 @@
 					"$(PROJECT_DIR)/RSSRead",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8A0445FF-550A-40CC-AC0B-E856F506ABB6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

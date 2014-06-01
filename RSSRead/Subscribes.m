@@ -18,5 +18,6 @@
 @dynamic title;
 @dynamic total;
 @dynamic url;
-
+@dynamic lastUpdateTime;
+@dynamic updateTimeInterval;
 @end
