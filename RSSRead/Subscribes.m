@@ -2,7 +2,7 @@
 //  Subscribes.m
 //  RSSRead
 //
-//  Created by ming on 14-5-23.
+//  Created by ming on 14-6-1.
 //  Copyright (c) 2014年 starming. All rights reserved.
 //
 
@@ -13,11 +13,12 @@
 
 @dynamic createDate;
 @dynamic favicon;
+@dynamic lastUpdateTime;
 @dynamic link;
 @dynamic summary;
 @dynamic title;
 @dynamic total;
-@dynamic url;
-@dynamic lastUpdateTime;
 @dynamic updateTimeInterval;
+@dynamic url;
+
 @end

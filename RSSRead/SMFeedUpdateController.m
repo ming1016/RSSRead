@@ -88,7 +88,7 @@ static SMFeedUpdateController *sharedInstance;
                 subscribe.createDate = [NSDate date];
                 subscribe.total = @0;
                 subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
-                subscribe.updateTimeInterval = 60;//默认1分钟更新一次
+                subscribe.updateTimeInterval = @60;//默认1分钟更新一次
                 [APP_DELEGATE.managedObjectContext save:&error];
                 if(!error){
                     [allSurscribes addObject:subscribe];
@@ -105,9 +105,10 @@ static SMFeedUpdateController *sharedInstance;
         //我们需要读取其自身的更新间隔设置（通常较长），这也意味着，当全局更新检查时间比独立RSS
         //源更新间隔更长时，后者将会失去意义。
         NSDate *lastUpdateDate = subscribe.lastUpdateTime;
-        NSTimeInterval sourceUpdatInterval = subscribe.updateTimeInterval;
+        NSNumber *sourceUpdatInterval = subscribe.updateTimeInterval;
+        NSInteger intUpdate = [sourceUpdatInterval integerValue];
         
-        if(-[lastUpdateDate timeIntervalSinceNow]>sourceUpdatInterval){
+        if(-[lastUpdateDate timeIntervalSinceNow]>intUpdate){
             [SMFeedParserWrapper parseUrl:[NSURL URLWithString:subscribe.url] timeout:10 completion:^(NSArray *items) {
                 if(items && items.count){
                     SMRSSModel *rssModel = [[SMRSSModel alloc]init];

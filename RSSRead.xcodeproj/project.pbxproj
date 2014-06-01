@@ -26,9 +26,9 @@
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
 		D20C7060192D896D002A2236 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705F192D896D002A2236 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2102084193B23A100FCBC15 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102083193B23A100FCBC15 /* RSS.m */; };
+		D2102087193B23A200FCBC15 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102086193B23A200FCBC15 /* Subscribes.m */; };
 		D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21D4834192F7248007003C8 /* RSS.xcdatamodeld */; };
-		D21D4846192F7691007003C8 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4845192F7691007003C8 /* RSS.m */; };
-		D21D4849192F7692007003C8 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4848192F7692007003C8 /* Subscribes.m */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
@@ -137,12 +137,13 @@
 		D20C705B192D891E002A2236 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = "<group>"; };
 		D20C705E192D896D002A2236 /* QBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlurView.h; sourceTree = "<group>"; };
 		D20C705F192D896D002A2236 /* QBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBlurView.m; sourceTree = "<group>"; };
+		D2102081193B223900FCBC15 /* RSS 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 3.xcdatamodel"; sourceTree = "<group>"; };
+		D2102082193B23A100FCBC15 /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
+		D2102083193B23A100FCBC15 /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
+		D2102085193B23A200FCBC15 /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
+		D2102086193B23A200FCBC15 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D21D4835192F7248007003C8 /* RSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS.xcdatamodel; sourceTree = "<group>"; };
 		D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 2.xcdatamodel"; sourceTree = "<group>"; };
-		D21D4844192F7691007003C8 /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
-		D21D4845192F7691007003C8 /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
-		D21D4847192F7692007003C8 /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
-		D21D4848192F7692007003C8 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
 		D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCell.h; sourceTree = "<group>"; };
@@ -376,10 +377,10 @@
 		D2DDA05C18DC19EB005394E4 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				D21D4847192F7692007003C8 /* Subscribes.h */,
-				D21D4848192F7692007003C8 /* Subscribes.m */,
-				D21D4844192F7691007003C8 /* RSS.h */,
-				D21D4845192F7691007003C8 /* RSS.m */,
+				D2102085193B23A200FCBC15 /* Subscribes.h */,
+				D2102086193B23A200FCBC15 /* Subscribes.m */,
+				D2102082193B23A100FCBC15 /* RSS.h */,
+				D2102083193B23A100FCBC15 /* RSS.m */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -847,10 +848,11 @@
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
 				CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */,
-				D21D4846192F7691007003C8 /* RSS.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
+				D2102087193B23A200FCBC15 /* Subscribes.m in Sources */,
 				DE948399192F20C300EA431C /* SMTouchsView.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
+				D2102084193B23A100FCBC15 /* RSS.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
 				CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */,
@@ -858,7 +860,6 @@
 				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
-				D21D4849192F7692007003C8 /* Subscribes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,10 +1093,11 @@
 		D21D4834192F7248007003C8 /* RSS.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2102081193B223900FCBC15 /* RSS 3.xcdatamodel */,
 				D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */,
 				D21D4835192F7248007003C8 /* RSS.xcdatamodel */,
 			);
-			currentVersion = D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */;
+			currentVersion = D2102081193B223900FCBC15 /* RSS 3.xcdatamodel */;
 			path = RSS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
