@@ -97,7 +97,6 @@
     //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
     _afManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [self getAllSubscribeSources];
     if ([[SMPreferences sharedInstance] isInitWithFetchRSS]) {
         [_afManager GET:SERVER_OF_CHECKNETWORKING parameters:nil success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self performSelectorInBackground:@selector(fetchRss) withObject:nil];
@@ -112,13 +111,13 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self getAllSubscribeSources];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//}
 
 -(void)getAllSubscribeSources {
     //查看所有的订阅源

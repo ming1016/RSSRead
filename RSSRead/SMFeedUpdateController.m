@@ -71,34 +71,35 @@ static SMFeedUpdateController *sharedInstance;
         _sourceList = [APP_DELEGATE getFetchedRecords:getModel];
     }
     
-    [_sourceList enumerateObjectsUsingBlock:^(Subscribes *subscribe, NSUInteger idx, BOOL *stop) {
-        if (![_sourceList count]){
-            //从plist文件中读取推荐源
-            NSMutableArray *allSurscribes = [NSMutableArray array];
-            NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"RecommendFeedList" ofType:@"plist"];
-            NSArray *recommends = [[NSArray alloc]initWithContentsOfFile:plistPath];
-            
-            for (NSDictionary *aDict in recommends) {
-                NSError *error;
-                Subscribes *subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:APP_DELEGATE.managedObjectContext];
-                subscribe.title = aDict[@"title"];
-                subscribe.summary = aDict[@"summary"];
-                subscribe.link = aDict[@"link"];
-                subscribe.url = aDict[@"url"];
-                subscribe.createDate = [NSDate date];
-                subscribe.total = @0;
-                subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
-                subscribe.updateTimeInterval = 60;//默认1分钟更新一次
-                [APP_DELEGATE.managedObjectContext save:&error];
-                if(!error){
-                    [allSurscribes addObject:subscribe];
-                }else{
-                    NSLog(@"save subscribe data error");
-                }
-            }
-            _sourceList = allSurscribes;
-        }
+    if (![_sourceList count]){
+        //从plist文件中读取推荐源
+        NSMutableArray *allSurscribes = [NSMutableArray array];
+        NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"RecommendFeedList" ofType:@"plist"];
+        NSArray *recommends = [[NSArray alloc]initWithContentsOfFile:plistPath];
         
+        for (NSDictionary *aDict in recommends) {
+            NSError *error;
+            Subscribes *subscribe = [NSEntityDescription insertNewObjectForEntityForName:@"Subscribes" inManagedObjectContext:APP_DELEGATE.managedObjectContext];
+            subscribe.title = aDict[@"title"];
+            subscribe.summary = aDict[@"summary"];
+            subscribe.link = aDict[@"link"];
+            subscribe.url = aDict[@"url"];
+            subscribe.createDate = [NSDate date];
+            subscribe.total = @0;
+            subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
+            subscribe.updateTimeInterval = 60;//默认1分钟更新一次
+            [APP_DELEGATE.managedObjectContext save:&error];
+            if(!error){
+                [allSurscribes addObject:subscribe];
+            }else{
+                NSLog(@"save subscribe data error");
+            }
+        }
+        _sourceList = allSurscribes;
+    }
+        
+    [_sourceList enumerateObjectsUsingBlock:^(Subscribes *subscribe, NSUInteger idx, BOOL *stop) {
+
         //检查上次更新间隔
         
         //注意：虽然我们已经指定一个全局的更新检查时间间隔（通常较短），但是对每个单独的RSS源，
@@ -133,6 +134,12 @@ static SMFeedUpdateController *sharedInstance;
     }
 }
 
+- (void)setUpdateCheckTimeInterval:(NSTimeInterval)updateCheckTimeInterval{
+    if(_updateCheckTimeInterval != updateCheckTimeInterval){
+        _updateCheckTimeInterval = updateCheckTimeInterval;
+        dispatch_source_set_timer(_dispatchSource, DISPATCH_TIME_NOW, _updateCheckTimeInterval * NSEC_PER_SEC, 0);
+    }
+}
 - (void)invalidateSourceList{
     @synchronized(_sourceList){
     _sourceList = nil;
