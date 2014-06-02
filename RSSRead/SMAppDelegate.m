@@ -105,11 +105,8 @@
     //测试印象 OAUTH认证
     //SMShareViewController *shareVc = [[SMShareViewController alloc] init];
     //self.window.rootViewController = shareVc;
-    //self.window.rootViewController = self.dynamicsDrawerViewController;
+    self.window.rootViewController = self.dynamicsDrawerViewController;
     
-    self.openDoorViewController = [[JTOpenDoorViewController alloc] initWithViewController:self.dynamicsDrawerViewController];
-    self.openDoorViewController.delegate = self;
-    self.window.rootViewController = self.openDoorViewController;
     [self.window makeKeyAndVisible];
     
     //通知
