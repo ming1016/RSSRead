@@ -87,7 +87,7 @@ static SMFeedUpdateController *sharedInstance;
             subscribe.createDate = [NSDate date];
             subscribe.total = @0;
             subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
-            subscribe.updateTimeInterval = 60;//默认1分钟更新一次
+            subscribe.updateTimeInterval = @60;//默认1分钟更新一次
             [APP_DELEGATE.managedObjectContext save:&error];
             if(!error){
                 [allSurscribes addObject:subscribe];
@@ -107,7 +107,7 @@ static SMFeedUpdateController *sharedInstance;
         //源更新间隔更长时，后者将会失去意义。
         NSDate *lastUpdateDate = subscribe.lastUpdateTime;
         NSNumber *sourceUpdatInterval = subscribe.updateTimeInterval;
-        NSInteger intUpdate = [sourceUpdatInterval integerValue];
+        NSTimeInterval intUpdate = [sourceUpdatInterval doubleValue];
         
         if(-[lastUpdateDate timeIntervalSinceNow]>intUpdate){
             [SMFeedParserWrapper parseUrl:[NSURL URLWithString:subscribe.url] timeout:10 completion:^(NSArray *items) {

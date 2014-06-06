@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SMGetFetchedRecordsModel.h"
-#import "JTOpenDoorViewController.h"
 
 @class MSDynamicsDrawerViewController;
 
-@interface SMAppDelegate : UIResponder <UIApplicationDelegate,OpenDoorViewControllerDelegate>
+@interface SMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
-@property (strong, nonatomic) JTOpenDoorViewController *openDoorViewController;
 
 @property(nonatomic,readonly,retain)NSManagedObjectModel *managedObjectModel;
 @property(nonatomic,readonly,retain)NSManagedObjectContext *managedObjectContext;
