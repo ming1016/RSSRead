@@ -26,9 +26,9 @@
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
 		D20C7060192D896D002A2236 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705F192D896D002A2236 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2102084193B23A100FCBC15 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102083193B23A100FCBC15 /* RSS.m */; };
+		D2102087193B23A200FCBC15 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102086193B23A200FCBC15 /* Subscribes.m */; };
 		D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21D4834192F7248007003C8 /* RSS.xcdatamodeld */; };
-		D21D4846192F7691007003C8 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4845192F7691007003C8 /* RSS.m */; };
-		D21D4849192F7692007003C8 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D21D4848192F7692007003C8 /* Subscribes.m */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
@@ -88,7 +88,6 @@
 		DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */; };
 		DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */; };
 		DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */; };
-		FE471E471938C320005D7806 /* JTOpenDoorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE471E461938C320005D7806 /* JTOpenDoorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,12 +136,13 @@
 		D20C705B192D891E002A2236 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = "<group>"; };
 		D20C705E192D896D002A2236 /* QBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlurView.h; sourceTree = "<group>"; };
 		D20C705F192D896D002A2236 /* QBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBlurView.m; sourceTree = "<group>"; };
+		D2102081193B223900FCBC15 /* RSS 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 3.xcdatamodel"; sourceTree = "<group>"; };
+		D2102082193B23A100FCBC15 /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
+		D2102083193B23A100FCBC15 /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
+		D2102085193B23A200FCBC15 /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
+		D2102086193B23A200FCBC15 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D21D4835192F7248007003C8 /* RSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS.xcdatamodel; sourceTree = "<group>"; };
 		D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 2.xcdatamodel"; sourceTree = "<group>"; };
-		D21D4844192F7691007003C8 /* RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSS.h; sourceTree = "<group>"; };
-		D21D4845192F7691007003C8 /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
-		D21D4847192F7692007003C8 /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
-		D21D4848192F7692007003C8 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
 		D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCell.h; sourceTree = "<group>"; };
@@ -229,8 +229,6 @@
 		DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSourceModel.m; sourceTree = "<group>"; };
 		DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSoucesCell.h; sourceTree = "<group>"; };
 		DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSoucesCell.m; sourceTree = "<group>"; };
-		FE471E451938C320005D7806 /* JTOpenDoorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTOpenDoorViewController.h; sourceTree = "<group>"; };
-		FE471E461938C320005D7806 /* JTOpenDoorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTOpenDoorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,7 +344,6 @@
 		D20C7058192D8891002A2236 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				FE471E441938C320005D7806 /* lauchAnimation */,
 				D20C705D192D8962002A2236 /* QBlur */,
 				D20C7059192D88F2002A2236 /* HYCircleLoadingView */,
 				D2EFDC0A19186C270057CB71 /* APService.h */,
@@ -376,10 +373,10 @@
 		D2DDA05C18DC19EB005394E4 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				D21D4847192F7692007003C8 /* Subscribes.h */,
-				D21D4848192F7692007003C8 /* Subscribes.m */,
-				D21D4844192F7691007003C8 /* RSS.h */,
-				D21D4845192F7691007003C8 /* RSS.m */,
+				D2102085193B23A200FCBC15 /* Subscribes.h */,
+				D2102086193B23A200FCBC15 /* Subscribes.m */,
+				D2102082193B23A100FCBC15 /* RSS.h */,
+				D2102083193B23A100FCBC15 /* RSS.m */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -647,15 +644,6 @@
 			name = SMAddRSS;
 			sourceTree = "<group>";
 		};
-		FE471E441938C320005D7806 /* lauchAnimation */ = {
-			isa = PBXGroup;
-			children = (
-				FE471E451938C320005D7806 /* JTOpenDoorViewController.h */,
-				FE471E461938C320005D7806 /* JTOpenDoorViewController.m */,
-			);
-			path = lauchAnimation;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -707,7 +695,7 @@
 				ORGANIZATIONNAME = starming;
 				TargetAttributes = {
 					D2E8FBE718C46B5A005E8F2E = {
-						DevelopmentTeam = X78J75TA52;
+						DevelopmentTeam = 5AJEH63V73;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -824,7 +812,6 @@
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
 				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
-				FE471E471938C320005D7806 /* JTOpenDoorViewController.m in Sources */,
 				D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
@@ -847,10 +834,11 @@
 				DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */,
 				D2E8FC0218C46B5A005E8F2E /* SMViewController.m in Sources */,
 				CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */,
-				D21D4846192F7691007003C8 /* RSS.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
+				D2102087193B23A200FCBC15 /* Subscribes.m in Sources */,
 				DE948399192F20C300EA431C /* SMTouchsView.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
+				D2102084193B23A100FCBC15 /* RSS.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
 				CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */,
@@ -858,7 +846,6 @@
 				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
-				D21D4849192F7692007003C8 /* Subscribes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,10 +1079,11 @@
 		D21D4834192F7248007003C8 /* RSS.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2102081193B223900FCBC15 /* RSS 3.xcdatamodel */,
 				D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */,
 				D21D4835192F7248007003C8 /* RSS.xcdatamodel */,
 			);
-			currentVersion = D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */;
+			currentVersion = D2102081193B223900FCBC15 /* RSS 3.xcdatamodel */;
 			path = RSS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

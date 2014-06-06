@@ -142,7 +142,7 @@
             subscribe.createDate = [NSDate date];
             subscribe.total = @0;
             subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
-            subscribe.updateTimeInterval = 60;//默认1分钟更新一次
+            subscribe.updateTimeInterval = @60;//默认1分钟更新一次
             [APP_DELEGATE.managedObjectContext save:&error];
             if(!error){
                 [_allSurscribes addObject:subscribe];

@@ -299,7 +299,7 @@
         _subscribe.createDate = [NSDate date];
         _subscribe.total = [NSNumber numberWithInteger:_parsedItems.count];
         _subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
-        _subscribe.updateTimeInterval = 60;
+        _subscribe.updateTimeInterval = @60;
         
         if (_subscribe.title) {
             [APP_DELEGATE.managedObjectContext save:&error];
