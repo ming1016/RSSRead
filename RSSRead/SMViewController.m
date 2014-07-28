@@ -39,6 +39,14 @@
 
 @implementation SMViewController
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = @"首页";
+    }
+    return self;
+}
+
 -(void)doBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -55,7 +63,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"返回";//给navigation push过去的vc的返回有个中文提示
+    
     // 设置title view
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title_view"]];
     [self.navigationItem setTitleView:imgView];
@@ -236,6 +244,7 @@
     rssListVC.subscribeTitle = aSub.title;
     rssListVC.isNewVC = YES;
     rssListVC.delegate = self;
+    rssListVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:rssListVC animated:YES];
 }
 

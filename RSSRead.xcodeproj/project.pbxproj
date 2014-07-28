@@ -29,6 +29,10 @@
 		D2102084193B23A100FCBC15 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102083193B23A100FCBC15 /* RSS.m */; };
 		D2102087193B23A200FCBC15 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102086193B23A200FCBC15 /* Subscribes.m */; };
 		D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21D4834192F7248007003C8 /* RSS.xcdatamodeld */; };
+		D24351FE1986361400761D1C /* icoSetting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24351FB1986361400761D1C /* icoSetting@2x.png */; };
+		D24351FF1986361400761D1C /* icoHome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24351FC1986361400761D1C /* icoHome@2x.png */; };
+		D24352001986361400761D1C /* icoFav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24351FD1986361400761D1C /* icoFav@2x.png */; };
+		D243520819863E5800761D1C /* SMSimpleAddRSSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D243520719863E5800761D1C /* SMSimpleAddRSSVC.m */; };
 		D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */; };
 		D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05A18DBBCE0005394E4 /* SMRSSListCell.m */; };
 		D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDA05E18DC25E1005394E4 /* SMDetailViewController.m */; };
@@ -143,6 +147,11 @@
 		D2102086193B23A200FCBC15 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
 		D21D4835192F7248007003C8 /* RSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS.xcdatamodel; sourceTree = "<group>"; };
 		D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 2.xcdatamodel"; sourceTree = "<group>"; };
+		D24351FB1986361400761D1C /* icoSetting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoSetting@2x.png"; sourceTree = "<group>"; };
+		D24351FC1986361400761D1C /* icoHome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoHome@2x.png"; sourceTree = "<group>"; };
+		D24351FD1986361400761D1C /* icoFav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoFav@2x.png"; sourceTree = "<group>"; };
+		D243520619863E5800761D1C /* SMSimpleAddRSSVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSimpleAddRSSVC.h; sourceTree = "<group>"; };
+		D243520719863E5800761D1C /* SMSimpleAddRSSVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSimpleAddRSSVC.m; sourceTree = "<group>"; };
 		D2A26E3819238AF800C9CB86 /* SMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutViewController.h; sourceTree = "<group>"; };
 		D2A26E3919238AF800C9CB86 /* SMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutViewController.m; sourceTree = "<group>"; };
 		D2DDA05918DBBCE0005394E4 /* SMRSSListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCell.h; sourceTree = "<group>"; };
@@ -370,6 +379,36 @@
 			name = QBlur;
 			sourceTree = "<group>";
 		};
+		D24351FA1986360300761D1C /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				D24351FB1986361400761D1C /* icoSetting@2x.png */,
+				D24351FC1986361400761D1C /* icoHome@2x.png */,
+				D24351FD1986361400761D1C /* icoFav@2x.png */,
+			);
+			name = icon;
+			sourceTree = "<group>";
+		};
+		D243520119863D5F00761D1C /* LeftMore */ = {
+			isa = PBXGroup;
+			children = (
+				D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */,
+				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
+				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
+				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
+			);
+			name = LeftMore;
+			sourceTree = "<group>";
+		};
+		D243520219863DE500761D1C /* SimpleRSS */ = {
+			isa = PBXGroup;
+			children = (
+				D243520619863E5800761D1C /* SMSimpleAddRSSVC.h */,
+				D243520719863E5800761D1C /* SMSimpleAddRSSVC.m */,
+			);
+			name = SimpleRSS;
+			sourceTree = "<group>";
+		};
 		D2DDA05C18DC19EB005394E4 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,13 +528,11 @@
 		D2EDF79518C5BDAC00B0E990 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				D243520219863DE500761D1C /* SimpleRSS */,
 				DEE9FE64192E73B400621576 /* SMAddRSS */,
 				DEE9FE38192C87B200621576 /* SMaboutRSS */,
 				D2F5F13719306B2B00321CBE /* Setting */,
-				D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */,
-				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
-				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
-				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
+				D243520119863D5F00761D1C /* LeftMore */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -512,6 +549,7 @@
 		D2F75F6418D97EB400ED44A3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				D24351FA1986360300761D1C /* icon */,
 				DE6576F5192BC98900017996 /* addRSS */,
 				D2F79E18192B3EBE000727D4 /* background */,
 				D2EB1F2E18FA733B000C13D3 /* backgroundNavbar.png */,
@@ -737,6 +775,7 @@
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
+				D24352001986361400761D1C /* icoFav@2x.png in Resources */,
 				CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
@@ -750,8 +789,10 @@
 				D2F5F1361930555100321CBE /* leftBg.png in Resources */,
 				CB45E7BD192E310300C6D84C /* SMDetailViewBottomBar.xib in Resources */,
 				CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */,
+				D24351FF1986361400761D1C /* icoHome@2x.png in Resources */,
 				D204F35D192CB5F400425808 /* bg7.png in Resources */,
 				D2F79E24192B4682000727D4 /* bg2.png in Resources */,
+				D24351FE1986361400761D1C /* icoSetting@2x.png in Resources */,
 				D2F79E25192B4682000727D4 /* bg3.png in Resources */,
 				CB09E3DC1930798C000D7597 /* css.html in Resources */,
 				DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */,
@@ -827,6 +868,7 @@
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
 				D2EDF79418C5BD9500B0E990 /* SMMoreViewController.m in Sources */,
+				D243520819863E5800761D1C /* SMSimpleAddRSSVC.m in Sources */,
 				D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */,
 				D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */,
 				D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */,

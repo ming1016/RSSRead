@@ -11,8 +11,6 @@
 #import "SMViewController.h"
 #import "APService.h"
 #import "SMFeedParserWrapper.h"
-#import "MSDynamicsDrawerViewController.h"
-#import "MSDynamicsDrawerStyler.h"
 #import "SMMoreViewController.h"
 #import "UIColor+RSS.h"
 #import "SMBlurBackground.h"
@@ -21,13 +19,11 @@
 #import "ENConstants.h"
 #import "SMShareViewController.h"
 #import "SMPreferences.h"
-
 #import "SMFeedUpdateController.h"
+#import "SMBlurBackground.h"
+#import "SMSettingViewController.h"
 
 @implementation SMAppDelegate
-//{
-//    SMViewController *_smViewController;
-//}
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -72,25 +68,9 @@
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    //MSDynamicsDrawerViewController setting
-    self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
-    self.dynamicsDrawerViewController.paneViewSlideOffAnimationEnabled = NO;
-    [self.dynamicsDrawerViewController setRevealWidth:SCREEN_WIDTH - 190 forDirection:MSDynamicsDrawerDirectionLeft];
-    
-    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler],[MSDynamicsDrawerShadowStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
-    self.dynamicsDrawerViewController.gravityMagnitude = 10;
 
-    [[UINavigationBar appearance] setTintColor:[UIColor rss_cyanColor]];
-    SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
     
-    self.dynamicsDrawerViewController.paneViewController = rootViewNav;
     
-    //Left drawer
-    SMMoreViewController *moreVC = [[SMMoreViewController alloc]init];
-    moreVC.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
-    [self.dynamicsDrawerViewController setDrawerViewController:moreVC forDirection:MSDynamicsDrawerDirectionLeft];
     
     //填写印象笔记相关key信息
     //BootstrapServerBaseURLStringSandbox
@@ -105,9 +85,41 @@
     //测试印象 OAUTH认证
     //SMShareViewController *shareVc = [[SMShareViewController alloc] init];
     //self.window.rootViewController = shareVc;
-    self.window.rootViewController = self.dynamicsDrawerViewController;
     
+    //首页
+    [[UINavigationBar appearance] setTintColor:[UIColor rss_cyanColor]];
+    SMViewController *smViewController = [[SMViewController alloc]initWithNibName:nil bundle:nil];
+    UINavigationController *rootViewNav = [[UINavigationController alloc]initWithRootViewController:smViewController];
+    rootViewNav.tabBarItem.title = @"首页";
+    rootViewNav.tabBarItem.image = [UIImage imageNamed:@"icoHome"];
+    
+    //收藏
+    SMRSSListViewController *favVC = [[SMRSSListViewController alloc]initWithNibName:nil bundle:nil];
+    favVC.isFav = YES;
+    favVC.isNewVC = YES;
+    UINavigationController *navFavVC = [[UINavigationController alloc]initWithRootViewController:favVC];
+    navFavVC.tabBarItem.title = @"收藏";
+    navFavVC.tabBarItem.image = [UIImage imageNamed:@"icoFav"];
+    
+    //设置
+    SMSettingViewController *smSettingVC = [[SMSettingViewController alloc]initWithNibName:nil bundle:nil];
+    UINavigationController *navSettingVC = [[UINavigationController alloc]initWithRootViewController:smSettingVC];
+    navSettingVC.tabBarItem.image = [UIImage imageNamed:@"icoSetting"];
+    
+    UITabBarController *tabBarC = [[UITabBarController alloc]initWithNibName:nil bundle:nil];
+    tabBarC.viewControllers = @[rootViewNav,navFavVC,navSettingVC];
+    self.window.rootViewController = tabBarC;
+    
+    self.window.rootViewController.view.alpha = 0;
     [self.window makeKeyAndVisible];
+    //闪屏
+    UIImageView *splashView = [SMBlurBackground SMbackgroundView];
+    [self.window addSubview:splashView];
+    [UIView animateWithDuration:0.7 animations:^{
+        self.window.rootViewController.view.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [splashView removeFromSuperview];
+    }];
     
     //通知
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
