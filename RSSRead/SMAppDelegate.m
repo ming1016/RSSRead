@@ -11,7 +11,6 @@
 #import "SMViewController.h"
 #import "APService.h"
 #import "SMFeedParserWrapper.h"
-#import "SMMoreViewController.h"
 #import "UIColor+RSS.h"
 #import "SMBlurBackground.h"
 #import "EvernoteSDK.h"
@@ -276,12 +275,12 @@
         completionHandler(UIBackgroundFetchResultNewData);
         
         //显示未读数
-        SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
-        getModel.entityName = @"RSS";
-        getModel.predicate = [NSPredicate predicateWithFormat:@"isRead=0"];
-        NSArray *allRss = [self getFetchedRecords:getModel];
-        NSInteger allRssCount = allRss.count;
-        [UIApplication sharedApplication].applicationIconBadgeNumber = allRssCount;
+//        SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc]init];
+//        getModel.entityName = @"RSS";
+//        getModel.predicate = [NSPredicate predicateWithFormat:@"isRead=0"];
+//        NSArray *allRss = [self getFetchedRecords:getModel];
+//        NSInteger allRssCount = allRss.count;
+//        [UIApplication sharedApplication].applicationIconBadgeNumber = allRssCount;
     });
 }
 

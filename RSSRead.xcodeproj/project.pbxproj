@@ -54,8 +54,6 @@
 		D2E8FC2118C46F19005E8F2E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E8FC2018C46F19005E8F2E /* CoreData.framework */; };
 		D2EB1F2F18FA733C000C13D3 /* backgroundNavbar.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EB1F2E18FA733B000C13D3 /* backgroundNavbar.png */; };
 		D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */; };
-		D2EDF79418C5BD9500B0E990 /* SMMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */; };
-		D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */; };
 		D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */; };
 		D2EFDC0C19186C270057CB71 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EFDC0B19186C270057CB71 /* libPushSDK.a */; };
 		D2EFDC0E19186C370057CB71 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EFDC0D19186C370057CB71 /* libz.1.dylib */; };
@@ -183,10 +181,6 @@
 		D2EB1F2E18FA733B000C13D3 /* backgroundNavbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundNavbar.png; sourceTree = "<group>"; };
 		D2EDF78F18C5B22C00B0E990 /* SMUIKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUIKitHelper.h; sourceTree = "<group>"; };
 		D2EDF79018C5B22C00B0E990 /* SMUIKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUIKitHelper.m; sourceTree = "<group>"; };
-		D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMoreViewController.h; sourceTree = "<group>"; };
-		D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMoreViewController.m; sourceTree = "<group>"; };
-		D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMoreCell.h; sourceTree = "<group>"; };
-		D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMoreCell.m; sourceTree = "<group>"; };
 		D2EEB44218DAB6BE008175F5 /* SMGetFetchedRecordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGetFetchedRecordsModel.h; sourceTree = "<group>"; };
 		D2EEB44318DAB6BE008175F5 /* SMGetFetchedRecordsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGetFetchedRecordsModel.m; sourceTree = "<group>"; };
 		D2EFDC0A19186C270057CB71 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
@@ -389,17 +383,6 @@
 			name = icon;
 			sourceTree = "<group>";
 		};
-		D243520119863D5F00761D1C /* LeftMore */ = {
-			isa = PBXGroup;
-			children = (
-				D2EDF79218C5BD9500B0E990 /* SMMoreViewController.h */,
-				D2EDF79318C5BD9500B0E990 /* SMMoreViewController.m */,
-				D2EDF79618C5C92B00B0E990 /* SMMoreCell.h */,
-				D2EDF79718C5C92B00B0E990 /* SMMoreCell.m */,
-			);
-			name = LeftMore;
-			sourceTree = "<group>";
-		};
 		D243520219863DE500761D1C /* SimpleRSS */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,7 +515,6 @@
 				DEE9FE64192E73B400621576 /* SMAddRSS */,
 				DEE9FE38192C87B200621576 /* SMaboutRSS */,
 				D2F5F13719306B2B00321CBE /* Setting */,
-				D243520119863D5F00761D1C /* LeftMore */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -852,7 +834,6 @@
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
-				D2EDF79818C5C92B00B0E990 /* SMMoreCell.m in Sources */,
 				D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
@@ -867,7 +848,6 @@
 				DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
-				D2EDF79418C5BD9500B0E990 /* SMMoreViewController.m in Sources */,
 				D243520819863E5800761D1C /* SMSimpleAddRSSVC.m in Sources */,
 				D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */,
 				D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */,
