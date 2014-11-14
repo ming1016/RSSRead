@@ -88,7 +88,7 @@
     [_loadingView startAnimation];
     
     //界面
-    _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT) delegateAndDataSource:self];
+    _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT - QM_TABLEVIEW_ROWHEIGHT) delegateAndDataSource:self];
     [_tbView setBackgroundColor:[UIColor clearColor]];
     [_tbView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:_tbView];
