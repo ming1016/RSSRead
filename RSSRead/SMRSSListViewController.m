@@ -252,6 +252,7 @@
     SMDetailViewController *detailVC = [SMDetailViewController new];
     detailVC.delegate = self;
     [detailVC setRss:rss];
+    detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     
     SMRSSModel *rssModel = [SMRSSModel new];
