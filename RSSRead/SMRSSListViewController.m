@@ -94,10 +94,10 @@
         }
     }
     //加上此判断主要为了解决Detail详细页返回延时问题
-    if (_isNewVC) {
-        _isNewVC = NO;
+//    if (_isNewVC) {
+//        _isNewVC = NO;
         [self loadTableViewFromCoreData];
-    }
+  //  }
 }
 - (void)viewDidAppear:(BOOL)animated
 {

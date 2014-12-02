@@ -97,15 +97,19 @@
     favVC.isFav = YES;
     favVC.isNewVC = YES;
     UINavigationController *navFavVC = [[UINavigationController alloc]initWithRootViewController:favVC];
+    [navFavVC.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor rss_cyanColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
+    
     navFavVC.tabBarItem.title = @"收藏";
     navFavVC.tabBarItem.image = [UIImage imageNamed:@"icoFav"];
     
     //设置
     SMSettingViewController *smSettingVC = [[SMSettingViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *navSettingVC = [[UINavigationController alloc]initWithRootViewController:smSettingVC];
+    [navSettingVC.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor rss_cyanColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
     navSettingVC.tabBarItem.image = [UIImage imageNamed:@"icoSetting"];
     
     UITabBarController *tabBarC = [[UITabBarController alloc]initWithNibName:nil bundle:nil];
+    tabBarC.tabBar.tintColor =[UIColor rss_cyanColor];
     tabBarC.viewControllers = @[rootViewNav,navFavVC,navSettingVC];
     self.window.rootViewController = tabBarC;
     
