@@ -43,7 +43,7 @@
     _bottomBar = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SMDetailViewBottomBar class]) owner:nil options:nil] lastObject];
     _bottomBar.delegate = self;
     _bottomBar.bottom = self.view.bounds.size.height;
-
+    _bottomBar.width = self.view.bounds.size.width;
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _webView.height -= _bottomBar.height;
     [_webView setBackgroundColor:[UIColor yellowColor]];
