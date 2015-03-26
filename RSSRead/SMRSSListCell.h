@@ -10,10 +10,9 @@
 #import "RSS.h"
 #import <RMSwipeTableViewCell.h>
 @class SMRSSListCellMgr;
-@interface SMRSSListCell : RMSwipeTableViewCell
+@interface SMRSSListCell : UITableViewCell
 @property(nonatomic,strong)RSS *rss;
 @property(nonatomic,strong)SMRSSListCellMgr *cellMgr;
 @property(nonatomic,strong)NSString *subscribeTitle;
-
 
 @end

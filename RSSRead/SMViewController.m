@@ -37,7 +37,10 @@
 @property(nonatomic)BOOL isInited;
 @end
 
-@implementation SMViewController
+@implementation SMViewController {
+    UIRefreshControl *_refreshControl;
+    BOOL isAtTop;
+}
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -115,6 +118,8 @@
         self.navigationItem.leftBarButtonItem = _btRefreash;
     }
     
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -191,6 +196,7 @@
             }];
 
         });
+        
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{

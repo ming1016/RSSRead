@@ -19,7 +19,7 @@
 #import <MWFeedParser/MWFeedParser.h>
 #import "SMPreferences.h"
 
-@interface SMRSSListViewController ()<RMSwipeTableViewCellDelegate>
+@interface SMRSSListViewController ()
 @property(nonatomic,strong)NSMutableArray *rssArray;
 @property(nonatomic,strong)MWFeedParser *feedParser;
 @property(nonatomic,weak)MBProgressHUD *HUD;
@@ -52,6 +52,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //手势返回
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
+    recognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:recognizer];
     
     //init
     _rssArray = [NSMutableArray array];
@@ -238,7 +242,6 @@
         cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = _selectBgColor;
     }
-    cell.delegate = self;
     [cell setSubscribeTitle:_subscribeTitle];
     [cell setCellMgr:_cellMgrs[indexPath.row]];
     [cell setRss:_rssArray[indexPath.row]];
@@ -315,38 +318,6 @@
     
 }
 
-#pragma mark - swipTableViewCell
--(void)swipeTableViewCellWillResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
-    RSS *rss = _rssArray[indexPath.row];
-    SMRSSModel *model = [[SMRSSModel alloc] init];
-    
-    if (point.x >= CGRectGetHeight(swipeTableViewCell.frame)) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
-        //右拉
-        [model unFavRSS:rss];
-        [self unFav];
-    } else if (point.x < 0 && -point.x >= CGRectGetHeight(swipeTableViewCell.frame)) {
-        //左拉
-        swipeTableViewCell.shouldAnimateCellReset = NO;
- 
-        [model favRSS:rss];
-        [self faved];
-//        [model dislikeRSS:rss];
-//        [_rssArray removeObjectAtIndex:indexPath.row];
-//        [_cellMgrs removeObjectAtIndex:indexPath.row];
-//        
-//        [self.tableView beginUpdates];
-//        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//        [self.tableView endUpdates];
-        
-    }
-}
--(void)swipeTableViewCellDidResetState:(RMSwipeTableViewCell *)swipeTableViewCell fromPoint:(CGPoint)point animation:(RMSwipeTableViewCellAnimationType)animation velocity:(CGPoint)velocity {
 
-    if (point.x < 0 && -point.x > CGRectGetHeight(swipeTableViewCell.frame)) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForCell:swipeTableViewCell];
-    }
-}
 
 @end

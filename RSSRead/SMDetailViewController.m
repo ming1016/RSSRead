@@ -88,7 +88,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //手势返回
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(doBack)];
+    recognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:recognizer];
     // Do any additional setup after loading the view.
 }
 
@@ -121,7 +124,7 @@
 
 - (void)loadHTML
 {
-    NSString *filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"js.html"];
+//    NSString *filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"js.html"];
     NSString *cssFilePath;
     
     if([[SMPreferences sharedInstance] theme] == eAppThemeBlack) {
@@ -133,7 +136,8 @@
     }
     
     NSError *err=nil;
-    NSString *mTxt=[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+//    NSString *mTxt=[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&err];
+    NSString *mTxt= @"";
     NSString *cssString=[NSString stringWithContentsOfFile:cssFilePath encoding:NSUTF8StringEncoding error:&err];
     
     NSDateFormatter *formatter;
@@ -143,7 +147,6 @@
     NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\">%@</head><body><a class=\"title\" href=\"%@\">%@</a>\
                          <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>", cssString, _rss.link, _rss.title, _rss.author, publishDate, _showContent, mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
-    NSLog(@"%@",_showContent);
     
 }
 

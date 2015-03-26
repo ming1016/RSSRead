@@ -44,7 +44,6 @@
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
 }
 -(void)setUrl:(NSString *)url {
-    NSLog(@"dddd %@",url);
     _url = url;
 }
 

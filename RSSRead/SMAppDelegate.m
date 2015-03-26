@@ -21,6 +21,7 @@
 #import "SMFeedUpdateController.h"
 #import "SMBlurBackground.h"
 #import "SMSettingViewController.h"
+#import "Subscribes.h"
 
 @implementation SMAppDelegate
 

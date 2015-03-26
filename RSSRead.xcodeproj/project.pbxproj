@@ -21,13 +21,14 @@
 		CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7BF192E332D00C6D84C /* SMDetailViewBottomBar.m */; };
 		CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45E7C2192E375400C6D84C /* UIImage+Tint.m */; };
 		CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */; };
-		CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */; };
-		D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2041B1D18D824760037F18B /* SMAddRSSViewController.m */; };
 		D204F35D192CB5F400425808 /* bg7.png in Resources */ = {isa = PBXBuildFile; fileRef = D204F35C192CB5F400425808 /* bg7.png */; };
 		D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705B192D891E002A2236 /* HYCircleLoadingView.m */; };
 		D20C7060192D896D002A2236 /* QBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C705F192D896D002A2236 /* QBlurView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2102084193B23A100FCBC15 /* RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102083193B23A100FCBC15 /* RSS.m */; };
 		D2102087193B23A200FCBC15 /* Subscribes.m in Sources */ = {isa = PBXBuildFile; fileRef = D2102086193B23A200FCBC15 /* Subscribes.m */; };
+		D215573C1AC3960A00D7DC57 /* SMAddRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D215573B1AC3960A00D7DC57 /* SMAddRSSViewController.m */; };
+		D215573E1AC39C5C00D7DC57 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D215573D1AC39C5C00D7DC57 /* Launch Screen.xib */; };
+		D21557441AC3AD8400D7DC57 /* LaunchScreenForNib.png in Resources */ = {isa = PBXBuildFile; fileRef = D21557431AC3AD8400D7DC57 /* LaunchScreenForNib.png */; };
 		D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21D4834192F7248007003C8 /* RSS.xcdatamodeld */; };
 		D24351FE1986361400761D1C /* icoSetting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24351FB1986361400761D1C /* icoSetting@2x.png */; };
 		D24351FF1986361400761D1C /* icoHome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24351FC1986361400761D1C /* icoHome@2x.png */; };
@@ -77,9 +78,7 @@
 		D2FB786918E3C4BB007BD413 /* js.html in Resources */ = {isa = PBXBuildFile; fileRef = D2FB786818E3C4BB007BD413 /* js.html */; };
 		D2FF7288193622F00062F839 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2FF7287193622F00062F839 /* twitter@2x.png */; };
 		D2FF728B193629EC0062F839 /* SMAboutWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FF728A193629EC0062F839 /* SMAboutWebViewController.m */; };
-		DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */; };
 		DE6576F7192BCA1500017996 /* addRSS_toolbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */; };
-		DE948399192F20C300EA431C /* SMTouchsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE948398192F20C300EA431C /* SMTouchsView.m */; };
 		DE9483A2192F62A100EA431C /* SMShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9483A1192F62A100EA431C /* SMShareViewController.m */; };
 		DEE9FE3D192C87DE00621576 /* SMRSSaboutgroup.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3A192C87DE00621576 /* SMRSSaboutgroup.m */; };
 		DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE3C192C87DE00621576 /* SMRSSaboutModel.m */; };
@@ -87,9 +86,6 @@
 		DEE9FE43192C880700621576 /* github@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE41192C880700621576 /* github@2x.png */; };
 		DEE9FE44192C880700621576 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE9FE42192C880700621576 /* weibo@2x.png */; };
 		DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE47192CAF6000621576 /* SMBlurBackground.m */; };
-		DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */; };
-		DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */; };
-		DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +106,8 @@
 		1FC13C621938AAFE002EBB94 /* SMRSSFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSFetchOperation.m; sourceTree = "<group>"; };
 		1FC13C66193ADB3F002EBB94 /* SMFeedUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedUpdateController.h; sourceTree = "<group>"; };
 		1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedUpdateController.m; sourceTree = "<group>"; };
-		6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6A35EDD268A630E0A0820987 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A922D2EF818DCC2BAED72C1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
 		CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSListCellMgr.m; sourceTree = "<group>"; };
 		CB09E3DB1930798C000D7597 /* css.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = css.html; sourceTree = "<group>"; };
@@ -130,9 +127,6 @@
 		CB45E7C5192E4C6E00C6D84C /* SMScreenShotMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenShotMgr.m; sourceTree = "<group>"; };
 		CB502757192FA39D00EB4DD1 /* MBProgressHUD+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Ext.h"; sourceTree = "<group>"; };
 		CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Ext.m"; sourceTree = "<group>"; };
-		CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddRssSoucesCell.xib; sourceTree = "<group>"; };
-		D2041B1C18D824760037F18B /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
-		D2041B1D18D824760037F18B /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
 		D204F35C192CB5F400425808 /* bg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg7.png; sourceTree = "<group>"; };
 		D20C705A192D891E002A2236 /* HYCircleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCircleLoadingView.h; sourceTree = "<group>"; };
 		D20C705B192D891E002A2236 /* HYCircleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCircleLoadingView.m; sourceTree = "<group>"; };
@@ -143,6 +137,10 @@
 		D2102083193B23A100FCBC15 /* RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSS.m; sourceTree = "<group>"; };
 		D2102085193B23A200FCBC15 /* Subscribes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscribes.h; sourceTree = "<group>"; };
 		D2102086193B23A200FCBC15 /* Subscribes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscribes.m; sourceTree = "<group>"; };
+		D215573A1AC3960A00D7DC57 /* SMAddRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSViewController.h; sourceTree = "<group>"; };
+		D215573B1AC3960A00D7DC57 /* SMAddRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSViewController.m; sourceTree = "<group>"; };
+		D215573D1AC39C5C00D7DC57 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		D21557431AC3AD8400D7DC57 /* LaunchScreenForNib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreenForNib.png; sourceTree = "<group>"; };
 		D21D4835192F7248007003C8 /* RSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS.xcdatamodel; sourceTree = "<group>"; };
 		D21D483D192F7321007003C8 /* RSS 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSS 2.xcdatamodel"; sourceTree = "<group>"; };
 		D24351FB1986361400761D1C /* icoSetting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoSetting@2x.png"; sourceTree = "<group>"; };
@@ -210,11 +208,7 @@
 		D2FF7287193622F00062F839 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
 		D2FF7289193629EC0062F839 /* SMAboutWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutWebViewController.h; sourceTree = "<group>"; };
 		D2FF728A193629EC0062F839 /* SMAboutWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutWebViewController.m; sourceTree = "<group>"; };
-		DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRSSToolbar.h; sourceTree = "<group>"; };
-		DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRSSToolbar.m; sourceTree = "<group>"; };
 		DE6576F6192BCA1500017996 /* addRSS_toolbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRSS_toolbar_background@2x.png"; sourceTree = "<group>"; };
-		DE948397192F20C300EA431C /* SMTouchsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTouchsView.h; sourceTree = "<group>"; };
-		DE948398192F20C300EA431C /* SMTouchsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTouchsView.m; sourceTree = "<group>"; };
 		DE9483A0192F62A100EA431C /* SMShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMShareViewController.h; sourceTree = "<group>"; };
 		DE9483A1192F62A100EA431C /* SMShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMShareViewController.m; sourceTree = "<group>"; };
 		DEE9FE39192C87DE00621576 /* SMRSSaboutgroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSaboutgroup.h; sourceTree = "<group>"; };
@@ -226,12 +220,6 @@
 		DEE9FE42192C880700621576 /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
 		DEE9FE46192CAF6000621576 /* SMBlurBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBlurBackground.h; sourceTree = "<group>"; };
 		DEE9FE47192CAF6000621576 /* SMBlurBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBlurBackground.m; sourceTree = "<group>"; };
-		DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSearchBar.h; sourceTree = "<group>"; };
-		DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSearchBar.m; sourceTree = "<group>"; };
-		DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSourceModel.h; sourceTree = "<group>"; };
-		DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSourceModel.m; sourceTree = "<group>"; };
-		DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddRssSoucesCell.h; sourceTree = "<group>"; };
-		DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddRssSoucesCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +284,8 @@
 			children = (
 				D2E8FC0018C46B5A005E8F2E /* SMViewController.h */,
 				D2E8FC0118C46B5A005E8F2E /* SMViewController.m */,
+				D215573A1AC3960A00D7DC57 /* SMAddRSSViewController.h */,
+				D215573B1AC3960A00D7DC57 /* SMAddRSSViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -327,6 +317,15 @@
 				1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */,
 			);
 			name = SMFeedUpdateController;
+			sourceTree = "<group>";
+		};
+		436D16AA494F84809AB2173E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A922D2EF818DCC2BAED72C1C /* Pods.debug.xcconfig */,
+				6A35EDD268A630E0A0820987 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		CB3DA4BA192DD27200AC52D6 /* Category */ = {
@@ -410,7 +409,7 @@
 				D2E8FC1018C46B5A005E8F2E /* RSSReadTests */,
 				D2E8FBEA18C46B5A005E8F2E /* Frameworks */,
 				D2E8FBE918C46B5A005E8F2E /* Products */,
-				6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */,
+				436D16AA494F84809AB2173E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -471,6 +470,7 @@
 				D2E8FBF918C46B5A005E8F2E /* RSSRead-Prefix.pch */,
 				D2EFE4BC191782CB009F4266 /* PushConfig.plist */,
 				D2E078BC19278D9000ABF6EB /* RecommendFeedList.plist */,
+				D215573D1AC39C5C00D7DC57 /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -512,7 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				D243520219863DE500761D1C /* SimpleRSS */,
-				DEE9FE64192E73B400621576 /* SMAddRSS */,
 				DEE9FE38192C87B200621576 /* SMaboutRSS */,
 				D2F5F13719306B2B00321CBE /* Setting */,
 			);
@@ -531,6 +530,7 @@
 		D2F75F6418D97EB400ED44A3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				D21557431AC3AD8400D7DC57 /* LaunchScreenForNib.png */,
 				D24351FA1986360300761D1C /* icon */,
 				DE6576F5192BC98900017996 /* addRSS */,
 				D2F79E18192B3EBE000727D4 /* background */,
@@ -644,26 +644,6 @@
 			name = source;
 			sourceTree = "<group>";
 		};
-		DEE9FE64192E73B400621576 /* SMAddRSS */ = {
-			isa = PBXGroup;
-			children = (
-				DEE9FE53192E1E3B00621576 /* SMAddRssSearchBar.h */,
-				DEE9FE54192E1E3B00621576 /* SMAddRssSearchBar.m */,
-				DEE9FE60192E5DBF00621576 /* SMAddRssSoucesCell.h */,
-				DEE9FE61192E5DBF00621576 /* SMAddRssSoucesCell.m */,
-				CBAA3349192F715600098322 /* SMAddRssSoucesCell.xib */,
-				DEE9FE5A192E2E6D00621576 /* SMAddRssSourceModel.h */,
-				DEE9FE5B192E2E6D00621576 /* SMAddRssSourceModel.m */,
-				DE6576F2192BC58400017996 /* SMAddRSSToolbar.h */,
-				DE6576F3192BC58400017996 /* SMAddRSSToolbar.m */,
-				D2041B1C18D824760037F18B /* SMAddRSSViewController.h */,
-				D2041B1D18D824760037F18B /* SMAddRSSViewController.m */,
-				DE948397192F20C300EA431C /* SMTouchsView.h */,
-				DE948398192F20C300EA431C /* SMTouchsView.m */,
-			);
-			name = SMAddRSS;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -751,14 +731,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21557441AC3AD8400D7DC57 /* LaunchScreenForNib.png in Resources */,
 				D2E078BD19278D9000ABF6EB /* RecommendFeedList.plist in Resources */,
 				D2F75F6618D97EC600ED44A3 /* news.png in Resources */,
+				D215573E1AC39C5C00D7DC57 /* Launch Screen.xib in Resources */,
 				D2F79E23192B4682000727D4 /* bg1.png in Resources */,
 				D2F79E27192B4682000727D4 /* bg5.png in Resources */,
 				D2EFE4BD191782CB009F4266 /* PushConfig.plist in Resources */,
 				D2E8FC0418C46B5A005E8F2E /* Images.xcassets in Resources */,
 				D24352001986361400761D1C /* icoFav@2x.png in Resources */,
-				CBAA334A192F715600098322 /* SMAddRssSoucesCell.xib in Resources */,
 				D2E8FBF618C46B5A005E8F2E /* InfoPlist.strings in Resources */,
 				DEE9FE40192C87FB00621576 /* aboutRSS.plist in Resources */,
 				D2FF7288193622F00062F839 /* twitter@2x.png in Resources */,
@@ -819,7 +800,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -834,18 +815,15 @@
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
+				D215573C1AC3960A00D7DC57 /* SMAddRSSViewController.m in Sources */,
 				D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */,
 				1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */,
 				D20C705C192D891E002A2236 /* HYCircleLoadingView.m in Sources */,
-				D2041B1E18D824760037F18B /* SMAddRSSViewController.m in Sources */,
-				DEE9FE5C192E2E6D00621576 /* SMAddRssSourceModel.m in Sources */,
 				D2DDA05F18DC25E1005394E4 /* SMDetailViewController.m in Sources */,
 				CB45E7C3192E375400C6D84C /* UIImage+Tint.m in Sources */,
 				D20C7060192D896D002A2236 /* QBlurView.m in Sources */,
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,
 				1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */,
-				DE6576F4192BC58400017996 /* SMAddRSSToolbar.m in Sources */,
-				DEE9FE55192E1E3B00621576 /* SMAddRssSearchBar.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
 				D243520819863E5800761D1C /* SMSimpleAddRSSVC.m in Sources */,
@@ -858,14 +836,12 @@
 				CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
 				D2102087193B23A200FCBC15 /* Subscribes.m in Sources */,
-				DE948399192F20C300EA431C /* SMTouchsView.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2102084193B23A100FCBC15 /* RSS.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
 				CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */,
 				D2FF728B193629EC0062F839 /* SMAboutWebViewController.m in Sources */,
-				DEE9FE62192E5DBF00621576 /* SMAddRssSoucesCell.m in Sources */,
 				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
 				CB45E7C0192E332D00C6D84C /* SMDetailViewBottomBar.m in Sources */,
 			);
@@ -981,7 +957,7 @@
 		};
 		D2E8FC1B18C46B5A005E8F2E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */;
+			baseConfigurationReference = A922D2EF818DCC2BAED72C1C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1004,7 +980,7 @@
 		};
 		D2E8FC1C18C46B5A005E8F2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DFFD16D7EA845ACAD861F78 /* Pods.xcconfig */;
+			baseConfigurationReference = 6A35EDD268A630E0A0820987 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
