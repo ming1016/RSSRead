@@ -194,22 +194,29 @@
 
 - (void)bottomBarShareButtonTouched:(id)sender
 {
-#warning TODO 分享到Evernote
     //SMShareViewController *share = [[SMShareViewController alloc] init];
    // [self presentViewController:share animated:YES completion:nil];
     //
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    NSString * defaultStr = @"<RSSRead>";
-    NSString * title = [defaultStr stringByAppendingString:_rss.title];
-    NSString * content = _showContent;
-    if(!session.isAuthenticated)
-    {
-        [self oauthWithTile:title andContent:content];
-    }
-    else
-    {
-        [self makeNoteWithTitle:title withBody:content withResources:nil    withParentBotebook:nil];
-    }
+//    EvernoteSession *session = [EvernoteSession sharedSession];
+//    NSString * defaultStr = @"<RSSRead>";
+//    NSString * title = [defaultStr stringByAppendingString:_rss.title];
+//    NSString * content = _showContent;
+//    if(!session.isAuthenticated)
+//    {
+//        [self oauthWithTile:title andContent:content];
+//    }
+//    else
+//    {
+//        [self makeNoteWithTitle:title withBody:content withResources:nil    withParentBotebook:nil];
+//    }
+    
+    NSURL *url = [[NSURL alloc]initWithString:_rss.link];
+    NSMutableArray *ar = [[NSMutableArray alloc]initWithCapacity:2];
+    NSString *title = [NSString stringWithFormat:@"<已阅>%@",_rss.title];
+    [ar addObject:title];
+    [ar addObject:url];
+    UIActivityViewController *act = [[UIActivityViewController alloc]initWithActivityItems:ar applicationActivities:nil];
+    [self.navigationController presentViewController:act animated:true completion:nil];
 }
 
 

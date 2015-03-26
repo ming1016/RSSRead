@@ -38,6 +38,8 @@
 
 -(void)doBack {
     [self.delegate updateSubscribeList];
+    SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+    [rssModel markAllAsRead:_subscribeUrl];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (id)initWithStyle:(UITableViewStyle)style

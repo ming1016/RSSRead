@@ -34,6 +34,46 @@
         </dict>
         <dict>
             <key>title</key>
+            <string>36氪，专注互联网创业</string>
+            <key>link</key>
+            <string>http://www.36kr.com/</string>
+            <key>summary</key>
+            <string>36氪，专注互联网创业</string>
+            <key>url</key>
+            <string>http://www.36kr.com/feed</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>数字尾巴-分享美好数字生活</string>
+            <key>link</key>
+            <string>http://www.dgtle.com/</string>
+            <key>summary</key>
+            <string>数字尾巴-分享美好数字生活</string>
+            <key>url</key>
+            <string>http://www.dgtle.com/rss/dgtle.xml</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>爱范儿</string>
+            <key>link</key>
+            <string>http://www.ifanr.com/</string>
+            <key>summary</key>
+            <string>爱范儿</string>
+            <key>url</key>
+            <string>http://www.ifanr.com/feed</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>月光博客</string>
+            <key>link</key>
+            <string>http://www.williamlong.info/</string>
+            <key>summary</key>
+            <string>月光博客</string>
+            <key>url</key>
+            <string>http://feed.williamlong.info/</string>
+        </dict>
+        <dict>
+            <key>title</key>
             <string>果壳网</string>
             <key>link</key>
             <string>http://guokr.com</string>
@@ -41,26 +81,6 @@
             <string>科技有意思</string>
             <key>url</key>
             <string>http://www.guokr.com/rss/</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>科技--华尔街日报</string>
-            <key>link</key>
-            <string>http://cn.wsj.com/gb/tech.asp</string>
-            <key>summary</key>
-            <string>《华尔街日报》中文版络版最新科技要闻</string>
-            <key>url</key>
-            <string>http://cn.wsj.com/gb/rsstech.xml</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>V2EX</string>
-            <key>link</key>
-            <string>http://www.v2ex.com/</string>
-            <key>summary</key>
-            <string>创意工作者们的社区</string>
-            <key>url</key>
-            <string>http://v2ex.com/index.xml</string>
         </dict>
         <dict>
             <key>title</key>
@@ -91,16 +111,6 @@
             <string>Design Inspiration &amp; Tutorials</string>
             <key>url</key>
             <string>http://abduzeedo.com/rss.xml</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Mashable</string>
-            <key>link</key>
-            <string>http://mashable.com/</string>
-            <key>summary</key>
-            <string>Mashable is a leading source for news</string>
-            <key>url</key>
-            <string>http://feeds.mashable.com/Mashable</string>
         </dict>
     </array>
 </plist>

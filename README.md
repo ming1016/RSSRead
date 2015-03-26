@@ -2,7 +2,6 @@
 “已阅”是一个iOS设备上的RSS/Atom阅读器。 
 
 ##已有主要功能
-* Add a new feed with powerful search
 * Offline feed read
 * Star the content you like
 * Mark as read and mark all as read
@@ -10,13 +9,10 @@
 * 文章分享功能
 
 ##TODO
-* 期待同好一起完善
-* 关联Twitter内容和Weibo内容
-* feedly等rss服务的接口处理
-* InoReader的api处理，可在设置里加入第三方帐号绑定功能
+* SMDetailViewController增加一个进入原文查看的快捷入口
+* 解决SMDetailViewController页面的WebView如果图片过大能够自动适应屏幕页面的宽度
+* 印象笔记分享图标替换成分享的图标
 * UI设计优化
-* 分享到微信，微博等
-* coredata需要组织一下
 * 整理RSS推荐源，添加RSS时可以进行分类选择
 
 ##项目主要贡献者

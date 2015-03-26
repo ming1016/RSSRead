@@ -37,8 +37,8 @@ static SMFeedUpdateController *sharedInstance;
 
 - (instancetype)init{
     if(self = [super init]){
-        //默认每30秒检查一次更新
-        _updateCheckTimeInterval = 30;
+        //默认每60秒检查一次更新
+        _updateCheckTimeInterval = 60;
         
         _dispatchQueue = dispatch_queue_create("SM parser queue", DISPATCH_QUEUE_SERIAL);
         _dispatchSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _dispatchQueue);
