@@ -37,8 +37,8 @@ static SMFeedUpdateController *sharedInstance;
 
 - (instancetype)init{
     if(self = [super init]){
-        //默认每60秒检查一次更新
-        _updateCheckTimeInterval = 60;
+        //默认每600秒检查一次更新
+        _updateCheckTimeInterval = 600;
         
         _dispatchQueue = dispatch_queue_create("SM parser queue", DISPATCH_QUEUE_SERIAL);
         _dispatchSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _dispatchQueue);
@@ -87,7 +87,7 @@ static SMFeedUpdateController *sharedInstance;
             subscribe.createDate = [NSDate date];
             subscribe.total = @0;
             subscribe.lastUpdateTime = [NSDate dateWithTimeIntervalSince1970:0];
-            subscribe.updateTimeInterval = @60;//默认1分钟更新一次
+            subscribe.updateTimeInterval = @600;//默认1分钟更新一次
             [APP_DELEGATE.managedObjectContext save:&error];
             if(!error){
                 [allSurscribes addObject:subscribe];
@@ -97,7 +97,7 @@ static SMFeedUpdateController *sharedInstance;
         }
         _sourceList = allSurscribes;
     }
-        
+    
     [_sourceList enumerateObjectsUsingBlock:^(Subscribes *subscribe, NSUInteger idx, BOOL *stop) {
 
         //检查上次更新间隔
@@ -110,7 +110,7 @@ static SMFeedUpdateController *sharedInstance;
         NSTimeInterval intUpdate = [sourceUpdatInterval doubleValue];
         
         if(-[lastUpdateDate timeIntervalSinceNow]>intUpdate){
-            [SMFeedParserWrapper parseUrl:[NSURL URLWithString:subscribe.url] timeout:10 completion:^(NSArray *items) {
+            [SMFeedParserWrapper parseUrl:[NSURL URLWithString:subscribe.url] timeout:30 completion:^(NSArray *items) {
                 if(items && items.count){
                     SMRSSModel *rssModel = [[SMRSSModel alloc]init];
                     rssModel.smRSSModelDelegate = self;

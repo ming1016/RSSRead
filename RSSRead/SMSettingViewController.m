@@ -58,11 +58,11 @@
 //    __typeof (&*self) __weak weakSelf = self;
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"通用"];
     [self.manager addSection:section];
-    _isInitWithFetchRSS = [REBoolItem itemWithTitle:@"启动时是否自动同步" value:[[SMPreferences sharedInstance] isInitWithFetchRSS] switchValueChangeHandler:^(REBoolItem *item){
-        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:item.value];
-        [[SMPreferences sharedInstance] synchronize];
-    }];
-    [section addItem:_isInitWithFetchRSS];
+//    _isInitWithFetchRSS = [REBoolItem itemWithTitle:@"启动时是否自动同步" value:[[SMPreferences sharedInstance] isInitWithFetchRSS] switchValueChangeHandler:^(REBoolItem *item){
+//        [[SMPreferences sharedInstance] setIsInitWithFetchRSS:item.value];
+//        [[SMPreferences sharedInstance] synchronize];
+//    }];
+//    [section addItem:_isInitWithFetchRSS];
     
     _choseTheme = [RESegmentedItem itemWithTitle:@"主题模式" segmentedControlTitles:@[@"白天",@"夜晚"] value:[[SMPreferences sharedInstance] theme] switchValueChangeHandler:^(RESegmentedItem *item) {
         [[SMPreferences sharedInstance] setTheme:item.value];
@@ -113,21 +113,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
+
 
 
 

@@ -11,6 +11,7 @@
 ##TODO
 * SMDetailViewController增加一个进入原文查看的快捷入口
 * 解决SMDetailViewController页面的WebView如果图片过大能够自动适应屏幕页面的宽度
+* SMDetailViewController点击标题后出现正在读取的进度条
 * 印象笔记分享图标替换成分享的图标
 * UI设计优化
 * 整理RSS推荐源，添加RSS时可以进行分类选择

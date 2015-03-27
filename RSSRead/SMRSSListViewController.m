@@ -96,7 +96,7 @@
         if(_isUnsubscribed) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加该源" style:UIBarButtonItemStylePlain target:self action:@selector(addThisRSS)];
         } else {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"全部标记已读" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllRSS)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"已阅" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllRSS)];
         }
     }
     //加上此判断主要为了解决Detail详细页返回延时问题

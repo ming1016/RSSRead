@@ -41,8 +41,8 @@ const NSInteger kRSSListCellDateMarginTop = 6;
         _lbSummary = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbSummary];
         
-        _lbSource = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
-        [self.contentView addSubview:_lbSource];
+//        _lbSource = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
+//        [self.contentView addSubview:_lbSource];
         
         _lbDate = [SMUIKitHelper labelShadowWithRect:CGRectZero text:nil textColor:LIST_LIGHT_COLOR fontSize:LIST_SMALL_FONT];
         [self.contentView addSubview:_lbDate];
@@ -53,7 +53,7 @@ const NSInteger kRSSListCellDateMarginTop = 6;
 
 -(void)setRss:(RSS *)rss {
     [_lbTitle setText:rss.title];
-    [_lbSource setText:_subscribeTitle];
+//    [_lbSource setText:_subscribeTitle];
     [_lbDate setText:[NSString stringWithFormat:@"[%@]",[_formatter stringFromDate:rss.date]]];
     if ([rss.isFav isEqual:@1]) {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR];
