@@ -10,9 +10,9 @@
 #import "RSS.h"
 #import "SMUIKitHelper.h"
 
-const NSInteger kRSSListCellMarginLeft = 21;
-const NSInteger kRSSListCellPaddingTop = 9;
-const NSInteger kRSSListCellDateMarginTop = 6;
+//const NSInteger kRSSListCellMarginLeft = 21;
+//const NSInteger kRSSListCellPaddingTop = 9;
+//const NSInteger kRSSListCellDateMarginTop = 6;
 
 @implementation SMRSSListCellMgr{
 }
