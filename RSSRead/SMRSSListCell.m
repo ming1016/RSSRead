@@ -54,7 +54,9 @@ const NSInteger kRSSListCellDateMarginTop = 6;
 -(void)setRss:(RSS *)rss {
     [_lbTitle setText:rss.title];
 //    [_lbSource setText:_subscribeTitle];
-    [_lbDate setText:[NSString stringWithFormat:@"[%@]",[_formatter stringFromDate:rss.date]]];
+    if (rss.date) {
+        [_lbDate setText:[NSString stringWithFormat:@"[%@]",[_formatter stringFromDate:rss.date]]];
+    }
     if ([rss.isFav isEqual:@1]) {
         _lbTitle.textColor = [SMUIKitHelper colorWithHexString:LIST_YELLOW_COLOR];
     } else if([rss.isRead  isEqual: @1]) {
@@ -91,6 +93,8 @@ const NSInteger kRSSListCellDateMarginTop = 6;
         rect.size = fitSize;
         //        rect.origin.x = SCREEN_WIDTH - fitSize.width - 11;
         _lbDate.frame = rect;
+    } else {
+        fitSize.width = -2;
     }
     
     //简介
