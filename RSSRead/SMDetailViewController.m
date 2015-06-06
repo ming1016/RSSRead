@@ -144,6 +144,9 @@
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM.dd HH:mm"];
     NSString *publishDate = [formatter stringFromDate:_rss.date];
+    if (!publishDate) {
+        publishDate = @"未知时间";
+    }
     NSString *htmlStr = [NSString stringWithFormat:@"<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width initial-scale=1.0\">%@</head><body><a class=\"title\" href=\"%@\">%@</a>\
                          <div class=\"diver\"></div><p style=\"text-align:left;font-size:9pt;margin-left: 14px;margin-top: 10px;margin-bottom: 10px;color:#CCCCCC\">%@ 发表于 %@</p><div class=\"content\">%@</div>%@</body></html>", cssString, _rss.link, _rss.title, _rss.author, publishDate, _showContent, mTxt];
     [_webView loadHTMLString:htmlStr baseURL:nil];
