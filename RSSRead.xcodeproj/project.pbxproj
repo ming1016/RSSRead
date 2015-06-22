@@ -11,6 +11,7 @@
 		1F983C981927708B00EBD91B /* SMFeedParserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F983C971927708B00EBD91B /* SMFeedParserWrapper.m */; };
 		1FC13C631938AAFE002EBB94 /* SMRSSFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13C621938AAFE002EBB94 /* SMRSSFetchOperation.m */; };
 		1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */; };
+		3A1A8DCB1B37C3F200B06B97 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1A8DCA1B37C3F200B06B97 /* UIViewAdditions.m */; };
 		CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */; };
 		CB09E3DC1930798C000D7597 /* css.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DB1930798C000D7597 /* css.html */; };
 		CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DD19307BC5000D7597 /* css_dark.html */; };
@@ -107,6 +108,8 @@
 		1FC13C66193ADB3F002EBB94 /* SMFeedUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedUpdateController.h; sourceTree = "<group>"; };
 		1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedUpdateController.m; sourceTree = "<group>"; };
 		3A1A8DC81B37B1AE00B06B97 /* SynthesizeSingletonForArc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingletonForArc.h; sourceTree = "<group>"; };
+		3A1A8DC91B37C3F200B06B97 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		3A1A8DCA1B37C3F200B06B97 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		6A35EDD268A630E0A0820987 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A922D2EF818DCC2BAED72C1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 				CB45E7C2192E375400C6D84C /* UIImage+Tint.m */,
 				CB502757192FA39D00EB4DD1 /* MBProgressHUD+Ext.h */,
 				CB502758192FA39D00EB4DD1 /* MBProgressHUD+Ext.m */,
+				3A1A8DC91B37C3F200B06B97 /* UIViewAdditions.h */,
+				3A1A8DCA1B37C3F200B06B97 /* UIViewAdditions.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -828,6 +833,7 @@
 				1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
+				3A1A8DCB1B37C3F200B06B97 /* UIViewAdditions.m in Sources */,
 				D243520819863E5800761D1C /* SMSimpleAddRSSVC.m in Sources */,
 				D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */,
 				D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */,
