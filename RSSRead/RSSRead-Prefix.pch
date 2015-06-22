@@ -18,10 +18,15 @@
     #import "UIColor+RSS.h"
     #import "UIImage+Tint.h"
     #import "SMAppDelegate.h"
+    #import "SynthesizeSingletonForArc.h"
 
 //在此定义你用到的宏
 #define APP_DELEGATE ((SMAppDelegate *)([[UIApplication sharedApplication] delegate]))
 
 #endif
+
+
+
+
 
 

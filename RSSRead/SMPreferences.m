@@ -9,6 +9,7 @@
 #import "SMPreferences.h"
 
 @implementation SMPreferences
+ARC_SYNTHESIZE_SINGLETON_FOR_CLASS(SMPreferences)
 @dynamic status;
 @dynamic theme;
 @dynamic isInitWithFetchRSS;

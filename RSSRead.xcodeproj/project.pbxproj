@@ -106,6 +106,7 @@
 		1FC13C621938AAFE002EBB94 /* SMRSSFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSFetchOperation.m; sourceTree = "<group>"; };
 		1FC13C66193ADB3F002EBB94 /* SMFeedUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFeedUpdateController.h; sourceTree = "<group>"; };
 		1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFeedUpdateController.m; sourceTree = "<group>"; };
+		3A1A8DC81B37B1AE00B06B97 /* SynthesizeSingletonForArc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingletonForArc.h; sourceTree = "<group>"; };
 		6A35EDD268A630E0A0820987 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A922D2EF818DCC2BAED72C1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
@@ -464,6 +465,7 @@
 				D2F75F6418D97EB400ED44A3 /* Image */,
 				D2E8FBFA18C46B5A005E8F2E /* SMAppDelegate.h */,
 				D2E8FBFB18C46B5A005E8F2E /* SMAppDelegate.m */,
+				3A1A8DC81B37B1AE00B06B97 /* SynthesizeSingletonForArc.h */,
 				D2E8FBF318C46B5A005E8F2E /* RSSRead-Info.plist */,
 				D2E8FBF418C46B5A005E8F2E /* InfoPlist.strings */,
 				D2E8FBF718C46B5A005E8F2E /* main.m */,

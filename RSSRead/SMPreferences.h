@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, EAppTheme) {
 };
 
 @interface SMPreferences : PAPreferences
+ARC_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(PAPreferences)
 @property (nonatomic, assign) EAppStatus status;
 @property (nonatomic, assign) EAppTheme theme; //主题
 @property (nonatomic, assign) BOOL isInitWithFetchRSS; //启动时是否自动同步
