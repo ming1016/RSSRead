@@ -14,27 +14,35 @@
 #import "SMAppDelegate.h"
 #import "SMSubscribeCell.h"
 #import "MBProgressHUD.h"
-#import "HYCircleLoadingView.h"
 #import "SMBlurBackground.h"
 #import "UIColor+RSS.h"
 #import "SMPreferences.h"
 
+#import "SMListViewController.h"
+#import "Masonry.h"
+#import "SMSubscribeCellView.h"
+#import "SMSubscribeCellViewModel.h"
+
 @interface SMViewController ()<UINavigationControllerDelegate>
 
-@property(nonatomic,weak)NSManagedObjectContext *managedObjectContext;
-@property(nonatomic,strong)NSDateFormatter *dateFormatter;
-@property(nonatomic,strong)RSS *rss;
-@property(nonatomic,strong)MWFeedInfo *feedInfo;
+@property (nonatomic, weak) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) RSS *rss;
+@property (nonatomic, strong) MWFeedInfo *feedInfo;
 
-@property(nonatomic,strong)UITableView *tbView;
-@property(nonatomic,strong)NSMutableArray *allSurscribes;
-@property(nonatomic,strong)MBProgressHUD *hud;
-@property(nonatomic,strong)HYCircleLoadingView *loadingView;
-@property(nonatomic,strong)AFHTTPRequestOperationManager *afManager;
-@property(nonatomic,strong)QBlurView *blurView;
-@property(nonatomic,strong)UIBarButtonItem *loadingItem;
-@property(nonatomic,strong)UIBarButtonItem *btRefreash;
-@property(nonatomic)BOOL isInited;
+@property (nonatomic, strong) UITableView *tbView;
+@property (nonatomic, strong) SMListViewController *listVC;
+@property (nonatomic, strong) NSMutableArray *allSurscribes;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *afManager;
+@property (nonatomic, strong) QBlurView *blurView;
+@property (nonatomic, strong) UIBarButtonItem *loadingItem;
+@property (nonatomic, strong) UIBarButtonItem *btRefreash;
+@property (nonatomic) BOOL isInited;
+@end
+
+@interface SMViewController()<SMTableViewDelegate>
+
 @end
 
 @implementation SMViewController {
@@ -42,6 +50,7 @@
     BOOL isAtTop;
 }
 
+#pragma mark - life cycle
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -49,11 +58,9 @@
     }
     return self;
 }
-
 -(void)doBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 -(void)loadView {
     [super loadView];
     UISwipeGestureRecognizer *recognizer;
@@ -62,9 +69,7 @@
     [[self view]addGestureRecognizer:recognizer];
     recognizer = nil;
 }
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // 设置title view
@@ -80,30 +85,25 @@
     //更多按钮
     self.view.backgroundColor = [SMUIKitHelper colorWithHexString:COLOR_BACKGROUND];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addNewRSS)];
-    //读取中的hud
-    _loadingView = [[HYCircleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 23, 23)];
-    _loadingView.lineColor = [UIColor rss_cyanColor];
-    _loadingItem = [[UIBarButtonItem alloc]initWithCustomView:_loadingView];
-    //刷新
-    _btRefreash = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(fetchRss)];
-    
-    self.navigationItem.leftBarButtonItem = _loadingItem;
-    [_loadingView startAnimation];
     
     //界面
     _tbView = [SMUIKitHelper tableViewWithRect:CGRectMake(0, NAVBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARHEIGHT - QM_TABLEVIEW_ROWHEIGHT) delegateAndDataSource:self];
     [_tbView setBackgroundColor:[UIColor clearColor]];
     [_tbView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.view addSubview:_tbView];
+//    [self.view addSubview:_tbView];
+    [self.view addSubview:self.listVC.listView];
+    [self.listVC.listView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuide);
+        make.left.equalTo(self.view);
+        make.width.equalTo(self.view);
+        make.bottom.equalTo(self.mas_bottomLayoutGuide);
+    }];
     
     //初始化
     _allSurscribes = [NSMutableArray array];
     
     //Core Data
     _managedObjectContext = APP_DELEGATE.managedObjectContext;
-    
-    
-    //Using more fashion hud by HYCircleLoadingView
     
     //Check the net isWorking
     _afManager = [AFHTTPRequestOperationManager manager];
@@ -118,22 +118,13 @@
         self.navigationItem.leftBarButtonItem = _btRefreash;
     }
     
-    
-    
-    
-    
 }
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self getAllSubscribeSources];
 }
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//}
-
+#pragma mark - Event
 -(void)getAllSubscribeSources {
     //查看所有的订阅源
     SMGetFetchedRecordsModel *getModel = [[SMGetFetchedRecordsModel alloc] init];
@@ -166,16 +157,11 @@
             }
         }
     }
-    [_tbView reloadData];
+//    [_tbView reloadData];
+    [self updateAllSubscribes];
 }
 #pragma mark - 获取rss
 - (void)fetchRss{
-    self.navigationItem.leftBarButtonItem = _loadingItem;
-    if (_isInited) {
-        [_loadingView startAnimation];
-    } else {
-        _isInited = YES;
-    }
     
     dispatch_group_t group = dispatch_group_create();
     
@@ -185,6 +171,8 @@
         
         dispatch_group_enter(group);
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            
             [SMFeedParserWrapper parseUrl:[NSURL URLWithString:subscribe.url] timeout:10 completion:^(NSArray *items) {
                 if(items && items.count){
                     SMRSSModel *rssModel = [[SMRSSModel alloc]init];
@@ -192,9 +180,7 @@
                     [rssModel insertRSSFeedItems:items ofFeedUrlStr:subscribe.url];
                     [_tbView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                 }
-                
                 dispatch_group_leave(group);
-                
             }];
 
         });
@@ -202,47 +188,23 @@
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [_loadingView stopAnimation];
-        self.navigationItem.leftBarButtonItem = _btRefreash;
+        [self updateAllSubscribes];
     });
 }
-
 //跳转到添加控制器
 -(void)addNewRSS {
     SMAddRSSViewController *addRSSVC = [[SMAddRSSViewController alloc]initWithNibName:nil bundle:nil];
     addRSSVC.smAddRSSViewControllerDelegate = self;
     [self.navigationController pushViewController:addRSSVC animated:YES];
-    //    [self.navigationController presentViewController:addRSSVC animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Private
+- (void)updateAllSubscribes {
+    [self.listVC.tableView buildData:_allSurscribes];
 }
 
 #pragma mark - UITableViewDelegate
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _allSurscribes.count;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 45;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"SMSubscribeCell";
-    SMSubscribeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[SMSubscribeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [UIColor rss_cyanColor];
-        cell.backgroundColor = [UIColor clearColor];
-    }
-    if (_allSurscribes.count > 0) {
-        [cell setSubscribe:_allSurscribes[indexPath.row]];
-    }
-    return cell;
-}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -255,25 +217,22 @@
     rssListVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:rssListVC animated:YES];
 }
-
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //
-        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
-        Subscribes *aSubscribe = _allSurscribes[indexPath.row];
-        [rssModel deleteSubscrib:aSubscribe.url];
-        [_allSurscribes removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"删除";
-}
+//-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
+//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        //
+//        SMRSSModel *rssModel = [[SMRSSModel alloc]init];
+//        Subscribes *aSubscribe = _allSurscribes[indexPath.row];
+//        [rssModel deleteSubscrib:aSubscribe.url];
+//        [_allSurscribes removeObjectAtIndex:indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//}
+//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"删除";
+//}
 
 #pragma mark - rsslistviewcontroller delegate
 -(void)updateSubscribeList {
@@ -290,5 +249,39 @@
     [self getAllSubscribeSources];
 }
 
+#pragma mark - SMTableView Delegate
+- (void)smTableView:(SMTableView *)tableView configureCell:(UITableViewCell *)cell atIndex:(NSUInteger)index {
+    Subscribes *subscribeModel = self.allSurscribes[index];
+    SMSubscribeCellView *cellView = (SMSubscribeCellView *)[cell viewWithTag:132012];
+    if (!cellView) {
+        SMSubscribeCellViewModel *cellViewModel = [[SMSubscribeCellViewModel alloc] initWithSubscribe:subscribeModel];
+        cellView = [[SMSubscribeCellView alloc] initWithSubscribeViewModel:cellViewModel];
+        cellView.tag = 132012;
+        [cell.contentView addSubview:cellView];
+        [cellView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.equalTo(cell.contentView);
+        }];
+    }
+}
+- (CGFloat)smTableView:(SMTableView *)tableView heightAtIndex:(NSUInteger)index {
+    return 45;
+}
+- (void)smTableViewRefreshData:(SMTableView *)tableView {
+    [self fetchRss];
+}
+- (void)smTableViewLoadMoreData:(SMTableView *)tableView {
+    [self.listVC.tableView appendData:nil];
+}
+
+
+#pragma mark - getter
+- (SMListViewController *)listVC {
+    if (!_listVC) {
+        _listVC = [[SMListViewController alloc] initWithTableView];
+        _listVC.tableView.smTableViewDelegate = self;
+        _listVC.tableView.delegate = self;
+    }
+    return _listVC;
+}
 
 @end

@@ -12,6 +12,11 @@
 		1FC13C631938AAFE002EBB94 /* SMRSSFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13C621938AAFE002EBB94 /* SMRSSFetchOperation.m */; };
 		1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */; };
 		3A1A8DCB1B37C3F200B06B97 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1A8DCA1B37C3F200B06B97 /* UIViewAdditions.m */; };
+		3EC13AB51C0559E300225834 /* SMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC13AB41C0559E300225834 /* SMTableView.m */; };
+		3EC13AB91C055ABD00225834 /* SMListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC13AB81C055ABD00225834 /* SMListViewController.m */; };
+		3EC13ABD1C05993600225834 /* SMSubscribeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC13ABC1C05993600225834 /* SMSubscribeCellView.m */; };
+		3EC13AC11C059AB400225834 /* SMSubscribeCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC13AC01C059AB400225834 /* SMSubscribeCellViewModel.m */; };
+		3EC13AD51C05B35F00225834 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC13AD41C05B35F00225834 /* UIColor-Expanded.m */; };
 		CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CB09E3D919304ED6000D7597 /* SMRSSListCellMgr.m */; };
 		CB09E3DC1930798C000D7597 /* css.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DB1930798C000D7597 /* css.html */; };
 		CB09E3DE19307BC5000D7597 /* css_dark.html in Resources */ = {isa = PBXBuildFile; fileRef = CB09E3DD19307BC5000D7597 /* css_dark.html */; };
@@ -110,6 +115,16 @@
 		3A1A8DC81B37B1AE00B06B97 /* SynthesizeSingletonForArc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingletonForArc.h; sourceTree = "<group>"; };
 		3A1A8DC91B37C3F200B06B97 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		3A1A8DCA1B37C3F200B06B97 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		3EC13AB31C0559E300225834 /* SMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTableView.h; sourceTree = "<group>"; };
+		3EC13AB41C0559E300225834 /* SMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTableView.m; sourceTree = "<group>"; };
+		3EC13AB71C055ABD00225834 /* SMListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMListViewController.h; sourceTree = "<group>"; };
+		3EC13AB81C055ABD00225834 /* SMListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMListViewController.m; sourceTree = "<group>"; };
+		3EC13ABB1C05993600225834 /* SMSubscribeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSubscribeCellView.h; sourceTree = "<group>"; };
+		3EC13ABC1C05993600225834 /* SMSubscribeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSubscribeCellView.m; sourceTree = "<group>"; };
+		3EC13ABF1C059AB400225834 /* SMSubscribeCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSubscribeCellViewModel.h; sourceTree = "<group>"; };
+		3EC13AC01C059AB400225834 /* SMSubscribeCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSubscribeCellViewModel.m; sourceTree = "<group>"; };
+		3EC13AD31C05B35F00225834 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		3EC13AD41C05B35F00225834 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
 		6A35EDD268A630E0A0820987 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A922D2EF818DCC2BAED72C1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB09E3D819304ED6000D7597 /* SMRSSListCellMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSListCellMgr.h; sourceTree = "<group>"; };
@@ -273,23 +288,23 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		1F9854C5192A066D0093DDF8 /* ViewController */ = {
+		1F9854C5192A066D0093DDF8 /* Section */ = {
 			isa = PBXGroup;
 			children = (
 				1F9854C6192A06900093DDF8 /* Home */,
 				D2F75F6718D9827B00ED44A3 /* RSSList */,
 				D2EDF79518C5BDAC00B0E990 /* More */,
 			);
-			name = ViewController;
+			name = Section;
 			sourceTree = "<group>";
 		};
 		1F9854C6192A06900093DDF8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D2E8FC0018C46B5A005E8F2E /* SMViewController.h */,
-				D2E8FC0118C46B5A005E8F2E /* SMViewController.m */,
-				D215573A1AC3960A00D7DC57 /* SMAddRSSViewController.h */,
-				D215573B1AC3960A00D7DC57 /* SMAddRSSViewController.m */,
+				3EC13AD71C05D68F00225834 /* ViewController */,
+				3EC13AD61C05D66E00225834 /* Service */,
+				3EC13ABE1C059A9700225834 /* ViewModel */,
+				3EC13ABA1C05990F00225834 /* View */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -321,6 +336,77 @@
 				1FC13C67193ADB3F002EBB94 /* SMFeedUpdateController.m */,
 			);
 			name = SMFeedUpdateController;
+			sourceTree = "<group>";
+		};
+		3EC13AB21C05585C00225834 /* SMListView */ = {
+			isa = PBXGroup;
+			children = (
+				3EC13AB61C0559EE00225834 /* TableView */,
+				3EC13AB71C055ABD00225834 /* SMListViewController.h */,
+				3EC13AB81C055ABD00225834 /* SMListViewController.m */,
+			);
+			name = SMListView;
+			sourceTree = "<group>";
+		};
+		3EC13AB61C0559EE00225834 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				3EC13AB31C0559E300225834 /* SMTableView.h */,
+				3EC13AB41C0559E300225834 /* SMTableView.m */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		3EC13ABA1C05990F00225834 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EC13ABB1C05993600225834 /* SMSubscribeCellView.h */,
+				3EC13ABC1C05993600225834 /* SMSubscribeCellView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3EC13ABE1C059A9700225834 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EC13ABF1C059AB400225834 /* SMSubscribeCellViewModel.h */,
+				3EC13AC01C059AB400225834 /* SMSubscribeCellViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		3EC13AD21C05B33900225834 /* UIColorExpanded */ = {
+			isa = PBXGroup;
+			children = (
+				3EC13AD31C05B35F00225834 /* UIColor-Expanded.h */,
+				3EC13AD41C05B35F00225834 /* UIColor-Expanded.m */,
+			);
+			name = UIColorExpanded;
+			sourceTree = "<group>";
+		};
+		3EC13AD61C05D66E00225834 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		3EC13AD71C05D68F00225834 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8FC0018C46B5A005E8F2E /* SMViewController.h */,
+				D2E8FC0118C46B5A005E8F2E /* SMViewController.m */,
+				D215573A1AC3960A00D7DC57 /* SMAddRSSViewController.h */,
+				D215573B1AC3960A00D7DC57 /* SMAddRSSViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		3EC13AD81C05D8DD00225834 /* RSSParser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RSSParser;
 			sourceTree = "<group>";
 		};
 		436D16AA494F84809AB2173E /* Pods */ = {
@@ -453,7 +539,7 @@
 				DE94839C192F624700EA431C /* ShareEverynote */,
 				CB3DA4BA192DD27200AC52D6 /* Category */,
 				1F9854C9192A07280093DDF8 /* View */,
-				1F9854C5192A066D0093DDF8 /* ViewController */,
+				1F9854C5192A066D0093DDF8 /* Section */,
 				1F9854C4192A05D80093DDF8 /* Model */,
 				D2DDA05C18DC19EB005394E4 /* DAO */,
 				D2EDF78E18C5B20600B0E990 /* Utility */,
@@ -503,6 +589,9 @@
 		D2EDF78E18C5B20600B0E990 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				3EC13AD81C05D8DD00225834 /* RSSParser */,
+				3EC13AD21C05B33900225834 /* UIColorExpanded */,
+				3EC13AB21C05585C00225834 /* SMListView */,
 				1FC13C65193ADAFF002EBB94 /* SMFeedUpdateController */,
 				1FC13C641938DD52002EBB94 /* parser */,
 				D2EDF78F18C5B22C00B0E990 /* SMUIKitHelper.h */,
@@ -663,6 +752,7 @@
 				D2E8FBE518C46B5A005E8F2E /* Frameworks */,
 				D2E8FBE618C46B5A005E8F2E /* Resources */,
 				FA1C0AE84C484537A8BC6968 /* Copy Pods Resources */,
+				B06958DDCE231306631F7E07 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -795,6 +885,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		B06958DDCE231306631F7E07 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FA1C0AE84C484537A8BC6968 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -821,6 +926,7 @@
 				DE9483A2192F62A100EA431C /* SMShareViewController.m in Sources */,
 				D2E5D62B18E01BF300C3080C /* SMRSSModel.m in Sources */,
 				DEE9FE3E192C87DE00621576 /* SMRSSaboutModel.m in Sources */,
+				3EC13AC11C059AB400225834 /* SMSubscribeCellViewModel.m in Sources */,
 				CB3DA4C0192DD36300AC52D6 /* UIColor+RSS.m in Sources */,
 				D215573C1AC3960A00D7DC57 /* SMAddRSSViewController.m in Sources */,
 				D2F5F13A19306B7300321CBE /* SMSettingViewController.m in Sources */,
@@ -832,10 +938,12 @@
 				D2EEB44418DAB6BE008175F5 /* SMGetFetchedRecordsModel.m in Sources */,
 				1FC13C68193ADB3F002EBB94 /* SMFeedUpdateController.m in Sources */,
 				D2EDF79118C5B22C00B0E990 /* SMUIKitHelper.m in Sources */,
+				3EC13AD51C05B35F00225834 /* UIColor-Expanded.m in Sources */,
 				D2E8FBFC18C46B5A005E8F2E /* SMAppDelegate.m in Sources */,
 				3A1A8DCB1B37C3F200B06B97 /* UIViewAdditions.m in Sources */,
 				D243520819863E5800761D1C /* SMSimpleAddRSSVC.m in Sources */,
 				D2F75F6318D9704E00ED44A3 /* SMSubscribeCell.m in Sources */,
+				3EC13AB51C0559E300225834 /* SMTableView.m in Sources */,
 				D2F75F6A18D9842500ED44A3 /* SMRSSListViewController.m in Sources */,
 				D21D4836192F7248007003C8 /* RSS.xcdatamodeld in Sources */,
 				DEE9FE48192CAF6000621576 /* SMBlurBackground.m in Sources */,
@@ -844,10 +952,12 @@
 				CB09E3E11930807C000D7597 /* SMPreferences.m in Sources */,
 				CB3DA4BD192DD33E00AC52D6 /* UIColor+TBExt.m in Sources */,
 				D2102087193B23A200FCBC15 /* Subscribes.m in Sources */,
+				3EC13AB91C055ABD00225834 /* SMListViewController.m in Sources */,
 				D2A26E3A19238AF800C9CB86 /* SMAboutViewController.m in Sources */,
 				D2102084193B23A100FCBC15 /* RSS.m in Sources */,
 				D2E8FBF818C46B5A005E8F2E /* main.m in Sources */,
 				D2DDA05B18DBBCE0005394E4 /* SMRSSListCell.m in Sources */,
+				3EC13ABD1C05993600225834 /* SMSubscribeCellView.m in Sources */,
 				CB09E3DA19304ED6000D7597 /* SMRSSListCellMgr.m in Sources */,
 				D2FF728B193629EC0062F839 /* SMAboutWebViewController.m in Sources */,
 				CB502759192FA39D00EB4DD1 /* MBProgressHUD+Ext.m in Sources */,
