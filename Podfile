@@ -1,5 +1,5 @@
 platform :ios, '7.0'
-pod "AFNetworking"
+pod "AFNetworking", '~> 2.6.3'
 pod "MWFeedParser"
 pod 'MBProgressHUD', '~> 0.8'
 pod 'Evernote-SDK-iOS', '~> 1.3.1'
