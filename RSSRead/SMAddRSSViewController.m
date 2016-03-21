@@ -11,6 +11,7 @@
 #import "SMAppDelegate.h"
 #import "RSS.h"
 #import "SMRSSModel.h"
+#import <NSRegularExpression+ENAGRegex.h>
 
 
 @interface SMAddRSSViewController ()
@@ -24,6 +25,7 @@
 @property(nonatomic,strong)NSMutableArray *parsedItems;
 @property(nonatomic,strong)SMAppDelegate *appDelegate;
 @property(nonatomic,strong)UILabel *lbSending;
+@property(nonatomic,strong)UILabel *failed;
 @end
 
 @implementation SMAddRSSViewController
@@ -93,14 +95,19 @@
     if (_tfValue.text != nil) {
         //
         NSString *tfString =nil;
-        if ([[_tfValue.text substringToIndex:7]isEqualToString:@"http://"]) {
+        NSString *regx=@"http://.*";
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regx];
+        BOOL isValid = [predicate evaluateWithObject:_tfValue.text];
+        if (isValid) {
             //
-            NSLog(@"show it %@",[_tfValue.text substringToIndex:7]);
+           // NSLog(@"show it %@",[_tfValue.text substringToIndex:7]);
             tfString = _tfValue.text;
+            NSLog(@"Show it %@",tfString);
         } else {
             tfString = [NSString stringWithFormat:@"http://%@",_tfValue.text];
         }
         
+    
         _lbSending.hidden = NO;
         //读取解析rss
         NSURL *feedURL = [NSURL URLWithString:tfString];
@@ -109,8 +116,9 @@
         _feedParser.feedParseType = ParseTypeFull;
         _feedParser.connectionType = ConnectionTypeSynchronously;
         [_feedParser parse];
-        //这里需要一个hud不让用户操作。
+        //这里需要一个hud不让用户操作
     }
+ //   NSLog(_tfValue.text);
     return YES;
 }
 
@@ -170,7 +178,7 @@
     NSLog(@"finished");
     [self doBack];
 }
-
+//
 -(void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error {
     [_lbSending setText:@"链接无效，请尝试其它链接"];
 }
