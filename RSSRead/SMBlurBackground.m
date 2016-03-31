@@ -70,7 +70,15 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     comps = [calendar components:unitFlags fromDate:date];
     NSInteger week = [comps weekday];
-    backimage = [UIImage imageNamed:[NSString stringWithFormat:@"bg%ld",(long)week]];
+    if([SMPreferences sharedInstance].isUseYourOwnBackgroundImage==YES)
+    {
+        backimage=[SMPreferences sharedInstance].imageName;
+    }
+    else{
+        backimage = [UIImage imageNamed:[NSString stringWithFormat:@"bg%ld",(long)week]];
+    }
+    
+    
 //    backimage = [UIImage imageNamed:@"bg3"];
     UIImageView *imgView = [[UIImageView alloc]initWithImage:backimage];
     imgView.frame = [UIScreen mainScreen].bounds;

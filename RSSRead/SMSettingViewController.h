@@ -10,6 +10,6 @@
 #import "RETableViewManager.h"
 #import "RETableViewOptionsController.h"
 
-@interface SMSettingViewController : UITableViewController<RETableViewManagerDelegate>
+@interface SMSettingViewController : UITableViewController<RETableViewManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
