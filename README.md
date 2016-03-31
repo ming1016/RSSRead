@@ -9,6 +9,9 @@
 * 文章分享功能
 
 ##TODO
+* 修改CoreData，在RSSDetial，以更新时间分割推送
+* 增加感兴趣文章导出为PDF功能
+* 增加Onedrive和iCloud支持，支持上传保存PDF
 * SMDetailViewController增加一个进入原文查看的快捷入口
 * 解决SMDetailViewController页面的WebView如果图片过大能够自动适应屏幕页面的宽度
 * SMDetailViewController点击标题后出现正在读取的进度条
