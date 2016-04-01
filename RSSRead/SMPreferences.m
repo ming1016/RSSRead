@@ -16,4 +16,5 @@ ARC_SYNTHESIZE_SINGLETON_FOR_CLASS(SMPreferences)
 @dynamic isUseBlurForYourBackgroundImage;
 @dynamic isUseYourOwnBackgroundImage;
 @dynamic backgroundBlurRadius;
+@dynamic imageName;
 @end

@@ -74,13 +74,24 @@
 }
 
 -(RETableViewSection *)addBackgroundImageSection{
+    //BOOL se;
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"背景"];
     [self.manager addSection:section];
-//    _isUseYourOwnBackgroundImage = [REBoolItem itemWithTitle:@"是否启用自己的背景" value:[[SMPreferences sharedInstance] isUseYourOwnBackgroundImage] switchValueChangeHandler:^(REBoolItem *item){
-//        [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:item.value];
-//        [[SMPreferences sharedInstance] synchronize];
-//    }];
-//    [section addItem:_isUseYourOwnBackgroundImage];
+    _isUseYourOwnBackgroundImage = [REBoolItem itemWithTitle:@"是否启用自己的背景" value:[[SMPreferences sharedInstance] isUseYourOwnBackgroundImage] switchValueChangeHandler:^(REBoolItem *item){
+        
+        [[SMPreferences sharedInstance] setIsUseYourOwnBackgroundImage:item.value];
+        [[SMPreferences sharedInstance] synchronize];
+        if(item.value)
+        {
+            UIImagePickerController *picker=[[UIImagePickerController alloc]init];
+            picker.sourceType=UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            picker.delegate=self;
+            picker.allowsEditing=YES;
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+    }];
+    [section addItem:_isUseYourOwnBackgroundImage];
+    
     
     _isUseBlurForYourBackgroundImage = [REBoolItem itemWithTitle:@"是否启用模糊效果" value:[[SMPreferences sharedInstance] isUseBlurForYourBackgroundImage] switchValueChangeHandler:^(REBoolItem *item){
         [[SMPreferences sharedInstance] setIsUseBlurForYourBackgroundImage:item.value];
@@ -94,12 +105,14 @@
         [[SMPreferences sharedInstance] synchronize];
     }];
     [section addItem:_backgroundBlurRadius];
-    
-//    _backgroundImageSelect = [RETableViewItem itemWithTitle:@"选择一张自己的背景" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
-//        //TODO:选择相册一张背景
-//    }];
-//    _backgroundImageSelect.image = [UIImage imageNamed:@"bg3"];
-//    [section addItem:_backgroundImageSelect];
+//    if(se){
+//        
+//        _backgroundImageSelect = [RETableViewItem itemWithTitle:@"选择一张自己的背景" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
+//            //TODO:选择相册一张背景
+//        }];
+//        _backgroundImageSelect.image = [UIImage imageNamed:@"bg3"];
+//        [section addItem:_backgroundImageSelect];
+//    }
     
     return section;
 }
@@ -113,8 +126,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(nonnull UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
+{
+    [[SMPreferences sharedInstance] setImageName:image];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end
