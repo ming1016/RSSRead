@@ -23,6 +23,9 @@
 #import "SMSubscribeCellView.h"
 #import "SMSubscribeCellViewModel.h"
 
+
+static NSInteger const BackgroundViewTag = 100;
+
 @interface SMViewController ()<UINavigationControllerDelegate>
 
 @property (nonatomic, weak) NSManagedObjectContext *managedObjectContext;
@@ -55,9 +58,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"首页";
+        [self registerForKVO];
     }
     return self;
 }
+
+- (void)dealloc {
+    [self unregisterFromKVO];
+}
+
 -(void)doBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -76,7 +85,7 @@
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title_view"]];
     [self.navigationItem setTitleView:imgView];
     
-    [self.view addSubview:[SMBlurBackground SMbackgroundView]];
+    [self configBackgroundView];
     
     UIView *naviWhiteCover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, NAVBARHEIGHT)];
     naviWhiteCover.backgroundColor = [UIColor whiteColor];
@@ -117,11 +126,22 @@
     } else {
         self.navigationItem.leftBarButtonItem = _btRefreash;
     }
-    
 }
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self getAllSubscribeSources];
+}
+
+- (void) configBackgroundView {
+    //Reomve old background view
+    [[self.view viewWithTag:BackgroundViewTag] removeFromSuperview];
+    
+    //Re-add background view
+    UIImageView *bgView = [SMBlurBackground SMbackgroundView];
+    [bgView setTag:BackgroundViewTag];
+    [self.view addSubview: bgView];
+    [self.view sendSubviewToBack:bgView];
 }
 
 #pragma mark - Event
@@ -269,6 +289,24 @@
     [self.listVC.tableView appendData:nil];
 }
 
+#pragma mark - KVO
+- (void) registerForKVO {
+    [[SMPreferences sharedInstance] addObserver:self forKeyPath:@"isUseYourOwnBackgroundImage" options:NSKeyValueObservingOptionNew context:nil];
+    [[SMPreferences sharedInstance] addObserver:self forKeyPath:@"isUseBlurForYourBackgroundImage" options:NSKeyValueObservingOptionNew context:nil];
+    [[SMPreferences sharedInstance] addObserver:self forKeyPath:@"backgroundBlurRadius" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void) unregisterFromKVO {
+    [[SMPreferences sharedInstance] removeObserver:self forKeyPath:@"isUseYourOwnBackgroundImage"];
+    [[SMPreferences sharedInstance] removeObserver:self forKeyPath:@"isUseBlurForYourBackgroundImage"];
+    [[SMPreferences sharedInstance] removeObserver:self forKeyPath:@"backgroundBlurRadius"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if (object == [SMPreferences sharedInstance]) {
+        [self configBackgroundView];
+    }
+}
 
 #pragma mark - getter
 - (SMListViewController *)listVC {
