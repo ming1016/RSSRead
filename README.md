@@ -1,3 +1,5 @@
+2017.2.4 新版可以移步到<https://github.com/ming1016/GCDFetchFeed>
+
 #RSSRead
 “已阅”是一个iOS设备上的RSS/Atom阅读器。 
 
